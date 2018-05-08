@@ -5,7 +5,7 @@ WARNINGFLAGS = -Wall -Wpedantic -Wextra -Wmissing-include-dirs -Wshadow
 
 # OSX ROOT Library Linking
 ROOTINC = `root-config --cflags`
-ROOTLIB = `root-config --libs`
+ROOTLIB = `root-config --libs` -lXMLIO
 
 GIT_VERSION := $(shell git describe --abbrev=4 --dirty --always --tags)
 CFLAGS += -DGITVERSION=\"$(GIT_VERSION)\"
@@ -17,6 +17,7 @@ INC = -Iinc
 # List Sources Here
 SOURCES = main.cpp
 SOURCES += GlobalConfig.cpp
+SOURCES += Config.cpp
 SOURCES += Packet.cpp
 SOURCES += Event.cpp
 SOURCES += Edge.cpp

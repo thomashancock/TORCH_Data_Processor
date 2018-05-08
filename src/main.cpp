@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Debug.hpp"
+#include "Config.hpp"
 
 void parseInputs(
 	const int argc,
@@ -39,7 +40,7 @@ int main(int argc, char** argv) {
 	std::cout << "Program Build: " << GITVERSION << std::endl;
 
 	// Set Default location for file
-	std::string configFile = "./Config.conf";
+	std::string configFile = "./Config.xml";
 	std::string outputFile = "./TORCH_Tree.root";
 
 	// Create input file vector
@@ -47,6 +48,9 @@ int main(int argc, char** argv) {
 
 	// Parse input options
 	parseInputs(argc,argv,configFile,outputFile,fileNames);
+
+	// Read Config
+	Config config(configFile);
 
 	// Perform Data Processing
 	STD_LOG("Processing Data");
