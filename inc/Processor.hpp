@@ -18,6 +18,15 @@ public:
 	);
 
 private:
+	//! Make Word Bundles (has ROC value and words found preceding it)
+
+	//! Process Word Bundle into packets
+
+	//! Build Events from Packets
+
+	//! Write Events to ROOT file
+
+private:
 	std::unique_ptr<const Config> m_config;
 };
 
