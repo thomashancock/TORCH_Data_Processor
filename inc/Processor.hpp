@@ -19,6 +19,9 @@ public:
 
 private:
 	//! Make Word Bundles (has ROC value and words found preceding it)
+	void processFile(
+		const std::string fileName
+	);
 
 	//! Process Word Bundle into packets
 
@@ -27,7 +30,17 @@ private:
 	//! Write Events to ROOT file
 
 private:
-	std::unique_ptr<const Config> m_config;
+	std::unique_ptr<const Config> m_config; //!< Pointer to configuration object
+
+	//!< WordBundle Buffers
+
+	//!< Packet Buffers
+
+	//!< Packet Buffer flags
+
+	//!< Event Buffer
+
+	//!< RootManager
 };
 
 #endif /* PROCESSOR_H */

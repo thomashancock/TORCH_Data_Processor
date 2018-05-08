@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "Debug.hpp"
-#include "GlobalConfig.hpp"
+// #include "GlobalConfig.hpp"
 // #include "DebugStreamManager.hpp"
 #include "Edge.hpp"
 
