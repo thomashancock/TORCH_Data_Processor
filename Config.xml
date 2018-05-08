@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+	<boardID="0">
+		<slot="D" tcdID1="14" tcdID2="15">
+		<slot="C" tcdID1="12" tcdID2="13">
+		<slot="B" tcdID1="8" tcdID2="9">
+		<slot="A" tcdID1="10" tcdID2="11">
+	</boardID>
+</config>
+

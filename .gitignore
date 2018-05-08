@@ -1,0 +1,15 @@
+obj/*
+!obj/.README
+output/*
+!output/.README
+data/*/*
+!/data/Laser_Test_Data/*
+TORCH_Data_Processor
+example_Output/*
+template
+To-Do.txt
+*.conf
+!Example_Config.conf
+*.sh
+!run_test.sh
+
