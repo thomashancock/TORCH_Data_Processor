@@ -18,7 +18,8 @@ Config::Config(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-void Config::printConfig() {
+void Config::print() const {
+	std::cout << "Configuration:" << std::endl;
 
 }
 
@@ -48,15 +49,16 @@ void Config::parseConfigFile(
 		processNode(xmlEngine, mainNode);
 
 		// Release memory before exit
-		xmlEngine->FreeDoc( xmldoc );
+		xmlEngine->FreeDoc(xmldoc);
 	}
 
 	delete xmlEngine;
 
 	m_configRead = true;
 }
-
-
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 void Config::processNode(
 	TXMLEngine* xmlEngine,
 	XMLNodePointer_t node

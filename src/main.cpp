@@ -1,8 +1,12 @@
+// STD
 #include <string>
 #include <vector>
+#include <memory>
 
+// LOCAL
 #include "Debug.hpp"
 #include "Config.hpp"
+#include "Processor.hpp"
 
 void parseInputs(
 	const int argc,
@@ -50,10 +54,24 @@ int main(int argc, char** argv) {
 	parseInputs(argc,argv,configFile,outputFile,fileNames);
 
 	// Read Config
-	Config config(configFile);
+	auto config = std::make_unique<const Config>(configFile);
 
-	// Perform Data Processing
-	STD_LOG("Processing Data");
+	if (config->isConfigured()) {
+
+		// Sort files to ensure events come together
+		// TODO
+
+		// Perform Data Processing
+		STD_LOG("Processing Data");
+		Processor processor(std::move(config));
+		ASSERT(nullptr == config);
+
+		try {
+			processor.processFiles(fileNames);
+		} catch (std::exception& e) {
+			STD_ERR("Exception: " << e.what());
+		}
+	}
 
 	return 0;
 }

@@ -1,5 +1,5 @@
 CC = $(CXX)
-CFLAGS = -g3 -O3
+CFLAGS = -g3 -O3 -std=c++1y
 
 WARNINGFLAGS = -Wall -Wpedantic -Wextra -Wmissing-include-dirs -Wshadow
 
@@ -16,8 +16,8 @@ INC = -Iinc
 
 # List Sources Here
 SOURCES = main.cpp
-SOURCES += GlobalConfig.cpp
 SOURCES += Config.cpp
+SOURCES += Processor.cpp
 SOURCES += Packet.cpp
 SOURCES += Event.cpp
 SOURCES += Edge.cpp

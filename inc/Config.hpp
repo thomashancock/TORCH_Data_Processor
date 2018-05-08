@@ -19,10 +19,10 @@ public:
 	);
 
 	//! Returns whether config was succesfully read
-	bool isCongifured() { return m_configRead; }
+	bool isConfigured() const { return m_configRead; }
 
 	//! Prints details of the stored configuration
-	void printConfig();
+	void print() const;
 
 private:
 	//! Parses options read from the config file

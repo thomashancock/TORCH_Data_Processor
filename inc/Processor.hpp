@@ -1,0 +1,24 @@
+#ifndef PROCESSOR_H
+#define PROCESSOR_H
+
+// STD
+#include <memory>
+
+// LOCAL
+#include "Config.hpp"
+
+class Processor {
+public:
+	Processor(
+		std::unique_ptr<const Config> config
+	);
+
+	void processFiles(
+		const std::vector<std::string> fileNames
+	);
+
+private:
+	std::unique_ptr<const Config> m_config;
+};
+
+#endif /* PROCESSOR_H */
