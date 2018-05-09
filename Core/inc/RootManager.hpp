@@ -8,9 +8,8 @@
 #include "TNamed.h"
 
 #include "Debug.hpp"
-#include "GlobalConfig.hpp"
 #include "Event.hpp"
-#include "SlotBuffer.hpp"
+// #include "SlotBuffer.hpp"
 
 #define MAX_TDCS (16)
 #define MAX_HITS (500)
@@ -25,8 +24,7 @@ class RootManager {
 public:
 	//! Constructor
 	RootManager(
-		std::string outputRootFile,
-		std::shared_ptr< GlobalConfig > config
+		std::string outputRootFile
 	);
 	//! Deconstructor
 	~RootManager();
@@ -39,9 +37,9 @@ public:
 	//! Writes the stored TTrees
 	void writeTrees();
 
-	void writeMonitoringInformation(
-		std::shared_ptr<SlotBuffer> slotBuffer
-	);
+	// void writeMonitoringInformation(
+	// 	std::shared_ptr<SlotBuffer> slotBuffer
+	// );
 
 private:
 	//! Sets up the TTrees
@@ -79,9 +77,7 @@ private:
 	TTree* m_tdcTree;     //!< Pointer to store the TDC tree
 	TTree* m_triggerTree; //!< Pointer to store the trigger tree
 
-	const TNamed m_programVersion; //!< TNamed which writes build version to output tree
-
-	std::shared_ptr< GlobalConfig > m_config; //!< List of valid TDC IDs
+	// const TNamed m_programVersion; //!< TNamed which writes build version to output tree
 };
 
 #endif /* ROOTMANAGER_H */

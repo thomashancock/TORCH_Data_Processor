@@ -6,3 +6,5 @@ TORCH_Data_Processor
 !run_test.sh
 Notes.txt
 
+Build/*
+Install/*

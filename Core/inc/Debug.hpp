@@ -9,25 +9,25 @@
 #define FCNNAMELENGTH 45
 
 //------------------------------------------------------------------------------
-/***< Debug Code */
+/***< LOCAL_DEBUG Code */
 //------------------------------------------------------------------------------
-#ifdef DEBUG
+#ifdef LOCAL_DEBUG
 	#define STD_LOG(x) std::clog << "\033[2;32m" << x << "\033[0m" << std::endl;
 #else
 	#define STD_LOG(x)
-#endif /* DEBUG */
+#endif /* LOCAL_DEBUG */
 
-#ifdef DEBUG
+#ifdef LOCAL_DEBUG
 	#define STD_LOG_VAR(x) std::clog << "\033[2;32m" << #x << ": " << x << "\033[0m" << std::endl;
 #else
 	#define STD_LOG_VAR(x)
-#endif /* DEBUG */
+#endif /* LOCAL_DEBUG */
 
-#ifdef DEBUG
+#ifdef LOCAL_DEBUG
 	#define STD_LOG_VAR_HEX(x) std::clog << "\033[2;32m" << #x << ": " << std::hex << x << std::dec << "\033[0m" << std::endl;
 #else
 	#define STD_LOG_VAR_HEX(x)
-#endif /* DEBUG */
+#endif /* LOCAL_DEBUG */
 
 inline std::string trimmedString(
 	const std::string& thing,
@@ -53,7 +53,7 @@ inline void forceStop(std::string fileName, unsigned lineNo) {
 	exit(0);
 }
 
-#ifdef DEBUG
+#ifdef LOCAL_DEBUG
 	#define ASSERT(x) \
 		if (x) \
 			{} \
@@ -61,7 +61,7 @@ inline void forceStop(std::string fileName, unsigned lineNo) {
 			forceStop(__FILE__,__LINE__)
 #else
 	#define ASSERT(x)
-	// If DEBUG is not defined, the assertions will be "switched off".
-#endif /* DEBUG */
+	// If LOCAL_DEBUG is not defined, the assertions will be "switched off".
+#endif /* LOCAL_DEBUG */
 
 #endif /* DEBUG_H */

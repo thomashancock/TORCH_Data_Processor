@@ -41,7 +41,7 @@ void parseInputs(
 //
 // -----------------------------------------------------------------------------
 int main(int argc, char** argv) {
-	std::cout << "Program Build: " << GITVERSION << std::endl;
+	// std::cout << "Program Build: " << GITVERSION << std::endl;
 
 	// Set Default location for file
 	std::string configFile = "./Config.xml";
