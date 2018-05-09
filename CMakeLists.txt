@@ -12,6 +12,15 @@ project(DataProcessor)
 set (DataProcessor_VERSION_MAJOR 1)
 set (DataProcessor_VERSION_MINOR 0)
 
+# Find Git Version
+execute_process(COMMAND bash "-c" "git describe --abbrev=4 --dirty --always --tags" OUTPUT_VARIABLE GIT_TAG)
+# Strip newline from output
+string(REGEX REPLACE "\n$" "" GIT_TAG "${GIT_TAG}")
+# Add quote marks
+set(GIT_TAG "\"${GIT_TAG}\"")
+# Print tag to cmake output
+message(STATUS "Git Tag Detected: ${GIT_TAG}")
+
 # Add Debug definition
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DLOCAL_DEBUG")
 
@@ -33,6 +42,9 @@ include(${ROOT_USE_FILE})
 
 # Add Executable
 add_executable(DataProcessor ${SOURCE_FILES})
+
+# Add git tag definition to executable
+target_compile_definitions(DataProcessor PRIVATE GITTAG=${GIT_TAG})
 
 # Link Root Libraries
 target_link_libraries(DataProcessor ${ROOT_LIBRARIES})
