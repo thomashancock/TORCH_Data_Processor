@@ -149,15 +149,16 @@ inline void printWord(
 	const uint word
 ) {
 	const auto dataType = getDataType(word);
-	ASSERT(2 == dataType || 3 == dataType || 4 == dataType || 5 == dataType || 15 == dataType);
 	if (2 == dataType) {
 		printHeaderWord(word);
 	} else if (3 == dataType) {
 		printTrailerWord(word);
 	} else if (15 == dataType) {
 		printROCWord(word);
-	} else {
+	} else if ((4 == dataType) || (5 == dataType)) {
 		printEdgeWord(word);
+	} else {
+		std::cout << "UNKNOWN: " << dataType << " " << std::hex << word << std::dec << std::endl;
 	}
 }
 
