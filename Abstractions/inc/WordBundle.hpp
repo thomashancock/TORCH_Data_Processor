@@ -15,6 +15,12 @@ public:
 		const char slot
 	);
 
+	//! Returns readout board number
+	unsigned int getReadoutBoardNumber() const { return m_readoutBoardNumber; }
+
+	//! Returns slot
+	char getSlot() const { return m_slot; }
+
 	//! Check if Bundle is complete
 	bool isComplete() const { return m_rocValueStored; }
 
