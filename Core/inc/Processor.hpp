@@ -60,6 +60,7 @@ private:
 
 private:
 	//! Set containing filler words (move to config?)
+	// const std::set<unsigned int> fillerWords = { 0 };
 	const std::set<unsigned int> fillerWords = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 };
 
 	std::unique_ptr<const Config> m_config; //!< Pointer to configuration object
