@@ -3,9 +3,16 @@
 
 // STD
 #include <memory>
+#include <unordered_map>
+#include <string>
+#include <atomic>
 
 // LOCAL
 #include "Config.hpp"
+#include "ThreadSafeQueue.hpp"
+#include "WordBundle.hpp"
+#include "Packet.hpp"
+#include "Event.hpp"
 
 class Processor {
 public:
@@ -32,13 +39,15 @@ private:
 private:
 	std::unique_ptr<const Config> m_config; //!< Pointer to configuration object
 
-	//!< WordBundle Buffers
+	std::unordered_map<std::string, ThreadSafeQueue<WordBundle> > m_wordBundleBuffers; //!< WordBundle Buffers
 
-	//!< Packet Buffers
+	std::unordered_map<
+		unsigned int,
+		std::pair< std::atomic_flag, ThreadSafeQueue< std::unique_ptr<Packet> > >
+	> m_packBuffers; //!< Packet Buffers
 
-	//!< Packet Buffer flags
-
-	//!< Event Buffer
+	std::atomic_flag m_eventFlag; //!< Event Readout Flag
+	ThreadSafeQueue< std::unique_ptr<Event> > m_eventBuffer; //!< Event Buffer
 
 	//!< RootManager
 };

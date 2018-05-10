@@ -21,6 +21,8 @@ Processor::Processor(
 	ASSERT(nullptr == config);
 
 	m_config->print();
+
+
 }
 // -----------------------------------------------------------------------------
 //

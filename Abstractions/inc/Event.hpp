@@ -22,10 +22,8 @@ public:
 		TDC ID list will be used to check whether packets have been stored all TDCs.
 	*/
 	Event(
-		std::shared_ptr< std::vector<unsigned int> > tdcList //!< List of TDC IDs being used
+		// std::shared_ptr< std::vector<unsigned int> > tdcList //!< List of TDC IDs being used
 	);
-	//! Deconstructor
-	~Event();
 
 	//! Attempts to add a packet to the Event object
 	/*!

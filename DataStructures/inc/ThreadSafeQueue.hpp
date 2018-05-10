@@ -35,4 +35,7 @@ private:
 	std::queue<T> m_queue; //!< Base queue object
 };
 
+// Include function implementations
+#include "ThreadSafeQueue.inl"
+
 #endif /* THREADSAFEQUEUE_H */

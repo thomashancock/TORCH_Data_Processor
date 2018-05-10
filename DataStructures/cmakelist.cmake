@@ -1,7 +1,3 @@
-MESSAGE( STATUS "Adding DataStructures Sources")
-
-set(SOURCE_FILES ${SOURCE_FILES}
-	DataStructures/src/ThreadSafeQueue.cpp
-)
+MESSAGE( STATUS "Adding DataStructures")
 
 include_directories( DataStructures/inc )

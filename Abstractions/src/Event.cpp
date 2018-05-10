@@ -6,19 +6,13 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 Event::Event(
-	std::shared_ptr< std::vector<unsigned int> > tdcList
+	// std::shared_ptr< std::vector<unsigned int> > tdcList
 ) :
-m_tdcList(tdcList),
+// m_tdcList(tdcList),
 m_eventID(0),
 m_isEventIDSet(false)
 {
-	ASSERT(tdcList != NULL);
-}
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-Event::~Event() {
-
+	// ASSERT(tdcList != nullptr);
 }
 // -----------------------------------------------------------------------------
 //
@@ -118,11 +112,11 @@ std::shared_ptr<Packet> Event::getPacket(
 bool Event::isTDCIDValid(
 	const Packet* packet
 ) {
-	const unsigned int packetTDCID = packet->getTDCID();
-	for (auto& tdcID : *m_tdcList) {
-		if (packetTDCID == tdcID) {
-			return true;
-		}
-	}
+	// const unsigned int packetTDCID = packet->getTDCID();
+	// for (auto& tdcID : *m_tdcList) {
+	// 	if (packetTDCID == tdcID) {
+	// 		return true;
+	// 	}
+	// }
 	return false;
 }
