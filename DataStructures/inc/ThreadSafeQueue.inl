@@ -32,7 +32,7 @@ inline void ThreadSafeQueue<T>::push(
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Add value to queue
-	m_queue.push(value);
+	m_queue.push(std::move(value));
 }
 // -----------------------------------------------------------------------------
 //

@@ -4,8 +4,12 @@
 // STD
 #include <queue>
 
+// LOCAL
+#include "Debug.hpp"
+
 class WordBundle {
 public:
+	//! Constructor
 	WordBundle(
 		const unsigned int readoutBoardNumber,
 		const char slot
@@ -42,5 +46,42 @@ private:
 	std::queue<unsigned int> m_words;
 	unsigned int m_rocValue = 0;
 };
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Inlines:
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+inline void WordBundle::addWord(
+	const unsigned int word
+) {
+	m_words.push(word);
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+inline unsigned int WordBundle::getNextWord() {
+	ASSERT(!m_words.empty());
+	const auto word = m_words.front();
+	m_words.pop();
+	return word;
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+inline unsigned int WordBundle::getROCValue() const {
+	ASSERT(true == m_rocValueStored);
+	return m_rocValue;
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+inline void WordBundle::setRocValue(
+	const unsigned int rocValue
+) {
+	ASSERT(false == m_rocValueStored);
+	m_rocValue = rocValue;
+	m_rocValueStored = true;
+}
 
 #endif /* WORDBUNDLE_H */

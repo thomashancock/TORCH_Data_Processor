@@ -32,9 +32,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Add sources
-include( ${PROJECT_SOURCE_DIR}/Core/cmakelist.cmake)
-include( ${PROJECT_SOURCE_DIR}/Abstractions/cmakelist.cmake)
 include( ${PROJECT_SOURCE_DIR}/DataStructures/cmakelist.cmake)
+include( ${PROJECT_SOURCE_DIR}/Abstractions/cmakelist.cmake)
+include( ${PROJECT_SOURCE_DIR}/Core/cmakelist.cmake)
 
 # Find Root
 list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
