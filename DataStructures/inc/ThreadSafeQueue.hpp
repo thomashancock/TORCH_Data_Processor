@@ -12,6 +12,12 @@ public:
 	//! Constructor
 	ThreadSafeQueue();
 
+	// Delete copy and move constructors and assignment operators
+	ThreadSafeQueue(const ThreadSafeQueue& other) = delete;
+	ThreadSafeQueue& operator=(ThreadSafeQueue other) = delete;
+	ThreadSafeQueue(const ThreadSafeQueue&& other) = delete;
+	ThreadSafeQueue& operator=(ThreadSafeQueue&& other) = delete;
+
 	//! Is queue empty
 	bool empty() const;
 
