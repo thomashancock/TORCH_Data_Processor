@@ -6,7 +6,10 @@
 
 class WordBundle {
 public:
-	WordBundle();
+	WordBundle(
+		const unsigned int readoutBoardNumber,
+		const char slot
+	);
 
 	//! Check if Bundle is complete
 	bool isComplete() const { return m_rocValueStored; }
@@ -31,6 +34,9 @@ public:
 	);
 
 private:
+	const unsigned int m_readoutBoardNumber;
+	const char m_slot;
+
 	bool m_rocValueStored = false;
 
 	std::queue<unsigned int> m_words;

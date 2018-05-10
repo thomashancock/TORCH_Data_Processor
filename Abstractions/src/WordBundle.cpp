@@ -8,7 +8,13 @@
 // Public:
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-WordBundle::WordBundle() {
+WordBundle::WordBundle(
+	const unsigned int readoutBoardNumber,
+	const char slot
+) :
+	m_readoutBoardNumber(readoutBoardNumber),
+	m_slot(slot)
+{
 	ASSERT(m_words.empty());
 }
 // -----------------------------------------------------------------------------
