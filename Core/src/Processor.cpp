@@ -61,6 +61,14 @@ void Processor::processFiles(
 
 	std::cout << ((true == m_wordBundleBuffer.empty()) ? "Empty" : "Full") << std::endl;
 
+	while(!m_wordBundleBuffer.empty()) {
+		auto bundle = m_wordBundleBuffer.popFront();
+		std::cout << "New Bundle: " << bundle->getROCValue() << std::endl;
+		while (!bundle->empty()) {
+			std::cout << std::hex << bundle->getNextWord() << std::dec << std::endl;
+		}
+	}
+
 	// PARALLEL VERSION
 	// for (auto& file : fileNames) {
 	//

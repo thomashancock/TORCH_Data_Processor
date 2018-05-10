@@ -46,7 +46,7 @@ inline T ThreadSafeQueue<T>::popFront() {
 	ASSERT(!m_queue.empty());
 
 	// Get value at front of queue
-	const auto value = m_queue.front();
+	auto value = std::move(m_queue.front());
 
 	// Pop value from queue
 	m_queue.pop();
