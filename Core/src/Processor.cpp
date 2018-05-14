@@ -17,14 +17,14 @@
 Processor::Processor(
 	std::unique_ptr<const Config> config
 ) :
-	m_config(std::move(config))
+	m_config(std::move(config)),
+	m_eventBuffer(m_tdcIDs)
 {
 	// Assert move operation was succesful
 	ASSERT(nullptr == config);
 
 	// Assert buffers are empty
 	ASSERT(m_wordBundleBuffer.empty());
-	ASSERT(m_eventBuffer.empty());
 
 	m_config->print();
 
@@ -35,7 +35,6 @@ Processor::Processor(
 	// "0D" = 14, 15
 
 	// Initialise Packet Buffers
-	// std::list<unsigned int> tdcIDs { 8, 9, 10, 11, 12, 13, 14, 15 };
 	initializePacketBuffers(m_tdcIDs);
 }
 // -----------------------------------------------------------------------------
@@ -97,11 +96,23 @@ void Processor::processFiles(
 
 			makePackets();
 
-			for (auto& entry : m_packetBuffers) {
-				std::cout << "TDC ID: " << entry.first << std::endl;
-				while(!entry.second.empty()) {
-					const auto packet = entry.second.popFront();
-					packet->print();
+			// for (auto& entry : m_packetBuffers) {
+			// 	std::cout << "TDC ID: " << entry.first << std::endl;
+			// 	while(!entry.second.empty()) {
+			// 		const auto packet = entry.second.popFront();
+			// 		packet->print();
+			// 	}
+			// }
+
+			makeEvents();
+			STD_LOG("Event Making Complete");
+
+			while (m_eventBuffer.isCompleteStored()) {
+				const auto events = m_eventBuffer.popToComplete();
+				STD_LOG("Events Returned");
+				for (const auto& event : events) {
+					STD_LOG(event->getEventID());
+					event->print();
 				}
 			}
 		}
@@ -120,13 +131,8 @@ void Processor::initializePacketBuffers(
 		// Initialise Packet Buffer
 		// ThreadSafeQueue takes no constructor arguments, so can construct simply by accessing the entry
 		m_packetBuffers[id];
-
-		// Initialise Packet Buffer Flags
-		// atomic_bool cannot be copied or moved, so must construct in place
-		m_packetBufferFlags[id] = false;
 	}
 	ASSERT(m_packetBuffers.size() == tdcIDs.size());
-	ASSERT(m_packetBuffers.size() == m_packetBufferFlags.size());
 }
 // -----------------------------------------------------------------------------
 //
@@ -335,11 +341,25 @@ void Processor::makePackets() {
 //
 // -----------------------------------------------------------------------------
 void Processor::makeEvents() {
-	// Loop through Buffers
+	// Create list of packet buffers
+	std::list<unsigned int> bufferIndexes;
+	ASSERT(bufferIndexes.empty());
+	for (const auto& entry : m_packetBuffers) {
+		bufferIndexes.push_back(entry.first);
+	}
 
-	// Extract front packet, add to Events
-
-	// If complete event is found, trigger writing flag
-
-
+	while (!bufferIndexes.empty()) {
+		// Loop through buffers
+		for (auto it = bufferIndexes.cbegin(); it != bufferIndexes.cend(); /* no increment */) {
+			if (m_packetBuffers.at(*it).empty()) {
+				STD_LOG("Finished " << *it);
+				// If buffer is empty, remove from index list
+				bufferIndexes.erase(it++);
+			} else {
+				// Extract front packet, add to event buffer
+				m_eventBuffer.addPacket(std::move(m_packetBuffers.at(*it).popFront()));
+			}
+		}
+		STD_LOG_VAR(bufferIndexes.size());
+	}
 }

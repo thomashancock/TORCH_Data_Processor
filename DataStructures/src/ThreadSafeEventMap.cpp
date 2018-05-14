@@ -47,16 +47,17 @@ void ThreadSafeEventMap::addPacket(
 //
 // -----------------------------------------------------------------------------
 std::vector< std::unique_ptr<Event> > ThreadSafeEventMap::popToComplete() {
-	// Lock Mutex
-	std::lock_guard<std::mutex> lk(m_mut);
-
 	// Create vector to store events
 	std::vector< std::unique_ptr<Event> > returnVec;
 	ASSERT(returnVec.empty());
 
 	// Check a complete event it stored in the list
 	// If no complete event is stored, returnVec will be returned empty
-	if (isCompleteStored()) {
+	if (this->isCompleteStored()) {
+		// Lock Mutex
+		// Mutex must be locked here to avoid deadlock!
+		std::lock_guard<std::mutex> lk(m_mut);
+
 		for (auto it = m_map.begin(); it != m_map.end(); /* no increment */) {
 			returnVec.push_back(std::move(it->second));
 			ASSERT(nullptr == it->second);

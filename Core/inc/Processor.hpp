@@ -14,9 +14,9 @@
 #include "Config.hpp"
 #include "ModesEnum.hpp"
 #include "ThreadSafeQueue.hpp"
+#include "ThreadSafeEventMap.hpp"
 #include "WordBundle.hpp"
 #include "Packet.hpp"
-#include "Event.hpp"
 
 class Processor {
 	using packetBuffer = ThreadSafeQueue< std::unique_ptr<Packet> >;
@@ -62,6 +62,8 @@ private:
 	//! Write Events to ROOT file
 
 private:
+	// const RunMode m_mode = RunMode::QuickCheck;
+	// const RunMode m_mode = RunMode::LowLevel;
 	const RunMode m_mode = RunMode::Serial;
 
 	//! List of TDC IDs (needs to be set by config)
@@ -74,10 +76,9 @@ private:
 
 	ThreadSafeQueue< std::unique_ptr<WordBundle> > m_wordBundleBuffer; //!< WordBundle Buffers
 
-	std::unordered_map< unsigned int, std::atomic_bool > m_packetBufferFlags; //!< Packet buffers flags
 	std::unordered_map< unsigned int, packetBuffer> m_packetBuffers; //!< Packet Buffers
 
-	ThreadSafeQueue< std::unique_ptr<Event> > m_eventBuffer; //!< Event Buffer
+	ThreadSafeEventMap m_eventBuffer; //!< Event Buffer
 
 	//!< RootManager
 };

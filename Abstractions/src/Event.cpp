@@ -75,7 +75,9 @@ void Event::print() const {
 	}
 	std::cout << "\tPackets: ";
 	for (const auto& entry : m_packetMap) {
-		std::cout << entry.second->getTDCID() << " ";
+		if (nullptr != entry.second) {
+			std::cout << entry.second->getTDCID() << " ";
+		}
 	}
 	std::cout << std::endl;
 }
