@@ -65,6 +65,20 @@ std::unique_ptr<Packet> Event::getPacket(
 		return nullptr;
 	}
 }
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Event::print() const {
+	std::cout << "Event " << m_eventID << std::endl;
+	if (!this->isComplete()) {
+		std::cout << "\tIncomplete" << std::endl;
+	}
+	std::cout << "\tPackets: ";
+	for (const auto& entry : m_packetMap) {
+		std::cout << entry.second->getTDCID() << " ";
+	}
+	std::cout << std::endl;
+}
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------

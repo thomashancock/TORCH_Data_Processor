@@ -43,6 +43,9 @@ public:
 		const unsigned int tdcID //!< TDC ID of the desired Packet
 	);
 
+	//! Prints information about the event
+	void print() const;
+
 private:
 	unsigned int m_eventID = 0;      //!< Event ID which all stored packets should have
 	bool m_isEventIDSet = false; //!< bool to tell whether Event ID has been set by the first stored Packet
