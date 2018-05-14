@@ -77,7 +77,6 @@ private:
 	std::unordered_map< unsigned int, std::atomic_bool > m_packetBufferFlags; //!< Packet buffers flags
 	std::unordered_map< unsigned int, packetBuffer> m_packetBuffers; //!< Packet Buffers
 
-	std::atomic_flag m_eventFlag; //!< Event Readout Flag
 	ThreadSafeQueue< std::unique_ptr<Event> > m_eventBuffer; //!< Event Buffer
 
 	//!< RootManager
