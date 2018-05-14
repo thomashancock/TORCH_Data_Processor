@@ -53,14 +53,16 @@ private:
 		std::ifstream& inputData
 	);
 
-	//! Process Word Bundle into packets
+	//! Process word bundles into packets
+	void makePackets();
 
 	//! Build Events from Packets
 
 	//! Write Events to ROOT file
 
 private:
-	const RunMode m_mode = RunMode::QuickCheck;
+	const RunMode m_mode = RunMode::LowLevel;
+	// const RunMode m_mode = RunMode::QuickCheck;
 
 	//! Set containing filler words (move to config?)
 	const std::set<unsigned int> fillerWords = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 };

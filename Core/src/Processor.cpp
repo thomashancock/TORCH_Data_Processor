@@ -46,29 +46,44 @@ void Processor::processFiles(
 ) {
 	if (RunMode::QuickCheck == m_mode) {
 		STD_LOG("Mode: QuickCheck");
+		int bundleCount = 0;
+
 		for (auto& file : fileNames) {
 			// Read File into WordBundle buffer
 			processFile(file);
-		}
 
-		std::cout << ((true == m_wordBundleBuffer.empty()) ? "Empty" : "Full") << std::endl;
-
-		int count = 0;
-		while(!m_wordBundleBuffer.empty()) {
-			count += 1;
-			auto bundle = m_wordBundleBuffer.popFront();
-			std::cout << "New Bundle: "
+			while(!m_wordBundleBuffer.empty()) {
+				bundleCount += 1;
+				auto bundle = m_wordBundleBuffer.popFront();
+				std::cout << "New Bundle: "
 				<< bundle->getReadoutBoardNumber() << " "
 				<< bundle->getSlot() << " "
 				<< bundle->getROCValue() << std::endl;
-			while (!bundle->empty()) {
-				bindec::printWord(bundle->getNextWord());
+				while (!bundle->empty()) {
+					bindec::printWord(bundle->getNextWord());
+				}
 			}
 		}
-		std::cout << count << " bundles in total" << std::endl;
+
+		std::cout << bundleCount << " bundles in total" << std::endl;
 
 	} else if (RunMode::LowLevel == m_mode) {
 		STD_LOG("Mode: LowLevel");
+
+		for (auto& file : fileNames) {
+			// Read File into WordBundle buffer
+			processFile(file);
+
+			makePackets();
+
+			for (auto& entry : m_packetBuffers) {
+				std::cout << "TDC ID: " << entry.first << std::endl;
+				while(!entry.second.empty()) {
+					const auto packet = entry.second.popFront();
+					packet->print();
+				}
+			}
+		}
 
 	} else if (RunMode::Parallel == m_mode) {
 		STD_LOG("Mode: Parallel");
@@ -252,4 +267,49 @@ std::array<unsigned int,4> Processor::readDataBlock(
 
 	// block will be moved due to RVO
 	return block;
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Processor::makePackets() {
+	// Need to ensure this function can only be run on a single thread
+
+	// Pointer to store current packet
+	std::unique_ptr<Packet> currPacket = { nullptr };
+
+	// Loop through bundles in buffer
+	while (!m_wordBundleBuffer.empty()) {
+		auto bundle = m_wordBundleBuffer.popFront();
+		ASSERT(bundle != nullptr);
+
+		if (bundle->isComplete()) {
+			while (!bundle->empty()) {
+				const auto word = bundle->getNextWord();
+				const auto dataType = bindec::getDataType(word);
+				if (2 == dataType) {
+					if (currPacket != nullptr && currPacket->isGood()) {
+						const auto index = currPacket->getTDCID();
+						m_packetBuffers.at(index).push(std::move(currPacket));
+					} else {
+						// If packet is not good, delete it
+						currPacket.reset(nullptr);
+					}
+					ASSERT(nullptr == currPacket);
+					currPacket = std::make_unique<Packet>(bundle->getROCValue());
+					ASSERT(currPacket != nullptr);
+					currPacket->addHeader(word);
+				} else if (currPacket != nullptr) {
+					if (3 == dataType) {
+						ASSERT(currPacket != nullptr);
+						currPacket->addTrailer(word);
+					} else if (4 == dataType || 5 == dataType) {
+						ASSERT(currPacket != nullptr);
+						currPacket->addDataline(word);
+					} else {
+						STD_ERR("Invalid Data Type found: " << dataType);
+					}
+				}
+			}
+		}
+	}
 }

@@ -1,5 +1,8 @@
 #include "Packet.hpp"
 
+// LOCAL
+#include "BinaryDecoding.hpp"
+
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Public:
@@ -8,27 +11,13 @@
 Packet::Packet(
 	const unsigned int rocValue
 ) :
-m_rocValue(rocValue),
-m_tdcIDHeader(0),
-m_eventIDHeader(0),
-m_bunchID(0),
-m_tdcIDTrailer(0),
-m_eventIDTrailer(0),
-m_wordCount(0)
-{
-
-}
+	m_rocValue(rocValue)
+{ }
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-Packet::~Packet() {
-
-}
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-bool Packet::isComplete() {
-	const bool complete = m_headerAdded*m_trailerAdded;
+bool Packet::isComplete() const {
+	const bool complete = m_headerAdded * m_trailerAdded;
 
 	// Additional checks (e.g. wordcount) here
 	// bool wordCountCheck = false;
@@ -45,7 +34,7 @@ bool Packet::isComplete() {
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-bool Packet::isConsistent() {
+bool Packet::isConsistent() const {
 	if (m_tdcIDHeader != m_tdcIDTrailer) {
 		return false;
 	}
@@ -78,12 +67,16 @@ bool Packet::isConsistent() {
 void Packet::addHeader(
 	const unsigned int word
 ) {
-	// Check initial digits are 02
-	m_tdcIDHeader = word << 4 >> 28;
-	m_eventIDHeader = word << 8 >> 20;
-	m_bunchID = word << 20 >> 20;
+	ASSERT(2 == bindec::getDataType(word));
 
-	m_headerAdded = true;
+	if (false == m_headerAdded) {
+		m_tdcIDHeader = bindec::getTDCID(word);
+		m_eventIDHeader = bindec::getEventID(word);
+		m_bunchID = bindec::getBunchID(word);
+		m_headerAdded = true;
+	} else {
+		// TODO: Log Error
+	}
 }
 // -----------------------------------------------------------------------------
 //
@@ -91,12 +84,16 @@ void Packet::addHeader(
 void Packet::addTrailer(
 	const unsigned int word
 ) {
-	// Check initial digits are 03
-	m_tdcIDTrailer = word << 4 >> 28;
-	m_eventIDTrailer = word << 8 >> 20;
-	m_wordCount = word << 20 >> 20;
+	ASSERT(3 == bindec::getDataType(word));
 
-	m_trailerAdded = true;
+	if (false == m_trailerAdded) {
+		m_tdcIDTrailer = bindec::getTDCID(word);
+		m_eventIDTrailer = bindec::getEventID(word);
+		m_wordCount = bindec::getWordCount(word);
+		m_trailerAdded = true;
+	} else {
+		// TODO: Log Error
+	}
 }
 // -----------------------------------------------------------------------------
 //
@@ -104,39 +101,40 @@ void Packet::addTrailer(
 void Packet::addDataline(
 	const unsigned int word
 ) {
-	const unsigned int tdcID = word << 4 >> 28;
-	unsigned int channelID = word << 8 >> 27;
+	const unsigned int dataType = bindec::getDataType(word);
+	ASSERT(4 == dataType || 5 == dataType);
+
+	const unsigned int tdcID = bindec::getTDCID(word);
+	unsigned int channelID = bindec::getChannelID(word);
 	// channelID += 256 * <readout_board_ID> // Eventually need to be implemented
 
 	// Encode TDC ID in channel ID
 	// Note 11 is += 0 so is not included
-	if (8 == tdcID) {
-		channelID += 160;
-	} else if (9 == tdcID) {
-		channelID += 128;
-	} else if (10 == tdcID) {
-		channelID += 32;
-	} else if (12 == tdcID) {
-		channelID += 96;
-	} else if (13 == tdcID) {
-		channelID += 64;
-	} else if (14 == tdcID) {
-		channelID += 224;
-	} else if (15 == tdcID) {
-		channelID += 192;
-	}
+	// Apply Channel Mapping:
 
-	const unsigned int timestamp = word << 13 >> 13;
+	// if (8 == tdcID) {
+	// 	channelID += 160;
+	// } else if (9 == tdcID) {
+	// 	channelID += 128;
+	// } else if (10 == tdcID) {
+	// 	channelID += 32;
+	// } else if (12 == tdcID) {
+	// 	channelID += 96;
+	// } else if (13 == tdcID) {
+	// 	channelID += 64;
+	// } else if (14 == tdcID) {
+	// 	channelID += 224;
+	// } else if (15 == tdcID) {
+	// 	channelID += 192;
+	// }
 
-	const unsigned int dataType = word >> 28; // Store final 4 bits
+	const unsigned int timestamp = bindec::getTimestamp(word);
+
 	if (4 == dataType) {
 		m_leadingEdges.emplace_back(tdcID,channelID,timestamp);
 	} else if (5 == dataType) {
 		m_trailingEdges.emplace_back(tdcID,channelID,timestamp);
-	} else {
-		STD_ERR("Incorrect Data type passed to addDataline()");
 	}
-
 }
 // -----------------------------------------------------------------------------
 //
@@ -144,7 +142,7 @@ void Packet::addDataline(
 Edge Packet::getEdge(
 	const bool leading,
 	const unsigned int edgeNo
-) {
+) const {
 	if (true == leading) {
 		ASSERT(edgeNo < m_leadingEdges.size());
 		return m_leadingEdges.at(edgeNo);
@@ -159,7 +157,7 @@ Edge Packet::getEdge(
 unsigned int Packet::getChannelID(
 	const bool leading,
 	const unsigned int edgeNo
-) {
+) const {
 	if (true == leading) {
 		ASSERT(edgeNo < m_leadingEdges.size());
 		return m_leadingEdges.at(edgeNo).getChannelID();
@@ -174,7 +172,7 @@ unsigned int Packet::getChannelID(
 unsigned int Packet::getTimestamp(
 	const bool leading,
 	const unsigned int edgeNo
-) {
+) const {
 	if (true == leading) {
 		ASSERT(edgeNo < m_leadingEdges.size());
 		return m_leadingEdges.at(edgeNo).getTimestamp();
@@ -189,7 +187,7 @@ unsigned int Packet::getTimestamp(
 unsigned int Packet::getFineTimestamp(
 	const bool leading,
 	const unsigned int edgeNo
-) {
+) const {
 	if (true == leading) {
 		ASSERT(edgeNo < m_leadingEdges.size());
 		return m_leadingEdges.at(edgeNo).getFineTimestamp();
@@ -201,66 +199,27 @@ unsigned int Packet::getFineTimestamp(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-// void Packet::writeToOutfile(
-// 	std::shared_ptr<DebugStreamManager> dsm,
-// 	const bool eventForm
-// ) {
-// 	std::string streamKey = "packetLevel";
-// 	if (true == eventForm) {
-// 		streamKey = "eventLevel";
-// 	}
-// 	// Write Header Line
-// 	dsm->getStream(streamKey) << "00."; // Readout Board number
-// 	if (m_tdcIDHeader < 10) dsm->getStream(streamKey) << 0; // Print padding
-// 	dsm->getStream(streamKey) << m_tdcIDHeader;
-// 	dsm->getStream(streamKey) << " " << m_eventIDHeader;
-// 	dsm->getStream(streamKey) << " " << m_bunchID;
-// 	dsm->getStream(streamKey) << " " << m_rocValue;
-// 	dsm->getStream(streamKey) << std::endl;
-//
-// 	// Write Status Line
-// 	dsm->getStream(streamKey) << "00."; // Readout Board number
-// 	if (m_tdcIDHeader < 10) dsm->getStream(streamKey) << 0; // Print padding
-// 	dsm->getStream(streamKey) << m_tdcIDHeader;
-// 	dsm->getStream(streamKey) << " 1";
-// 	dsm->getStream(streamKey) << " " << m_leadingEdges.size();
-// 	dsm->getStream(streamKey) << " " << m_trailingEdges.size();
-// 	dsm->getStream(streamKey) << " 1";
-// 	dsm->getStream(streamKey) << " " << m_wordCount;
-// 	dsm->getStream(streamKey) << std::endl;
-//
-// 	// Write Leading Edges
-// 	for (auto& edge : m_leadingEdges) {
-// 		if (true == eventForm) {
-// 			dsm->getStream(streamKey) << "00."; // Readout Board number
-// 			if (edge.getTDCID() < 10) dsm->getStream(streamKey) << 0; // Print padding
-// 			dsm->getStream(streamKey) << edge.getTDCID() << " ";
-// 		} else {
-// 			dsm->getStream(streamKey) << edge.getTDCID() << " ";
-// 		}
-// 		dsm->getStream(streamKey) << "1 ";
-// 		dsm->getStream(streamKey) << edge.getChannelID() << " ";
-// 		dsm->getStream(streamKey) << edge.getTimestamp() << " ";
-// 		dsm->getStream(streamKey) << edge.getFineTimestamp();
-// 		dsm->getStream(streamKey) << std::endl;
-// 	}
-//
-// 	// Write Trailing Edges
-// 	for (auto& edge : m_trailingEdges) {
-// 		if (true == eventForm) {
-// 			dsm->getStream(streamKey) << "00."; // Readout Board number
-// 			if (edge.getTDCID() < 10) dsm->getStream(streamKey) << 0; // Print padding
-// 			dsm->getStream(streamKey) << edge.getTDCID() << " ";
-// 		} else {
-// 			dsm->getStream(streamKey) << edge.getTDCID() << " ";
-// 		}
-// 		dsm->getStream(streamKey) << "0 ";
-// 		dsm->getStream(streamKey) << edge.getChannelID() << " ";
-// 		dsm->getStream(streamKey) << edge.getTimestamp() << " ";
-// 		dsm->getStream(streamKey) << edge.getFineTimestamp();
-// 		dsm->getStream(streamKey) << std::endl;
-// 	}
-// }
+void Packet::print() const {
+	// Print Header Information
+	std::cout << "Packet Info: " << ((!this->isConsistent()) ? "Not Consistent!" : "") << std::endl;
+	std::cout << "\tTDC: " << m_tdcIDHeader << std::endl;
+	std::cout << "\tEvt: " << m_tdcIDHeader << std::endl;
+	std::cout << "\tBch: " << m_bunchID << std::endl;
+
+	if (0 == m_leadingEdges.size() && 0 == m_trailingEdges.size()) {
+		std::cout << "\tEmpty" << std::endl;
+	} else {
+		// Print Leading Edges
+		for (auto& edge : m_leadingEdges) {
+			std::cout << "\tL Edge: " << edge.getChannelID() << "\tTime: " << edge.getTimestamp() << std::endl;
+		}
+
+		// Print Trailing Edges
+		for (auto& edge : m_trailingEdges) {
+			std::cout << "\tT Edge: " << edge.getChannelID() << "\tTime: " << edge.getTimestamp() << std::endl;
+		}
+	}
+}
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------

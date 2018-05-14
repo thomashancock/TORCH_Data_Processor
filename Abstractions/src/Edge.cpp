@@ -14,23 +14,14 @@ m_tdcID(tdcID),
 m_channelID(channelID),
 m_timestamp(timestamp),
 m_fineTimestamp(timestamp%256)
-{
-
-}
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-Edge::~Edge() {
-
-}
+{ }
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 bool Edge::operator< (
-	const Edge &edge1
-	// const Edge &edge2
-) {
-	return this->getTimestamp() < edge1.getTimestamp();
+	const Edge& other
+) const {
+	return this->getTimestamp() < other.getTimestamp();
 }
 
 // -----------------------------------------------------------------------------
