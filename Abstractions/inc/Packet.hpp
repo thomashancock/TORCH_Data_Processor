@@ -87,6 +87,13 @@ public:
 	void print() const;
 
 private:
+	unsigned int getEdgeValue(
+		const bool leading, //!< Get from leading edge of trailing egde
+		const unsigned int edgeNo, //!< Edge number requested
+		unsigned int (Edge::*getter)() const //!< Function pointer for edge getter function
+	) const;
+
+private:
 	const unsigned int m_rocValue; //!< ROC value which triggered the packet's creation
 
 	// Header Info

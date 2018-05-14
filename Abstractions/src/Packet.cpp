@@ -158,13 +158,14 @@ unsigned int Packet::getChannelID(
 	const bool leading,
 	const unsigned int edgeNo
 ) const {
-	if (true == leading) {
-		ASSERT(edgeNo < m_leadingEdges.size());
-		return m_leadingEdges.at(edgeNo).getChannelID();
-	} else {
-		ASSERT(edgeNo < m_trailingEdges.size());
-		return m_trailingEdges.at(edgeNo).getChannelID();
-	}
+	// if (true == leading) {
+	// 	ASSERT(edgeNo < m_leadingEdges.size());
+	// 	return m_leadingEdges.at(edgeNo).getChannelID();
+	// } else {
+	// 	ASSERT(edgeNo < m_trailingEdges.size());
+	// 	return m_trailingEdges.at(edgeNo).getChannelID();
+	// }
+	return getEdgeValue(leading, edgeNo, &Edge::getChannelID);
 }
 // -----------------------------------------------------------------------------
 //
@@ -173,13 +174,14 @@ unsigned int Packet::getTimestamp(
 	const bool leading,
 	const unsigned int edgeNo
 ) const {
-	if (true == leading) {
-		ASSERT(edgeNo < m_leadingEdges.size());
-		return m_leadingEdges.at(edgeNo).getTimestamp();
-	} else {
-		ASSERT(edgeNo < m_trailingEdges.size());
-		return m_trailingEdges.at(edgeNo).getTimestamp();
-	}
+	// if (true == leading) {
+	// 	ASSERT(edgeNo < m_leadingEdges.size());
+	// 	return m_leadingEdges.at(edgeNo).getTimestamp();
+	// } else {
+	// 	ASSERT(edgeNo < m_trailingEdges.size());
+	// 	return m_trailingEdges.at(edgeNo).getTimestamp();
+	// }
+	return getEdgeValue(leading, edgeNo, &Edge::getTimestamp);
 }
 // -----------------------------------------------------------------------------
 //
@@ -188,13 +190,14 @@ unsigned int Packet::getFineTimestamp(
 	const bool leading,
 	const unsigned int edgeNo
 ) const {
-	if (true == leading) {
-		ASSERT(edgeNo < m_leadingEdges.size());
-		return m_leadingEdges.at(edgeNo).getFineTimestamp();
-	} else {
-		ASSERT(edgeNo < m_trailingEdges.size());
-		return m_trailingEdges.at(edgeNo).getFineTimestamp();
-	}
+	// if (true == leading) {
+	// 	ASSERT(edgeNo < m_leadingEdges.size());
+	// 	return m_leadingEdges.at(edgeNo).getFineTimestamp();
+	// } else {
+	// 	ASSERT(edgeNo < m_trailingEdges.size());
+	// 	return m_trailingEdges.at(edgeNo).getFineTimestamp();
+	// }
+	return getEdgeValue(leading, edgeNo, &Edge::getFineTimestamp);
 }
 // -----------------------------------------------------------------------------
 //
@@ -226,3 +229,16 @@ void Packet::print() const {
 // Private:
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
+unsigned int Packet::getEdgeValue(
+	const bool leading, //!< Get from leading edge of trailing egde
+	const unsigned int edgeNo, //!< Edge number requested
+	unsigned int (Edge::*getter)() const //!< Function pointer for edge getter function
+) const {
+	if (true == leading) {
+		ASSERT(edgeNo < m_leadingEdges.size());
+		return (m_leadingEdges.at(edgeNo).*getter)();
+	} else {
+		ASSERT(edgeNo < m_trailingEdges.size());
+		return (m_trailingEdges.at(edgeNo).*getter)();
+	}
+}
