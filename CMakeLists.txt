@@ -34,6 +34,7 @@ set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 # Add sources
 include( ${PROJECT_SOURCE_DIR}/DataStructures/cmakelist.cmake)
 include( ${PROJECT_SOURCE_DIR}/Abstractions/cmakelist.cmake)
+include( ${PROJECT_SOURCE_DIR}/Root/cmakelist.cmake)
 include( ${PROJECT_SOURCE_DIR}/Core/cmakelist.cmake)
 
 # Find Root
