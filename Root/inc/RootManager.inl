@@ -27,7 +27,15 @@ RootManager<T>::RootManager(
 template <class T>
 RootManager<T>::~RootManager() {
 	ASSERT(nullptr != m_outFile);
+	// Lock Mutex
+	// Added for safety. Deconstructor should not be called while m_outFile is being modified
+	m_mut.lock();
+
+	// Close output file
 	m_outFile->Close();
+
+	// Explicitly unlock mutex
+	m_mut.unlock();
 }
 // -----------------------------------------------------------------------------
 //
