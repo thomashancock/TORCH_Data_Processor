@@ -303,7 +303,11 @@ void Processor::makePackets() {
 				if (2 == dataType) {
 					if (currPacket != nullptr && currPacket->isGood()) {
 						const auto index = currPacket->getTDCID();
-						m_packetBuffers.at(index).push(std::move(currPacket));
+						try {
+							m_packetBuffers.at(index).push(std::move(currPacket));
+						} catch (std::exception& e) {
+							STD_ERR("Exception: " << e.what());
+						}
 					} else {
 						// If packet is not good, delete it
 						currPacket.reset(nullptr);
@@ -326,4 +330,16 @@ void Processor::makePackets() {
 			}
 		}
 	}
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Processor::makeEvents() {
+	// Loop through Buffers
+
+	// Extract front packet, add to Events
+
+	// If complete event is found, trigger writing flag
+
+
 }

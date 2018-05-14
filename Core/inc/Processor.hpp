@@ -57,6 +57,7 @@ private:
 	void makePackets();
 
 	//! Build Events from Packets
+	void makeEvents();
 
 	//! Write Events to ROOT file
 
