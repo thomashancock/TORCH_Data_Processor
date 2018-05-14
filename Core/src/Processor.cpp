@@ -35,8 +35,8 @@ Processor::Processor(
 	// "0D" = 14, 15
 
 	// Initialise Packet Buffers
-	std::list<unsigned int> tdcIDs { 8, 9, 10, 11, 12, 13, 14, 15 };
-	initializePacketBuffers(tdcIDs);
+	// std::list<unsigned int> tdcIDs { 8, 9, 10, 11, 12, 13, 14, 15 };
+	initializePacketBuffers(m_tdcIDs);
 }
 // -----------------------------------------------------------------------------
 //
@@ -91,6 +91,20 @@ void Processor::processFiles(
 	} else {
 		STD_LOG("Mode: Serial");
 
+		for (auto& file : fileNames) {
+			// Read File into WordBundle buffer
+			processFile(file);
+
+			makePackets();
+
+			for (auto& entry : m_packetBuffers) {
+				std::cout << "TDC ID: " << entry.first << std::endl;
+				while(!entry.second.empty()) {
+					const auto packet = entry.second.popFront();
+					packet->print();
+				}
+			}
+		}
 	}
 }
 

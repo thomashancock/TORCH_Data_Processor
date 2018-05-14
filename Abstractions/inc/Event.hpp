@@ -1,8 +1,7 @@
 #ifndef EVENT_H
 #define EVENT_H
 
-#include <initializer_list>
-#include <fstream>
+#include <list>
 #include <memory>
 #include <map>
 
@@ -22,55 +21,57 @@ public:
 		TDC ID list will be used to check whether packets have been stored all TDCs.
 	*/
 	Event(
-		// std::shared_ptr< std::vector<unsigned int> > tdcList //!< List of TDC IDs being used
+		const std::list<unsigned int>& tdcIDs
 	);
 
 	//! Attempts to add a packet to the Event object
-	/*!
-		Returns true if the Packet was added succesfully, or false if the packet was rejected for some reason.
-	*/
-	bool addPacket(
-		std::shared_ptr<Packet>& packet //!< Pointer to the Packet being added
+	void addPacket(
+		std::unique_ptr<Packet> packet //!< Pointer to the Packet being added
 	);
 
 	//! Checks whether a Packet is stored for all TDC IDs
-	bool isComplete() const;
+	inline bool isComplete() const;
 
 	//! Gets the Event ID for which the Event object is storing Packets
-	unsigned int getEventID();
+	inline unsigned int getEventID();
 
-	//! Returns a pointer to a stored Packet
+	//! Returns a stored Packet
 	/*!
-		Will return a NULL pointer if no packet is stored for the corresponding TDC ID.
+		Will return nullptr if no packet is stored for the corresponding TDC ID.
 	*/
-	std::shared_ptr<Packet> getPacket(
+	std::unique_ptr<Packet> getPacket(
 		const unsigned int tdcID //!< TDC ID of the desired Packet
 	);
 
-	//! Writes information about the packets to the provided stream
-	/*!
-		Write information about the contained packets in a human readable for to facilitate debugging.
-	*/
-	// void writeToOutfile(
-	// 	std::shared_ptr<DebugStreamManager> dsm //!< Pointer to DebugStreamManager
-	// );
-
 private:
-	//! Checks the TDC ID of the packet is valid
-	/*!
-		Matches the Packet TDC ID to the stored list and returns false if no matches are found.
-	*/
-	bool isTDCIDValid(
-		const Packet* packet //!< Pointer to the packet being checked
-	);
+	unsigned int m_eventID = 0;      //!< Event ID which all stored packets should have
+	bool m_isEventIDSet = false; //!< bool to tell whether Event ID has been set by the first stored Packet
 
-private:
-	const std::shared_ptr< std::vector<unsigned int> > m_tdcList; //!< List of valid TDC IDs
-
-	unsigned int m_eventID;      //!< Event ID which all stored packets should have
-	bool m_isEventIDSet; //!< bool to tell whether Event ID has been set by the first stored Packet
-
-	std::map<unsigned int,std::shared_ptr<Packet> > m_packetMap; //!< Map to store Packets by TDC ID
+	std::map< unsigned int, std::unique_ptr<Packet> > m_packetMap; //!< Map to store Packets by TDC ID
 };
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Inlines:
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+bool Event::isComplete() const {
+	// Check that a packet is stored for all entries in the map
+	for (const auto& entry : m_packetMap) {
+		if (nullptr == entry.second) {
+			return false;
+		}
+	}
+	return true;
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+unsigned int Event::getEventID() {
+	if (false == m_isEventIDSet) {
+		STD_ERR("EventID has not been set");
+	}
+	return m_eventID;
+}
 
 #endif /* EVENT_H */
