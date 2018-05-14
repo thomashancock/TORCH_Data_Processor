@@ -44,41 +44,39 @@ Processor::Processor(
 void Processor::processFiles(
 	const std::vector<std::string> fileNames
 ) {
-	// SEQUENTIAL VERSION
-	STD_LOG_VAR(fileNames.size());
-	for (auto& file : fileNames) {
-		// Read File into WordBundle buffer
-		processFile(file);
-
-		// Once all WordBundle buffers are !empty
-		// Make Packets from each buffer
-
-		// Once all PacketBuffers are flagged ready, make events
-
-		// Write Events to Root File
-
-	}
-
-	std::cout << ((true == m_wordBundleBuffer.empty()) ? "Empty" : "Full") << std::endl;
-
-	int count = 0;
-	while(!m_wordBundleBuffer.empty()) {
-		count += 1;
-		auto bundle = m_wordBundleBuffer.popFront();
-		std::cout << "New Bundle: "
-			<< bundle->getReadoutBoardNumber() << " "
-			<< bundle->getSlot() << " "
-			<< bundle->getROCValue() << std::endl;
-		while (!bundle->empty()) {
-			bindec::printWord(bundle->getNextWord());
+	if (RunMode::QuickCheck == m_mode) {
+		STD_LOG("Mode: QuickCheck");
+		for (auto& file : fileNames) {
+			// Read File into WordBundle buffer
+			processFile(file);
 		}
-	}
-	std::cout << count << " bundles in total" << std::endl;
 
-	// PARALLEL VERSION
-	// for (auto& file : fileNames) {
-	//
-	// }
+		std::cout << ((true == m_wordBundleBuffer.empty()) ? "Empty" : "Full") << std::endl;
+
+		int count = 0;
+		while(!m_wordBundleBuffer.empty()) {
+			count += 1;
+			auto bundle = m_wordBundleBuffer.popFront();
+			std::cout << "New Bundle: "
+				<< bundle->getReadoutBoardNumber() << " "
+				<< bundle->getSlot() << " "
+				<< bundle->getROCValue() << std::endl;
+			while (!bundle->empty()) {
+				bindec::printWord(bundle->getNextWord());
+			}
+		}
+		std::cout << count << " bundles in total" << std::endl;
+
+	} else if (RunMode::LowLevel == m_mode) {
+		STD_LOG("Mode: LowLevel");
+
+	} else if (RunMode::Parallel == m_mode) {
+		STD_LOG("Mode: Parallel");
+
+	} else {
+		STD_LOG("Mode: Serial");
+
+	}
 }
 
 // -----------------------------------------------------------------------------
