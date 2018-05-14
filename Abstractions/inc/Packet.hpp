@@ -87,6 +87,7 @@ public:
 	void print() const;
 
 private:
+	//! Returns the value returned by the specified getter function for an edge
 	unsigned int getEdgeValue(
 		const bool leading, //!< Get from leading edge of trailing egde
 		const unsigned int edgeNo, //!< Edge number requested

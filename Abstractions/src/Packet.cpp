@@ -230,9 +230,9 @@ void Packet::print() const {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 unsigned int Packet::getEdgeValue(
-	const bool leading, //!< Get from leading edge of trailing egde
-	const unsigned int edgeNo, //!< Edge number requested
-	unsigned int (Edge::*getter)() const //!< Function pointer for edge getter function
+	const bool leading,
+	const unsigned int edgeNo,
+	unsigned int (Edge::*getter)() const
 ) const {
 	if (true == leading) {
 		ASSERT(edgeNo < m_leadingEdges.size());
