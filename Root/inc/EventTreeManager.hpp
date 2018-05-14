@@ -7,14 +7,16 @@
 
 class EventTreeManager : public RootManager<Event> {
 public:
-	EventTreeManager();
+	EventTreeManager(
+		const std::string outfileName
+	);
 
 	void add(
-		Event event
+		std::unique_ptr<Event> event
 	) final;
 
-
 private:
+	void setUpBranches() { };
 
 };
 

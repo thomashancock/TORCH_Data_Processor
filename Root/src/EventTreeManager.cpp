@@ -9,17 +9,19 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 EventTreeManager::EventTreeManager(
-	// std::string fileName
-) {
+	const std::string outfileName
+) :
+	RootManager(outfileName,"event_tree")
+{
 	STD_LOG("EventTreeManager Constructor Called");
 }
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 void EventTreeManager::add(
-	Event event
+	std::unique_ptr<Event> event
 ) {
-	event.print();
+	event->print();
 }
 
 // -----------------------------------------------------------------------------

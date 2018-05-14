@@ -2,33 +2,41 @@
 #define ROOTMANAGER_H
 
 // STD
+#include <string>
+#include <memory>
 #include <mutex>
 
 // ROOT
 #include "TFile.h"
 #include "TTree.h"
+#include "TNamed.h"
 
 template <class T>
 class RootManager {
 public:
-	RootManager();
+	RootManager(
+		const std::string outFileName,
+		const std::string treeName
+	);
+
+	//! Explicit deconstructor. Implicitly deletes move and copy constructors.
+	~RootManager();
 
 	virtual void add(
-		T
+		std::unique_ptr<T> //!< Argument required for function
 	) = 0;
 
 	inline void writeTree();
 
-private:
-	//! Sets up the TTrees
-	// virtual void setUpTrees() = 0;
-
 protected:
 	mutable std::mutex m_mut; //!< Mutex for thread safety
 
+	TTree* m_tree = nullptr; //!< Output TTree
+
 private:
-	TFile* m_outFile = nullptr;
-	TTree* m_ttree = nullptr;
+	TFile* m_outFile = nullptr; //!< Output file pointer
+
+	const TNamed m_programVersion; //!< TNamed which writes build version to output tree
 };
 
 // Include function implementations

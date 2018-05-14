@@ -91,6 +91,8 @@ void Processor::processFiles(
 	} else {
 		STD_LOG("Mode: Serial");
 
+		std::unique_ptr<EventTreeManager> manager = std::make_unique<EventTreeManager>("Output.root");
+
 		for (auto& file : fileNames) {
 			// Read File into WordBundle buffer
 			processFile(file);

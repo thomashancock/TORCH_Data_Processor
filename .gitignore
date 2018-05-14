@@ -5,6 +5,7 @@ TORCH_Data_Processor
 *.sh
 !run_test.sh
 Notes.txt
+*.root
 
 Build/*
 Install/*
