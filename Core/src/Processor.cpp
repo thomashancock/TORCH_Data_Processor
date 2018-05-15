@@ -9,6 +9,7 @@
 #include "Debug.hpp"
 #include "BinaryDecoding.hpp"
 #include "EventTreeManager.hpp"
+#include "PacketTreeManager.hpp"
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -70,6 +71,9 @@ void Processor::processFiles(
 	} else if (RunMode::LowLevel == m_mode) {
 		STD_LOG("Mode: LowLevel");
 
+		std::unique_ptr<PacketTreeManager> manager =
+			std::make_unique<PacketTreeManager>("Output.root");
+
 		for (auto& file : fileNames) {
 			// Read File into WordBundle buffer
 			processFile(file);
@@ -77,13 +81,15 @@ void Processor::processFiles(
 			makePackets();
 
 			for (auto& entry : m_packetBuffers) {
-				std::cout << "TDC ID: " << entry.first << std::endl;
+				// std::cout << "TDC ID: " << entry.first << std::endl;
 				while(!entry.second.empty()) {
-					const auto packet = entry.second.popFront();
-					packet->print();
+					// const auto packet = entry.second.popFront();
+					manager->add(std::move(entry.second.popFront()));
 				}
 			}
 		}
+
+		manager->writeTree();
 
 	} else if (RunMode::Parallel == m_mode) {
 		STD_LOG("Mode: Parallel");
