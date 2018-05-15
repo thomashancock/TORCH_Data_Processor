@@ -148,38 +148,27 @@ void EventTreeManager::setUpBranches() {
 	// Lock Mutex as a precaution
 	std::lock_guard<std::mutex> lk(m_mut);
 
-	auto setupArrBranch = [this] (
-		const std::string branchName,
-		Int_t*& arrayPtr, // Must be reference to pointer
-		const std::string branchExtension,
-		const unsigned int arraySize
-	) -> void {
-		const auto leafList = branchName + branchExtension;
-		arrayPtr = new Int_t[arraySize] { 0 };
-		m_tree->Branch(branchName.c_str(),arrayPtr,leafList.c_str());
-	};
-
 	// Setup branches
 	m_tree->Branch("num_tdcs", &b_nTDCs, "num_tdcs/I");
-	setupArrBranch("tdc_id", b_tdcID, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch("event_id", b_eventID, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch("tdc_time", b_bunchID, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch("roc_time", b_rocTime, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch("num_headers", b_nHeaders, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch("num_leading_edges", b_nLeadingEdges, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch("num_trailing_edges", b_nTrailingEdges, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch("num_trailers", b_nTrailers, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch("word_count", b_wordCount, "[num_tdcs]/I", s_hitsMax);
+	setupArrBranch<Int_t>("tdc_id", b_tdcID, "[num_tdcs]/I", s_hitsMax);
+	setupArrBranch<Int_t>("event_id", b_eventID, "[num_tdcs]/I", s_hitsMax);
+	setupArrBranch<Int_t>("tdc_time", b_bunchID, "[num_tdcs]/I", s_hitsMax);
+	setupArrBranch<Int_t>("roc_time", b_rocTime, "[num_tdcs]/I", s_hitsMax);
+	setupArrBranch<Int_t>("num_headers", b_nHeaders, "[num_tdcs]/I", s_hitsMax);
+	setupArrBranch<Int_t>("num_leading_edges", b_nLeadingEdges, "[num_tdcs]/I", s_hitsMax);
+	setupArrBranch<Int_t>("num_trailing_edges", b_nTrailingEdges, "[num_tdcs]/I", s_hitsMax);
+	setupArrBranch<Int_t>("num_trailers", b_nTrailers, "[num_tdcs]/I", s_hitsMax);
+	setupArrBranch<Int_t>("word_count", b_wordCount, "[num_tdcs]/I", s_hitsMax);
 
 	m_tree->Branch("num_edges_total", &b_nEdges, "num_edges_total/I");
 
 	m_tree->Branch("num_hits", &b_nHits, "num_hits/I");
-	setupArrBranch("channel_id", b_channelID, "[num_hits]/I", m_nTDCs);
-	setupArrBranch("leading_time", b_leadingTime, "[num_hits]/I", m_nTDCs);
-	setupArrBranch("trailing_time", b_trailingTime, "[num_hits]/I", m_nTDCs);
-	setupArrBranch("leading_time_tdc_bin", b_leadingTimeFine, "[num_hits]/I", m_nTDCs);
-	setupArrBranch("trailing_time_tdc_bin", b_trailingTimeFine, "[num_hits]/I", m_nTDCs);
-	setupArrBranch("width", b_width, "[num_hits]/I", m_nTDCs);
+	setupArrBranch<Int_t>("channel_id", b_channelID, "[num_hits]/I", m_nTDCs);
+	setupArrBranch<Int_t>("leading_time", b_leadingTime, "[num_hits]/I", m_nTDCs);
+	setupArrBranch<Int_t>("trailing_time", b_trailingTime, "[num_hits]/I", m_nTDCs);
+	setupArrBranch<Int_t>("leading_time_tdc_bin", b_leadingTimeFine, "[num_hits]/I", m_nTDCs);
+	setupArrBranch<Int_t>("trailing_time_tdc_bin", b_trailingTimeFine, "[num_hits]/I", m_nTDCs);
+	setupArrBranch<Int_t>("width", b_width, "[num_hits]/I", m_nTDCs);
 
 	resetTreeVariables();
 }

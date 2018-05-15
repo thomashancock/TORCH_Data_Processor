@@ -46,7 +46,25 @@ private:
 	Int_t* b_width = nullptr;            //!< Branch Variable [nHits]: Width of signal
 
 private:
-
+	template<class T>
+	void setupArrBranch(
+		const std::string branchName, //!< Desired Branch Name
+		T*& arrayPtr,                 //!< Reference to pointer to be set
+		const std::string leafType,   //!< Leaf type (e.g. "/I" )
+		const unsigned int arraySize  //!< Size of array to be allocated
+	);
 };
+
+template<class T>
+void EventTreeManager::setupArrBranch(
+	const std::string branchName, //!< Desired Branch Name
+	T*& arrayPtr,                 //!< Reference to pointer to be set
+	const std::string leafType,   //!< Leaf type (e.g. "/I" )
+	const unsigned int arraySize  //!< Size of array to be allocated
+) {
+	const auto leafList = branchName + leafType;
+	arrayPtr = new T[arraySize] { 0 };
+	m_tree->Branch(branchName.c_str(),arrayPtr,leafList.c_str());
+}
 
 #endif /* EVENTTREEMANAGER_H */
