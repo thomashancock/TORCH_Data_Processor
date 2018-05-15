@@ -5,7 +5,6 @@
 #include <memory>
 #include <unordered_map>
 #include <string>
-#include <atomic>
 #include <list>
 #include <array>
 #include <set>
@@ -42,23 +41,6 @@ private:
 		const std::list<unsigned int>& tdcIDs
 	);
 
-	//! Make Word Bundles (has ROC value and words found preceding it)
-	// void processFile(
-	// 	const std::string fileName
-	// );
-
-	//! Reads Header Line, storing information in readoutBoardNumber and nDataBytes
-	// void readHeaderLine(
-	// 	std::ifstream& inputData,
-	// 	unsigned int& readoutBoardNumber,
-	// 	unsigned int& nDataBytes
-	// );
-
-	//! Reads a data block, returning the words in a std::array object
-	// std::array<unsigned int,4> readDataBlock(
-	// 	std::ifstream& inputData
-	// );
-
 	//! Process word bundles into packets
 	// void makePackets();
 
@@ -72,10 +54,9 @@ private:
 
 	const std::set<unsigned int> fillerWords = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 }; //! Set containing filler words (move to config?)
 
-	std::unique_ptr<FileReader> m_fileReader = nullptr;
+	std::unique_ptr<FileReader> m_fileReader = nullptr; //!< File Reader object pointer
 
-	std::shared_ptr< std::array< bundleBuffer, 4> > m_wordBundleBuffers = nullptr;
-	// std::array< std::shared_ptr< bundleBuffer > , 4> m_wordBundleBuffers = { nullptr }; //!< WordBundle Buffers
+	std::shared_ptr< std::array< bundleBuffer, 4> > m_wordBundleBuffers = nullptr; //!< Word Bundle Buffers (one for each slot)
 
 	std::unordered_map< unsigned int, packetBuffer> m_packetBuffers; //!< Packet Buffers
 
