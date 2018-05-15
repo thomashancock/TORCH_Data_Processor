@@ -100,26 +100,18 @@ void Processor::processFiles(
 
 			makePackets();
 
-			// for (auto& entry : m_packetBuffers) {
-			// 	std::cout << "TDC ID: " << entry.first << std::endl;
-			// 	while(!entry.second.empty()) {
-			// 		const auto packet = entry.second.popFront();
-			// 		packet->print();
-			// 	}
-			// }
-
 			makeEvents();
-			STD_LOG("Event Making Complete");
 
 			while (m_eventBuffer.isCompleteStored()) {
-				const auto events = m_eventBuffer.popToComplete();
-				STD_LOG("Events Returned");
-				for (const auto& event : events) {
-					STD_LOG(event->getEventID());
-					event->print();
+				auto events = m_eventBuffer.popToComplete();
+				for (auto& event : events) {
+					ASSERT(nullptr != event);
+					manager->add(std::move(event));
+					ASSERT(nullptr == event);
 				}
 			}
 		}
+		manager->writeTree();
 	}
 }
 

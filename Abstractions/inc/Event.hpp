@@ -36,12 +36,7 @@ public:
 	inline unsigned int getEventID();
 
 	//! Returns a stored Packet
-	/*!
-		Will return nullptr if no packet is stored for the corresponding TDC ID.
-	*/
-	std::unique_ptr<Packet> getPacket(
-		const unsigned int tdcID //!< TDC ID of the desired Packet
-	);
+	std::vector< std::unique_ptr<Packet> > removePackets();
 
 	//! Prints information about the event
 	void print() const;

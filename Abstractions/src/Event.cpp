@@ -55,15 +55,23 @@ void Event::addPacket(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-std::unique_ptr<Packet> Event::getPacket(
-	const unsigned int tdcID
-) {
-	auto search = m_packetMap.find(tdcID);
-	if (search != m_packetMap.end()) {
-		return std::move(search->second);
-	} else {
-		return nullptr;
+std::vector< std::unique_ptr<Packet> > Event::removePackets() {
+	// auto search = m_packetMap.find(tdcID);
+	// if (search != m_packetMap.end()) {
+	// 	return std::move(search->second);
+	// } else {
+	// 	return nullptr;
+	// }
+
+	std::vector< std::unique_ptr<Packet> > returnVec;
+
+	for (auto& entry : m_packetMap) {
+		if (entry.second != nullptr) {
+			returnVec.push_back(std::move(entry.second));
+		}
 	}
+
+	return returnVec;
 }
 // -----------------------------------------------------------------------------
 //
