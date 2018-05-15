@@ -29,15 +29,20 @@ Processor::Processor(
 	config->print();
 
 	// Initialise Word Bundle Buffers
-	m_wordBundleBuffers = std::make_shared< std::array< bundleBuffer, 4> >();
-	ASSERT(nullptr != m_wordBundleBuffers);
+	for (auto& ptr : m_wordBundleBuffers) {
+		ptr = std::make_shared<bundleBuffer>();
+	}
+	// m_wordBundleBuffers = std::make_shared< std::array< bundleBuffer, 4> >();
+	// ASSERT(nullptr != m_wordBundleBuffers);
 
 	// Initialise file reader
 	m_fileReader = std::make_unique<FileReader>(1,m_wordBundleBuffers);
 	ASSERT(nullptr != m_fileReader);
 
 	// After FileReader initialization, should be two pointers refering to the bundle buffers
-	ASSERT(2 == m_wordBundleBuffers.use_count());
+	for (const auto& ptr : m_wordBundleBuffers) {
+		ASSERT(2 == ptr.use_count());
+	}
 
 	// Initialise Packet Buffers
 	initializePacketBuffers(m_tdcIDs);
@@ -59,10 +64,10 @@ void Processor::processFiles(
 			while (!m_fileReader->haveFilesExpired()) {
 				m_fileReader->runProcessingLoops(1);
 
-				for (auto& buffer : *m_wordBundleBuffers.get()) {
-					while(!buffer.empty()) {
+				for (auto& buffer : m_wordBundleBuffers) {
+					while(!buffer->empty()) {
 						bundleCount += 1;
-						auto bundle = buffer.popFront();
+						auto bundle = buffer->popFront();
 						std::cout << "New Bundle = "
 						<< "Board: " << bundle->getReadoutBoardNumber() << " "
 						<< "ROC: " << bundle->getROCValue() << std::endl;

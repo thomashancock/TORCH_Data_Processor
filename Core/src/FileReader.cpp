@@ -13,11 +13,14 @@
 // -----------------------------------------------------------------------------
 FileReader::FileReader(
 	const unsigned int nReadoutBoards,
-	std::shared_ptr< std::array< bundleBuffer, 4> > wordBundleBuffers
+	std::array< std::shared_ptr<bundleBuffer>, 4> wordBundleBuffers
+	// std::shared_ptr< std::array< bundleBuffer, 4> > wordBundleBuffers
 ) :
 	m_wordBundleBuffers(std::move(wordBundleBuffers))
 {
-	ASSERT(m_wordBundleBuffers != nullptr);
+	for (auto& bufferPtr : m_wordBundleBuffers) {
+		ASSERT(nullptr != bufferPtr);
+	}
 	ASSERT(m_inputStreams.empty());
 	ASSERT(nReadoutBoards > 0);
 
@@ -165,8 +168,8 @@ void FileReader::runProcessingLoop() {
 								workspace[j]->setRocValue(bindec::getROCValue(word));
 
 								// Add bundle to buffer
-								ASSERT(i < m_wordBundleBuffers->size());
-								m_wordBundleBuffers->at(i).push(std::move(workspace[j]));
+								ASSERT(i < m_wordBundleBuffers.size());
+								m_wordBundleBuffers[i]->push(std::move(workspace[j]));
 								// Ensure move was succesful
 								ASSERT(workspace[j] == nullptr);
 							} else {

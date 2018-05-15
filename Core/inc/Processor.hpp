@@ -56,7 +56,8 @@ private:
 
 	std::unique_ptr<FileReader> m_fileReader = nullptr; //!< File Reader object pointer
 
-	std::shared_ptr< std::array< bundleBuffer, 4> > m_wordBundleBuffers = nullptr; //!< Word Bundle Buffers (one for each slot)
+	std::array< std::shared_ptr<bundleBuffer>, 4> m_wordBundleBuffers = {{ nullptr }};
+	// std::shared_ptr< std::array< bundleBuffer, 4> > m_wordBundleBuffers = nullptr; //!< Word Bundle Buffers (one for each slot)
 
 	std::unordered_map< unsigned int, packetBuffer> m_packetBuffers; //!< Packet Buffers
 

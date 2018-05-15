@@ -23,7 +23,8 @@ public:
 	//! Constructor
 	FileReader(
 		const unsigned int nReadoutBoards, //!< Number of readout boards present
-		std::shared_ptr< std::array< bundleBuffer, 4> > wordBundleBuffers
+		std::array< std::shared_ptr<bundleBuffer>, 4>
+		// std::shared_ptr< std::array< bundleBuffer, 4> > wordBundleBuffers
 	);
 
 	void stageFiles(
@@ -59,7 +60,8 @@ private:
 	std::vector< bundleWorkspace > m_bundleWorkspaces;
 
 	// std::array< ThreadSafeQueue< std::unique_ptr<WordBundle> > ,4> m_wordBundleBuffers;
-	std::shared_ptr< std::array< bundleBuffer, 4> > m_wordBundleBuffers;
+	// std::shared_ptr< std::array< bundleBuffer, 4> > m_wordBundleBuffers;
+	std::array< std::shared_ptr<bundleBuffer>, 4> m_wordBundleBuffers;
 
 	const std::set<unsigned int> fillerWords = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 }; //! Set containing filler words (move to config?)
 };
