@@ -55,3 +55,15 @@ inline void RootManager<T>::writeTree() {
 // Private:
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
+template<class T>
+template<class U>
+void RootManager<T>::setupArrBranch(
+	const std::string branchName, //!< Desired Branch Name
+	U*& arrayPtr,                 //!< Reference to pointer to be set
+	const std::string leafType,   //!< Leaf type (e.g. "/I" )
+	const unsigned int arraySize  //!< Size of array to be allocated
+) {
+	const auto leafList = branchName + leafType;
+	arrayPtr = new U[arraySize] { 0 };
+	m_tree->Branch(branchName.c_str(),arrayPtr,leafList.c_str());
+}

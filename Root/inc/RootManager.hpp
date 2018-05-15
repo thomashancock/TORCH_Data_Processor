@@ -29,6 +29,15 @@ public:
 	inline void writeTree();
 
 protected:
+	template<class U>
+	void setupArrBranch(
+		const std::string branchName, //!< Desired Branch Name
+		U*& arrayPtr,                 //!< Reference to pointer to be set
+		const std::string leafType,   //!< Leaf type (e.g. "/I" )
+		const unsigned int arraySize  //!< Size of array to be allocated
+	);
+
+protected:
 	mutable std::mutex m_mut; //!< Mutex for thread safety
 
 	TTree* m_tree = nullptr; //!< Output TTree
