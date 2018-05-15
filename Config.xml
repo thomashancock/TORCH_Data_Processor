@@ -6,11 +6,11 @@
      Serial - Processes files in series. The standard running mode. Out: ROOT
      Parallel - Concurrent processing for increased speed. Out: ROOT
 -->
-<config mode="QuickCheck">
+<config mode="Serial">
 	<board id="0">
-		<slot name="D" tcdID1="14" tcdID2="15"/>
-		<slot name="C" tcdID1="12" tcdID2="13"/>
-		<slot name="B" tcdID1="8" tcdID2="9"/>
-		<slot name="A" tcdID1="10" tcdID2="11"/>
+		<slot name="D" tdcID1="14" tdcID2="15"/>
+		<slot name="C" tdcID1="12" tdcID2="13"/>
+		<slot name="B" tdcID1="8" tdcID2="9"/>
+		<slot name="A" tdcID1="10" tdcID2="11"/>
 	</board>
 </config>

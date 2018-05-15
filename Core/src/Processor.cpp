@@ -19,22 +19,16 @@
 Processor::Processor(
 	std::unique_ptr<const Config> config
 ) :
-	m_config(std::move(config)),
+	m_mode(config->getRunMode()),
+	m_tdcIDs(config->getTDCList()),
 	m_eventBuffer(m_tdcIDs)
 {
-	// Assert move operation was succesful
-	ASSERT(nullptr == config);
-
 	// Assert buffers are empty
 	ASSERT(m_wordBundleBuffer.empty());
 
-	m_config->print();
-
-	// Spoof Config Settings
-	// "0A" = 10, 11
-	// "0B" = 8, 9
-	// "0C" = 12, 13
-	// "0D" = 14, 15
+	// Print config settings
+	ASSERT(nullptr != config);
+	config->print();
 
 	// Initialise Packet Buffers
 	initializePacketBuffers(m_tdcIDs);
