@@ -41,6 +41,26 @@ private:
 		const std::list<unsigned int>& tdcIDs
 	);
 
+	//! Runs QuickCheck Mode
+	void runQuickCheck(
+		const std::vector<std::string>& fileNames //!< List of files to process
+	);
+
+	//! Runs LowLevel Mode
+	void runLowLevel(
+		const std::vector<std::string>& fileNames //!< List of files to process
+	);
+
+	//! Runs Serial Mode
+	void runSerial(
+		const std::vector<std::string>& fileNames //!< List of files to process
+	);
+
+	//! Runs Parallel Mode
+	void runParallel(
+		const std::vector<std::string>& fileNames //!< List of files to process
+	);
+
 	//! Process word bundles into packets
 	// void makePackets();
 

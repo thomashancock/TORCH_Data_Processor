@@ -53,87 +53,14 @@ void Processor::processFiles(
 	const std::vector<std::string> fileNames
 ) {
 	if (RunMode::QuickCheck == m_mode) {
-		STD_LOG("Mode: QuickCheck");
-		int bundleCount = 0;
-
-		for (auto& file : fileNames) {
-			ASSERT(nullptr != m_fileReader);
-			m_fileReader->stageFiles(std::vector<std::string>{ file });
-
-			while (!m_fileReader->haveFilesExpired()) {
-				m_fileReader->runProcessingLoops(1);
-
-				for (auto& buffer : m_wordBundleBuffers) {
-					while(!buffer->empty()) {
-						bundleCount += 1;
-						auto bundle = buffer->popFront();
-						std::cout << "New Bundle = "
-						<< "Board: " << bundle->getReadoutBoardNumber() << " "
-						<< "ROC: " << bundle->getROCValue() << std::endl;
-						while (!bundle->empty()) {
-							bindec::printWord(bundle->getNextWord());
-						}
-					}
-				}
-			}
-		}
-
-		std::cout << bundleCount << " bundles in total" << std::endl;
-
+		runQuickCheck(fileNames);
 	} else if (RunMode::LowLevel == m_mode) {
-		STD_LOG("Mode: LowLevel");
-
-		std::unique_ptr<PacketTreeManager> manager =
-			std::make_unique<PacketTreeManager>("Output.root");
-
-		// for (auto& file : fileNames) {
-		// 	// Read File into WordBundle buffer
-		// 	processFile(file);
-    //
-		// 	// makePackets();
-    //   //
-		// 	// for (auto& entry : m_packetBuffers) {
-		// 	// 	// std::cout << "TDC ID: " << entry.first << std::endl;
-		// 	// 	while(!entry.second.empty()) {
-		// 	// 		// const auto packet = entry.second.popFront();
-		// 	// 		manager->add(std::move(entry.second.popFront()));
-		// 	// 	}
-		// 	// }
-		// }
-
-		manager->writeTree();
-
+		runLowLevel(fileNames);
 	} else if (RunMode::Parallel == m_mode) {
-		STD_LOG("Mode: Parallel");
-
-		const auto nCores = std::thread::hardware_concurrency();
-		std::cout << nCores << " Cores Detected" << std::endl;
-
+		runParallel(fileNames);
 	} else {
-		STD_LOG("Mode: Serial");
-
-		std::unique_ptr<EventTreeManager> manager =
-			std::make_unique<EventTreeManager>("Output.root",m_tdcIDs.size());
-
-		// for (auto& file : fileNames) {
-		// 	// Read File into WordBundle buffer
-		// 	processFile(file);
-    //
-		// 	// makePackets();
-    //   //
-		// 	// makeEvents();
-    //   //
-		// 	// while (m_eventBuffer.isCompleteStored()) {
-		// 	// 	auto events = m_eventBuffer.popToComplete();
-		// 	// 	for (auto& event : events) {
-		// 	// 		ASSERT(nullptr != event);
-		// 	// 		manager->add(std::move(event));
-		// 	// 		ASSERT(nullptr == event);
-		// 	// 	}
-		// 	// }
-		// }
-
-		manager->writeTree();
+		// Run Serial by default
+		runSerial(fileNames);
 	}
 }
 
@@ -151,6 +78,109 @@ void Processor::initializePacketBuffers(
 		m_packetBuffers[id];
 	}
 	ASSERT(m_packetBuffers.size() == tdcIDs.size());
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Processor::runQuickCheck(
+	const std::vector<std::string>& fileNames
+) {
+	STD_LOG("Mode: QuickCheck");
+
+	int bundleCount = 0;
+	for (auto& file : fileNames) {
+		ASSERT(nullptr != m_fileReader);
+		m_fileReader->stageFiles(std::vector<std::string>{ file });
+
+		while (!m_fileReader->haveFilesExpired()) {
+			m_fileReader->runProcessingLoops(1);
+
+			for (auto& buffer : m_wordBundleBuffers) {
+				while(!buffer->empty()) {
+					bundleCount += 1;
+					auto bundle = buffer->popFront();
+					std::cout << "New Bundle = "
+					<< "Board: " << bundle->getReadoutBoardNumber() << " "
+					<< "ROC: " << bundle->getROCValue() << std::endl;
+					while (!bundle->empty()) {
+						bindec::printWord(bundle->getNextWord());
+					}
+				}
+			}
+		}
+	}
+
+	std::cout << bundleCount << " bundles in total" << std::endl;
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Processor::runLowLevel(
+	const std::vector<std::string>& fileNames
+) {
+	STD_LOG("Mode: LowLevel");
+
+	std::unique_ptr<PacketTreeManager> manager =
+		std::make_unique<PacketTreeManager>("Output.root");
+
+	// for (auto& file : fileNames) {
+	// 	// Read File into WordBundle buffer
+	// 	processFile(file);
+	//
+	// 	// makePackets();
+	//   //
+	// 	// for (auto& entry : m_packetBuffers) {
+	// 	// 	// std::cout << "TDC ID: " << entry.first << std::endl;
+	// 	// 	while(!entry.second.empty()) {
+	// 	// 		// const auto packet = entry.second.popFront();
+	// 	// 		manager->add(std::move(entry.second.popFront()));
+	// 	// 	}
+	// 	// }
+	// }
+
+	manager->writeTree();
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Processor::runSerial(
+	const std::vector<std::string>& fileNames
+) {
+	STD_LOG("Mode: Serial");
+
+	std::unique_ptr<EventTreeManager> manager =
+		std::make_unique<EventTreeManager>("Output.root",m_tdcIDs.size());
+
+	// for (auto& file : fileNames) {
+	// 	// Read File into WordBundle buffer
+	// 	processFile(file);
+	//
+	// 	// makePackets();
+	//   //
+	// 	// makeEvents();
+	//   //
+	// 	// while (m_eventBuffer.isCompleteStored()) {
+	// 	// 	auto events = m_eventBuffer.popToComplete();
+	// 	// 	for (auto& event : events) {
+	// 	// 		ASSERT(nullptr != event);
+	// 	// 		manager->add(std::move(event));
+	// 	// 		ASSERT(nullptr == event);
+	// 	// 	}
+	// 	// }
+	// }
+
+	manager->writeTree();
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Processor::runParallel(
+	const std::vector<std::string>& fileNames
+) {
+	STD_LOG("Mode: Parallel");
+
+	const auto nCores = std::thread::hardware_concurrency();
+	std::cout << nCores << " Cores Detected" << std::endl;
 }
 // -----------------------------------------------------------------------------
 //
