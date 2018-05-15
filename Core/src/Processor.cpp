@@ -123,6 +123,25 @@ void Processor::runLowLevel(
 	std::unique_ptr<PacketTreeManager> manager =
 		std::make_unique<PacketTreeManager>("Output.root");
 
+	for (auto& file : fileNames) {
+		ASSERT(nullptr != m_fileReader);
+		m_fileReader->stageFiles(std::vector<std::string>{ file });
+
+		while (!m_fileReader->haveFilesExpired()) {
+			m_fileReader->runProcessingLoops(1);
+
+			for (auto& buffer : m_wordBundleBuffers) {
+				makePackets(buffer);
+			}
+
+			for (auto& entry : m_packetBuffers) {
+				while(!entry.second.empty()) {
+					manager->add(std::move(entry.second.popFront()));
+				}
+			}
+		}
+	}
+
 	// for (auto& file : fileNames) {
 	// 	// Read File into WordBundle buffer
 	// 	processFile(file);
@@ -185,52 +204,52 @@ void Processor::runParallel(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-// void Processor::makePackets() {
-// 	// Need to ensure this function can only be run on a single thread
-//
-// 	// Pointer to store current packet
-// 	std::unique_ptr<Packet> currPacket = { nullptr };
-//
-// 	// Loop through bundles in buffer
-// 	while (!m_wordBundleBuffer.empty()) {
-// 		auto bundle = m_wordBundleBuffer.popFront();
-// 		ASSERT(bundle != nullptr);
-//
-// 		if (bundle->isComplete()) {
-// 			while (!bundle->empty()) {
-// 				const auto word = bundle->getNextWord();
-// 				const auto dataType = bindec::getDataType(word);
-// 				if (2 == dataType) {
-// 					if (currPacket != nullptr && currPacket->isGood()) {
-// 						const auto index = currPacket->getTDCID();
-// 						try {
-// 							m_packetBuffers.at(index).push(std::move(currPacket));
-// 						} catch (std::exception& e) {
-// 							STD_ERR("Exception: " << e.what());
-// 						}
-// 					} else {
-// 						// If packet is not good, delete it
-// 						currPacket.reset(nullptr);
-// 					}
-// 					ASSERT(nullptr == currPacket);
-// 					currPacket = std::make_unique<Packet>(bundle->getROCValue());
-// 					ASSERT(currPacket != nullptr);
-// 					currPacket->addHeader(word);
-// 				} else if (currPacket != nullptr) {
-// 					if (3 == dataType) {
-// 						ASSERT(currPacket != nullptr);
-// 						currPacket->addTrailer(word);
-// 					} else if (4 == dataType || 5 == dataType) {
-// 						ASSERT(currPacket != nullptr);
-// 						currPacket->addDataline(word);
-// 					} else {
-// 						STD_ERR("Invalid Data Type found: " << dataType);
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+void Processor::makePackets(
+	std::shared_ptr<bundleBuffer> wordBundleBuffer
+) {
+	// Pointer to store current packet
+	std::unique_ptr<Packet> currPacket = { nullptr };
+
+	// Loop through bundles in buffer
+	while (!wordBundleBuffer->empty()) {
+		auto bundle = wordBundleBuffer->popFront();
+		ASSERT(bundle != nullptr);
+
+		if (bundle->isComplete()) {
+			while (!bundle->empty()) {
+				const auto word = bundle->getNextWord();
+				const auto dataType = bindec::getDataType(word);
+				if (2 == dataType) {
+					if (currPacket != nullptr && currPacket->isGood()) {
+						const auto index = currPacket->getTDCID();
+						try {
+							m_packetBuffers.at(index).push(std::move(currPacket));
+						} catch (std::exception& e) {
+							STD_ERR("Exception: " << e.what());
+						}
+					} else {
+						// If packet is not good, delete it
+						currPacket.reset(nullptr);
+					}
+					ASSERT(nullptr == currPacket);
+					currPacket = std::make_unique<Packet>(bundle->getROCValue());
+					ASSERT(currPacket != nullptr);
+					currPacket->addHeader(word);
+				} else if (currPacket != nullptr) {
+					if (3 == dataType) {
+						ASSERT(currPacket != nullptr);
+						currPacket->addTrailer(word);
+					} else if (4 == dataType || 5 == dataType) {
+						ASSERT(currPacket != nullptr);
+						currPacket->addDataline(word);
+					} else {
+						STD_ERR("Invalid Data Type found: " << dataType);
+					}
+				}
+			}
+		}
+	}
+}
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
