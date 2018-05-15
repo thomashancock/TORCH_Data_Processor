@@ -31,6 +31,9 @@ void EventTreeManager::add(
 	ASSERT(nullptr != event);
 	ASSERT(nullptr != m_tree);
 
+	// Lock Mutex
+	std::lock_guard<std::mutex> lk(m_mut);
+
 	const unsigned int eventID = event->getEventID();
 
 	resetTreeVariables(); // Reset count variables
@@ -133,7 +136,7 @@ void EventTreeManager::add(
 		}
 	}
 
-	// Fill Trees
+	// Fill Tree
 	m_tree->Fill();
 }
 
