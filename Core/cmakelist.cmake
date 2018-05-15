@@ -4,7 +4,7 @@ set(SOURCE_FILES ${SOURCE_FILES}
 	Core/src/main.cpp
 	Core/src/Config.cpp
 	Core/src/Processor.cpp
-	# Core/src/RootManager.cpp
+	Core/src/FileReader.cpp
 	Core/src/ErrorSpy.cpp
 )
 
