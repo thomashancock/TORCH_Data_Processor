@@ -194,24 +194,6 @@ void Processor::runSerial(
 		}
 	}
 
-	// for (auto& file : fileNames) {
-	// 	// Read File into WordBundle buffer
-	// 	processFile(file);
-	//
-	// 	// makePackets();
-	//   //
-	// 	// makeEvents();
-	//   //
-	// 	// while (m_eventBuffer.isCompleteStored()) {
-	// 	// 	auto events = m_eventBuffer.popToComplete();
-	// 	// 	for (auto& event : events) {
-	// 	// 		ASSERT(nullptr != event);
-	// 	// 		manager->add(std::move(event));
-	// 	// 		ASSERT(nullptr == event);
-	// 	// 	}
-	// 	// }
-	// }
-
 	// Write output tree
 	manager->writeTree();
 }
