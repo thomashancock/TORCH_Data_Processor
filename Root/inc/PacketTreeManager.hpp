@@ -5,23 +5,28 @@
 #include "RootManager.hpp"
 #include "Packet.hpp"
 
+//! Class which manages storage of Packet data in root file output
 class PacketTreeManager : public RootManager<Packet> {
 public:
+	//! Constructor
 	PacketTreeManager(
-		const std::string outfileName
+		const std::string outfileName //!< The desired output file name
 	);
 
+	//! Adds a packet to the tree, then destroys the packet
+	/*!
+		Overload of RootManager add.
+	 */
 	void add(
 		std::unique_ptr<Packet> packet
 	) final;
 
 private:
+	//! Sets up the branches of the tree
 	void setUpBranches();
 
-	void resetTreeVariables();
-
 private:
-	constexpr static unsigned int s_maxEdges = 100;
+	constexpr static unsigned int s_maxEdges = 100; //!< Array size for edge branches
 
 	// Set branch variables
 	UInt_t b_tdcID = 0;         //!< Branch Variable: TDC ID

@@ -18,6 +18,10 @@
 #include "WordBundle.hpp"
 #include "Packet.hpp"
 
+//! Class which manages overall processing of data
+/*!
+	Is setup based on values stores in Config
+*/
 class Processor {
 	using packetBuffer = ThreadSafeQueue< std::unique_ptr<Packet> >;
 
@@ -79,8 +83,6 @@ private:
 	std::unordered_map< unsigned int, packetBuffer> m_packetBuffers; //!< Packet Buffers
 
 	ThreadSafeEventMap m_eventBuffer; //!< Event Buffer
-
-	//!< RootManager
 };
 
 #endif /* PROCESSOR_H */

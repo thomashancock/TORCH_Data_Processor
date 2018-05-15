@@ -5,25 +5,33 @@
 #include "RootManager.hpp"
 #include "Event.hpp"
 
+//! Class which manages storage of Event data in root file output
 class EventTreeManager : public RootManager<Event> {
 public:
+	//! Constructor
 	EventTreeManager(
-		const std::string outfileName,
-		const unsigned int nTDCs
+		const std::string outfileName, //!< The desired output file name
+		const unsigned int nTDCs //!< Number of TDCs present from config
 	);
 
+	//! Adds an event to the tree, then destroys the event
+	/*!
+		Overload of RootManager add.
+	 */
 	void add(
 		std::unique_ptr<Event> event
 	) final;
 
 private:
+	//! Sets up the branches of the tree
 	void setUpBranches();
 
+	//! Resets the coutner variables in the tree to their default values
 	void resetTreeVariables();
 
 private:
-	const unsigned int m_nTDCs;
-	constexpr static unsigned int s_hitsMax = 500;
+	const unsigned int m_nTDCs; //!< The maximum number of TDCs
+	constexpr static unsigned int s_hitsMax = 500; //!< Array size for hit branches
 
 	// Set branch variables
 	Int_t b_nTDCs;             //!< Branch Variable: The number of TDCs

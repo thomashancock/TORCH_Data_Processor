@@ -3,9 +3,6 @@
 // LOCAL
 #include "Debug.hpp"
 
-// Useful alias
-// using pairVectors = std::pair< std::vector< unsigned int >, std::vector< unsigned int > >;
-
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Public:
@@ -32,12 +29,14 @@ void PacketTreeManager::add(
 	// Lock Mutex
 	std::lock_guard<std::mutex> lk(m_mut);
 
+	// Write basic information
 	b_tdcID = packet->getTDCID();
 	b_eventID = packet->getEventID();
 	b_bunchID = packet->getBunchID();
 	b_wordCount = packet->getWordCount();
 	b_rocTime = packet->getROCValue();
 
+	// Write leading edges
 	const auto nLeadingEdges = packet->getNLeadingEdges();
 	b_nLeadingEdges = 0;
 	for (unsigned int i = 0; i < nLeadingEdges; i++) {
@@ -47,6 +46,7 @@ void PacketTreeManager::add(
 		b_nLeadingEdges++;
 	}
 
+	// Write trailing edges
 	const auto nTrailingEdges = packet->getNTrailingEdges();
 	b_nTrailingEdges = 0;
 	for (unsigned int i = 0; i < nTrailingEdges; i++) {
