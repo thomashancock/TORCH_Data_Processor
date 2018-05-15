@@ -272,7 +272,6 @@ void Processor::makeEvents() {
 		// Loop through buffers
 		for (auto it = bufferIndexes.cbegin(); it != bufferIndexes.cend(); /* no increment */) {
 			if (m_packetBuffers.at(*it).empty()) {
-				STD_LOG("Finished " << *it);
 				// If buffer is empty, remove from index list
 				bufferIndexes.erase(it++);
 			} else {
@@ -280,6 +279,5 @@ void Processor::makeEvents() {
 				m_eventBuffer.addPacket(std::move(m_packetBuffers.at(*it).popFront()));
 			}
 		}
-		STD_LOG_VAR(bufferIndexes.size());
 	}
 }
