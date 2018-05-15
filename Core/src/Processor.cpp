@@ -32,8 +32,6 @@ Processor::Processor(
 	for (auto& ptr : m_wordBundleBuffers) {
 		ptr = std::make_shared<bundleBuffer>();
 	}
-	// m_wordBundleBuffers = std::make_shared< std::array< bundleBuffer, 4> >();
-	// ASSERT(nullptr != m_wordBundleBuffers);
 
 	// Initialise file reader
 	m_fileReader = std::make_unique<FileReader>(1,m_wordBundleBuffers);
@@ -41,6 +39,7 @@ Processor::Processor(
 
 	// After FileReader initialization, should be two pointers refering to the bundle buffers
 	for (const auto& ptr : m_wordBundleBuffers) {
+		ASSERT(nullptr != ptr);
 		ASSERT(2 == ptr.use_count());
 	}
 

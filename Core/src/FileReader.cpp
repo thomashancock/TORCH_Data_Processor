@@ -14,7 +14,6 @@
 FileReader::FileReader(
 	const unsigned int nReadoutBoards,
 	std::array< std::shared_ptr<bundleBuffer>, 4> wordBundleBuffers
-	// std::shared_ptr< std::array< bundleBuffer, 4> > wordBundleBuffers
 ) :
 	m_wordBundleBuffers(std::move(wordBundleBuffers))
 {
