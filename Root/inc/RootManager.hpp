@@ -13,7 +13,7 @@
 
 //! Class which manages root output
 /*!
-	@tparam The class which will be used to provide information for the root tree
+	@tparam T The class which will be used to provide information for the root tree
 */
 template <class T>
 class RootManager {
@@ -42,7 +42,7 @@ public:
 protected:
 	//! Helpful function to allocate memory for an array-style branch
 	/*!
-		@tparam The data type of the branch
+		@tparam U The data type of the branch
 	*/
 	template<class U>
 	void setupArrBranch(

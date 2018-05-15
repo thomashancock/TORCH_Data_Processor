@@ -1,0 +1,196 @@
+\hypertarget{class_root_manager}{}\section{Root\+Manager$<$ T $>$ Class Template Reference}
+\label{class_root_manager}\index{Root\+Manager$<$ T $>$@{Root\+Manager$<$ T $>$}}
+
+
+Class which manages root output.  
+
+
+
+
+{\ttfamily \#include $<$Root\+Manager.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_root_manager_a152803255b94d68cbe4c4f8e24fc2352}{Root\+Manager} (const std\+::string out\+File\+Name, const std\+::string tree\+Name)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_root_manager_a68a189a7705b9da1da82a95ef9840d61}{$\sim$\+Root\+Manager} ()
+\begin{DoxyCompactList}\small\item\em Explicit deconstructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_root_manager_a2f05eb45d5eaee1f9f12e299395652fb}{add} (std\+::unique\+\_\+ptr$<$ T $>$)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual method for adding information to the tree. \end{DoxyCompactList}\item 
+void \hyperlink{class_root_manager_adbe916dd56e5ec51f89c7643c4847842}{write\+Tree} ()
+\begin{DoxyCompactList}\small\item\em Writes the tree to the output file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class U $>$ }\\void \hyperlink{class_root_manager_aa1eaed1aa026059b8d00e729161c6a43}{setup\+Arr\+Branch} (const std\+::string branch\+Name, U $\ast$\&array\+Ptr, const std\+::string leaf\+Type, const unsigned int array\+Size)
+\begin{DoxyCompactList}\small\item\em Helpful function to allocate memory for an array-\/style branch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::mutex \hyperlink{class_root_manager_a8f8a185d6d25b3e1207416c7cd8c333c}{m\+\_\+mut}
+\begin{DoxyCompactList}\small\item\em Mutex for thread safety. \end{DoxyCompactList}\item 
+T\+Tree $\ast$ \hyperlink{class_root_manager_adfbcbba0248787d08a230508bb4136a6}{m\+\_\+tree} = nullptr
+\begin{DoxyCompactList}\small\item\em Output T\+Tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T\+File $\ast$ \hyperlink{class_root_manager_a2f0257574f0eeac21c3628058a5d6ad9}{m\+\_\+out\+File} = nullptr
+\begin{DoxyCompactList}\small\item\em Output file pointer. \end{DoxyCompactList}\item 
+const T\+Named \hyperlink{class_root_manager_a14d81290e5a98ec6f62459f1016e7dcc}{m\+\_\+program\+Version}
+\begin{DoxyCompactList}\small\item\em T\+Named which writes build version to output tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Root\+Manager$<$ T $>$}
+
+Class which manages root output. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The class which will be used to provide information for the root tree \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_root_manager_a152803255b94d68cbe4c4f8e24fc2352}\label{class_root_manager_a152803255b94d68cbe4c4f8e24fc2352}} 
+\index{Root\+Manager@{Root\+Manager}!Root\+Manager@{Root\+Manager}}
+\index{Root\+Manager@{Root\+Manager}!Root\+Manager@{Root\+Manager}}
+\subsubsection{\texorpdfstring{Root\+Manager()}{RootManager()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_root_manager}{Root\+Manager}$<$ T $>$\+::\hyperlink{class_root_manager}{Root\+Manager} (\begin{DoxyParamCaption}\item[{const std\+::string}]{out\+File\+Name,  }\item[{const std\+::string}]{tree\+Name }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+File\+Name} & The output root files name \\
+\hline
+{\em tree\+Name} & The desired ttree name \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_root_manager_a68a189a7705b9da1da82a95ef9840d61}\label{class_root_manager_a68a189a7705b9da1da82a95ef9840d61}} 
+\index{Root\+Manager@{Root\+Manager}!````~Root\+Manager@{$\sim$\+Root\+Manager}}
+\index{````~Root\+Manager@{$\sim$\+Root\+Manager}!Root\+Manager@{Root\+Manager}}
+\subsubsection{\texorpdfstring{$\sim$\+Root\+Manager()}{~RootManager()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_root_manager}{Root\+Manager}$<$ T $>$\+::$\sim$\hyperlink{class_root_manager}{Root\+Manager} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Explicit deconstructor. 
+
+Closes output file on deconstruction. Implicitly deletes move and copy constructors. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_root_manager_a2f05eb45d5eaee1f9f12e299395652fb}\label{class_root_manager_a2f05eb45d5eaee1f9f12e299395652fb}} 
+\index{Root\+Manager@{Root\+Manager}!add@{add}}
+\index{add@{add}!Root\+Manager@{Root\+Manager}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+virtual void \hyperlink{class_root_manager}{Root\+Manager}$<$ T $>$\+::add (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ T $>$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual method for adding information to the tree. 
+
+
+
+Implemented in \hyperlink{class_event_tree_manager_acabb2f6c8dd0e08375b4cf8bf2c148fd}{Event\+Tree\+Manager}, and \hyperlink{class_packet_tree_manager_a855e71512fe6365c11f312584afff70a}{Packet\+Tree\+Manager}.
+
+\mbox{\Hypertarget{class_root_manager_aa1eaed1aa026059b8d00e729161c6a43}\label{class_root_manager_aa1eaed1aa026059b8d00e729161c6a43}} 
+\index{Root\+Manager@{Root\+Manager}!setup\+Arr\+Branch@{setup\+Arr\+Branch}}
+\index{setup\+Arr\+Branch@{setup\+Arr\+Branch}!Root\+Manager@{Root\+Manager}}
+\subsubsection{\texorpdfstring{setup\+Arr\+Branch()}{setupArrBranch()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+template$<$class U $>$ \\
+void \hyperlink{class_root_manager}{Root\+Manager}$<$ T $>$\+::setup\+Arr\+Branch (\begin{DoxyParamCaption}\item[{const std\+::string}]{branch\+Name,  }\item[{U $\ast$\&}]{array\+Ptr,  }\item[{const std\+::string}]{leaf\+Type,  }\item[{const unsigned int}]{array\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Helpful function to allocate memory for an array-\/style branch. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em U} & The data type of the branch \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em branch\+Name} & Desired Branch Name \\
+\hline
+{\em array\+Ptr} & Reference to pointer to be set \\
+\hline
+{\em leaf\+Type} & Leaf type (e.\+g. \char`\"{}/\+I\char`\"{} ) \\
+\hline
+{\em array\+Size} & Size of array to be allocated \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_root_manager_adbe916dd56e5ec51f89c7643c4847842}\label{class_root_manager_adbe916dd56e5ec51f89c7643c4847842}} 
+\index{Root\+Manager@{Root\+Manager}!write\+Tree@{write\+Tree}}
+\index{write\+Tree@{write\+Tree}!Root\+Manager@{Root\+Manager}}
+\subsubsection{\texorpdfstring{write\+Tree()}{writeTree()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{class_root_manager}{Root\+Manager}$<$ T $>$\+::write\+Tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Writes the tree to the output file. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_root_manager_a8f8a185d6d25b3e1207416c7cd8c333c}\label{class_root_manager_a8f8a185d6d25b3e1207416c7cd8c333c}} 
+\index{Root\+Manager@{Root\+Manager}!m\+\_\+mut@{m\+\_\+mut}}
+\index{m\+\_\+mut@{m\+\_\+mut}!Root\+Manager@{Root\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+mut}{m\_mut}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+std\+::mutex \hyperlink{class_root_manager}{Root\+Manager}$<$ T $>$\+::m\+\_\+mut\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+
+
+
+Mutex for thread safety. 
+
+\mbox{\Hypertarget{class_root_manager_a2f0257574f0eeac21c3628058a5d6ad9}\label{class_root_manager_a2f0257574f0eeac21c3628058a5d6ad9}} 
+\index{Root\+Manager@{Root\+Manager}!m\+\_\+out\+File@{m\+\_\+out\+File}}
+\index{m\+\_\+out\+File@{m\+\_\+out\+File}!Root\+Manager@{Root\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+out\+File}{m\_outFile}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+T\+File$\ast$ \hyperlink{class_root_manager}{Root\+Manager}$<$ T $>$\+::m\+\_\+out\+File = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Output file pointer. 
+
+\mbox{\Hypertarget{class_root_manager_a14d81290e5a98ec6f62459f1016e7dcc}\label{class_root_manager_a14d81290e5a98ec6f62459f1016e7dcc}} 
+\index{Root\+Manager@{Root\+Manager}!m\+\_\+program\+Version@{m\+\_\+program\+Version}}
+\index{m\+\_\+program\+Version@{m\+\_\+program\+Version}!Root\+Manager@{Root\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+program\+Version}{m\_programVersion}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+const T\+Named \hyperlink{class_root_manager}{Root\+Manager}$<$ T $>$\+::m\+\_\+program\+Version\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+T\+Named which writes build version to output tree. 
+
+\mbox{\Hypertarget{class_root_manager_adfbcbba0248787d08a230508bb4136a6}\label{class_root_manager_adfbcbba0248787d08a230508bb4136a6}} 
+\index{Root\+Manager@{Root\+Manager}!m\+\_\+tree@{m\+\_\+tree}}
+\index{m\+\_\+tree@{m\+\_\+tree}!Root\+Manager@{Root\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+tree}{m\_tree}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+T\+Tree$\ast$ \hyperlink{class_root_manager}{Root\+Manager}$<$ T $>$\+::m\+\_\+tree = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Output T\+Tree. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Root/inc/\hyperlink{_root_manager_8hpp}{Root\+Manager.\+hpp}\item 
+Root/inc/\hyperlink{_root_manager_8inl}{Root\+Manager.\+inl}\end{DoxyCompactItemize}

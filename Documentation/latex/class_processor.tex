@@ -1,0 +1,226 @@
+\hypertarget{class_processor}{}\section{Processor Class Reference}
+\label{class_processor}\index{Processor@{Processor}}
+
+
+Class which manages overall processing of data.  
+
+
+
+
+{\ttfamily \#include $<$Processor.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_processor_a1cc4421ebb02f40665336598c1334c55}{Processor} (std\+::unique\+\_\+ptr$<$ const \hyperlink{class_config}{Config} $>$ config)
+\item 
+void \hyperlink{class_processor_a4186d391ddee1f68d763931dad346c4a}{process\+Files} (const std\+::vector$<$ std\+::string $>$ file\+Names)
+\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{class_processor_a0cfd8ed0721769db91c142a19a392e0f}{packet\+Buffer} = \hyperlink{class_thread_safe_queue}{Thread\+Safe\+Queue}$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ $>$
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_processor_aa9ad1e9d6f3d217e23649e42cd07de90}{initialize\+Packet\+Buffers} (const std\+::list$<$ unsigned int $>$ \&tdc\+I\+Ds)
+\begin{DoxyCompactList}\small\item\em Initilises a packet buffer for each T\+DC ID. \end{DoxyCompactList}\item 
+void \hyperlink{class_processor_a8dc09976d642ca778f5aa606b526a510}{process\+File} (const std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Make Word Bundles (has R\+OC value and words found preceding it) \end{DoxyCompactList}\item 
+void \hyperlink{class_processor_a31c772cd0725c185b53d271b6149c400}{read\+Header\+Line} (std\+::ifstream \&input\+Data, unsigned int \&readout\+Board\+Number, unsigned int \&n\+Data\+Bytes)
+\begin{DoxyCompactList}\small\item\em Reads Header Line, storing information in readout\+Board\+Number and n\+Data\+Bytes. \end{DoxyCompactList}\item 
+std\+::array$<$ unsigned int, 4 $>$ \hyperlink{class_processor_ad64350d14782bb238703023cb56613ef}{read\+Data\+Block} (std\+::ifstream \&input\+Data)
+\begin{DoxyCompactList}\small\item\em Reads a data block, returning the words in a std\+::array object. \end{DoxyCompactList}\item 
+void \hyperlink{class_processor_a395245680ed38f6c7bf568f5af262860}{make\+Packets} ()
+\begin{DoxyCompactList}\small\item\em Process word bundles into packets. \end{DoxyCompactList}\item 
+void \hyperlink{class_processor_ae06672fc3ac6ef73525b64d4f9f769e7}{make\+Events} ()
+\begin{DoxyCompactList}\small\item\em Build Events from Packets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} \hyperlink{class_processor_ac22f412163181f546d847ce23d71978d}{m\+\_\+mode} = \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947ea8cf5e1a2a32430916501be0579e5303b}{Run\+Mode\+::\+Low\+Level}
+\begin{DoxyCompactList}\small\item\em Write Events to R\+O\+OT file. \end{DoxyCompactList}\item 
+const std\+::list$<$ unsigned int $>$ \hyperlink{class_processor_a8eaa993665bf2a2ed71f84ffc0630574}{m\+\_\+tdc\+I\+Ds} \{ 8, 9, 10, 11, 12, 13, 14, 15 \}
+\begin{DoxyCompactList}\small\item\em List of T\+DC I\+Ds (needs to be set by config) \end{DoxyCompactList}\item 
+const std\+::set$<$ unsigned int $>$ \hyperlink{class_processor_a78d13a8646a95290e0b74bdd40c75639}{filler\+Words} = \{ 0x\+A0\+A0\+A0\+A0, 0x\+B0\+B0\+B0\+B0, 0x\+C0\+C0\+C0\+C0, 0x\+D0\+D0\+D0\+D0 \}
+\begin{DoxyCompactList}\small\item\em Set containing filler words (move to config?) \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ const \hyperlink{class_config}{Config} $>$ \hyperlink{class_processor_aa1ac0a603b269d9f0e1a90ec318c1525}{m\+\_\+config}
+\begin{DoxyCompactList}\small\item\em Pointer to configuration object. \end{DoxyCompactList}\item 
+\hyperlink{class_thread_safe_queue}{Thread\+Safe\+Queue}$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_word_bundle}{Word\+Bundle} $>$ $>$ \hyperlink{class_processor_a1ec54aa38a8c50dc77877e17feed6142}{m\+\_\+word\+Bundle\+Buffer}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_word_bundle}{Word\+Bundle} Buffers. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ unsigned int, \hyperlink{class_processor_a0cfd8ed0721769db91c142a19a392e0f}{packet\+Buffer} $>$ \hyperlink{class_processor_ab75c789ec03e38e8621f000332daa285}{m\+\_\+packet\+Buffers}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_packet}{Packet} Buffers. \end{DoxyCompactList}\item 
+\hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} \hyperlink{class_processor_a7cb15fbab19fceb6bc5a607629ff5040}{m\+\_\+event\+Buffer}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_event}{Event} Buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class which manages overall processing of data. 
+
+Is setup based on values stores in \hyperlink{class_config}{Config} 
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_processor_a0cfd8ed0721769db91c142a19a392e0f}\label{class_processor_a0cfd8ed0721769db91c142a19a392e0f}} 
+\index{Processor@{Processor}!packet\+Buffer@{packet\+Buffer}}
+\index{packet\+Buffer@{packet\+Buffer}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{packet\+Buffer}{packetBuffer}}
+{\footnotesize\ttfamily using \hyperlink{class_processor_a0cfd8ed0721769db91c142a19a392e0f}{Processor\+::packet\+Buffer} =  \hyperlink{class_thread_safe_queue}{Thread\+Safe\+Queue}$<$ std\+::unique\+\_\+ptr$<$\hyperlink{class_packet}{Packet}$>$ $>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_processor_a1cc4421ebb02f40665336598c1334c55}\label{class_processor_a1cc4421ebb02f40665336598c1334c55}} 
+\index{Processor@{Processor}!Processor@{Processor}}
+\index{Processor@{Processor}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{Processor()}{Processor()}}
+{\footnotesize\ttfamily Processor\+::\+Processor (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ const \hyperlink{class_config}{Config} $>$}]{config }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_processor_aa9ad1e9d6f3d217e23649e42cd07de90}\label{class_processor_aa9ad1e9d6f3d217e23649e42cd07de90}} 
+\index{Processor@{Processor}!initialize\+Packet\+Buffers@{initialize\+Packet\+Buffers}}
+\index{initialize\+Packet\+Buffers@{initialize\+Packet\+Buffers}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{initialize\+Packet\+Buffers()}{initializePacketBuffers()}}
+{\footnotesize\ttfamily void Processor\+::initialize\+Packet\+Buffers (\begin{DoxyParamCaption}\item[{const std\+::list$<$ unsigned int $>$ \&}]{tdc\+I\+Ds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initilises a packet buffer for each T\+DC ID. 
+
+\mbox{\Hypertarget{class_processor_ae06672fc3ac6ef73525b64d4f9f769e7}\label{class_processor_ae06672fc3ac6ef73525b64d4f9f769e7}} 
+\index{Processor@{Processor}!make\+Events@{make\+Events}}
+\index{make\+Events@{make\+Events}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{make\+Events()}{makeEvents()}}
+{\footnotesize\ttfamily void Processor\+::make\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Build Events from Packets. 
+
+\mbox{\Hypertarget{class_processor_a395245680ed38f6c7bf568f5af262860}\label{class_processor_a395245680ed38f6c7bf568f5af262860}} 
+\index{Processor@{Processor}!make\+Packets@{make\+Packets}}
+\index{make\+Packets@{make\+Packets}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{make\+Packets()}{makePackets()}}
+{\footnotesize\ttfamily void Processor\+::make\+Packets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Process word bundles into packets. 
+
+\mbox{\Hypertarget{class_processor_a8dc09976d642ca778f5aa606b526a510}\label{class_processor_a8dc09976d642ca778f5aa606b526a510}} 
+\index{Processor@{Processor}!process\+File@{process\+File}}
+\index{process\+File@{process\+File}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{process\+File()}{processFile()}}
+{\footnotesize\ttfamily void Processor\+::process\+File (\begin{DoxyParamCaption}\item[{const std\+::string}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Make Word Bundles (has R\+OC value and words found preceding it) 
+
+\mbox{\Hypertarget{class_processor_a4186d391ddee1f68d763931dad346c4a}\label{class_processor_a4186d391ddee1f68d763931dad346c4a}} 
+\index{Processor@{Processor}!process\+Files@{process\+Files}}
+\index{process\+Files@{process\+Files}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{process\+Files()}{processFiles()}}
+{\footnotesize\ttfamily void Processor\+::process\+Files (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$}]{file\+Names }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_processor_ad64350d14782bb238703023cb56613ef}\label{class_processor_ad64350d14782bb238703023cb56613ef}} 
+\index{Processor@{Processor}!read\+Data\+Block@{read\+Data\+Block}}
+\index{read\+Data\+Block@{read\+Data\+Block}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{read\+Data\+Block()}{readDataBlock()}}
+{\footnotesize\ttfamily std\+::array$<$ unsigned int, 4 $>$ Processor\+::read\+Data\+Block (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{input\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reads a data block, returning the words in a std\+::array object. 
+
+\mbox{\Hypertarget{class_processor_a31c772cd0725c185b53d271b6149c400}\label{class_processor_a31c772cd0725c185b53d271b6149c400}} 
+\index{Processor@{Processor}!read\+Header\+Line@{read\+Header\+Line}}
+\index{read\+Header\+Line@{read\+Header\+Line}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{read\+Header\+Line()}{readHeaderLine()}}
+{\footnotesize\ttfamily void Processor\+::read\+Header\+Line (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{input\+Data,  }\item[{unsigned int \&}]{readout\+Board\+Number,  }\item[{unsigned int \&}]{n\+Data\+Bytes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reads Header Line, storing information in readout\+Board\+Number and n\+Data\+Bytes. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_processor_a78d13a8646a95290e0b74bdd40c75639}\label{class_processor_a78d13a8646a95290e0b74bdd40c75639}} 
+\index{Processor@{Processor}!filler\+Words@{filler\+Words}}
+\index{filler\+Words@{filler\+Words}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{filler\+Words}{fillerWords}}
+{\footnotesize\ttfamily const std\+::set$<$unsigned int$>$ Processor\+::filler\+Words = \{ 0x\+A0\+A0\+A0\+A0, 0x\+B0\+B0\+B0\+B0, 0x\+C0\+C0\+C0\+C0, 0x\+D0\+D0\+D0\+D0 \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Set containing filler words (move to config?) 
+
+\mbox{\Hypertarget{class_processor_aa1ac0a603b269d9f0e1a90ec318c1525}\label{class_processor_aa1ac0a603b269d9f0e1a90ec318c1525}} 
+\index{Processor@{Processor}!m\+\_\+config@{m\+\_\+config}}
+\index{m\+\_\+config@{m\+\_\+config}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{m\+\_\+config}{m\_config}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$const \hyperlink{class_config}{Config}$>$ Processor\+::m\+\_\+config\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to configuration object. 
+
+\mbox{\Hypertarget{class_processor_a7cb15fbab19fceb6bc5a607629ff5040}\label{class_processor_a7cb15fbab19fceb6bc5a607629ff5040}} 
+\index{Processor@{Processor}!m\+\_\+event\+Buffer@{m\+\_\+event\+Buffer}}
+\index{m\+\_\+event\+Buffer@{m\+\_\+event\+Buffer}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{m\+\_\+event\+Buffer}{m\_eventBuffer}}
+{\footnotesize\ttfamily \hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} Processor\+::m\+\_\+event\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\hyperlink{class_event}{Event} Buffer. 
+
+\mbox{\Hypertarget{class_processor_ac22f412163181f546d847ce23d71978d}\label{class_processor_ac22f412163181f546d847ce23d71978d}} 
+\index{Processor@{Processor}!m\+\_\+mode@{m\+\_\+mode}}
+\index{m\+\_\+mode@{m\+\_\+mode}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{m\+\_\+mode}{m\_mode}}
+{\footnotesize\ttfamily const \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} Processor\+::m\+\_\+mode = \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947ea8cf5e1a2a32430916501be0579e5303b}{Run\+Mode\+::\+Low\+Level}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Write Events to R\+O\+OT file. 
+
+\mbox{\Hypertarget{class_processor_ab75c789ec03e38e8621f000332daa285}\label{class_processor_ab75c789ec03e38e8621f000332daa285}} 
+\index{Processor@{Processor}!m\+\_\+packet\+Buffers@{m\+\_\+packet\+Buffers}}
+\index{m\+\_\+packet\+Buffers@{m\+\_\+packet\+Buffers}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{m\+\_\+packet\+Buffers}{m\_packetBuffers}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ unsigned int, \hyperlink{class_processor_a0cfd8ed0721769db91c142a19a392e0f}{packet\+Buffer}$>$ Processor\+::m\+\_\+packet\+Buffers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\hyperlink{class_packet}{Packet} Buffers. 
+
+\mbox{\Hypertarget{class_processor_a8eaa993665bf2a2ed71f84ffc0630574}\label{class_processor_a8eaa993665bf2a2ed71f84ffc0630574}} 
+\index{Processor@{Processor}!m\+\_\+tdc\+I\+Ds@{m\+\_\+tdc\+I\+Ds}}
+\index{m\+\_\+tdc\+I\+Ds@{m\+\_\+tdc\+I\+Ds}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{m\+\_\+tdc\+I\+Ds}{m\_tdcIDs}}
+{\footnotesize\ttfamily const std\+::list$<$unsigned int$>$ Processor\+::m\+\_\+tdc\+I\+Ds \{ 8, 9, 10, 11, 12, 13, 14, 15 \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of T\+DC I\+Ds (needs to be set by config) 
+
+\mbox{\Hypertarget{class_processor_a1ec54aa38a8c50dc77877e17feed6142}\label{class_processor_a1ec54aa38a8c50dc77877e17feed6142}} 
+\index{Processor@{Processor}!m\+\_\+word\+Bundle\+Buffer@{m\+\_\+word\+Bundle\+Buffer}}
+\index{m\+\_\+word\+Bundle\+Buffer@{m\+\_\+word\+Bundle\+Buffer}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{m\+\_\+word\+Bundle\+Buffer}{m\_wordBundleBuffer}}
+{\footnotesize\ttfamily \hyperlink{class_thread_safe_queue}{Thread\+Safe\+Queue}$<$ std\+::unique\+\_\+ptr$<$\hyperlink{class_word_bundle}{Word\+Bundle}$>$ $>$ Processor\+::m\+\_\+word\+Bundle\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\hyperlink{class_word_bundle}{Word\+Bundle} Buffers. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Core/inc/\hyperlink{_processor_8hpp}{Processor.\+hpp}\item 
+Core/src/\hyperlink{_processor_8cpp}{Processor.\+cpp}\end{DoxyCompactItemize}

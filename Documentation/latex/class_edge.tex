@@ -1,0 +1,157 @@
+\hypertarget{class_edge}{}\section{Edge Class Reference}
+\label{class_edge}\index{Edge@{Edge}}
+
+
+Container class for \hyperlink{class_edge}{Edge} information.  
+
+
+
+
+{\ttfamily \#include $<$Edge.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_edge_afdb566fe3d71b657aa3211783c336a6d}{Edge} (const unsigned int tdc\+ID, const unsigned int channel\+ID, const unsigned int timestamp)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_edge_a43d8c30ccdc68a6f7a37bb0163b6829d}{get\+T\+D\+C\+ID} () const
+\begin{DoxyCompactList}\small\item\em Getter for the edge T\+DC ID. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_edge_a5420f88056570dc33c697c99a211634c}{get\+Channel\+ID} () const
+\begin{DoxyCompactList}\small\item\em Getter for the edge channel ID. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_edge_a463ea176ce520b5a280a15b15b41dd1e}{get\+Timestamp} () const
+\begin{DoxyCompactList}\small\item\em Getter for the edge timestamp. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_edge_a67a04612cd6037408c691ab35d076ed7}{get\+Fine\+Timestamp} () const
+\begin{DoxyCompactList}\small\item\em Getter for the edge fine timestamp. \end{DoxyCompactList}\item 
+bool \hyperlink{class_edge_ab6a06c5da57efed1991960f61e870c8b}{operator$<$} (const \hyperlink{class_edge}{Edge} \&other) const
+\begin{DoxyCompactList}\small\item\em Operator overload to allow edges to be sorted by time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \hyperlink{class_edge_ae6af56a9eb09e6fcc56032a7c14c6c02}{m\+\_\+tdc\+ID}
+\begin{DoxyCompactList}\small\item\em The T\+DC ID of the edge. \end{DoxyCompactList}\item 
+const unsigned int \hyperlink{class_edge_af0ac0fc79aff55754ffbd152a2f71452}{m\+\_\+channel\+ID}
+\begin{DoxyCompactList}\small\item\em The channel ID of the edge. \end{DoxyCompactList}\item 
+const unsigned int \hyperlink{class_edge_a9d018b223c2f920915010a29991b3b3f}{m\+\_\+timestamp}
+\begin{DoxyCompactList}\small\item\em The timestamp of the edge. \end{DoxyCompactList}\item 
+const unsigned int \hyperlink{class_edge_a62771c5655734e0ea5ebc8e2743130b6}{m\+\_\+fine\+Timestamp}
+\begin{DoxyCompactList}\small\item\em The fine timestamp of the edge. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Container class for \hyperlink{class_edge}{Edge} information. 
+
+Stores all information relevant to a single leading or trailing edge 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_edge_afdb566fe3d71b657aa3211783c336a6d}\label{class_edge_afdb566fe3d71b657aa3211783c336a6d}} 
+\index{Edge@{Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{Edge()}{Edge()}}
+{\footnotesize\ttfamily Edge\+::\+Edge (\begin{DoxyParamCaption}\item[{const unsigned int}]{tdc\+ID,  }\item[{const unsigned int}]{channel\+ID,  }\item[{const unsigned int}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_edge_a5420f88056570dc33c697c99a211634c}\label{class_edge_a5420f88056570dc33c697c99a211634c}} 
+\index{Edge@{Edge}!get\+Channel\+ID@{get\+Channel\+ID}}
+\index{get\+Channel\+ID@{get\+Channel\+ID}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+Channel\+I\+D()}{getChannelID()}}
+{\footnotesize\ttfamily unsigned int Edge\+::get\+Channel\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for the edge channel ID. 
+
+\mbox{\Hypertarget{class_edge_a67a04612cd6037408c691ab35d076ed7}\label{class_edge_a67a04612cd6037408c691ab35d076ed7}} 
+\index{Edge@{Edge}!get\+Fine\+Timestamp@{get\+Fine\+Timestamp}}
+\index{get\+Fine\+Timestamp@{get\+Fine\+Timestamp}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+Fine\+Timestamp()}{getFineTimestamp()}}
+{\footnotesize\ttfamily unsigned int Edge\+::get\+Fine\+Timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for the edge fine timestamp. 
+
+\mbox{\Hypertarget{class_edge_a43d8c30ccdc68a6f7a37bb0163b6829d}\label{class_edge_a43d8c30ccdc68a6f7a37bb0163b6829d}} 
+\index{Edge@{Edge}!get\+T\+D\+C\+ID@{get\+T\+D\+C\+ID}}
+\index{get\+T\+D\+C\+ID@{get\+T\+D\+C\+ID}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+T\+D\+C\+I\+D()}{getTDCID()}}
+{\footnotesize\ttfamily unsigned int Edge\+::get\+T\+D\+C\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for the edge T\+DC ID. 
+
+\mbox{\Hypertarget{class_edge_a463ea176ce520b5a280a15b15b41dd1e}\label{class_edge_a463ea176ce520b5a280a15b15b41dd1e}} 
+\index{Edge@{Edge}!get\+Timestamp@{get\+Timestamp}}
+\index{get\+Timestamp@{get\+Timestamp}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+Timestamp()}{getTimestamp()}}
+{\footnotesize\ttfamily unsigned int Edge\+::get\+Timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for the edge timestamp. 
+
+\mbox{\Hypertarget{class_edge_ab6a06c5da57efed1991960f61e870c8b}\label{class_edge_ab6a06c5da57efed1991960f61e870c8b}} 
+\index{Edge@{Edge}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Edge\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_edge}{Edge} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Operator overload to allow edges to be sorted by time. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_edge_af0ac0fc79aff55754ffbd152a2f71452}\label{class_edge_af0ac0fc79aff55754ffbd152a2f71452}} 
+\index{Edge@{Edge}!m\+\_\+channel\+ID@{m\+\_\+channel\+ID}}
+\index{m\+\_\+channel\+ID@{m\+\_\+channel\+ID}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{m\+\_\+channel\+ID}{m\_channelID}}
+{\footnotesize\ttfamily const unsigned int Edge\+::m\+\_\+channel\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The channel ID of the edge. 
+
+\mbox{\Hypertarget{class_edge_a62771c5655734e0ea5ebc8e2743130b6}\label{class_edge_a62771c5655734e0ea5ebc8e2743130b6}} 
+\index{Edge@{Edge}!m\+\_\+fine\+Timestamp@{m\+\_\+fine\+Timestamp}}
+\index{m\+\_\+fine\+Timestamp@{m\+\_\+fine\+Timestamp}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{m\+\_\+fine\+Timestamp}{m\_fineTimestamp}}
+{\footnotesize\ttfamily const unsigned int Edge\+::m\+\_\+fine\+Timestamp\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The fine timestamp of the edge. 
+
+\mbox{\Hypertarget{class_edge_ae6af56a9eb09e6fcc56032a7c14c6c02}\label{class_edge_ae6af56a9eb09e6fcc56032a7c14c6c02}} 
+\index{Edge@{Edge}!m\+\_\+tdc\+ID@{m\+\_\+tdc\+ID}}
+\index{m\+\_\+tdc\+ID@{m\+\_\+tdc\+ID}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{m\+\_\+tdc\+ID}{m\_tdcID}}
+{\footnotesize\ttfamily const unsigned int Edge\+::m\+\_\+tdc\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The T\+DC ID of the edge. 
+
+\mbox{\Hypertarget{class_edge_a9d018b223c2f920915010a29991b3b3f}\label{class_edge_a9d018b223c2f920915010a29991b3b3f}} 
+\index{Edge@{Edge}!m\+\_\+timestamp@{m\+\_\+timestamp}}
+\index{m\+\_\+timestamp@{m\+\_\+timestamp}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{m\+\_\+timestamp}{m\_timestamp}}
+{\footnotesize\ttfamily const unsigned int Edge\+::m\+\_\+timestamp\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The timestamp of the edge. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Abstractions/inc/\hyperlink{_edge_8hpp}{Edge.\+hpp}\item 
+Abstractions/src/\hyperlink{_edge_8cpp}{Edge.\+cpp}\end{DoxyCompactItemize}

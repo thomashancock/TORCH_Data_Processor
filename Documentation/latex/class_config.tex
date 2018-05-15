@@ -1,0 +1,120 @@
+\hypertarget{class_config}{}\section{Config Class Reference}
+\label{class_config}\index{Config@{Config}}
+
+
+Class which manages programs configuration.  
+
+
+
+
+{\ttfamily \#include $<$Config.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_config_af8b0e9dc72b16b73ebb32d177fb93e1b}{Config} (const std\+::string config\+File)
+\begin{DoxyCompactList}\small\item\em Constructor with passed config file. \end{DoxyCompactList}\item 
+bool \hyperlink{class_config_a47870f3f5bc52f5d0aa387c25e431055}{is\+Configured} () const
+\begin{DoxyCompactList}\small\item\em Returns whether config was succesfully read. \end{DoxyCompactList}\item 
+void \hyperlink{class_config_af75cb5a60c6cac9d6f6d030e65a5240a}{print} () const
+\begin{DoxyCompactList}\small\item\em Prints details of the stored configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_config_a3092a6e3ba0458b6bedca09f841f554e}{parse\+Config\+File} (const std\+::string config\+File)
+\begin{DoxyCompactList}\small\item\em Parses options read from the config file. \end{DoxyCompactList}\item 
+void \hyperlink{class_config_a46d81f90a7b6218385e8bfd0a283f6ce}{process\+Node} (T\+X\+M\+L\+Engine $\ast$xml\+Engine, X\+M\+L\+Node\+Pointer\+\_\+t node)
+\begin{DoxyCompactList}\small\item\em Extract information from a node and its children. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_config_a82bcc998ae058699369aee4a189f0ad1}{m\+\_\+config\+Read} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class which manages programs configuration. 
+
+Reads the passed config file and configures the rest of the program accordinly 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_config_af8b0e9dc72b16b73ebb32d177fb93e1b}\label{class_config_af8b0e9dc72b16b73ebb32d177fb93e1b}} 
+\index{Config@{Config}!Config@{Config}}
+\index{Config@{Config}!Config@{Config}}
+\subsubsection{\texorpdfstring{Config()}{Config()}}
+{\footnotesize\ttfamily Config\+::\+Config (\begin{DoxyParamCaption}\item[{const std\+::string}]{config\+File }\end{DoxyParamCaption})}
+
+
+
+Constructor with passed config file. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_config_a47870f3f5bc52f5d0aa387c25e431055}\label{class_config_a47870f3f5bc52f5d0aa387c25e431055}} 
+\index{Config@{Config}!is\+Configured@{is\+Configured}}
+\index{is\+Configured@{is\+Configured}!Config@{Config}}
+\subsubsection{\texorpdfstring{is\+Configured()}{isConfigured()}}
+{\footnotesize\ttfamily bool Config\+::is\+Configured (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns whether config was succesfully read. 
+
+\mbox{\Hypertarget{class_config_a3092a6e3ba0458b6bedca09f841f554e}\label{class_config_a3092a6e3ba0458b6bedca09f841f554e}} 
+\index{Config@{Config}!parse\+Config\+File@{parse\+Config\+File}}
+\index{parse\+Config\+File@{parse\+Config\+File}!Config@{Config}}
+\subsubsection{\texorpdfstring{parse\+Config\+File()}{parseConfigFile()}}
+{\footnotesize\ttfamily void Config\+::parse\+Config\+File (\begin{DoxyParamCaption}\item[{const std\+::string}]{config\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Parses options read from the config file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config\+File} & Path of file to be read \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_config_af75cb5a60c6cac9d6f6d030e65a5240a}\label{class_config_af75cb5a60c6cac9d6f6d030e65a5240a}} 
+\index{Config@{Config}!print@{print}}
+\index{print@{print}!Config@{Config}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Config\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints details of the stored configuration. 
+
+\mbox{\Hypertarget{class_config_a46d81f90a7b6218385e8bfd0a283f6ce}\label{class_config_a46d81f90a7b6218385e8bfd0a283f6ce}} 
+\index{Config@{Config}!process\+Node@{process\+Node}}
+\index{process\+Node@{process\+Node}!Config@{Config}}
+\subsubsection{\texorpdfstring{process\+Node()}{processNode()}}
+{\footnotesize\ttfamily void Config\+::process\+Node (\begin{DoxyParamCaption}\item[{T\+X\+M\+L\+Engine $\ast$}]{xml\+Engine,  }\item[{X\+M\+L\+Node\+Pointer\+\_\+t}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Extract information from a node and its children. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xml\+Engine} & X\+ML Engine pointer \\
+\hline
+{\em node} & Node to be processed \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_config_a82bcc998ae058699369aee4a189f0ad1}\label{class_config_a82bcc998ae058699369aee4a189f0ad1}} 
+\index{Config@{Config}!m\+\_\+config\+Read@{m\+\_\+config\+Read}}
+\index{m\+\_\+config\+Read@{m\+\_\+config\+Read}!Config@{Config}}
+\subsubsection{\texorpdfstring{m\+\_\+config\+Read}{m\_configRead}}
+{\footnotesize\ttfamily bool Config\+::m\+\_\+config\+Read = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Core/inc/\hyperlink{_config_8hpp}{Config.\+hpp}\item 
+Core/src/\hyperlink{_config_8cpp}{Config.\+cpp}\end{DoxyCompactItemize}

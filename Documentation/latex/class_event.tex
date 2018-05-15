@@ -1,0 +1,155 @@
+\hypertarget{class_event}{}\section{Event Class Reference}
+\label{class_event}\index{Event@{Event}}
+
+
+Container class for Packets.  
+
+
+
+
+{\ttfamily \#include $<$Event.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_event_a6e0319cd5e7b0e8b232e3c829c2ad00c}{Event} (const std\+::list$<$ unsigned int $>$ \&tdc\+I\+Ds)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_event_a08c4689086126f702d3b14be99461c98}{add\+Packet} (std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ packet)
+\begin{DoxyCompactList}\small\item\em Attempts to add a packet to the \hyperlink{class_event}{Event} object. \end{DoxyCompactList}\item 
+bool \hyperlink{class_event_a2a00b2c0c579397ac93c834cf987cbd9}{is\+Complete} () const
+\begin{DoxyCompactList}\small\item\em Checks whether a \hyperlink{class_packet}{Packet} is stored for all T\+DC I\+Ds. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_event_a3f48bec589c70aa0d36fd5cb253ad88c}{get\+Event\+ID} ()
+\begin{DoxyCompactList}\small\item\em Gets the \hyperlink{class_event}{Event} ID for which the \hyperlink{class_event}{Event} object is storing Packets. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ $>$ \hyperlink{class_event_a4a7c0f87ea9fd8526451d6eddc3a592e}{remove\+Packets} ()
+\begin{DoxyCompactList}\small\item\em Returns a stored \hyperlink{class_packet}{Packet}. \end{DoxyCompactList}\item 
+void \hyperlink{class_event_ab1b48a39a41a7fc92a25617adcf68aa8}{print} () const
+\begin{DoxyCompactList}\small\item\em Prints information about the event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{class_event_af0c352ab6a128f9df56b231d941aff25}{m\+\_\+event\+ID} = 0
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_event}{Event} ID which all stored packets should have. \end{DoxyCompactList}\item 
+bool \hyperlink{class_event_a3b435b2fe840647c01ae0ee838b66a54}{m\+\_\+is\+Event\+I\+D\+Set} = false
+\begin{DoxyCompactList}\small\item\em bool to tell whether \hyperlink{class_event}{Event} ID has been set by the first stored \hyperlink{class_packet}{Packet} \end{DoxyCompactList}\item 
+std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ $>$ \hyperlink{class_event_a6aabddb7af6189a884d8eacd582bc10f}{m\+\_\+packet\+Map}
+\begin{DoxyCompactList}\small\item\em Map to store Packets by T\+DC ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Container class for Packets. 
+
+This class is used to store Packets determined to correspond to the same event.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_packet}{Packet} 
+\end{DoxySeeAlso}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_event_a6e0319cd5e7b0e8b232e3c829c2ad00c}\label{class_event_a6e0319cd5e7b0e8b232e3c829c2ad00c}} 
+\index{Event@{Event}!Event@{Event}}
+\index{Event@{Event}!Event@{Event}}
+\subsubsection{\texorpdfstring{Event()}{Event()}}
+{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{const std\+::list$<$ unsigned int $>$ \&}]{tdc\+I\+Ds }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+T\+DC ID list will be used to check whether packets have been stored all T\+D\+Cs. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_event_a08c4689086126f702d3b14be99461c98}\label{class_event_a08c4689086126f702d3b14be99461c98}} 
+\index{Event@{Event}!add\+Packet@{add\+Packet}}
+\index{add\+Packet@{add\+Packet}!Event@{Event}}
+\subsubsection{\texorpdfstring{add\+Packet()}{addPacket()}}
+{\footnotesize\ttfamily void Event\+::add\+Packet (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$}]{packet }\end{DoxyParamCaption})}
+
+
+
+Attempts to add a packet to the \hyperlink{class_event}{Event} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & Pointer to the \hyperlink{class_packet}{Packet} being added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_event_a3f48bec589c70aa0d36fd5cb253ad88c}\label{class_event_a3f48bec589c70aa0d36fd5cb253ad88c}} 
+\index{Event@{Event}!get\+Event\+ID@{get\+Event\+ID}}
+\index{get\+Event\+ID@{get\+Event\+ID}!Event@{Event}}
+\subsubsection{\texorpdfstring{get\+Event\+I\+D()}{getEventID()}}
+{\footnotesize\ttfamily unsigned int Event\+::get\+Event\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the \hyperlink{class_event}{Event} ID for which the \hyperlink{class_event}{Event} object is storing Packets. 
+
+\mbox{\Hypertarget{class_event_a2a00b2c0c579397ac93c834cf987cbd9}\label{class_event_a2a00b2c0c579397ac93c834cf987cbd9}} 
+\index{Event@{Event}!is\+Complete@{is\+Complete}}
+\index{is\+Complete@{is\+Complete}!Event@{Event}}
+\subsubsection{\texorpdfstring{is\+Complete()}{isComplete()}}
+{\footnotesize\ttfamily bool Event\+::is\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks whether a \hyperlink{class_packet}{Packet} is stored for all T\+DC I\+Ds. 
+
+\mbox{\Hypertarget{class_event_ab1b48a39a41a7fc92a25617adcf68aa8}\label{class_event_ab1b48a39a41a7fc92a25617adcf68aa8}} 
+\index{Event@{Event}!print@{print}}
+\index{print@{print}!Event@{Event}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Event\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints information about the event. 
+
+\mbox{\Hypertarget{class_event_a4a7c0f87ea9fd8526451d6eddc3a592e}\label{class_event_a4a7c0f87ea9fd8526451d6eddc3a592e}} 
+\index{Event@{Event}!remove\+Packets@{remove\+Packets}}
+\index{remove\+Packets@{remove\+Packets}!Event@{Event}}
+\subsubsection{\texorpdfstring{remove\+Packets()}{removePackets()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ $>$ Event\+::remove\+Packets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a stored \hyperlink{class_packet}{Packet}. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_event_af0c352ab6a128f9df56b231d941aff25}\label{class_event_af0c352ab6a128f9df56b231d941aff25}} 
+\index{Event@{Event}!m\+\_\+event\+ID@{m\+\_\+event\+ID}}
+\index{m\+\_\+event\+ID@{m\+\_\+event\+ID}!Event@{Event}}
+\subsubsection{\texorpdfstring{m\+\_\+event\+ID}{m\_eventID}}
+{\footnotesize\ttfamily unsigned int Event\+::m\+\_\+event\+ID = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\hyperlink{class_event}{Event} ID which all stored packets should have. 
+
+\mbox{\Hypertarget{class_event_a3b435b2fe840647c01ae0ee838b66a54}\label{class_event_a3b435b2fe840647c01ae0ee838b66a54}} 
+\index{Event@{Event}!m\+\_\+is\+Event\+I\+D\+Set@{m\+\_\+is\+Event\+I\+D\+Set}}
+\index{m\+\_\+is\+Event\+I\+D\+Set@{m\+\_\+is\+Event\+I\+D\+Set}!Event@{Event}}
+\subsubsection{\texorpdfstring{m\+\_\+is\+Event\+I\+D\+Set}{m\_isEventIDSet}}
+{\footnotesize\ttfamily bool Event\+::m\+\_\+is\+Event\+I\+D\+Set = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+bool to tell whether \hyperlink{class_event}{Event} ID has been set by the first stored \hyperlink{class_packet}{Packet} 
+
+\mbox{\Hypertarget{class_event_a6aabddb7af6189a884d8eacd582bc10f}\label{class_event_a6aabddb7af6189a884d8eacd582bc10f}} 
+\index{Event@{Event}!m\+\_\+packet\+Map@{m\+\_\+packet\+Map}}
+\index{m\+\_\+packet\+Map@{m\+\_\+packet\+Map}!Event@{Event}}
+\subsubsection{\texorpdfstring{m\+\_\+packet\+Map}{m\_packetMap}}
+{\footnotesize\ttfamily std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$\hyperlink{class_packet}{Packet}$>$ $>$ Event\+::m\+\_\+packet\+Map\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map to store Packets by T\+DC ID. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Abstractions/inc/\hyperlink{_event_8hpp}{Event.\+hpp}\item 
+Abstractions/src/\hyperlink{_event_8cpp}{Event.\+cpp}\end{DoxyCompactItemize}

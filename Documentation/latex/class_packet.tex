@@ -1,0 +1,469 @@
+\hypertarget{class_packet}{}\section{Packet Class Reference}
+\label{class_packet}\index{Packet@{Packet}}
+
+
+Stores all the information relevant to a single packet of data.  
+
+
+
+
+{\ttfamily \#include $<$Packet.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_packet_a4b142794d6864d4d7949ba5e800ee1be}{Packet} (const unsigned int roc\+Value)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{class_packet_ae70511a50e1f186b8a3369ee6ab8589c}{is\+Good} () const
+\begin{DoxyCompactList}\small\item\em Quick check for if the packet is complete and consistent. \end{DoxyCompactList}\item 
+bool \hyperlink{class_packet_a6b5ce354c03663c98cccd31ad9a6f5ff}{is\+Complete} () const
+\begin{DoxyCompactList}\small\item\em Checks the packet contains both header and trailer information. \end{DoxyCompactList}\item 
+bool \hyperlink{class_packet_a8d9e544f6f56389fa13bb01b2d37ca58}{is\+Consistent} () const
+\begin{DoxyCompactList}\small\item\em Checks the packet contains consitent information. \end{DoxyCompactList}\item 
+void \hyperlink{class_packet_a7f710ea08bf8d264beb1361f19cc3afb}{add\+Header} (const unsigned int word)
+\begin{DoxyCompactList}\small\item\em Adds information corresponding to a header word to the packet. \end{DoxyCompactList}\item 
+void \hyperlink{class_packet_a13eccb2f6b6d527549839579920e5105}{add\+Trailer} (const unsigned int word)
+\begin{DoxyCompactList}\small\item\em Adds information corresponding to a trailer word to the packet. \end{DoxyCompactList}\item 
+void \hyperlink{class_packet_af3582cfb4893a3f61cb3e7b11e75787f}{add\+Dataline} (const unsigned int word)
+\begin{DoxyCompactList}\small\item\em Adds information corresponding to a data word to the packet. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a4f4c3d99d89506a577073a2ce9e75e95}{get\+T\+D\+C\+ID} () const
+\begin{DoxyCompactList}\small\item\em Returns the stored T\+DC ID. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a9a4d664eb908d788fc71bee88b905747}{get\+Event\+ID} () const
+\begin{DoxyCompactList}\small\item\em Returns the stored event ID. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a3965d1b3a0e88e2af7cd1bd5ca97e009}{get\+Bunch\+ID} () const
+\begin{DoxyCompactList}\small\item\em Returns the stored bunch ID. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_aaa356da77eccb505207544c8034c1356}{get\+Word\+Count} () const
+\begin{DoxyCompactList}\small\item\em Returns the stored word count. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a2a46912b82833c80b53e01114ef701a1}{get\+R\+O\+C\+Value} () const
+\begin{DoxyCompactList}\small\item\em Returns the stored R\+OC value. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a461a138986888a01fb04205512a37410}{get\+N\+Leading\+Edges} () const
+\begin{DoxyCompactList}\small\item\em Returns the number of stored leading edges. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_aed7b21042c14e00546a2f4600d3b57d1}{get\+N\+Trailing\+Edges} () const
+\begin{DoxyCompactList}\small\item\em Returns the number of stored trailing edges. \end{DoxyCompactList}\item 
+\hyperlink{class_edge}{Edge} \hyperlink{class_packet_a457fdd6c0e5cdb161a77550203504e6d}{get\+Edge} (const bool leading, const unsigned int edge\+No) const
+\begin{DoxyCompactList}\small\item\em Returns the channel ID of the egde requested. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a8a767973ff4b30b417716bbb071ccf33}{get\+Channel\+ID} (const bool leading, const unsigned int edge\+No) const
+\begin{DoxyCompactList}\small\item\em Returns the channel ID of the egde requested. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a7a15b0965a125dd8441297007581c637}{get\+Timestamp} (const bool leading, const unsigned int edge\+No) const
+\begin{DoxyCompactList}\small\item\em Returns the timestamp of the egde requested. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_aafbf1d7b7303ef5f3919e7ed9f8065f8}{get\+Fine\+Timestamp} (const bool leading, const unsigned int edge\+No) const
+\begin{DoxyCompactList}\small\item\em Returns the fine timestamp of the egde requested. \end{DoxyCompactList}\item 
+void \hyperlink{class_packet_aec87fc2f2473111a694ad8b6f60e7666}{print} () const
+\begin{DoxyCompactList}\small\item\em Write human-\/readable informaton about the packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{class_packet_af3abe7485b62e417e83b11c8891ba7a6}{get\+Edge\+Value} (const bool leading, const unsigned int edge\+No, unsigned int(Edge\+::$\ast$getter)() const) const
+\begin{DoxyCompactList}\small\item\em Returns the value returned by the specified getter function for an edge. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \hyperlink{class_packet_ac4587a52a089f8fa1b7a899e4b46cb7d}{m\+\_\+roc\+Value}
+\begin{DoxyCompactList}\small\item\em R\+OC value which triggered the packet\textquotesingle{}s creation. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a0f39ba4b6d5a8732381c1bcbbeeb7eb9}{m\+\_\+tdc\+I\+D\+Header} = 0
+\begin{DoxyCompactList}\small\item\em The T\+DC ID decoded from the header. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a3abf93570be0669506f39b391bc574ca}{m\+\_\+event\+I\+D\+Header} = 0
+\begin{DoxyCompactList}\small\item\em The event ID decoded from the header. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_ad0a2dce379a45ee0f899d495f5e760fc}{m\+\_\+bunch\+ID} = 0
+\begin{DoxyCompactList}\small\item\em The bunch ID decoded from the header. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_aad739524a3b965eef89c827339b2e1f2}{m\+\_\+tdc\+I\+D\+Trailer} = 0
+\begin{DoxyCompactList}\small\item\em The T\+DC ID decoded from the trailer. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_ae32fc3c9665b68f00dabd9327d4c84c6}{m\+\_\+event\+I\+D\+Trailer} = 0
+\begin{DoxyCompactList}\small\item\em The event ID decoded from the trailer. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a6c3f1d98101c049bc032aca63d244b89}{m\+\_\+word\+Count} = 0
+\begin{DoxyCompactList}\small\item\em The word count decoded from the trailer. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_edge}{Edge} $>$ \hyperlink{class_packet_afea7ea47b52850e2f68b237036ceb3e1}{m\+\_\+leading\+Edges}
+\begin{DoxyCompactList}\small\item\em Vector storing all leading edge information. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_edge}{Edge} $>$ \hyperlink{class_packet_a0a91b78992e75fd203a187dcb34a81c1}{m\+\_\+trailing\+Edges}
+\begin{DoxyCompactList}\small\item\em Vector storing all trailing edge information. \end{DoxyCompactList}\item 
+bool \hyperlink{class_packet_aaf9fa3ad2c94bec82a748366fb00ecc7}{m\+\_\+header\+Added} = false
+\begin{DoxyCompactList}\small\item\em Stores whether a header line has been added. \end{DoxyCompactList}\item 
+bool \hyperlink{class_packet_a046581698cdcca7297109ceaeed7e014}{m\+\_\+trailer\+Added} = false
+\begin{DoxyCompactList}\small\item\em Stores whether a trailer line has been added. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores all the information relevant to a single packet of data. 
+
+Decodes data lines and stores the decoded information. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_packet_a4b142794d6864d4d7949ba5e800ee1be}\label{class_packet_a4b142794d6864d4d7949ba5e800ee1be}} 
+\index{Packet@{Packet}!Packet@{Packet}}
+\index{Packet@{Packet}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{Packet()}{Packet()}}
+{\footnotesize\ttfamily Packet\+::\+Packet (\begin{DoxyParamCaption}\item[{const unsigned int}]{roc\+Value }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roc\+Value} & R\+OC value which triggered the packet\textquotesingle{}s creation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_packet_af3582cfb4893a3f61cb3e7b11e75787f}\label{class_packet_af3582cfb4893a3f61cb3e7b11e75787f}} 
+\index{Packet@{Packet}!add\+Dataline@{add\+Dataline}}
+\index{add\+Dataline@{add\+Dataline}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{add\+Dataline()}{addDataline()}}
+{\footnotesize\ttfamily void Packet\+::add\+Dataline (\begin{DoxyParamCaption}\item[{const unsigned int}]{word }\end{DoxyParamCaption})}
+
+
+
+Adds information corresponding to a data word to the packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The word being added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_packet_a7f710ea08bf8d264beb1361f19cc3afb}\label{class_packet_a7f710ea08bf8d264beb1361f19cc3afb}} 
+\index{Packet@{Packet}!add\+Header@{add\+Header}}
+\index{add\+Header@{add\+Header}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{add\+Header()}{addHeader()}}
+{\footnotesize\ttfamily void Packet\+::add\+Header (\begin{DoxyParamCaption}\item[{const unsigned int}]{word }\end{DoxyParamCaption})}
+
+
+
+Adds information corresponding to a header word to the packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The word being added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_packet_a13eccb2f6b6d527549839579920e5105}\label{class_packet_a13eccb2f6b6d527549839579920e5105}} 
+\index{Packet@{Packet}!add\+Trailer@{add\+Trailer}}
+\index{add\+Trailer@{add\+Trailer}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{add\+Trailer()}{addTrailer()}}
+{\footnotesize\ttfamily void Packet\+::add\+Trailer (\begin{DoxyParamCaption}\item[{const unsigned int}]{word }\end{DoxyParamCaption})}
+
+
+
+Adds information corresponding to a trailer word to the packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The word being added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_packet_a3965d1b3a0e88e2af7cd1bd5ca97e009}\label{class_packet_a3965d1b3a0e88e2af7cd1bd5ca97e009}} 
+\index{Packet@{Packet}!get\+Bunch\+ID@{get\+Bunch\+ID}}
+\index{get\+Bunch\+ID@{get\+Bunch\+ID}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+Bunch\+I\+D()}{getBunchID()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+Bunch\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the stored bunch ID. 
+
+\mbox{\Hypertarget{class_packet_a8a767973ff4b30b417716bbb071ccf33}\label{class_packet_a8a767973ff4b30b417716bbb071ccf33}} 
+\index{Packet@{Packet}!get\+Channel\+ID@{get\+Channel\+ID}}
+\index{get\+Channel\+ID@{get\+Channel\+ID}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+Channel\+I\+D()}{getChannelID()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+Channel\+ID (\begin{DoxyParamCaption}\item[{const bool}]{leading,  }\item[{const unsigned int}]{edge\+No }\end{DoxyParamCaption}) const}
+
+
+
+Returns the channel ID of the egde requested. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em leading} & Get from leading edge of trailing egde \\
+\hline
+{\em edge\+No} & \hyperlink{class_edge}{Edge} number requested \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_packet_a457fdd6c0e5cdb161a77550203504e6d}\label{class_packet_a457fdd6c0e5cdb161a77550203504e6d}} 
+\index{Packet@{Packet}!get\+Edge@{get\+Edge}}
+\index{get\+Edge@{get\+Edge}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+Edge()}{getEdge()}}
+{\footnotesize\ttfamily \hyperlink{class_edge}{Edge} Packet\+::get\+Edge (\begin{DoxyParamCaption}\item[{const bool}]{leading,  }\item[{const unsigned int}]{edge\+No }\end{DoxyParamCaption}) const}
+
+
+
+Returns the channel ID of the egde requested. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em leading} & Get from leading edge of trailing egde \\
+\hline
+{\em edge\+No} & \hyperlink{class_edge}{Edge} number requested \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_packet_af3abe7485b62e417e83b11c8891ba7a6}\label{class_packet_af3abe7485b62e417e83b11c8891ba7a6}} 
+\index{Packet@{Packet}!get\+Edge\+Value@{get\+Edge\+Value}}
+\index{get\+Edge\+Value@{get\+Edge\+Value}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+Edge\+Value()}{getEdgeValue()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+Edge\+Value (\begin{DoxyParamCaption}\item[{const bool}]{leading,  }\item[{const unsigned int}]{edge\+No,  }\item[{unsigned int(Edge\+::$\ast$)() const}]{getter }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Returns the value returned by the specified getter function for an edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em leading} & Get from leading edge of trailing egde \\
+\hline
+{\em edge\+No} & \hyperlink{class_edge}{Edge} number requested \\
+\hline
+{\em getter} & Function pointer for edge getter function \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_packet_a9a4d664eb908d788fc71bee88b905747}\label{class_packet_a9a4d664eb908d788fc71bee88b905747}} 
+\index{Packet@{Packet}!get\+Event\+ID@{get\+Event\+ID}}
+\index{get\+Event\+ID@{get\+Event\+ID}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+Event\+I\+D()}{getEventID()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+Event\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the stored event ID. 
+
+\mbox{\Hypertarget{class_packet_aafbf1d7b7303ef5f3919e7ed9f8065f8}\label{class_packet_aafbf1d7b7303ef5f3919e7ed9f8065f8}} 
+\index{Packet@{Packet}!get\+Fine\+Timestamp@{get\+Fine\+Timestamp}}
+\index{get\+Fine\+Timestamp@{get\+Fine\+Timestamp}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+Fine\+Timestamp()}{getFineTimestamp()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+Fine\+Timestamp (\begin{DoxyParamCaption}\item[{const bool}]{leading,  }\item[{const unsigned int}]{edge\+No }\end{DoxyParamCaption}) const}
+
+
+
+Returns the fine timestamp of the egde requested. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em leading} & Get from leading edge of trailing egde \\
+\hline
+{\em edge\+No} & \hyperlink{class_edge}{Edge} number requested \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_packet_a461a138986888a01fb04205512a37410}\label{class_packet_a461a138986888a01fb04205512a37410}} 
+\index{Packet@{Packet}!get\+N\+Leading\+Edges@{get\+N\+Leading\+Edges}}
+\index{get\+N\+Leading\+Edges@{get\+N\+Leading\+Edges}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+N\+Leading\+Edges()}{getNLeadingEdges()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+N\+Leading\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the number of stored leading edges. 
+
+\mbox{\Hypertarget{class_packet_aed7b21042c14e00546a2f4600d3b57d1}\label{class_packet_aed7b21042c14e00546a2f4600d3b57d1}} 
+\index{Packet@{Packet}!get\+N\+Trailing\+Edges@{get\+N\+Trailing\+Edges}}
+\index{get\+N\+Trailing\+Edges@{get\+N\+Trailing\+Edges}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+N\+Trailing\+Edges()}{getNTrailingEdges()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+N\+Trailing\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the number of stored trailing edges. 
+
+\mbox{\Hypertarget{class_packet_a2a46912b82833c80b53e01114ef701a1}\label{class_packet_a2a46912b82833c80b53e01114ef701a1}} 
+\index{Packet@{Packet}!get\+R\+O\+C\+Value@{get\+R\+O\+C\+Value}}
+\index{get\+R\+O\+C\+Value@{get\+R\+O\+C\+Value}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+R\+O\+C\+Value()}{getROCValue()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+R\+O\+C\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the stored R\+OC value. 
+
+\mbox{\Hypertarget{class_packet_a4f4c3d99d89506a577073a2ce9e75e95}\label{class_packet_a4f4c3d99d89506a577073a2ce9e75e95}} 
+\index{Packet@{Packet}!get\+T\+D\+C\+ID@{get\+T\+D\+C\+ID}}
+\index{get\+T\+D\+C\+ID@{get\+T\+D\+C\+ID}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+T\+D\+C\+I\+D()}{getTDCID()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+T\+D\+C\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the stored T\+DC ID. 
+
+\mbox{\Hypertarget{class_packet_a7a15b0965a125dd8441297007581c637}\label{class_packet_a7a15b0965a125dd8441297007581c637}} 
+\index{Packet@{Packet}!get\+Timestamp@{get\+Timestamp}}
+\index{get\+Timestamp@{get\+Timestamp}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+Timestamp()}{getTimestamp()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+Timestamp (\begin{DoxyParamCaption}\item[{const bool}]{leading,  }\item[{const unsigned int}]{edge\+No }\end{DoxyParamCaption}) const}
+
+
+
+Returns the timestamp of the egde requested. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em leading} & Get from leading edge of trailing egde \\
+\hline
+{\em edge\+No} & \hyperlink{class_edge}{Edge} number requested \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_packet_aaa356da77eccb505207544c8034c1356}\label{class_packet_aaa356da77eccb505207544c8034c1356}} 
+\index{Packet@{Packet}!get\+Word\+Count@{get\+Word\+Count}}
+\index{get\+Word\+Count@{get\+Word\+Count}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+Word\+Count()}{getWordCount()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+Word\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the stored word count. 
+
+\mbox{\Hypertarget{class_packet_a6b5ce354c03663c98cccd31ad9a6f5ff}\label{class_packet_a6b5ce354c03663c98cccd31ad9a6f5ff}} 
+\index{Packet@{Packet}!is\+Complete@{is\+Complete}}
+\index{is\+Complete@{is\+Complete}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{is\+Complete()}{isComplete()}}
+{\footnotesize\ttfamily bool Packet\+::is\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks the packet contains both header and trailer information. 
+
+\mbox{\Hypertarget{class_packet_a8d9e544f6f56389fa13bb01b2d37ca58}\label{class_packet_a8d9e544f6f56389fa13bb01b2d37ca58}} 
+\index{Packet@{Packet}!is\+Consistent@{is\+Consistent}}
+\index{is\+Consistent@{is\+Consistent}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{is\+Consistent()}{isConsistent()}}
+{\footnotesize\ttfamily bool Packet\+::is\+Consistent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks the packet contains consitent information. 
+
+Checks the Header and Trailer T\+DC ID and event ID match. Ensures the T\+DC ID for each edge matches the header ID. \mbox{\Hypertarget{class_packet_ae70511a50e1f186b8a3369ee6ab8589c}\label{class_packet_ae70511a50e1f186b8a3369ee6ab8589c}} 
+\index{Packet@{Packet}!is\+Good@{is\+Good}}
+\index{is\+Good@{is\+Good}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{is\+Good()}{isGood()}}
+{\footnotesize\ttfamily bool Packet\+::is\+Good (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Quick check for if the packet is complete and consistent. 
+
+\mbox{\Hypertarget{class_packet_aec87fc2f2473111a694ad8b6f60e7666}\label{class_packet_aec87fc2f2473111a694ad8b6f60e7666}} 
+\index{Packet@{Packet}!print@{print}}
+\index{print@{print}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Packet\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Write human-\/readable informaton about the packet. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_packet_ad0a2dce379a45ee0f899d495f5e760fc}\label{class_packet_ad0a2dce379a45ee0f899d495f5e760fc}} 
+\index{Packet@{Packet}!m\+\_\+bunch\+ID@{m\+\_\+bunch\+ID}}
+\index{m\+\_\+bunch\+ID@{m\+\_\+bunch\+ID}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+bunch\+ID}{m\_bunchID}}
+{\footnotesize\ttfamily unsigned int Packet\+::m\+\_\+bunch\+ID = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The bunch ID decoded from the header. 
+
+\mbox{\Hypertarget{class_packet_a3abf93570be0669506f39b391bc574ca}\label{class_packet_a3abf93570be0669506f39b391bc574ca}} 
+\index{Packet@{Packet}!m\+\_\+event\+I\+D\+Header@{m\+\_\+event\+I\+D\+Header}}
+\index{m\+\_\+event\+I\+D\+Header@{m\+\_\+event\+I\+D\+Header}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+event\+I\+D\+Header}{m\_eventIDHeader}}
+{\footnotesize\ttfamily unsigned int Packet\+::m\+\_\+event\+I\+D\+Header = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The event ID decoded from the header. 
+
+\mbox{\Hypertarget{class_packet_ae32fc3c9665b68f00dabd9327d4c84c6}\label{class_packet_ae32fc3c9665b68f00dabd9327d4c84c6}} 
+\index{Packet@{Packet}!m\+\_\+event\+I\+D\+Trailer@{m\+\_\+event\+I\+D\+Trailer}}
+\index{m\+\_\+event\+I\+D\+Trailer@{m\+\_\+event\+I\+D\+Trailer}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+event\+I\+D\+Trailer}{m\_eventIDTrailer}}
+{\footnotesize\ttfamily unsigned int Packet\+::m\+\_\+event\+I\+D\+Trailer = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The event ID decoded from the trailer. 
+
+\mbox{\Hypertarget{class_packet_aaf9fa3ad2c94bec82a748366fb00ecc7}\label{class_packet_aaf9fa3ad2c94bec82a748366fb00ecc7}} 
+\index{Packet@{Packet}!m\+\_\+header\+Added@{m\+\_\+header\+Added}}
+\index{m\+\_\+header\+Added@{m\+\_\+header\+Added}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+header\+Added}{m\_headerAdded}}
+{\footnotesize\ttfamily bool Packet\+::m\+\_\+header\+Added = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stores whether a header line has been added. 
+
+\mbox{\Hypertarget{class_packet_afea7ea47b52850e2f68b237036ceb3e1}\label{class_packet_afea7ea47b52850e2f68b237036ceb3e1}} 
+\index{Packet@{Packet}!m\+\_\+leading\+Edges@{m\+\_\+leading\+Edges}}
+\index{m\+\_\+leading\+Edges@{m\+\_\+leading\+Edges}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+leading\+Edges}{m\_leadingEdges}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_edge}{Edge}$>$ Packet\+::m\+\_\+leading\+Edges\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vector storing all leading edge information. 
+
+\mbox{\Hypertarget{class_packet_ac4587a52a089f8fa1b7a899e4b46cb7d}\label{class_packet_ac4587a52a089f8fa1b7a899e4b46cb7d}} 
+\index{Packet@{Packet}!m\+\_\+roc\+Value@{m\+\_\+roc\+Value}}
+\index{m\+\_\+roc\+Value@{m\+\_\+roc\+Value}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+roc\+Value}{m\_rocValue}}
+{\footnotesize\ttfamily const unsigned int Packet\+::m\+\_\+roc\+Value\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+R\+OC value which triggered the packet\textquotesingle{}s creation. 
+
+\mbox{\Hypertarget{class_packet_a0f39ba4b6d5a8732381c1bcbbeeb7eb9}\label{class_packet_a0f39ba4b6d5a8732381c1bcbbeeb7eb9}} 
+\index{Packet@{Packet}!m\+\_\+tdc\+I\+D\+Header@{m\+\_\+tdc\+I\+D\+Header}}
+\index{m\+\_\+tdc\+I\+D\+Header@{m\+\_\+tdc\+I\+D\+Header}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+tdc\+I\+D\+Header}{m\_tdcIDHeader}}
+{\footnotesize\ttfamily unsigned int Packet\+::m\+\_\+tdc\+I\+D\+Header = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The T\+DC ID decoded from the header. 
+
+\mbox{\Hypertarget{class_packet_aad739524a3b965eef89c827339b2e1f2}\label{class_packet_aad739524a3b965eef89c827339b2e1f2}} 
+\index{Packet@{Packet}!m\+\_\+tdc\+I\+D\+Trailer@{m\+\_\+tdc\+I\+D\+Trailer}}
+\index{m\+\_\+tdc\+I\+D\+Trailer@{m\+\_\+tdc\+I\+D\+Trailer}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+tdc\+I\+D\+Trailer}{m\_tdcIDTrailer}}
+{\footnotesize\ttfamily unsigned int Packet\+::m\+\_\+tdc\+I\+D\+Trailer = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The T\+DC ID decoded from the trailer. 
+
+\mbox{\Hypertarget{class_packet_a046581698cdcca7297109ceaeed7e014}\label{class_packet_a046581698cdcca7297109ceaeed7e014}} 
+\index{Packet@{Packet}!m\+\_\+trailer\+Added@{m\+\_\+trailer\+Added}}
+\index{m\+\_\+trailer\+Added@{m\+\_\+trailer\+Added}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+trailer\+Added}{m\_trailerAdded}}
+{\footnotesize\ttfamily bool Packet\+::m\+\_\+trailer\+Added = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stores whether a trailer line has been added. 
+
+\mbox{\Hypertarget{class_packet_a0a91b78992e75fd203a187dcb34a81c1}\label{class_packet_a0a91b78992e75fd203a187dcb34a81c1}} 
+\index{Packet@{Packet}!m\+\_\+trailing\+Edges@{m\+\_\+trailing\+Edges}}
+\index{m\+\_\+trailing\+Edges@{m\+\_\+trailing\+Edges}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+trailing\+Edges}{m\_trailingEdges}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{class_edge}{Edge}$>$ Packet\+::m\+\_\+trailing\+Edges\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vector storing all trailing edge information. 
+
+\mbox{\Hypertarget{class_packet_a6c3f1d98101c049bc032aca63d244b89}\label{class_packet_a6c3f1d98101c049bc032aca63d244b89}} 
+\index{Packet@{Packet}!m\+\_\+word\+Count@{m\+\_\+word\+Count}}
+\index{m\+\_\+word\+Count@{m\+\_\+word\+Count}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+word\+Count}{m\_wordCount}}
+{\footnotesize\ttfamily unsigned int Packet\+::m\+\_\+word\+Count = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The word count decoded from the trailer. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Abstractions/inc/\hyperlink{_packet_8hpp}{Packet.\+hpp}\item 
+Abstractions/src/\hyperlink{_packet_8cpp}{Packet.\+cpp}\end{DoxyCompactItemize}

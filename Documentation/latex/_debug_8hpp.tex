@@ -1,0 +1,100 @@
+\hypertarget{_debug_8hpp}{}\section{Core/inc/\+Debug.hpp File Reference}
+\label{_debug_8hpp}\index{Core/inc/\+Debug.\+hpp@{Core/inc/\+Debug.\+hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$ios$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_debug_8hpp_ad4156ce4b39601c9120a655c2ee6442f}{F\+C\+N\+N\+A\+M\+E\+L\+E\+N\+G\+TH}~45
+\item 
+\#define \hyperlink{_debug_8hpp_aa91b2b6aa2442d8685e651ffa9500ee2}{S\+T\+D\+\_\+\+L\+OG}(x)
+\item 
+\#define \hyperlink{_debug_8hpp_a2c4628fa536258a74e9047ed17420ac2}{S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+AR}(x)
+\item 
+\#define \hyperlink{_debug_8hpp_a33be4044dbfd4b89b4bef8602b50004a}{S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+A\+R\+\_\+\+H\+EX}(x)
+\item 
+\#define \hyperlink{_debug_8hpp_a2e40cf1121da97f65cd8cd7a0f4b875c}{S\+T\+D\+\_\+\+E\+RR}(x)
+\item 
+\#define \hyperlink{_debug_8hpp_a9e1796fdadec0df60e8d280ee783b85c}{W\+A\+R\+N\+I\+NG}(x)
+\item 
+\#define \hyperlink{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}{A\+S\+S\+E\+RT}(x)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{_debug_8hpp_ade29d44b4fecc53de55b7bd5dd9fcff7}{trimmed\+String} (const std\+::string \&thing, const unsigned int \&length=\hyperlink{_debug_8hpp_ad4156ce4b39601c9120a655c2ee6442f}{F\+C\+N\+N\+A\+M\+E\+L\+E\+N\+G\+TH})
+\item 
+void \hyperlink{_debug_8hpp_a2ad5ad0553e6f56aa55dd4b5ba8cf196}{force\+Stop} (std\+::string file\+Name, unsigned line\+No)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}\label{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}} 
+\index{Debug.\+hpp@{Debug.\+hpp}!A\+S\+S\+E\+RT@{A\+S\+S\+E\+RT}}
+\index{A\+S\+S\+E\+RT@{A\+S\+S\+E\+RT}!Debug.\+hpp@{Debug.\+hpp}}
+\subsubsection{\texorpdfstring{A\+S\+S\+E\+RT}{ASSERT}}
+{\footnotesize\ttfamily \#define A\+S\+S\+E\+RT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_debug_8hpp_ad4156ce4b39601c9120a655c2ee6442f}\label{_debug_8hpp_ad4156ce4b39601c9120a655c2ee6442f}} 
+\index{Debug.\+hpp@{Debug.\+hpp}!F\+C\+N\+N\+A\+M\+E\+L\+E\+N\+G\+TH@{F\+C\+N\+N\+A\+M\+E\+L\+E\+N\+G\+TH}}
+\index{F\+C\+N\+N\+A\+M\+E\+L\+E\+N\+G\+TH@{F\+C\+N\+N\+A\+M\+E\+L\+E\+N\+G\+TH}!Debug.\+hpp@{Debug.\+hpp}}
+\subsubsection{\texorpdfstring{F\+C\+N\+N\+A\+M\+E\+L\+E\+N\+G\+TH}{FCNNAMELENGTH}}
+{\footnotesize\ttfamily \#define F\+C\+N\+N\+A\+M\+E\+L\+E\+N\+G\+TH~45}
+
+\mbox{\Hypertarget{_debug_8hpp_a2e40cf1121da97f65cd8cd7a0f4b875c}\label{_debug_8hpp_a2e40cf1121da97f65cd8cd7a0f4b875c}} 
+\index{Debug.\+hpp@{Debug.\+hpp}!S\+T\+D\+\_\+\+E\+RR@{S\+T\+D\+\_\+\+E\+RR}}
+\index{S\+T\+D\+\_\+\+E\+RR@{S\+T\+D\+\_\+\+E\+RR}!Debug.\+hpp@{Debug.\+hpp}}
+\subsubsection{\texorpdfstring{S\+T\+D\+\_\+\+E\+RR}{STD\_ERR}}
+{\footnotesize\ttfamily \#define S\+T\+D\+\_\+\+E\+RR(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+std::cerr << \textcolor{stringliteral}{"\(\backslash\)033[1;31m"} << std::left << std::setw(\hyperlink{_debug_8hpp_ad4156ce4b39601c9120a655c2ee6442f}{FCNNAMELENGTH})   \(\backslash\)
+<< \hyperlink{_debug_8hpp_ade29d44b4fecc53de55b7bd5dd9fcff7}{trimmedString}(\_\_PRETTY\_FUNCTION\_\_) << \textcolor{stringliteral}{"  ERROR        "} << \textcolor{stringliteral}{"\(\backslash\)033[0m"} << x << std::endl;
+\end{DoxyCode}
+\mbox{\Hypertarget{_debug_8hpp_aa91b2b6aa2442d8685e651ffa9500ee2}\label{_debug_8hpp_aa91b2b6aa2442d8685e651ffa9500ee2}} 
+\index{Debug.\+hpp@{Debug.\+hpp}!S\+T\+D\+\_\+\+L\+OG@{S\+T\+D\+\_\+\+L\+OG}}
+\index{S\+T\+D\+\_\+\+L\+OG@{S\+T\+D\+\_\+\+L\+OG}!Debug.\+hpp@{Debug.\+hpp}}
+\subsubsection{\texorpdfstring{S\+T\+D\+\_\+\+L\+OG}{STD\_LOG}}
+{\footnotesize\ttfamily \#define S\+T\+D\+\_\+\+L\+OG(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_debug_8hpp_a2c4628fa536258a74e9047ed17420ac2}\label{_debug_8hpp_a2c4628fa536258a74e9047ed17420ac2}} 
+\index{Debug.\+hpp@{Debug.\+hpp}!S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+AR@{S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+AR}}
+\index{S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+AR@{S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+AR}!Debug.\+hpp@{Debug.\+hpp}}
+\subsubsection{\texorpdfstring{S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+AR}{STD\_LOG\_VAR}}
+{\footnotesize\ttfamily \#define S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+AR(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_debug_8hpp_a33be4044dbfd4b89b4bef8602b50004a}\label{_debug_8hpp_a33be4044dbfd4b89b4bef8602b50004a}} 
+\index{Debug.\+hpp@{Debug.\+hpp}!S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+A\+R\+\_\+\+H\+EX@{S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+A\+R\+\_\+\+H\+EX}}
+\index{S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+A\+R\+\_\+\+H\+EX@{S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+A\+R\+\_\+\+H\+EX}!Debug.\+hpp@{Debug.\+hpp}}
+\subsubsection{\texorpdfstring{S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+A\+R\+\_\+\+H\+EX}{STD\_LOG\_VAR\_HEX}}
+{\footnotesize\ttfamily \#define S\+T\+D\+\_\+\+L\+O\+G\+\_\+\+V\+A\+R\+\_\+\+H\+EX(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_debug_8hpp_a9e1796fdadec0df60e8d280ee783b85c}\label{_debug_8hpp_a9e1796fdadec0df60e8d280ee783b85c}} 
+\index{Debug.\+hpp@{Debug.\+hpp}!W\+A\+R\+N\+I\+NG@{W\+A\+R\+N\+I\+NG}}
+\index{W\+A\+R\+N\+I\+NG@{W\+A\+R\+N\+I\+NG}!Debug.\+hpp@{Debug.\+hpp}}
+\subsubsection{\texorpdfstring{W\+A\+R\+N\+I\+NG}{WARNING}}
+{\footnotesize\ttfamily \#define W\+A\+R\+N\+I\+NG(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+std::cout << \textcolor{stringliteral}{"\(\backslash\)033[1;35m"} << std::left << std::setw(\hyperlink{_debug_8hpp_ad4156ce4b39601c9120a655c2ee6442f}{FCNNAMELENGTH}) \(\backslash\)
+<<  \hyperlink{_debug_8hpp_ade29d44b4fecc53de55b7bd5dd9fcff7}{trimmedString}(\_\_PRETTY\_FUNCTION\_\_) << \textcolor{stringliteral}{"  WARNING      "}    << \textcolor{stringliteral}{"\(\backslash\)033[0m"} << x << \textcolor{stringliteral}{"\(\backslash\)n"}
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_debug_8hpp_a2ad5ad0553e6f56aa55dd4b5ba8cf196}\label{_debug_8hpp_a2ad5ad0553e6f56aa55dd4b5ba8cf196}} 
+\index{Debug.\+hpp@{Debug.\+hpp}!force\+Stop@{force\+Stop}}
+\index{force\+Stop@{force\+Stop}!Debug.\+hpp@{Debug.\+hpp}}
+\subsubsection{\texorpdfstring{force\+Stop()}{forceStop()}}
+{\footnotesize\ttfamily void force\+Stop (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name,  }\item[{unsigned}]{line\+No }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{_debug_8hpp_ade29d44b4fecc53de55b7bd5dd9fcff7}\label{_debug_8hpp_ade29d44b4fecc53de55b7bd5dd9fcff7}} 
+\index{Debug.\+hpp@{Debug.\+hpp}!trimmed\+String@{trimmed\+String}}
+\index{trimmed\+String@{trimmed\+String}!Debug.\+hpp@{Debug.\+hpp}}
+\subsubsection{\texorpdfstring{trimmed\+String()}{trimmedString()}}
+{\footnotesize\ttfamily std\+::string trimmed\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{thing,  }\item[{const unsigned int \&}]{length = {\ttfamily \hyperlink{_debug_8hpp_ad4156ce4b39601c9120a655c2ee6442f}{F\+C\+N\+N\+A\+M\+E\+L\+E\+N\+G\+TH}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

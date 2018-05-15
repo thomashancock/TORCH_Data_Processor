@@ -1,0 +1,175 @@
+\hypertarget{class_word_bundle}{}\section{Word\+Bundle Class Reference}
+\label{class_word_bundle}\index{Word\+Bundle@{Word\+Bundle}}
+
+
+{\ttfamily \#include $<$Word\+Bundle.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_word_bundle_aa619f7a96823c2dfe048676e65064ca4}{Word\+Bundle} (const unsigned int readout\+Board\+Number, const char slot)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_word_bundle_a6d781e8e2bf5b1c0b67346bd6fd44ff9}{get\+Readout\+Board\+Number} () const
+\begin{DoxyCompactList}\small\item\em Returns readout board number. \end{DoxyCompactList}\item 
+char \hyperlink{class_word_bundle_a4a8540008b739e4e4b94e665c2e24991}{get\+Slot} () const
+\begin{DoxyCompactList}\small\item\em Returns slot. \end{DoxyCompactList}\item 
+bool \hyperlink{class_word_bundle_a0a817b8d4266b5c2418743bf46ef5dee}{is\+Complete} () const
+\begin{DoxyCompactList}\small\item\em Check if Bundle is complete. \end{DoxyCompactList}\item 
+bool \hyperlink{class_word_bundle_a18bcb8912a877fa9e60cd8ec707e75a3}{empty} () const
+\begin{DoxyCompactList}\small\item\em Is bundle empty. \end{DoxyCompactList}\item 
+void \hyperlink{class_word_bundle_a167d2b6b4f504e4347191a8e5bb47e5e}{add\+Word} (const unsigned int word)
+\begin{DoxyCompactList}\small\item\em Adds a word to the bundle. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_word_bundle_a950e328fdf8b00e59b2d68da5182763f}{get\+Next\+Word} ()
+\begin{DoxyCompactList}\small\item\em Returns the next word in the bundle. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_word_bundle_ad2c91f230ac93d19900eba6b2c64d0e9}{get\+R\+O\+C\+Value} () const
+\begin{DoxyCompactList}\small\item\em Returns the stored R\+OC value. \end{DoxyCompactList}\item 
+void \hyperlink{class_word_bundle_a15e13fdd7380c72be2f42013560d62c3}{set\+Roc\+Value} (const unsigned int roc\+Value)
+\begin{DoxyCompactList}\small\item\em Sets the R\+OC Value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \hyperlink{class_word_bundle_a8c6594819625e90aebfd248a8c11916b}{m\+\_\+readout\+Board\+Number}
+\item 
+const char \hyperlink{class_word_bundle_aad119e71fa785078734438dd49c4dec0}{m\+\_\+slot}
+\item 
+bool \hyperlink{class_word_bundle_a7605157c872054d7ab42b590fac97ca7}{m\+\_\+roc\+Value\+Stored} = false
+\item 
+std\+::queue$<$ unsigned int $>$ \hyperlink{class_word_bundle_a58233a5455b9a594e3441dd79e3d6a3b}{m\+\_\+words}
+\item 
+unsigned int \hyperlink{class_word_bundle_a2510a567b83584e8b53395168d53c401}{m\+\_\+roc\+Value} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_word_bundle_aa619f7a96823c2dfe048676e65064ca4}\label{class_word_bundle_aa619f7a96823c2dfe048676e65064ca4}} 
+\index{Word\+Bundle@{Word\+Bundle}!Word\+Bundle@{Word\+Bundle}}
+\index{Word\+Bundle@{Word\+Bundle}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{Word\+Bundle()}{WordBundle()}}
+{\footnotesize\ttfamily Word\+Bundle\+::\+Word\+Bundle (\begin{DoxyParamCaption}\item[{const unsigned int}]{readout\+Board\+Number,  }\item[{const char}]{slot }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_word_bundle_a167d2b6b4f504e4347191a8e5bb47e5e}\label{class_word_bundle_a167d2b6b4f504e4347191a8e5bb47e5e}} 
+\index{Word\+Bundle@{Word\+Bundle}!add\+Word@{add\+Word}}
+\index{add\+Word@{add\+Word}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{add\+Word()}{addWord()}}
+{\footnotesize\ttfamily void Word\+Bundle\+::add\+Word (\begin{DoxyParamCaption}\item[{const unsigned int}]{word }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a word to the bundle. 
+
+\mbox{\Hypertarget{class_word_bundle_a18bcb8912a877fa9e60cd8ec707e75a3}\label{class_word_bundle_a18bcb8912a877fa9e60cd8ec707e75a3}} 
+\index{Word\+Bundle@{Word\+Bundle}!empty@{empty}}
+\index{empty@{empty}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily bool Word\+Bundle\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is bundle empty. 
+
+\mbox{\Hypertarget{class_word_bundle_a950e328fdf8b00e59b2d68da5182763f}\label{class_word_bundle_a950e328fdf8b00e59b2d68da5182763f}} 
+\index{Word\+Bundle@{Word\+Bundle}!get\+Next\+Word@{get\+Next\+Word}}
+\index{get\+Next\+Word@{get\+Next\+Word}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{get\+Next\+Word()}{getNextWord()}}
+{\footnotesize\ttfamily unsigned int Word\+Bundle\+::get\+Next\+Word (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the next word in the bundle. 
+
+\mbox{\Hypertarget{class_word_bundle_a6d781e8e2bf5b1c0b67346bd6fd44ff9}\label{class_word_bundle_a6d781e8e2bf5b1c0b67346bd6fd44ff9}} 
+\index{Word\+Bundle@{Word\+Bundle}!get\+Readout\+Board\+Number@{get\+Readout\+Board\+Number}}
+\index{get\+Readout\+Board\+Number@{get\+Readout\+Board\+Number}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{get\+Readout\+Board\+Number()}{getReadoutBoardNumber()}}
+{\footnotesize\ttfamily unsigned int Word\+Bundle\+::get\+Readout\+Board\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns readout board number. 
+
+\mbox{\Hypertarget{class_word_bundle_ad2c91f230ac93d19900eba6b2c64d0e9}\label{class_word_bundle_ad2c91f230ac93d19900eba6b2c64d0e9}} 
+\index{Word\+Bundle@{Word\+Bundle}!get\+R\+O\+C\+Value@{get\+R\+O\+C\+Value}}
+\index{get\+R\+O\+C\+Value@{get\+R\+O\+C\+Value}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{get\+R\+O\+C\+Value()}{getROCValue()}}
+{\footnotesize\ttfamily unsigned int Word\+Bundle\+::get\+R\+O\+C\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the stored R\+OC value. 
+
+\mbox{\Hypertarget{class_word_bundle_a4a8540008b739e4e4b94e665c2e24991}\label{class_word_bundle_a4a8540008b739e4e4b94e665c2e24991}} 
+\index{Word\+Bundle@{Word\+Bundle}!get\+Slot@{get\+Slot}}
+\index{get\+Slot@{get\+Slot}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{get\+Slot()}{getSlot()}}
+{\footnotesize\ttfamily char Word\+Bundle\+::get\+Slot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns slot. 
+
+\mbox{\Hypertarget{class_word_bundle_a0a817b8d4266b5c2418743bf46ef5dee}\label{class_word_bundle_a0a817b8d4266b5c2418743bf46ef5dee}} 
+\index{Word\+Bundle@{Word\+Bundle}!is\+Complete@{is\+Complete}}
+\index{is\+Complete@{is\+Complete}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{is\+Complete()}{isComplete()}}
+{\footnotesize\ttfamily bool Word\+Bundle\+::is\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if Bundle is complete. 
+
+\mbox{\Hypertarget{class_word_bundle_a15e13fdd7380c72be2f42013560d62c3}\label{class_word_bundle_a15e13fdd7380c72be2f42013560d62c3}} 
+\index{Word\+Bundle@{Word\+Bundle}!set\+Roc\+Value@{set\+Roc\+Value}}
+\index{set\+Roc\+Value@{set\+Roc\+Value}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{set\+Roc\+Value()}{setRocValue()}}
+{\footnotesize\ttfamily void Word\+Bundle\+::set\+Roc\+Value (\begin{DoxyParamCaption}\item[{const unsigned int}]{roc\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the R\+OC Value. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_word_bundle_a8c6594819625e90aebfd248a8c11916b}\label{class_word_bundle_a8c6594819625e90aebfd248a8c11916b}} 
+\index{Word\+Bundle@{Word\+Bundle}!m\+\_\+readout\+Board\+Number@{m\+\_\+readout\+Board\+Number}}
+\index{m\+\_\+readout\+Board\+Number@{m\+\_\+readout\+Board\+Number}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{m\+\_\+readout\+Board\+Number}{m\_readoutBoardNumber}}
+{\footnotesize\ttfamily const unsigned int Word\+Bundle\+::m\+\_\+readout\+Board\+Number\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_word_bundle_a2510a567b83584e8b53395168d53c401}\label{class_word_bundle_a2510a567b83584e8b53395168d53c401}} 
+\index{Word\+Bundle@{Word\+Bundle}!m\+\_\+roc\+Value@{m\+\_\+roc\+Value}}
+\index{m\+\_\+roc\+Value@{m\+\_\+roc\+Value}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{m\+\_\+roc\+Value}{m\_rocValue}}
+{\footnotesize\ttfamily unsigned int Word\+Bundle\+::m\+\_\+roc\+Value = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_word_bundle_a7605157c872054d7ab42b590fac97ca7}\label{class_word_bundle_a7605157c872054d7ab42b590fac97ca7}} 
+\index{Word\+Bundle@{Word\+Bundle}!m\+\_\+roc\+Value\+Stored@{m\+\_\+roc\+Value\+Stored}}
+\index{m\+\_\+roc\+Value\+Stored@{m\+\_\+roc\+Value\+Stored}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{m\+\_\+roc\+Value\+Stored}{m\_rocValueStored}}
+{\footnotesize\ttfamily bool Word\+Bundle\+::m\+\_\+roc\+Value\+Stored = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_word_bundle_aad119e71fa785078734438dd49c4dec0}\label{class_word_bundle_aad119e71fa785078734438dd49c4dec0}} 
+\index{Word\+Bundle@{Word\+Bundle}!m\+\_\+slot@{m\+\_\+slot}}
+\index{m\+\_\+slot@{m\+\_\+slot}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{m\+\_\+slot}{m\_slot}}
+{\footnotesize\ttfamily const char Word\+Bundle\+::m\+\_\+slot\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_word_bundle_a58233a5455b9a594e3441dd79e3d6a3b}\label{class_word_bundle_a58233a5455b9a594e3441dd79e3d6a3b}} 
+\index{Word\+Bundle@{Word\+Bundle}!m\+\_\+words@{m\+\_\+words}}
+\index{m\+\_\+words@{m\+\_\+words}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{m\+\_\+words}{m\_words}}
+{\footnotesize\ttfamily std\+::queue$<$unsigned int$>$ Word\+Bundle\+::m\+\_\+words\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Abstractions/inc/\hyperlink{_word_bundle_8hpp}{Word\+Bundle.\+hpp}\item 
+Abstractions/src/\hyperlink{_word_bundle_8cpp}{Word\+Bundle.\+cpp}\end{DoxyCompactItemize}

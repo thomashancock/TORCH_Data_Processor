@@ -1,0 +1,347 @@
+\hypertarget{class_event_tree_manager}{}\section{Event\+Tree\+Manager Class Reference}
+\label{class_event_tree_manager}\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+
+
+Class which manages storage of \hyperlink{class_event}{Event} data in root file output.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Tree\+Manager.\+hpp$>$}
+
+Inheritance diagram for Event\+Tree\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_event_tree_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_event_tree_manager_ac97238d5991e325f1de2268684889c63}{Event\+Tree\+Manager} (const std\+::string outfile\+Name, const unsigned int n\+T\+D\+Cs)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_event_tree_manager_acabb2f6c8dd0e08375b4cf8bf2c148fd}{add} (std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ event) final
+\begin{DoxyCompactList}\small\item\em Adds an event to the tree, then destroys the event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_event_tree_manager_a11cbe0078aeb3d0fe320bbeec335babc}{set\+Up\+Branches} ()
+\begin{DoxyCompactList}\small\item\em Sets up the branches of the tree. \end{DoxyCompactList}\item 
+void \hyperlink{class_event_tree_manager_a88cf8288ad022053b35192445e77f9a7}{reset\+Tree\+Variables} ()
+\begin{DoxyCompactList}\small\item\em Resets the coutner variables in the tree to their default values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \hyperlink{class_event_tree_manager_a87c672aa1531b362b15eddf11cab00c8}{m\+\_\+n\+T\+D\+Cs}
+\begin{DoxyCompactList}\small\item\em The maximum number of T\+D\+Cs. \end{DoxyCompactList}\item 
+Int\+\_\+t \hyperlink{class_event_tree_manager_ac7c4c6582ba687f5f2f63722085265ee}{b\+\_\+n\+T\+D\+Cs}
+\begin{DoxyCompactList}\small\item\em Branch Variable\+: The number of T\+D\+Cs. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_a3dd2c17302ebd25d8148d8ae1aad2934}{b\+\_\+tdc\+ID} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: T\+CD ID. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_aee650c097b97fb10cb7d187a67b140dc}{b\+\_\+event\+ID} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: \hyperlink{class_event}{Event} ID for each T\+DC. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_af058bf8cb0ba8ec529ade0af79fe1678}{b\+\_\+bunch\+ID} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Bunch ID for each T\+DC. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_af829d81256c1722f7f7c9d083a0ab2af}{b\+\_\+roc\+Time} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: R\+OC value for each T\+DC. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_ae19d6cbe28a00fcdb01ff70079a6bc4f}{b\+\_\+n\+Headers} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Number for headers for each T\+DC. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_a9fc97a4efaccd01a9cdbe9d2c96945e6}{b\+\_\+n\+Leading\+Edges} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Number for leading edges for each T\+DC. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_ab0372ceb9d0f6767293a4c5051a9faed}{b\+\_\+n\+Trailing\+Edges} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Number for trailing edges for each T\+DC. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_a2afa792ed1c43104cc556b9d2cddbaf8}{b\+\_\+n\+Trailers} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Number for trailers for each T\+DC. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_a620baae5d4f40b73d5b374d9aa21c02e}{b\+\_\+word\+Count} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Word count for each T\+DC. \end{DoxyCompactList}\item 
+Int\+\_\+t \hyperlink{class_event_tree_manager_acc87b9298ef951e4fbc2248ebf5c5c2f}{b\+\_\+n\+Edges}
+\begin{DoxyCompactList}\small\item\em Branch Variable\+: Total number of edges. \end{DoxyCompactList}\item 
+Int\+\_\+t \hyperlink{class_event_tree_manager_a4196b62d8f00bf5df0af1d432bdb6f98}{b\+\_\+n\+Hits}
+\begin{DoxyCompactList}\small\item\em Branch Variable\+: Total number of hits. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_a2bb8b2f71311b73c3003b039cb31833d}{b\+\_\+channel\+ID} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Channel I\+Ds for each hit. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_ac677077b9c14946f9461ecaf758a00f1}{b\+\_\+leading\+Time} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Leading time for each hit. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_a96536e0bc82a2b7832ed4c1e1b55e200}{b\+\_\+trailing\+Time} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Trailing time for each hit. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_a825f39c3fc9edd37d0efc0022c307f3c}{b\+\_\+leading\+Time\+Fine} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Fine leading time for each hit. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_a8a586ada4ae87e18dafb9e5dae91dde2}{b\+\_\+trailing\+Time\+Fine} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Fine trailing time for each hit. \end{DoxyCompactList}\item 
+Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_aa65fec5d7e3a3b3983730033a6a4a7b8}{b\+\_\+width} = nullptr
+\begin{DoxyCompactList}\small\item\em Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Width of signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr unsigned int \hyperlink{class_event_tree_manager_aab35ad52374d52149bde894c8af7a8c5}{s\+\_\+hits\+Max} = 500
+\begin{DoxyCompactList}\small\item\em Array size for hit branches. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class which manages storage of \hyperlink{class_event}{Event} data in root file output. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_event_tree_manager_ac97238d5991e325f1de2268684889c63}\label{class_event_tree_manager_ac97238d5991e325f1de2268684889c63}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{Event\+Tree\+Manager()}{EventTreeManager()}}
+{\footnotesize\ttfamily Event\+Tree\+Manager\+::\+Event\+Tree\+Manager (\begin{DoxyParamCaption}\item[{const std\+::string}]{outfile\+Name,  }\item[{const unsigned int}]{n\+T\+D\+Cs }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outfile\+Name} & The desired output file name \\
+\hline
+{\em n\+T\+D\+Cs} & Number of T\+D\+Cs present from config \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_event_tree_manager_acabb2f6c8dd0e08375b4cf8bf2c148fd}\label{class_event_tree_manager_acabb2f6c8dd0e08375b4cf8bf2c148fd}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!add@{add}}
+\index{add@{add}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Event\+Tree\+Manager\+::add (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [virtual]}}
+
+
+
+Adds an event to the tree, then destroys the event. 
+
+Overload of \hyperlink{class_root_manager}{Root\+Manager} add. 
+
+Implements \hyperlink{class_root_manager_a2f05eb45d5eaee1f9f12e299395652fb}{Root\+Manager$<$ Event $>$}.
+
+\mbox{\Hypertarget{class_event_tree_manager_a88cf8288ad022053b35192445e77f9a7}\label{class_event_tree_manager_a88cf8288ad022053b35192445e77f9a7}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!reset\+Tree\+Variables@{reset\+Tree\+Variables}}
+\index{reset\+Tree\+Variables@{reset\+Tree\+Variables}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{reset\+Tree\+Variables()}{resetTreeVariables()}}
+{\footnotesize\ttfamily void Event\+Tree\+Manager\+::reset\+Tree\+Variables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Resets the coutner variables in the tree to their default values. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a11cbe0078aeb3d0fe320bbeec335babc}\label{class_event_tree_manager_a11cbe0078aeb3d0fe320bbeec335babc}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!set\+Up\+Branches@{set\+Up\+Branches}}
+\index{set\+Up\+Branches@{set\+Up\+Branches}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{set\+Up\+Branches()}{setUpBranches()}}
+{\footnotesize\ttfamily void Event\+Tree\+Manager\+::set\+Up\+Branches (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets up the branches of the tree. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_event_tree_manager_af058bf8cb0ba8ec529ade0af79fe1678}\label{class_event_tree_manager_af058bf8cb0ba8ec529ade0af79fe1678}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+bunch\+ID@{b\+\_\+bunch\+ID}}
+\index{b\+\_\+bunch\+ID@{b\+\_\+bunch\+ID}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+bunch\+ID}{b\_bunchID}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+bunch\+ID = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Bunch ID for each T\+DC. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a2bb8b2f71311b73c3003b039cb31833d}\label{class_event_tree_manager_a2bb8b2f71311b73c3003b039cb31833d}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+channel\+ID@{b\+\_\+channel\+ID}}
+\index{b\+\_\+channel\+ID@{b\+\_\+channel\+ID}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+channel\+ID}{b\_channelID}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+channel\+ID = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Channel I\+Ds for each hit. 
+
+\mbox{\Hypertarget{class_event_tree_manager_aee650c097b97fb10cb7d187a67b140dc}\label{class_event_tree_manager_aee650c097b97fb10cb7d187a67b140dc}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+event\+ID@{b\+\_\+event\+ID}}
+\index{b\+\_\+event\+ID@{b\+\_\+event\+ID}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+event\+ID}{b\_eventID}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+event\+ID = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: \hyperlink{class_event}{Event} ID for each T\+DC. 
+
+\mbox{\Hypertarget{class_event_tree_manager_ac677077b9c14946f9461ecaf758a00f1}\label{class_event_tree_manager_ac677077b9c14946f9461ecaf758a00f1}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+leading\+Time@{b\+\_\+leading\+Time}}
+\index{b\+\_\+leading\+Time@{b\+\_\+leading\+Time}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+leading\+Time}{b\_leadingTime}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+leading\+Time = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Leading time for each hit. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a825f39c3fc9edd37d0efc0022c307f3c}\label{class_event_tree_manager_a825f39c3fc9edd37d0efc0022c307f3c}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+leading\+Time\+Fine@{b\+\_\+leading\+Time\+Fine}}
+\index{b\+\_\+leading\+Time\+Fine@{b\+\_\+leading\+Time\+Fine}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+leading\+Time\+Fine}{b\_leadingTimeFine}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+leading\+Time\+Fine = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Fine leading time for each hit. 
+
+\mbox{\Hypertarget{class_event_tree_manager_acc87b9298ef951e4fbc2248ebf5c5c2f}\label{class_event_tree_manager_acc87b9298ef951e4fbc2248ebf5c5c2f}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+n\+Edges@{b\+\_\+n\+Edges}}
+\index{b\+\_\+n\+Edges@{b\+\_\+n\+Edges}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+n\+Edges}{b\_nEdges}}
+{\footnotesize\ttfamily Int\+\_\+t Event\+Tree\+Manager\+::b\+\_\+n\+Edges\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable\+: Total number of edges. 
+
+\mbox{\Hypertarget{class_event_tree_manager_ae19d6cbe28a00fcdb01ff70079a6bc4f}\label{class_event_tree_manager_ae19d6cbe28a00fcdb01ff70079a6bc4f}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+n\+Headers@{b\+\_\+n\+Headers}}
+\index{b\+\_\+n\+Headers@{b\+\_\+n\+Headers}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+n\+Headers}{b\_nHeaders}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+n\+Headers = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Number for headers for each T\+DC. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a4196b62d8f00bf5df0af1d432bdb6f98}\label{class_event_tree_manager_a4196b62d8f00bf5df0af1d432bdb6f98}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+n\+Hits@{b\+\_\+n\+Hits}}
+\index{b\+\_\+n\+Hits@{b\+\_\+n\+Hits}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+n\+Hits}{b\_nHits}}
+{\footnotesize\ttfamily Int\+\_\+t Event\+Tree\+Manager\+::b\+\_\+n\+Hits\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable\+: Total number of hits. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a9fc97a4efaccd01a9cdbe9d2c96945e6}\label{class_event_tree_manager_a9fc97a4efaccd01a9cdbe9d2c96945e6}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+n\+Leading\+Edges@{b\+\_\+n\+Leading\+Edges}}
+\index{b\+\_\+n\+Leading\+Edges@{b\+\_\+n\+Leading\+Edges}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+n\+Leading\+Edges}{b\_nLeadingEdges}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+n\+Leading\+Edges = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Number for leading edges for each T\+DC. 
+
+\mbox{\Hypertarget{class_event_tree_manager_ac7c4c6582ba687f5f2f63722085265ee}\label{class_event_tree_manager_ac7c4c6582ba687f5f2f63722085265ee}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+n\+T\+D\+Cs@{b\+\_\+n\+T\+D\+Cs}}
+\index{b\+\_\+n\+T\+D\+Cs@{b\+\_\+n\+T\+D\+Cs}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+n\+T\+D\+Cs}{b\_nTDCs}}
+{\footnotesize\ttfamily Int\+\_\+t Event\+Tree\+Manager\+::b\+\_\+n\+T\+D\+Cs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable\+: The number of T\+D\+Cs. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a2afa792ed1c43104cc556b9d2cddbaf8}\label{class_event_tree_manager_a2afa792ed1c43104cc556b9d2cddbaf8}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+n\+Trailers@{b\+\_\+n\+Trailers}}
+\index{b\+\_\+n\+Trailers@{b\+\_\+n\+Trailers}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+n\+Trailers}{b\_nTrailers}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+n\+Trailers = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Number for trailers for each T\+DC. 
+
+\mbox{\Hypertarget{class_event_tree_manager_ab0372ceb9d0f6767293a4c5051a9faed}\label{class_event_tree_manager_ab0372ceb9d0f6767293a4c5051a9faed}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+n\+Trailing\+Edges@{b\+\_\+n\+Trailing\+Edges}}
+\index{b\+\_\+n\+Trailing\+Edges@{b\+\_\+n\+Trailing\+Edges}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+n\+Trailing\+Edges}{b\_nTrailingEdges}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+n\+Trailing\+Edges = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Number for trailing edges for each T\+DC. 
+
+\mbox{\Hypertarget{class_event_tree_manager_af829d81256c1722f7f7c9d083a0ab2af}\label{class_event_tree_manager_af829d81256c1722f7f7c9d083a0ab2af}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+roc\+Time@{b\+\_\+roc\+Time}}
+\index{b\+\_\+roc\+Time@{b\+\_\+roc\+Time}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+roc\+Time}{b\_rocTime}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+roc\+Time = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: R\+OC value for each T\+DC. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a3dd2c17302ebd25d8148d8ae1aad2934}\label{class_event_tree_manager_a3dd2c17302ebd25d8148d8ae1aad2934}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+tdc\+ID@{b\+\_\+tdc\+ID}}
+\index{b\+\_\+tdc\+ID@{b\+\_\+tdc\+ID}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+tdc\+ID}{b\_tdcID}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+tdc\+ID = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: T\+CD ID. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a96536e0bc82a2b7832ed4c1e1b55e200}\label{class_event_tree_manager_a96536e0bc82a2b7832ed4c1e1b55e200}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+trailing\+Time@{b\+\_\+trailing\+Time}}
+\index{b\+\_\+trailing\+Time@{b\+\_\+trailing\+Time}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+trailing\+Time}{b\_trailingTime}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+trailing\+Time = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Trailing time for each hit. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a8a586ada4ae87e18dafb9e5dae91dde2}\label{class_event_tree_manager_a8a586ada4ae87e18dafb9e5dae91dde2}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+trailing\+Time\+Fine@{b\+\_\+trailing\+Time\+Fine}}
+\index{b\+\_\+trailing\+Time\+Fine@{b\+\_\+trailing\+Time\+Fine}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+trailing\+Time\+Fine}{b\_trailingTimeFine}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+trailing\+Time\+Fine = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Fine trailing time for each hit. 
+
+\mbox{\Hypertarget{class_event_tree_manager_aa65fec5d7e3a3b3983730033a6a4a7b8}\label{class_event_tree_manager_aa65fec5d7e3a3b3983730033a6a4a7b8}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+width@{b\+\_\+width}}
+\index{b\+\_\+width@{b\+\_\+width}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+width}{b\_width}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+width = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Width of signal. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a620baae5d4f40b73d5b374d9aa21c02e}\label{class_event_tree_manager_a620baae5d4f40b73d5b374d9aa21c02e}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!b\+\_\+word\+Count@{b\+\_\+word\+Count}}
+\index{b\+\_\+word\+Count@{b\+\_\+word\+Count}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{b\+\_\+word\+Count}{b\_wordCount}}
+{\footnotesize\ttfamily Int\+\_\+t$\ast$ Event\+Tree\+Manager\+::b\+\_\+word\+Count = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Word count for each T\+DC. 
+
+\mbox{\Hypertarget{class_event_tree_manager_a87c672aa1531b362b15eddf11cab00c8}\label{class_event_tree_manager_a87c672aa1531b362b15eddf11cab00c8}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!m\+\_\+n\+T\+D\+Cs@{m\+\_\+n\+T\+D\+Cs}}
+\index{m\+\_\+n\+T\+D\+Cs@{m\+\_\+n\+T\+D\+Cs}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+n\+T\+D\+Cs}{m\_nTDCs}}
+{\footnotesize\ttfamily const unsigned int Event\+Tree\+Manager\+::m\+\_\+n\+T\+D\+Cs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The maximum number of T\+D\+Cs. 
+
+\mbox{\Hypertarget{class_event_tree_manager_aab35ad52374d52149bde894c8af7a8c5}\label{class_event_tree_manager_aab35ad52374d52149bde894c8af7a8c5}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!s\+\_\+hits\+Max@{s\+\_\+hits\+Max}}
+\index{s\+\_\+hits\+Max@{s\+\_\+hits\+Max}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{s\+\_\+hits\+Max}{s\_hitsMax}}
+{\footnotesize\ttfamily constexpr unsigned int Event\+Tree\+Manager\+::s\+\_\+hits\+Max = 500\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Array size for hit branches. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Root/inc/\hyperlink{_event_tree_manager_8hpp}{Event\+Tree\+Manager.\+hpp}\item 
+Root/src/\hyperlink{_event_tree_manager_8cpp}{Event\+Tree\+Manager.\+cpp}\end{DoxyCompactItemize}

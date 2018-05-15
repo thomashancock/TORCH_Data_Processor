@@ -1,0 +1,55 @@
+\subsection*{Introduction}
+
+This program reads raw T\+O\+R\+CH data and processes it into a R\+O\+OT file.
+
+Test data files are provided to aid in development of the program.
+
+The {\ttfamily Documentation} directory contains an overview of the program, along with full deoxygen documentation.
+
+Please report any issues to Thomas Hancock (\href{mailto:thomas.hancock@physics.ox.ac.uk}{\tt thomas.\+hancock@physics.\+ox.\+ac.\+uk}).
+
+\subsection*{Compiling the Template}
+
+To build the program, simply type\+: 
+\begin{DoxyCode}
+make
+\end{DoxyCode}
+
+
+If developing the processor, the program can be build in debug mode using\+: 
+\begin{DoxyCode}
+make debug
+\end{DoxyCode}
+
+
+Note\+: A working installation of R\+O\+OT is required to build the program
+
+\subsection*{Running the Program}
+
+To run the template, simply call the program\+: 
+\begin{DoxyCode}
+./TORCH\_Data\_Processor
+\end{DoxyCode}
+ followed by the files you wish to process (e.\+g. {\ttfamily data/$\ast$.txt})
+
+The {\ttfamily -\/con} command line option allows a specific config ({\ttfamily .conf}) file to be loaded.
+
+The {\ttfamily -\/out} command line argument specifies the output file name.
+
+\subsection*{Pulling new changes}
+
+When pulling or fetching a new version of the processor, please ensure you do 
+\begin{DoxyCode}
+git fetch --tags
+\end{DoxyCode}
+ to make your local tags up to date with the Git\+Lab tags. The version tag is stored in the output root file to ensure replicability of results, and having an incorrect local tag destroys this feature.
+
+\subsection*{To-\/do}
+
+This section gives a list of changes/features which are yet to be implemented, but are requested. The requester\textquotesingle{}s initials should be put in brackets after the item
+
+
+\begin{DoxyItemize}
+\item Prevent header/trailer word overwriting in \hyperlink{class_packet}{Packet} class (T\+HH)
+\item Add global monitoring for caught issues and inconsistencies (T\+HH) 
+\end{DoxyItemize}

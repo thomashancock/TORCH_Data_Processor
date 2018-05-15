@@ -1,0 +1,135 @@
+\hypertarget{class_thread_safe_event_map}{}\section{Thread\+Safe\+Event\+Map Class Reference}
+\label{class_thread_safe_event_map}\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+
+
+{\ttfamily \#include $<$Thread\+Safe\+Event\+Map.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_thread_safe_event_map_ace03ee2a6017dfee50a61c68626d2345}{Thread\+Safe\+Event\+Map} (const std\+::list$<$ unsigned int $>$ tdc\+I\+Ds)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_thread_safe_event_map_a523d5bf6c632e3803e721ef3fd94e318}{Thread\+Safe\+Event\+Map} (const \hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} \&other)=delete
+\item 
+\hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} \& \hyperlink{class_thread_safe_event_map_a1d438208fcc3936dd4384a8a2b55bdf8}{operator=} (\hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} other)=delete
+\item 
+\hyperlink{class_thread_safe_event_map_af28959f5fbd84f00d227d10e1b37e5e5}{Thread\+Safe\+Event\+Map} (const \hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} \&\&other)=delete
+\item 
+\hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} \& \hyperlink{class_thread_safe_event_map_a6bf7640fde19d7d6d4dedd5b06c09f84}{operator=} (\hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} \&\&other)=delete
+\item 
+void \hyperlink{class_thread_safe_event_map_aafd485696f0a50da8afa864f04f0aa07}{add\+Packet} (std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ packet)
+\begin{DoxyCompactList}\small\item\em Add a packet to the events. \end{DoxyCompactList}\item 
+bool \hyperlink{class_thread_safe_event_map_a9fb58083137d147811de5b93f991d044}{is\+Complete\+Stored} () const
+\begin{DoxyCompactList}\small\item\em Is a complete event stored? \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ $>$ \hyperlink{class_thread_safe_event_map_adc6c905693e3b9b54671299e7610d5b6}{pop\+To\+Complete} ()
+\begin{DoxyCompactList}\small\item\em Returns events up to the next complete event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::list$<$ unsigned int $>$ \hyperlink{class_thread_safe_event_map_ad079392d8a51bb1cc7835c52489fa6ca}{m\+\_\+tdc\+I\+Ds}
+\item 
+std\+::mutex \hyperlink{class_thread_safe_event_map_ada4e8c2f2195df86503e73674ff30935}{m\+\_\+mut}
+\begin{DoxyCompactList}\small\item\em Mutex used for thread safety. \end{DoxyCompactList}\item 
+std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ $>$ \hyperlink{class_thread_safe_event_map_a27b0ae4416f249242636545a0600d7c5}{m\+\_\+map}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_thread_safe_event_map_ace03ee2a6017dfee50a61c68626d2345}\label{class_thread_safe_event_map_ace03ee2a6017dfee50a61c68626d2345}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{Thread\+Safe\+Event\+Map()}{ThreadSafeEventMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Thread\+Safe\+Event\+Map\+::\+Thread\+Safe\+Event\+Map (\begin{DoxyParamCaption}\item[{const std\+::list$<$ unsigned int $>$}]{tdc\+I\+Ds }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+\mbox{\Hypertarget{class_thread_safe_event_map_a523d5bf6c632e3803e721ef3fd94e318}\label{class_thread_safe_event_map_a523d5bf6c632e3803e721ef3fd94e318}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{Thread\+Safe\+Event\+Map()}{ThreadSafeEventMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Thread\+Safe\+Event\+Map\+::\+Thread\+Safe\+Event\+Map (\begin{DoxyParamCaption}\item[{const \hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{class_thread_safe_event_map_af28959f5fbd84f00d227d10e1b37e5e5}\label{class_thread_safe_event_map_af28959f5fbd84f00d227d10e1b37e5e5}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{Thread\+Safe\+Event\+Map()}{ThreadSafeEventMap()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Thread\+Safe\+Event\+Map\+::\+Thread\+Safe\+Event\+Map (\begin{DoxyParamCaption}\item[{const \hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_thread_safe_event_map_aafd485696f0a50da8afa864f04f0aa07}\label{class_thread_safe_event_map_aafd485696f0a50da8afa864f04f0aa07}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!add\+Packet@{add\+Packet}}
+\index{add\+Packet@{add\+Packet}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{add\+Packet()}{addPacket()}}
+{\footnotesize\ttfamily void Thread\+Safe\+Event\+Map\+::add\+Packet (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$}]{packet }\end{DoxyParamCaption})}
+
+
+
+Add a packet to the events. 
+
+\mbox{\Hypertarget{class_thread_safe_event_map_a9fb58083137d147811de5b93f991d044}\label{class_thread_safe_event_map_a9fb58083137d147811de5b93f991d044}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!is\+Complete\+Stored@{is\+Complete\+Stored}}
+\index{is\+Complete\+Stored@{is\+Complete\+Stored}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{is\+Complete\+Stored()}{isCompleteStored()}}
+{\footnotesize\ttfamily bool Thread\+Safe\+Event\+Map\+::is\+Complete\+Stored (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is a complete event stored? 
+
+\mbox{\Hypertarget{class_thread_safe_event_map_a1d438208fcc3936dd4384a8a2b55bdf8}\label{class_thread_safe_event_map_a1d438208fcc3936dd4384a8a2b55bdf8}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!operator=@{operator=}}
+\index{operator=@{operator=}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map}\& Thread\+Safe\+Event\+Map\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map}}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{class_thread_safe_event_map_a6bf7640fde19d7d6d4dedd5b06c09f84}\label{class_thread_safe_event_map_a6bf7640fde19d7d6d4dedd5b06c09f84}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!operator=@{operator=}}
+\index{operator=@{operator=}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map}\& Thread\+Safe\+Event\+Map\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{class_thread_safe_event_map_adc6c905693e3b9b54671299e7610d5b6}\label{class_thread_safe_event_map_adc6c905693e3b9b54671299e7610d5b6}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!pop\+To\+Complete@{pop\+To\+Complete}}
+\index{pop\+To\+Complete@{pop\+To\+Complete}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{pop\+To\+Complete()}{popToComplete()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ $>$ Thread\+Safe\+Event\+Map\+::pop\+To\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns events up to the next complete event. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_thread_safe_event_map_a27b0ae4416f249242636545a0600d7c5}\label{class_thread_safe_event_map_a27b0ae4416f249242636545a0600d7c5}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!m\+\_\+map@{m\+\_\+map}}
+\index{m\+\_\+map@{m\+\_\+map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{m\+\_\+map}{m\_map}}
+{\footnotesize\ttfamily std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$\hyperlink{class_event}{Event}$>$ $>$ Thread\+Safe\+Event\+Map\+::m\+\_\+map\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_thread_safe_event_map_ada4e8c2f2195df86503e73674ff30935}\label{class_thread_safe_event_map_ada4e8c2f2195df86503e73674ff30935}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!m\+\_\+mut@{m\+\_\+mut}}
+\index{m\+\_\+mut@{m\+\_\+mut}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{m\+\_\+mut}{m\_mut}}
+{\footnotesize\ttfamily std\+::mutex Thread\+Safe\+Event\+Map\+::m\+\_\+mut\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Mutex used for thread safety. 
+
+\mbox{\Hypertarget{class_thread_safe_event_map_ad079392d8a51bb1cc7835c52489fa6ca}\label{class_thread_safe_event_map_ad079392d8a51bb1cc7835c52489fa6ca}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!m\+\_\+tdc\+I\+Ds@{m\+\_\+tdc\+I\+Ds}}
+\index{m\+\_\+tdc\+I\+Ds@{m\+\_\+tdc\+I\+Ds}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{m\+\_\+tdc\+I\+Ds}{m\_tdcIDs}}
+{\footnotesize\ttfamily const std\+::list$<$unsigned int$>$ Thread\+Safe\+Event\+Map\+::m\+\_\+tdc\+I\+Ds\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Data\+Structures/inc/\hyperlink{_thread_safe_event_map_8hpp}{Thread\+Safe\+Event\+Map.\+hpp}\item 
+Data\+Structures/src/\hyperlink{_thread_safe_event_map_8cpp}{Thread\+Safe\+Event\+Map.\+cpp}\end{DoxyCompactItemize}
