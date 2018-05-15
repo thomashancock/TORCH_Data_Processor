@@ -35,9 +35,11 @@ Processor::Processor(
 	m_wordBundleBuffers = std::make_shared< std::array< bundleBuffer, 4> >();
 
 	// Initialise file reader
+	STD_LOG("INITIALISING FILE READER");
 	m_fileReader = std::make_unique<FileReader>(1,m_wordBundleBuffers);
 	// Should be two pointers refering to the bundle buffers
 	ASSERT(2 == m_wordBundleBuffers.use_count());
+	STD_LOG("DONE");
 
 	// Initialise Packet Buffers
 	initializePacketBuffers(m_tdcIDs);
@@ -53,6 +55,7 @@ void Processor::processFiles(
 		int bundleCount = 0;
 
 		for (auto& file : fileNames) {
+			ASSERT(nullptr != m_fileReader);
 			m_fileReader->stageFiles(std::vector<std::string>{ file });
 
 			while (!m_fileReader->haveFilesExpired()) {

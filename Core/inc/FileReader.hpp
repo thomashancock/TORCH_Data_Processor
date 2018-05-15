@@ -17,6 +17,7 @@
 //! Read files and outputs word bundles
 class FileReader {
 	using bundleBuffer = ThreadSafeQueue< std::unique_ptr<WordBundle> >;
+	using bundleWorkspace = std::array< std::unique_ptr<WordBundle>, 4>;
 
 public:
 	//! Constructor
@@ -55,7 +56,7 @@ private:
 
 	std::vector< std::unique_ptr< std::ifstream > > m_inputStreams;
 	std::vector< unsigned int > m_fileLengths;
-	std::vector< std::array<std::unique_ptr< WordBundle >, 4> > m_bundleWorkspace;
+	std::vector< bundleWorkspace > m_bundleWorkspaces;
 
 	// std::array< ThreadSafeQueue< std::unique_ptr<WordBundle> > ,4> m_wordBundleBuffers;
 	std::shared_ptr< std::array< bundleBuffer, 4> > m_wordBundleBuffers;
@@ -92,7 +93,7 @@ void FileReader::clearStreams() {
 	}
 
 	// Delete any semi-constructed bundles
-	for (auto& bundlePtrArr : m_bundleWorkspace) {
+	for (auto& bundlePtrArr : m_bundleWorkspaces) {
 		for (auto& bundlePtr : bundlePtrArr) {
 			bundlePtr.reset();
 		}

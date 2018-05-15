@@ -17,19 +17,29 @@ FileReader::FileReader(
 ) :
 	m_wordBundleBuffers(std::move(wordBundleBuffers))
 {
+	ASSERT(m_wordBundleBuffers != nullptr);
 	ASSERT(m_inputStreams.empty());
 	ASSERT(nReadoutBoards > 0);
 
 	for (auto i = 0; i < nReadoutBoards; i++) {
 		// Create a stream for each readout board
-		m_inputStreams[i] = nullptr;
-		m_fileLengths[i] = 0;
-		m_bundleWorkspace[i] = { nullptr };
+		m_inputStreams.emplace_back(std::move(nullptr));
+
+		// Create a file length counter for each readout board
+		m_fileLengths.push_back(0);
+
+		// Create an array of bundles for readout board
+		m_bundleWorkspaces.emplace_back();
+
+		// Set array of bundle pointers to be nullptr
+		for (auto& ptr : m_bundleWorkspaces.back()) {
+			ptr.reset();
+		}
 	}
 
 	ASSERT(m_inputStreams.size() == nReadoutBoards);
 	ASSERT(m_fileLengths.size() == nReadoutBoards);
-	ASSERT(m_bundleWorkspace.size() == nReadoutBoards);
+	ASSERT(m_bundleWorkspaces.size() == nReadoutBoards);
 }
 // -----------------------------------------------------------------------------
 //
@@ -130,7 +140,7 @@ void FileReader::runProcessingLoop() {
 
 			// Calculate number of blocks using bit shift to protect against floating point precision errors
 			// 1 Block = 4 Words = 16 Bytes
-			auto& workspace = m_bundleWorkspace[i];
+			auto& workspace = m_bundleWorkspaces[i];
 
 			const unsigned int nDataBlocks = nDataBytes >> 4;
 			for (unsigned int iBlock = 0; iBlock < nDataBlocks; iBlock++) {
