@@ -8,7 +8,6 @@
 #include <string>
 #include <set>
 #include <array>
-#include <mutex>
 
 // LOCAL
 #include "WordBundle.hpp"
@@ -26,39 +25,44 @@ public:
 		std::array< std::shared_ptr<bundleBuffer>, 4> //!< Shared Pointer to WordBundle buffers
 	);
 
+	//! Stages files to be read out together
 	void stageFiles(
 		const std::vector<std::string>& m_files
 	);
 
+	//! Checks if all files have finished being read
 	inline bool haveFilesExpired() const;
 
+	//! Reads nLoops data blocks from each staged file
 	void runProcessingLoops(
 		const unsigned int nLoops
 	);
 
 private:
+	//! Clears all streams and closes the respective files
 	inline void clearStreams();
 
+	//! Reads a single data block from each file
 	void runProcessingLoop();
 
+	//! Reads a header line from the passed stream
 	inline void readHeaderLine(
-		std::unique_ptr<std::ifstream>& inputData,
-		unsigned int& readoutBoardNumber,
-		unsigned int& nDataBytes
+		std::unique_ptr<std::ifstream>& inputData, //!< The stream to read from
+		unsigned int& readoutBoardNumber, //!< Return variable for the readout board number
+		unsigned int& nDataBytes //!< Return variable for the number of data bytes
 	);
 
+	//! Reads a data block line from the passed stream
 	inline std::array<unsigned int,4> readDataBlock(
-		std::unique_ptr<std::ifstream>& inputData
+		std::unique_ptr<std::ifstream>& inputData //!< The stream to read from
 	);
 
 private:
-	mutable std::mutex m_mut;
+	std::vector< std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
+	std::vector< unsigned int > m_fileLengths; //!< Vector of file lengths
+	std::vector< bundleWorkspace > m_bundleWorkspaces; //!< Vector of pointers used to create WordBundles
 
-	std::vector< std::unique_ptr< std::ifstream > > m_inputStreams;
-	std::vector< unsigned int > m_fileLengths;
-	std::vector< bundleWorkspace > m_bundleWorkspaces;
-
-	std::array< std::shared_ptr<bundleBuffer>, 4> m_wordBundleBuffers;
+	std::array< std::shared_ptr<bundleBuffer>, 4> m_wordBundleBuffers; //!< Pointers to shared WordBundle buffers
 
 	const std::set<unsigned int> fillerWords = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 }; //! Set containing filler words (move to config?)
 };
