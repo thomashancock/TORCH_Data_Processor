@@ -120,20 +120,27 @@ void Processor::runLowLevel(
 ) {
 	STD_LOG("Mode: LowLevel");
 
+	// Declare Output Manager
 	std::unique_ptr<PacketTreeManager> manager =
 		std::make_unique<PacketTreeManager>("Output.root");
 
+	// Loop through files
 	for (auto& file : fileNames) {
+		// Stage file for reading
 		ASSERT(nullptr != m_fileReader);
 		m_fileReader->stageFiles(std::vector<std::string>{ file });
 
+		// While file is good
 		while (!m_fileReader->haveFilesExpired()) {
+			// Run a processing loop
 			m_fileReader->runProcessingLoops(1);
 
+			// Make packets from the bundles produced by FileReader
 			for (auto& buffer : m_wordBundleBuffers) {
 				makePackets(buffer);
 			}
 
+			// Pass packets to output manager
 			for (auto& entry : m_packetBuffers) {
 				while(!entry.second.empty()) {
 					manager->add(std::move(entry.second.popFront()));
@@ -142,21 +149,7 @@ void Processor::runLowLevel(
 		}
 	}
 
-	// for (auto& file : fileNames) {
-	// 	// Read File into WordBundle buffer
-	// 	processFile(file);
-	//
-	// 	// makePackets();
-	//   //
-	// 	// for (auto& entry : m_packetBuffers) {
-	// 	// 	// std::cout << "TDC ID: " << entry.first << std::endl;
-	// 	// 	while(!entry.second.empty()) {
-	// 	// 		// const auto packet = entry.second.popFront();
-	// 	// 		manager->add(std::move(entry.second.popFront()));
-	// 	// 	}
-	// 	// }
-	// }
-
+	// Write Output
 	manager->writeTree();
 }
 // -----------------------------------------------------------------------------
@@ -169,6 +162,37 @@ void Processor::runSerial(
 
 	std::unique_ptr<EventTreeManager> manager =
 		std::make_unique<EventTreeManager>("Output.root",m_tdcIDs.size());
+
+	// Loop through files
+	for (auto& file : fileNames) {
+		// Stage file for reading
+		ASSERT(nullptr != m_fileReader);
+		m_fileReader->stageFiles(std::vector<std::string>{ file });
+
+		// While file is good
+		while (!m_fileReader->haveFilesExpired()) {
+			// Run a processing loop
+			m_fileReader->runProcessingLoops(1);
+
+			// Make packets from the bundles produced by FileReader
+			for (auto& buffer : m_wordBundleBuffers) {
+				makePackets(buffer);
+			}
+
+			// Make Events
+			makeEvents();
+
+			// Pass events to output manager
+			while (m_eventBuffer.isCompleteStored()) {
+				auto events = m_eventBuffer.popToComplete();
+				for (auto& event : events) {
+					ASSERT(nullptr != event);
+					manager->add(std::move(event));
+					ASSERT(nullptr == event);
+				}
+			}
+		}
+	}
 
 	// for (auto& file : fileNames) {
 	// 	// Read File into WordBundle buffer
@@ -188,6 +212,7 @@ void Processor::runSerial(
 	// 	// }
 	// }
 
+	// Write output tree
 	manager->writeTree();
 }
 // -----------------------------------------------------------------------------
