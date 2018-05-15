@@ -63,13 +63,10 @@ private:
 	//! Build Events from Packets
 	void makeEvents();
 
-	//! Write Events to ROOT file
-
 private:
 	const RunMode m_mode; //!< Run mode (set by config)
 
 	const std::list<unsigned int> m_tdcIDs; //!< List of TDC IDs (set by config)
-	// const std::list<unsigned int> m_tdcIDs { 8, 9, 10, 11, 12, 13, 14, 15 };
 
 	const std::set<unsigned int> fillerWords = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 }; //! Set containing filler words (move to config?)
 

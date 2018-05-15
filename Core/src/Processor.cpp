@@ -4,6 +4,7 @@
 #include <fstream>
 #include <ios>
 #include <map>
+#include <thread>
 
 // LOCAL
 #include "Debug.hpp"
@@ -52,7 +53,6 @@ void Processor::processFiles(
 				auto bundle = m_wordBundleBuffer.popFront();
 				std::cout << "New Bundle: "
 				<< bundle->getReadoutBoardNumber() << " "
-				<< bundle->getSlot() << " "
 				<< bundle->getROCValue() << std::endl;
 				while (!bundle->empty()) {
 					bindec::printWord(bundle->getNextWord());
@@ -87,6 +87,9 @@ void Processor::processFiles(
 
 	} else if (RunMode::Parallel == m_mode) {
 		STD_LOG("Mode: Parallel");
+
+		const auto nCores = std::thread::hardware_concurrency();
+		std::cout << nCores << " Cores Detected" << std::endl;
 
 	} else {
 		STD_LOG("Mode: Serial");
@@ -183,12 +186,12 @@ void Processor::processFile(
 			}
 		}
 
-		const static std::map<int, char> blockIndex = {
-			std::make_pair(0,'A'),
-			std::make_pair(1,'B'),
-			std::make_pair(2,'C'),
-			std::make_pair(3,'D'),
-		};
+		// const static std::map<int, char> blockIndex = {
+		// 	std::make_pair(0,'A'),
+		// 	std::make_pair(1,'B'),
+		// 	std::make_pair(2,'C'),
+		// 	std::make_pair(3,'D'),
+		// };
 
 		// Calculate number of blocks using bit shift to protect against floating point precision errors
 		// 1 Block = 4 Words = 16 Bytes
@@ -226,7 +229,7 @@ void Processor::processFile(
 						}
 					} else {
 						// If no bundle exists, add a new bundle
-						bundles[i] = std::make_unique<WordBundle>(readoutBoardNumber, blockIndex.at(i));
+						bundles[i] = std::make_unique<WordBundle>(readoutBoardNumber);
 						// Ensure bundle was created
 						ASSERT(bundles[i] != nullptr);
 						// Add word to bundle

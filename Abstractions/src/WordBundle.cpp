@@ -6,11 +6,9 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 WordBundle::WordBundle(
-	const unsigned int readoutBoardNumber,
-	const char slot
+	const unsigned int readoutBoardNumber
 ) :
-	m_readoutBoardNumber(readoutBoardNumber),
-	m_slot(slot)
+	m_readoutBoardNumber(readoutBoardNumber)
 {
 	ASSERT(m_words.empty());
 }
