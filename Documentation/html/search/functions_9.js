@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['readdatablock',['readDataBlock',['../class_processor.html#ad64350d14782bb238703023cb56613ef',1,'Processor']]],
-  ['readheaderline',['readHeaderLine',['../class_processor.html#a31c772cd0725c185b53d271b6149c400',1,'Processor']]],
-  ['removepackets',['removePackets',['../class_event.html#a4a7c0f87ea9fd8526451d6eddc3a592e',1,'Event']]],
-  ['resettreevariables',['resetTreeVariables',['../class_event_tree_manager.html#a88cf8288ad022053b35192445e77f9a7',1,'EventTreeManager']]],
-  ['rootmanager',['RootManager',['../class_root_manager.html#a152803255b94d68cbe4c4f8e24fc2352',1,'RootManager']]]
+  ['operator_3c',['operator&lt;',['../class_edge.html#ab6a06c5da57efed1991960f61e870c8b',1,'Edge']]],
+  ['operator_3d',['operator=',['../class_error_spy.html#a1ee5e050efa950d40f48245550cb5aad',1,'ErrorSpy::operator=(ErrorSpy other)=delete'],['../class_error_spy.html#a1a48d70388ccb40d03357ce9f93158c9',1,'ErrorSpy::operator=(ErrorSpy &amp;&amp;other)=delete'],['../class_thread_safe_event_map.html#a1d438208fcc3936dd4384a8a2b55bdf8',1,'ThreadSafeEventMap::operator=(ThreadSafeEventMap other)=delete'],['../class_thread_safe_event_map.html#a6bf7640fde19d7d6d4dedd5b06c09f84',1,'ThreadSafeEventMap::operator=(ThreadSafeEventMap &amp;&amp;other)=delete'],['../class_thread_safe_queue.html#a6efd6d8c1d87c21d5bb422e18775e410',1,'ThreadSafeQueue::operator=(ThreadSafeQueue other)=delete'],['../class_thread_safe_queue.html#a10875bf953a8841619ba5bfa92e618be',1,'ThreadSafeQueue::operator=(ThreadSafeQueue &amp;&amp;other)=delete']]]
 ];

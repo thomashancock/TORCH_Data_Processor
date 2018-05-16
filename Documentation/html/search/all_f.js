@@ -1,12 +1,14 @@
 var searchData=
 [
-  ['torch_20data_20processor',['TORCH Data Processor',['../md__r_e_a_d_m_e.html',1,'']]],
-  ['threadsafeeventmap',['ThreadSafeEventMap',['../class_thread_safe_event_map.html',1,'ThreadSafeEventMap'],['../class_thread_safe_event_map.html#ace03ee2a6017dfee50a61c68626d2345',1,'ThreadSafeEventMap::ThreadSafeEventMap(const std::list&lt; unsigned int &gt; tdcIDs)'],['../class_thread_safe_event_map.html#a523d5bf6c632e3803e721ef3fd94e318',1,'ThreadSafeEventMap::ThreadSafeEventMap(const ThreadSafeEventMap &amp;other)=delete'],['../class_thread_safe_event_map.html#af28959f5fbd84f00d227d10e1b37e5e5',1,'ThreadSafeEventMap::ThreadSafeEventMap(const ThreadSafeEventMap &amp;&amp;other)=delete']]],
-  ['threadsafeeventmap_2ecpp',['ThreadSafeEventMap.cpp',['../_thread_safe_event_map_8cpp.html',1,'']]],
-  ['threadsafeeventmap_2ehpp',['ThreadSafeEventMap.hpp',['../_thread_safe_event_map_8hpp.html',1,'']]],
-  ['threadsafequeue',['ThreadSafeQueue',['../class_thread_safe_queue.html',1,'ThreadSafeQueue&lt; T &gt;'],['../class_thread_safe_queue.html#a06e14823003cc9b5d9e9151380077f08',1,'ThreadSafeQueue::ThreadSafeQueue()'],['../class_thread_safe_queue.html#a0f3f492104e38b019a5e1a74647cec39',1,'ThreadSafeQueue::ThreadSafeQueue(const ThreadSafeQueue &amp;other)=delete'],['../class_thread_safe_queue.html#a51c1e1c4eb980e2cb5d3012de447bbd5',1,'ThreadSafeQueue::ThreadSafeQueue(const ThreadSafeQueue &amp;&amp;other)=delete']]],
-  ['threadsafequeue_2ehpp',['ThreadSafeQueue.hpp',['../_thread_safe_queue_8hpp.html',1,'']]],
-  ['threadsafequeue_2einl',['ThreadSafeQueue.inl',['../_thread_safe_queue_8inl.html',1,'']]],
-  ['threadsafequeue_3c_20std_3a_3aunique_5fptr_3c_20wordbundle_20_3e_20_3e',['ThreadSafeQueue&lt; std::unique_ptr&lt; WordBundle &gt; &gt;',['../class_thread_safe_queue.html',1,'']]],
-  ['trimmedstring',['trimmedString',['../_debug_8hpp.html#ade29d44b4fecc53de55b7bd5dd9fcff7',1,'Debug.hpp']]]
+  ['s_5fhitsmax',['s_hitsMax',['../class_event_tree_manager.html#aab35ad52374d52149bde894c8af7a8c5',1,'EventTreeManager']]],
+  ['s_5fmaxedges',['s_maxEdges',['../class_packet_tree_manager.html#a4ba06517ad1cb912ff70df1ff69231a5',1,'PacketTreeManager']]],
+  ['serial',['Serial',['../_modes_enum_8hpp.html#a3dfe11cf1a3a8121f6cd7fec4bf5947eaab27270f353006b03c91367e05e44b94',1,'ModesEnum.hpp']]],
+  ['setrocvalue',['setRocValue',['../class_word_bundle.html#a15e13fdd7380c72be2f42013560d62c3',1,'WordBundle']]],
+  ['setuparrbranch',['setupArrBranch',['../class_root_manager.html#aa1eaed1aa026059b8d00e729161c6a43',1,'RootManager']]],
+  ['setupbranches',['setUpBranches',['../class_event_tree_manager.html#a11cbe0078aeb3d0fe320bbeec335babc',1,'EventTreeManager::setUpBranches()'],['../class_packet_tree_manager.html#a3e2aa24c5acd8a87b15cfff2d011f30b',1,'PacketTreeManager::setUpBranches()']]],
+  ['stagefiles',['stageFiles',['../class_file_reader.html#a578a03fc3bf266f3d6d54542bf687579',1,'FileReader']]],
+  ['std_5ferr',['STD_ERR',['../_debug_8hpp.html#a2e40cf1121da97f65cd8cd7a0f4b875c',1,'Debug.hpp']]],
+  ['std_5flog',['STD_LOG',['../_debug_8hpp.html#aa91b2b6aa2442d8685e651ffa9500ee2',1,'Debug.hpp']]],
+  ['std_5flog_5fvar',['STD_LOG_VAR',['../_debug_8hpp.html#a2c4628fa536258a74e9047ed17420ac2',1,'Debug.hpp']]],
+  ['std_5flog_5fvar_5fhex',['STD_LOG_VAR_HEX',['../_debug_8hpp.html#a33be4044dbfd4b89b4bef8602b50004a',1,'Debug.hpp']]]
 ];

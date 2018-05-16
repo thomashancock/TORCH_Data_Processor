@@ -146,7 +146,7 @@ $(function() {
 
 <h3><a id="index_f"></a>- f -</h3><ul>
 <li>fillerWords
-: <a class="el" href="class_processor.html#a78d13a8646a95290e0b74bdd40c75639">Processor</a>
+: <a class="el" href="class_file_reader.html#a7a0bb5e7cb117f6a415f005665893509">FileReader</a>
 </li>
 </ul>
 
@@ -155,14 +155,23 @@ $(function() {
 <li>m_bunchID
 : <a class="el" href="class_packet.html#ad0a2dce379a45ee0f899d495f5e760fc">Packet</a>
 </li>
+<li>m_bundleWorkspaces
+: <a class="el" href="class_file_reader.html#ab59c633bc2943dcea7c977585e7e48b3">FileReader</a>
+</li>
 <li>m_channelID
 : <a class="el" href="class_edge.html#af0ac0fc79aff55754ffbd152a2f71452">Edge</a>
 </li>
-<li>m_config
-: <a class="el" href="class_processor.html#aa1ac0a603b269d9f0e1a90ec318c1525">Processor</a>
-</li>
 <li>m_configRead
 : <a class="el" href="class_config.html#a82bcc998ae058699369aee4a189f0ad1">Config</a>
+</li>
+<li>m_counts
+: <a class="el" href="class_error_counter.html#a66d01d8e49111d2f433b56bf922c418e">ErrorCounter</a>
+</li>
+<li>m_errorMap
+: <a class="el" href="class_error_spy.html#a4a6e0b0cb04a7382ae0d92c54c60588e">ErrorSpy</a>
+</li>
+<li>m_errorSpy
+: <a class="el" href="class_processor.html#a4f79251b6b5048bb3f4b3c0e67557766">Processor</a>
 </li>
 <li>m_eventBuffer
 : <a class="el" href="class_processor.html#a7cb15fbab19fceb6bc5a607629ff5040">Processor</a>
@@ -176,11 +185,20 @@ $(function() {
 <li>m_eventIDTrailer
 : <a class="el" href="class_packet.html#ae32fc3c9665b68f00dabd9327d4c84c6">Packet</a>
 </li>
+<li>m_fileLengths
+: <a class="el" href="class_file_reader.html#a7269438e7187e9abbdde1361a46d1fa6">FileReader</a>
+</li>
+<li>m_fileReader
+: <a class="el" href="class_processor.html#aafe2ae55e609005c0e88226f1dd1dcb5">Processor</a>
+</li>
 <li>m_fineTimestamp
 : <a class="el" href="class_edge.html#a62771c5655734e0ea5ebc8e2743130b6">Edge</a>
 </li>
 <li>m_headerAdded
 : <a class="el" href="class_packet.html#aaf9fa3ad2c94bec82a748366fb00ecc7">Packet</a>
+</li>
+<li>m_inputStreams
+: <a class="el" href="class_file_reader.html#a8dfdb072d4bb1052a52d7be93fb44f07">FileReader</a>
 </li>
 <li>m_isEventIDSet
 : <a class="el" href="class_event.html#a3b435b2fe840647c01ae0ee838b66a54">Event</a>
@@ -192,10 +210,12 @@ $(function() {
 : <a class="el" href="class_thread_safe_event_map.html#a27b0ae4416f249242636545a0600d7c5">ThreadSafeEventMap</a>
 </li>
 <li>m_mode
-: <a class="el" href="class_processor.html#ac22f412163181f546d847ce23d71978d">Processor</a>
+: <a class="el" href="class_config.html#a65b1f233533ce1e2acd85f6a4a07c4d4">Config</a>
+, <a class="el" href="class_processor.html#ac22f412163181f546d847ce23d71978d">Processor</a>
 </li>
 <li>m_mut
-: <a class="el" href="class_root_manager.html#a8f8a185d6d25b3e1207416c7cd8c333c">RootManager&lt; T &gt;</a>
+: <a class="el" href="class_error_spy.html#ae7d03be7562c1eb3ed4de48e33d89070">ErrorSpy</a>
+, <a class="el" href="class_root_manager.html#a8f8a185d6d25b3e1207416c7cd8c333c">RootManager&lt; T &gt;</a>
 , <a class="el" href="class_thread_safe_event_map.html#ada4e8c2f2195df86503e73674ff30935">ThreadSafeEventMap</a>
 , <a class="el" href="class_thread_safe_queue.html#aed716c566c7091b8557118f29a1cf6ea">ThreadSafeQueue&lt; T &gt;</a>
 </li>
@@ -227,9 +247,6 @@ $(function() {
 <li>m_rocValueStored
 : <a class="el" href="class_word_bundle.html#a7605157c872054d7ab42b590fac97ca7">WordBundle</a>
 </li>
-<li>m_slot
-: <a class="el" href="class_word_bundle.html#aad119e71fa785078734438dd49c4dec0">WordBundle</a>
-</li>
 <li>m_tdcID
 : <a class="el" href="class_edge.html#ae6af56a9eb09e6fcc56032a7c14c6c02">Edge</a>
 </li>
@@ -243,6 +260,9 @@ $(function() {
 <li>m_tdcIDTrailer
 : <a class="el" href="class_packet.html#aad739524a3b965eef89c827339b2e1f2">Packet</a>
 </li>
+<li>m_tdcList
+: <a class="el" href="class_config.html#ac7295451d604cec09ed31ca74411c68c">Config</a>
+</li>
 <li>m_timestamp
 : <a class="el" href="class_edge.html#a9d018b223c2f920915010a29991b3b3f">Edge</a>
 </li>
@@ -255,8 +275,9 @@ $(function() {
 <li>m_tree
 : <a class="el" href="class_root_manager.html#adfbcbba0248787d08a230508bb4136a6">RootManager&lt; T &gt;</a>
 </li>
-<li>m_wordBundleBuffer
-: <a class="el" href="class_processor.html#a1ec54aa38a8c50dc77877e17feed6142">Processor</a>
+<li>m_wordBundleBuffers
+: <a class="el" href="class_file_reader.html#a038d1362d7e0458b3450ab8584eab688">FileReader</a>
+, <a class="el" href="class_processor.html#a8277cf1524daaa16f0dacfddd02ffd13">Processor</a>
 </li>
 <li>m_wordCount
 : <a class="el" href="class_packet.html#a6c3f1d98101c049bc032aca63d244b89">Packet</a>

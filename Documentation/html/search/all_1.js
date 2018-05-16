@@ -25,5 +25,7 @@ var searchData=
   ['b_5fwidth',['b_width',['../class_event_tree_manager.html#aa65fec5d7e3a3b3983730033a6a4a7b8',1,'EventTreeManager']]],
   ['b_5fwordcount',['b_wordCount',['../class_event_tree_manager.html#a620baae5d4f40b73d5b374d9aa21c02e',1,'EventTreeManager::b_wordCount()'],['../class_packet_tree_manager.html#ad7d8e0343e3e5f949dc20e591b2e6b2b',1,'PacketTreeManager::b_wordCount()']]],
   ['binarydecoding_2ehpp',['BinaryDecoding.hpp',['../_binary_decoding_8hpp.html',1,'']]],
-  ['bindec',['bindec',['../namespacebindec.html',1,'']]]
+  ['bindec',['bindec',['../namespacebindec.html',1,'']]],
+  ['bundlebuffer',['bundleBuffer',['../class_file_reader.html#ac755c1e271610c2c12a7fc5b55cc048b',1,'FileReader::bundleBuffer()'],['../class_processor.html#a531b4c5f7c0d810fc6e9e1dd3d115725',1,'Processor::bundleBuffer()']]],
+  ['bundleworkspace',['bundleWorkspace',['../class_file_reader.html#a7fb625dc45cee3256d37cc19c65cad86',1,'FileReader']]]
 ];

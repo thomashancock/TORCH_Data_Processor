@@ -67,6 +67,9 @@ $(function() {
 , <a class="el" href="class_packet_tree_manager.html#a855e71512fe6365c11f312584afff70a">PacketTreeManager</a>
 , <a class="el" href="class_root_manager.html#a2f05eb45d5eaee1f9f12e299395652fb">RootManager&lt; T &gt;</a>
 </li>
+<li>addCount()
+: <a class="el" href="class_error_counter.html#a6ef83e5c7eccd70772881294a8dc714b">ErrorCounter</a>
+</li>
 <li>addDataline()
 : <a class="el" href="class_packet.html#af3582cfb4893a3f61cb3e7b11e75787f">Packet</a>
 </li>
@@ -166,10 +169,20 @@ $(function() {
 : <a class="el" href="class_event_tree_manager.html#a620baae5d4f40b73d5b374d9aa21c02e">EventTreeManager</a>
 , <a class="el" href="class_packet_tree_manager.html#ad7d8e0343e3e5f949dc20e591b2e6b2b">PacketTreeManager</a>
 </li>
+<li>bundleBuffer
+: <a class="el" href="class_file_reader.html#ac755c1e271610c2c12a7fc5b55cc048b">FileReader</a>
+, <a class="el" href="class_processor.html#a531b4c5f7c0d810fc6e9e1dd3d115725">Processor</a>
+</li>
+<li>bundleWorkspace
+: <a class="el" href="class_file_reader.html#a7fb625dc45cee3256d37cc19c65cad86">FileReader</a>
+</li>
 </ul>
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>clearStreams()
+: <a class="el" href="class_file_reader.html#abf01d994f77beae0653de481ea739ebb">FileReader</a>
+</li>
 <li>Config()
 : <a class="el" href="class_config.html#af8b0e9dc72b16b73ebb32d177fb93e1b">Config</a>
 </li>
@@ -184,6 +197,9 @@ $(function() {
 : <a class="el" href="class_thread_safe_queue.html#a58b5532baa6110071f697ad1f9bfbf58">ThreadSafeQueue&lt; T &gt;</a>
 , <a class="el" href="class_word_bundle.html#a18bcb8912a877fa9e60cd8ec707e75a3">WordBundle</a>
 </li>
+<li>ErrorCounter()
+: <a class="el" href="class_error_counter.html#a95facfc3369d4cf69b255519c579912e">ErrorCounter</a>
+</li>
 <li>ErrorSpy()
 : <a class="el" href="class_error_spy.html#a8d07ccabb00ac3925d94d77e7092bc99">ErrorSpy</a>
 </li>
@@ -197,8 +213,11 @@ $(function() {
 
 
 <h3><a id="index_f"></a>- f -</h3><ul>
+<li>FileReader()
+: <a class="el" href="class_file_reader.html#af7f6550dfccc640680792a51d997adca">FileReader</a>
+</li>
 <li>fillerWords
-: <a class="el" href="class_processor.html#a78d13a8646a95290e0b74bdd40c75639">Processor</a>
+: <a class="el" href="class_file_reader.html#a7a0bb5e7cb117f6a415f005665893509">FileReader</a>
 </li>
 </ul>
 
@@ -210,6 +229,9 @@ $(function() {
 <li>getChannelID()
 : <a class="el" href="class_edge.html#a5420f88056570dc33c697c99a211634c">Edge</a>
 , <a class="el" href="class_packet.html#a8a767973ff4b30b417716bbb071ccf33">Packet</a>
+</li>
+<li>getCount()
+: <a class="el" href="class_error_counter.html#affc256e518dc91811a48fd5ba42de8cd">ErrorCounter</a>
 </li>
 <li>getEdge()
 : <a class="el" href="class_packet.html#a457fdd6c0e5cdb161a77550203504e6d">Packet</a>
@@ -224,6 +246,9 @@ $(function() {
 <li>getFineTimestamp()
 : <a class="el" href="class_edge.html#a67a04612cd6037408c691ab35d076ed7">Edge</a>
 , <a class="el" href="class_packet.html#aafbf1d7b7303ef5f3919e7ed9f8065f8">Packet</a>
+</li>
+<li>getModeAsString()
+: <a class="el" href="class_config.html#a3bd48a0ae54bfd982c02564160d6762b">Config</a>
 </li>
 <li>getNextWord()
 : <a class="el" href="class_word_bundle.html#a950e328fdf8b00e59b2d68da5182763f">WordBundle</a>
@@ -241,12 +266,15 @@ $(function() {
 : <a class="el" href="class_packet.html#a2a46912b82833c80b53e01114ef701a1">Packet</a>
 , <a class="el" href="class_word_bundle.html#ad2c91f230ac93d19900eba6b2c64d0e9">WordBundle</a>
 </li>
-<li>getSlot()
-: <a class="el" href="class_word_bundle.html#a4a8540008b739e4e4b94e665c2e24991">WordBundle</a>
+<li>getRunMode()
+: <a class="el" href="class_config.html#a1e69242b7f57068005d5ae195ca16530">Config</a>
 </li>
 <li>getTDCID()
 : <a class="el" href="class_edge.html#a43d8c30ccdc68a6f7a37bb0163b6829d">Edge</a>
 , <a class="el" href="class_packet.html#a4f4c3d99d89506a577073a2ce9e75e95">Packet</a>
+</li>
+<li>getTDCList()
+: <a class="el" href="class_config.html#a847bc1cf36b3d12da8590a036634a150">Config</a>
 </li>
 <li>getTimestamp()
 : <a class="el" href="class_edge.html#a463ea176ce520b5a280a15b15b41dd1e">Edge</a>
@@ -254,6 +282,13 @@ $(function() {
 </li>
 <li>getWordCount()
 : <a class="el" href="class_packet.html#aaa356da77eccb505207544c8034c1356">Packet</a>
+</li>
+</ul>
+
+
+<h3><a id="index_h"></a>- h -</h3><ul>
+<li>haveFilesExpired()
+: <a class="el" href="class_file_reader.html#a58b80f2c9c2ec8381527bdfca1008007">FileReader</a>
 </li>
 </ul>
 
@@ -282,18 +317,34 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_l"></a>- l -</h3><ul>
+<li>logError()
+: <a class="el" href="class_error_spy.html#a5177c4dac196484a1a0ccaa231c033d8">ErrorSpy</a>
+</li>
+</ul>
+
+
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>m_bunchID
 : <a class="el" href="class_packet.html#ad0a2dce379a45ee0f899d495f5e760fc">Packet</a>
 </li>
+<li>m_bundleWorkspaces
+: <a class="el" href="class_file_reader.html#ab59c633bc2943dcea7c977585e7e48b3">FileReader</a>
+</li>
 <li>m_channelID
 : <a class="el" href="class_edge.html#af0ac0fc79aff55754ffbd152a2f71452">Edge</a>
 </li>
-<li>m_config
-: <a class="el" href="class_processor.html#aa1ac0a603b269d9f0e1a90ec318c1525">Processor</a>
-</li>
 <li>m_configRead
 : <a class="el" href="class_config.html#a82bcc998ae058699369aee4a189f0ad1">Config</a>
+</li>
+<li>m_counts
+: <a class="el" href="class_error_counter.html#a66d01d8e49111d2f433b56bf922c418e">ErrorCounter</a>
+</li>
+<li>m_errorMap
+: <a class="el" href="class_error_spy.html#a4a6e0b0cb04a7382ae0d92c54c60588e">ErrorSpy</a>
+</li>
+<li>m_errorSpy
+: <a class="el" href="class_processor.html#a4f79251b6b5048bb3f4b3c0e67557766">Processor</a>
 </li>
 <li>m_eventBuffer
 : <a class="el" href="class_processor.html#a7cb15fbab19fceb6bc5a607629ff5040">Processor</a>
@@ -307,11 +358,20 @@ $(function() {
 <li>m_eventIDTrailer
 : <a class="el" href="class_packet.html#ae32fc3c9665b68f00dabd9327d4c84c6">Packet</a>
 </li>
+<li>m_fileLengths
+: <a class="el" href="class_file_reader.html#a7269438e7187e9abbdde1361a46d1fa6">FileReader</a>
+</li>
+<li>m_fileReader
+: <a class="el" href="class_processor.html#aafe2ae55e609005c0e88226f1dd1dcb5">Processor</a>
+</li>
 <li>m_fineTimestamp
 : <a class="el" href="class_edge.html#a62771c5655734e0ea5ebc8e2743130b6">Edge</a>
 </li>
 <li>m_headerAdded
 : <a class="el" href="class_packet.html#aaf9fa3ad2c94bec82a748366fb00ecc7">Packet</a>
+</li>
+<li>m_inputStreams
+: <a class="el" href="class_file_reader.html#a8dfdb072d4bb1052a52d7be93fb44f07">FileReader</a>
 </li>
 <li>m_isEventIDSet
 : <a class="el" href="class_event.html#a3b435b2fe840647c01ae0ee838b66a54">Event</a>
@@ -323,10 +383,12 @@ $(function() {
 : <a class="el" href="class_thread_safe_event_map.html#a27b0ae4416f249242636545a0600d7c5">ThreadSafeEventMap</a>
 </li>
 <li>m_mode
-: <a class="el" href="class_processor.html#ac22f412163181f546d847ce23d71978d">Processor</a>
+: <a class="el" href="class_config.html#a65b1f233533ce1e2acd85f6a4a07c4d4">Config</a>
+, <a class="el" href="class_processor.html#ac22f412163181f546d847ce23d71978d">Processor</a>
 </li>
 <li>m_mut
-: <a class="el" href="class_root_manager.html#a8f8a185d6d25b3e1207416c7cd8c333c">RootManager&lt; T &gt;</a>
+: <a class="el" href="class_error_spy.html#ae7d03be7562c1eb3ed4de48e33d89070">ErrorSpy</a>
+, <a class="el" href="class_root_manager.html#a8f8a185d6d25b3e1207416c7cd8c333c">RootManager&lt; T &gt;</a>
 , <a class="el" href="class_thread_safe_event_map.html#ada4e8c2f2195df86503e73674ff30935">ThreadSafeEventMap</a>
 , <a class="el" href="class_thread_safe_queue.html#aed716c566c7091b8557118f29a1cf6ea">ThreadSafeQueue&lt; T &gt;</a>
 </li>
@@ -358,9 +420,6 @@ $(function() {
 <li>m_rocValueStored
 : <a class="el" href="class_word_bundle.html#a7605157c872054d7ab42b590fac97ca7">WordBundle</a>
 </li>
-<li>m_slot
-: <a class="el" href="class_word_bundle.html#aad119e71fa785078734438dd49c4dec0">WordBundle</a>
-</li>
 <li>m_tdcID
 : <a class="el" href="class_edge.html#ae6af56a9eb09e6fcc56032a7c14c6c02">Edge</a>
 </li>
@@ -374,6 +433,9 @@ $(function() {
 <li>m_tdcIDTrailer
 : <a class="el" href="class_packet.html#aad739524a3b965eef89c827339b2e1f2">Packet</a>
 </li>
+<li>m_tdcList
+: <a class="el" href="class_config.html#ac7295451d604cec09ed31ca74411c68c">Config</a>
+</li>
 <li>m_timestamp
 : <a class="el" href="class_edge.html#a9d018b223c2f920915010a29991b3b3f">Edge</a>
 </li>
@@ -386,8 +448,9 @@ $(function() {
 <li>m_tree
 : <a class="el" href="class_root_manager.html#adfbcbba0248787d08a230508bb4136a6">RootManager&lt; T &gt;</a>
 </li>
-<li>m_wordBundleBuffer
-: <a class="el" href="class_processor.html#a1ec54aa38a8c50dc77877e17feed6142">Processor</a>
+<li>m_wordBundleBuffers
+: <a class="el" href="class_file_reader.html#a038d1362d7e0458b3450ab8584eab688">FileReader</a>
+, <a class="el" href="class_processor.html#a8277cf1524daaa16f0dacfddd02ffd13">Processor</a>
 </li>
 <li>m_wordCount
 : <a class="el" href="class_packet.html#a6c3f1d98101c049bc032aca63d244b89">Packet</a>
@@ -398,8 +461,11 @@ $(function() {
 <li>makeEvents()
 : <a class="el" href="class_processor.html#ae06672fc3ac6ef73525b64d4f9f769e7">Processor</a>
 </li>
+<li>makeKey()
+: <a class="el" href="class_error_counter.html#aa54fb5fe5884956ba9d8ca8b44f74fcb">ErrorCounter</a>
+</li>
 <li>makePackets()
-: <a class="el" href="class_processor.html#a395245680ed38f6c7bf568f5af262860">Processor</a>
+: <a class="el" href="class_processor.html#a554de487c5e8205872151fbedb315291">Processor</a>
 </li>
 </ul>
 
@@ -409,7 +475,8 @@ $(function() {
 : <a class="el" href="class_edge.html#ab6a06c5da57efed1991960f61e870c8b">Edge</a>
 </li>
 <li>operator=()
-: <a class="el" href="class_thread_safe_event_map.html#a1d438208fcc3936dd4384a8a2b55bdf8">ThreadSafeEventMap</a>
+: <a class="el" href="class_error_spy.html#a1ee5e050efa950d40f48245550cb5aad">ErrorSpy</a>
+, <a class="el" href="class_thread_safe_event_map.html#a1d438208fcc3936dd4384a8a2b55bdf8">ThreadSafeEventMap</a>
 , <a class="el" href="class_thread_safe_queue.html#a6efd6d8c1d87c21d5bb422e18775e410">ThreadSafeQueue&lt; T &gt;</a>
 </li>
 </ul>
@@ -436,17 +503,19 @@ $(function() {
 </li>
 <li>print()
 : <a class="el" href="class_config.html#af75cb5a60c6cac9d6f6d030e65a5240a">Config</a>
+, <a class="el" href="class_error_counter.html#a12b0eba237f5de0c56d5365bb84fa025">ErrorCounter</a>
+, <a class="el" href="class_error_spy.html#a85e971684266e774c896ee681850614a">ErrorSpy</a>
 , <a class="el" href="class_event.html#ab1b48a39a41a7fc92a25617adcf68aa8">Event</a>
 , <a class="el" href="class_packet.html#aec87fc2f2473111a694ad8b6f60e7666">Packet</a>
-</li>
-<li>processFile()
-: <a class="el" href="class_processor.html#a8dc09976d642ca778f5aa606b526a510">Processor</a>
 </li>
 <li>processFiles()
 : <a class="el" href="class_processor.html#a4186d391ddee1f68d763931dad346c4a">Processor</a>
 </li>
 <li>processNode()
 : <a class="el" href="class_config.html#a46d81f90a7b6218385e8bfd0a283f6ce">Config</a>
+</li>
+<li>processOption()
+: <a class="el" href="class_config.html#a42e48f8b6446cdc46badd09f6446a328">Config</a>
 </li>
 <li>Processor()
 : <a class="el" href="class_processor.html#a1cc4421ebb02f40665336598c1334c55">Processor</a>
@@ -459,10 +528,10 @@ $(function() {
 
 <h3><a id="index_r"></a>- r -</h3><ul>
 <li>readDataBlock()
-: <a class="el" href="class_processor.html#ad64350d14782bb238703023cb56613ef">Processor</a>
+: <a class="el" href="class_file_reader.html#ac578b683eba751027766a2c30f03a28b">FileReader</a>
 </li>
 <li>readHeaderLine()
-: <a class="el" href="class_processor.html#a31c772cd0725c185b53d271b6149c400">Processor</a>
+: <a class="el" href="class_file_reader.html#a94a71d0a05ececd1e84fa71d80b7e6ba">FileReader</a>
 </li>
 <li>removePackets()
 : <a class="el" href="class_event.html#a4a7c0f87ea9fd8526451d6eddc3a592e">Event</a>
@@ -472,6 +541,24 @@ $(function() {
 </li>
 <li>RootManager()
 : <a class="el" href="class_root_manager.html#a152803255b94d68cbe4c4f8e24fc2352">RootManager&lt; T &gt;</a>
+</li>
+<li>runLowLevel()
+: <a class="el" href="class_processor.html#ae697c1dd3136d1cf973d0ecc5a65a53a">Processor</a>
+</li>
+<li>runParallel()
+: <a class="el" href="class_processor.html#a1e5a47f8539e3568e2ba8f14f1fddea2">Processor</a>
+</li>
+<li>runProcessingLoop()
+: <a class="el" href="class_file_reader.html#a98606ec7d315f1ed6f90c531df0d09f9">FileReader</a>
+</li>
+<li>runProcessingLoops()
+: <a class="el" href="class_file_reader.html#a478ed77f1b8f76e15cb2faa8964a26e6">FileReader</a>
+</li>
+<li>runQuickCheck()
+: <a class="el" href="class_processor.html#ae045ebe853cd1f2124ecb93b829a9113">Processor</a>
+</li>
+<li>runSerial()
+: <a class="el" href="class_processor.html#a7475d40a755f8afa7b6746c7949454d9">Processor</a>
 </li>
 </ul>
 
@@ -493,6 +580,9 @@ $(function() {
 : <a class="el" href="class_event_tree_manager.html#a11cbe0078aeb3d0fe320bbeec335babc">EventTreeManager</a>
 , <a class="el" href="class_packet_tree_manager.html#a3e2aa24c5acd8a87b15cfff2d011f30b">PacketTreeManager</a>
 </li>
+<li>stageFiles()
+: <a class="el" href="class_file_reader.html#a578a03fc3bf266f3d6d54542bf687579">FileReader</a>
+</li>
 </ul>
 
 
@@ -506,9 +596,16 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_u"></a>- u -</h3><ul>
+<li>uintPair
+: <a class="el" href="class_error_counter.html#aa50fc471c675ff8d626b982d1d90c7b4">ErrorCounter</a>
+</li>
+</ul>
+
+
 <h3><a id="index_w"></a>- w -</h3><ul>
 <li>WordBundle()
-: <a class="el" href="class_word_bundle.html#aa619f7a96823c2dfe048676e65064ca4">WordBundle</a>
+: <a class="el" href="class_word_bundle.html#aef51ca0125b0b39fff34bfa47ddc4334">WordBundle</a>
 </li>
 <li>writeTree()
 : <a class="el" href="class_root_manager.html#adbe916dd56e5ec51f89c7643c4847842">RootManager&lt; T &gt;</a>
@@ -517,6 +614,9 @@ $(function() {
 
 
 <h3><a id="index_0x7e"></a>- ~ -</h3><ul>
+<li>~Processor()
+: <a class="el" href="class_processor.html#acf37952c5b420d4e903a512571678692">Processor</a>
+</li>
 <li>~RootManager()
 : <a class="el" href="class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61">RootManager&lt; T &gt;</a>
 </li>

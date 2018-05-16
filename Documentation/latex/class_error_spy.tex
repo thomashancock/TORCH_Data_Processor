@@ -2,24 +2,139 @@
 \label{class_error_spy}\index{Error\+Spy@{Error\+Spy}}
 
 
+Keeps track of errors detected during program execution.  
+
+
+
+
 {\ttfamily \#include $<$Error\+Spy.\+hpp$>$}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_error_spy_a8d07ccabb00ac3925d94d77e7092bc99}{Error\+Spy} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_error_spy_aa10c8604df16528fa51fc00e9b84e184}{Error\+Spy} (const \hyperlink{class_error_spy}{Error\+Spy} \&other)=delete
+\item 
+\hyperlink{class_error_spy}{Error\+Spy} \& \hyperlink{class_error_spy_a1ee5e050efa950d40f48245550cb5aad}{operator=} (\hyperlink{class_error_spy}{Error\+Spy} other)=delete
+\item 
+\hyperlink{class_error_spy_a07d843cb06eb0a6bfd47734b6c31e289}{Error\+Spy} (const \hyperlink{class_error_spy}{Error\+Spy} \&\&other)=delete
+\item 
+\hyperlink{class_error_spy}{Error\+Spy} \& \hyperlink{class_error_spy_a1a48d70388ccb40d03357ce9f93158c9}{operator=} (\hyperlink{class_error_spy}{Error\+Spy} \&\&other)=delete
+\item 
+void \hyperlink{class_error_spy_a5177c4dac196484a1a0ccaa231c033d8}{log\+Error} (const std\+::string message, const unsigned int readout\+Board\+ID, const unsigned int tdc\+ID)
+\begin{DoxyCompactList}\small\item\em Logs an error. \end{DoxyCompactList}\item 
+void \hyperlink{class_error_spy_a85e971684266e774c896ee681850614a}{print} () const
+\begin{DoxyCompactList}\small\item\em Prints a summary of logged error messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::mutex \hyperlink{class_error_spy_ae7d03be7562c1eb3ed4de48e33d89070}{m\+\_\+mut}
+\begin{DoxyCompactList}\small\item\em Mutex for thread safety. \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, \hyperlink{class_error_counter}{Error\+Counter} $>$ \hyperlink{class_error_spy_a4a6e0b0cb04a7382ae0d92c54c60588e}{m\+\_\+error\+Map}
+\begin{DoxyCompactList}\small\item\em Map to store error messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Keeps track of errors detected during program execution. 
+
+Tracks and prints errors detected during process execution.
+
+To Log an error, call log\+Error with a summary message, readout board ID and tdc ID. The message will be tracked, and any additional occurances will be added to the count. 
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_error_spy_a8d07ccabb00ac3925d94d77e7092bc99}\label{class_error_spy_a8d07ccabb00ac3925d94d77e7092bc99}} 
 \index{Error\+Spy@{Error\+Spy}!Error\+Spy@{Error\+Spy}}
 \index{Error\+Spy@{Error\+Spy}!Error\+Spy@{Error\+Spy}}
-\subsubsection{\texorpdfstring{Error\+Spy()}{ErrorSpy()}}
-{\footnotesize\ttfamily Error\+Spy\+::\+Error\+Spy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\subsubsection{\texorpdfstring{Error\+Spy()}{ErrorSpy()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Error\+Spy\+::\+Error\+Spy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+Constructor. 
+
+\mbox{\Hypertarget{class_error_spy_aa10c8604df16528fa51fc00e9b84e184}\label{class_error_spy_aa10c8604df16528fa51fc00e9b84e184}} 
+\index{Error\+Spy@{Error\+Spy}!Error\+Spy@{Error\+Spy}}
+\index{Error\+Spy@{Error\+Spy}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{Error\+Spy()}{ErrorSpy()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Error\+Spy\+::\+Error\+Spy (\begin{DoxyParamCaption}\item[{const \hyperlink{class_error_spy}{Error\+Spy} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{class_error_spy_a07d843cb06eb0a6bfd47734b6c31e289}\label{class_error_spy_a07d843cb06eb0a6bfd47734b6c31e289}} 
+\index{Error\+Spy@{Error\+Spy}!Error\+Spy@{Error\+Spy}}
+\index{Error\+Spy@{Error\+Spy}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{Error\+Spy()}{ErrorSpy()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Error\+Spy\+::\+Error\+Spy (\begin{DoxyParamCaption}\item[{const \hyperlink{class_error_spy}{Error\+Spy} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_error_spy_a5177c4dac196484a1a0ccaa231c033d8}\label{class_error_spy_a5177c4dac196484a1a0ccaa231c033d8}} 
+\index{Error\+Spy@{Error\+Spy}!log\+Error@{log\+Error}}
+\index{log\+Error@{log\+Error}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{log\+Error()}{logError()}}
+{\footnotesize\ttfamily void Error\+Spy\+::log\+Error (\begin{DoxyParamCaption}\item[{const std\+::string}]{message,  }\item[{const unsigned int}]{readout\+Board\+ID,  }\item[{const unsigned int}]{tdc\+ID }\end{DoxyParamCaption})}
+
+
+
+Logs an error. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Message summarising the error \\
+\hline
+{\em readout\+Board\+ID} & Readout Board ID where the error occured \\
+\hline
+{\em tdc\+ID} & T\+DC id where the error occured \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_error_spy_a1ee5e050efa950d40f48245550cb5aad}\label{class_error_spy_a1ee5e050efa950d40f48245550cb5aad}} 
+\index{Error\+Spy@{Error\+Spy}!operator=@{operator=}}
+\index{operator=@{operator=}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{class_error_spy}{Error\+Spy}\& Error\+Spy\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{class_error_spy}{Error\+Spy}}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{class_error_spy_a1a48d70388ccb40d03357ce9f93158c9}\label{class_error_spy_a1a48d70388ccb40d03357ce9f93158c9}} 
+\index{Error\+Spy@{Error\+Spy}!operator=@{operator=}}
+\index{operator=@{operator=}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{class_error_spy}{Error\+Spy}\& Error\+Spy\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{class_error_spy}{Error\+Spy} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{class_error_spy_a85e971684266e774c896ee681850614a}\label{class_error_spy_a85e971684266e774c896ee681850614a}} 
+\index{Error\+Spy@{Error\+Spy}!print@{print}}
+\index{print@{print}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Error\+Spy\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints a summary of logged error messages. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_error_spy_a4a6e0b0cb04a7382ae0d92c54c60588e}\label{class_error_spy_a4a6e0b0cb04a7382ae0d92c54c60588e}} 
+\index{Error\+Spy@{Error\+Spy}!m\+\_\+error\+Map@{m\+\_\+error\+Map}}
+\index{m\+\_\+error\+Map@{m\+\_\+error\+Map}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{m\+\_\+error\+Map}{m\_errorMap}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, \hyperlink{class_error_counter}{Error\+Counter}$>$ Error\+Spy\+::m\+\_\+error\+Map\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map to store error messages. 
+
+\mbox{\Hypertarget{class_error_spy_ae7d03be7562c1eb3ed4de48e33d89070}\label{class_error_spy_ae7d03be7562c1eb3ed4de48e33d89070}} 
+\index{Error\+Spy@{Error\+Spy}!m\+\_\+mut@{m\+\_\+mut}}
+\index{m\+\_\+mut@{m\+\_\+mut}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{m\+\_\+mut}{m\_mut}}
+{\footnotesize\ttfamily std\+::mutex Error\+Spy\+::m\+\_\+mut\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Mutex for thread safety. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Core/inc/\hyperlink{_error_spy_8hpp}{Error\+Spy.\+hpp}\end{DoxyCompactItemize}
+Core/inc/\hyperlink{_error_spy_8hpp}{Error\+Spy.\+hpp}\item 
+Core/src/\hyperlink{_error_spy_8cpp}{Error\+Spy.\+cpp}\end{DoxyCompactItemize}

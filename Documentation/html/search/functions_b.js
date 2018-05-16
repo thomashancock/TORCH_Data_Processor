@@ -1,6 +1,14 @@
 var searchData=
 [
-  ['threadsafeeventmap',['ThreadSafeEventMap',['../class_thread_safe_event_map.html#ace03ee2a6017dfee50a61c68626d2345',1,'ThreadSafeEventMap::ThreadSafeEventMap(const std::list&lt; unsigned int &gt; tdcIDs)'],['../class_thread_safe_event_map.html#a523d5bf6c632e3803e721ef3fd94e318',1,'ThreadSafeEventMap::ThreadSafeEventMap(const ThreadSafeEventMap &amp;other)=delete'],['../class_thread_safe_event_map.html#af28959f5fbd84f00d227d10e1b37e5e5',1,'ThreadSafeEventMap::ThreadSafeEventMap(const ThreadSafeEventMap &amp;&amp;other)=delete']]],
-  ['threadsafequeue',['ThreadSafeQueue',['../class_thread_safe_queue.html#a06e14823003cc9b5d9e9151380077f08',1,'ThreadSafeQueue::ThreadSafeQueue()'],['../class_thread_safe_queue.html#a0f3f492104e38b019a5e1a74647cec39',1,'ThreadSafeQueue::ThreadSafeQueue(const ThreadSafeQueue &amp;other)=delete'],['../class_thread_safe_queue.html#a51c1e1c4eb980e2cb5d3012de447bbd5',1,'ThreadSafeQueue::ThreadSafeQueue(const ThreadSafeQueue &amp;&amp;other)=delete']]],
-  ['trimmedstring',['trimmedString',['../_debug_8hpp.html#ade29d44b4fecc53de55b7bd5dd9fcff7',1,'Debug.hpp']]]
+  ['readdatablock',['readDataBlock',['../class_file_reader.html#ac578b683eba751027766a2c30f03a28b',1,'FileReader']]],
+  ['readheaderline',['readHeaderLine',['../class_file_reader.html#a94a71d0a05ececd1e84fa71d80b7e6ba',1,'FileReader']]],
+  ['removepackets',['removePackets',['../class_event.html#a4a7c0f87ea9fd8526451d6eddc3a592e',1,'Event']]],
+  ['resettreevariables',['resetTreeVariables',['../class_event_tree_manager.html#a88cf8288ad022053b35192445e77f9a7',1,'EventTreeManager']]],
+  ['rootmanager',['RootManager',['../class_root_manager.html#a152803255b94d68cbe4c4f8e24fc2352',1,'RootManager']]],
+  ['runlowlevel',['runLowLevel',['../class_processor.html#ae697c1dd3136d1cf973d0ecc5a65a53a',1,'Processor']]],
+  ['runparallel',['runParallel',['../class_processor.html#a1e5a47f8539e3568e2ba8f14f1fddea2',1,'Processor']]],
+  ['runprocessingloop',['runProcessingLoop',['../class_file_reader.html#a98606ec7d315f1ed6f90c531df0d09f9',1,'FileReader']]],
+  ['runprocessingloops',['runProcessingLoops',['../class_file_reader.html#a478ed77f1b8f76e15cb2faa8964a26e6',1,'FileReader']]],
+  ['runquickcheck',['runQuickCheck',['../class_processor.html#ae045ebe853cd1f2124ecb93b829a9113',1,'Processor']]],
+  ['runserial',['runSerial',['../class_processor.html#a7475d40a755f8afa7b6746c7949454d9',1,'Processor']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['threadsafeeventmap',['ThreadSafeEventMap',['../class_thread_safe_event_map.html',1,'']]],
-  ['threadsafequeue',['ThreadSafeQueue',['../class_thread_safe_queue.html',1,'']]],
-  ['threadsafequeue_3c_20std_3a_3aunique_5fptr_3c_20wordbundle_20_3e_20_3e',['ThreadSafeQueue&lt; std::unique_ptr&lt; WordBundle &gt; &gt;',['../class_thread_safe_queue.html',1,'']]]
+  ['rootmanager',['RootManager',['../class_root_manager.html',1,'']]],
+  ['rootmanager_3c_20event_20_3e',['RootManager&lt; Event &gt;',['../class_root_manager.html',1,'']]],
+  ['rootmanager_3c_20packet_20_3e',['RootManager&lt; Packet &gt;',['../class_root_manager.html',1,'']]]
 ];

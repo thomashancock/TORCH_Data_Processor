@@ -61,22 +61,73 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_error_spy-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ErrorSpy Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>Keeps track of errors detected during program execution.  
+ <a href="class_error_spy.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_error_spy_8hpp_source.html">ErrorSpy.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8d07ccabb00ac3925d94d77e7092bc99"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a8d07ccabb00ac3925d94d77e7092bc99">ErrorSpy</a> ()</td></tr>
+<tr class="memdesc:a8d07ccabb00ac3925d94d77e7092bc99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a8d07ccabb00ac3925d94d77e7092bc99">More...</a><br /></td></tr>
 <tr class="separator:a8d07ccabb00ac3925d94d77e7092bc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa10c8604df16528fa51fc00e9b84e184"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#aa10c8604df16528fa51fc00e9b84e184">ErrorSpy</a> (const <a class="el" href="class_error_spy.html">ErrorSpy</a> &amp;other)=delete</td></tr>
+<tr class="separator:aa10c8604df16528fa51fc00e9b84e184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ee5e050efa950d40f48245550cb5aad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_error_spy.html">ErrorSpy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a1ee5e050efa950d40f48245550cb5aad">operator=</a> (<a class="el" href="class_error_spy.html">ErrorSpy</a> other)=delete</td></tr>
+<tr class="separator:a1ee5e050efa950d40f48245550cb5aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07d843cb06eb0a6bfd47734b6c31e289"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a07d843cb06eb0a6bfd47734b6c31e289">ErrorSpy</a> (const <a class="el" href="class_error_spy.html">ErrorSpy</a> &amp;&amp;other)=delete</td></tr>
+<tr class="separator:a07d843cb06eb0a6bfd47734b6c31e289"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a48d70388ccb40d03357ce9f93158c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_error_spy.html">ErrorSpy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a1a48d70388ccb40d03357ce9f93158c9">operator=</a> (<a class="el" href="class_error_spy.html">ErrorSpy</a> &amp;&amp;other)=delete</td></tr>
+<tr class="separator:a1a48d70388ccb40d03357ce9f93158c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5177c4dac196484a1a0ccaa231c033d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a5177c4dac196484a1a0ccaa231c033d8">logError</a> (const std::string message, const unsigned int readoutBoardID, const unsigned int tdcID)</td></tr>
+<tr class="memdesc:a5177c4dac196484a1a0ccaa231c033d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs an error.  <a href="#a5177c4dac196484a1a0ccaa231c033d8">More...</a><br /></td></tr>
+<tr class="separator:a5177c4dac196484a1a0ccaa231c033d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85e971684266e774c896ee681850614a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a85e971684266e774c896ee681850614a">print</a> () const</td></tr>
+<tr class="memdesc:a85e971684266e774c896ee681850614a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a summary of logged error messages.  <a href="#a85e971684266e774c896ee681850614a">More...</a><br /></td></tr>
+<tr class="separator:a85e971684266e774c896ee681850614a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae7d03be7562c1eb3ed4de48e33d89070"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#ae7d03be7562c1eb3ed4de48e33d89070">m_mut</a></td></tr>
+<tr class="memdesc:ae7d03be7562c1eb3ed4de48e33d89070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for thread safety.  <a href="#ae7d03be7562c1eb3ed4de48e33d89070">More...</a><br /></td></tr>
+<tr class="separator:ae7d03be7562c1eb3ed4de48e33d89070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a6e0b0cb04a7382ae0d92c54c60588e"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="class_error_counter.html">ErrorCounter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a4a6e0b0cb04a7382ae0d92c54c60588e">m_errorMap</a></td></tr>
+<tr class="memdesc:a4a6e0b0cb04a7382ae0d92c54c60588e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store error messages.  <a href="#a4a6e0b0cb04a7382ae0d92c54c60588e">More...</a><br /></td></tr>
+<tr class="separator:a4a6e0b0cb04a7382ae0d92c54c60588e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Keeps track of errors detected during program execution. </p>
+<p>Tracks and prints errors detected during process execution.</p>
+<p>To Log an error, call logError with a summary message, readout board ID and tdc ID. The message will be tracked, and any additional occurances will be added to the count. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8d07ccabb00ac3925d94d77e7092bc99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d07ccabb00ac3925d94d77e7092bc99">&#9670;&nbsp;</a></span>ErrorSpy()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d07ccabb00ac3925d94d77e7092bc99">&#9670;&nbsp;</a></span>ErrorSpy() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ErrorSpy::ErrorSpy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+
+</div>
+</div>
+<a id="aa10c8604df16528fa51fc00e9b84e184"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa10c8604df16528fa51fc00e9b84e184">&#9670;&nbsp;</a></span>ErrorSpy() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -87,21 +138,214 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">ErrorSpy::ErrorSpy </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="class_error_spy.html">ErrorSpy</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a id="a07d843cb06eb0a6bfd47734b6c31e289"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07d843cb06eb0a6bfd47734b6c31e289">&#9670;&nbsp;</a></span>ErrorSpy() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ErrorSpy::ErrorSpy </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_error_spy.html">ErrorSpy</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5177c4dac196484a1a0ccaa231c033d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5177c4dac196484a1a0ccaa231c033d8">&#9670;&nbsp;</a></span>logError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ErrorSpy::logError </td>
+          <td>(</td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>readoutBoardID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>tdcID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Logs an error. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Message summarising the error </td></tr>
+    <tr><td class="paramname">readoutBoardID</td><td>Readout Board ID where the error occured </td></tr>
+    <tr><td class="paramname">tdcID</td><td>TDC id where the error occured </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1ee5e050efa950d40f48245550cb5aad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ee5e050efa950d40f48245550cb5aad">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_error_spy.html">ErrorSpy</a>&amp; ErrorSpy::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_error_spy.html">ErrorSpy</a>&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a48d70388ccb40d03357ce9f93158c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a48d70388ccb40d03357ce9f93158c9">&#9670;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_error_spy.html">ErrorSpy</a>&amp; ErrorSpy::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_error_spy.html">ErrorSpy</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85e971684266e774c896ee681850614a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85e971684266e774c896ee681850614a">&#9670;&nbsp;</a></span>print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ErrorSpy::print </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints a summary of logged error messages. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4a6e0b0cb04a7382ae0d92c54c60588e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a6e0b0cb04a7382ae0d92c54c60588e">&#9670;&nbsp;</a></span>m_errorMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="class_error_counter.html">ErrorCounter</a>&gt; ErrorSpy::m_errorMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Map to store error messages. </p>
+
+</div>
+</div>
+<a id="ae7d03be7562c1eb3ed4de48e33d89070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7d03be7562c1eb3ed4de48e33d89070">&#9670;&nbsp;</a></span>m_mut</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex ErrorSpy::m_mut</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mutex for thread safety. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>Core/inc/<a class="el" href="_error_spy_8hpp_source.html">ErrorSpy.hpp</a></li>
+<li>Core/src/<a class="el" href="_error_spy_8cpp.html">ErrorSpy.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

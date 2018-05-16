@@ -7,12 +7,10 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_word_bundle_aa619f7a96823c2dfe048676e65064ca4}{Word\+Bundle} (const unsigned int readout\+Board\+Number, const char slot)
+\hyperlink{class_word_bundle_aef51ca0125b0b39fff34bfa47ddc4334}{Word\+Bundle} (const unsigned int readout\+Board\+Number)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_word_bundle_a6d781e8e2bf5b1c0b67346bd6fd44ff9}{get\+Readout\+Board\+Number} () const
 \begin{DoxyCompactList}\small\item\em Returns readout board number. \end{DoxyCompactList}\item 
-char \hyperlink{class_word_bundle_a4a8540008b739e4e4b94e665c2e24991}{get\+Slot} () const
-\begin{DoxyCompactList}\small\item\em Returns slot. \end{DoxyCompactList}\item 
 bool \hyperlink{class_word_bundle_a0a817b8d4266b5c2418743bf46ef5dee}{is\+Complete} () const
 \begin{DoxyCompactList}\small\item\em Check if Bundle is complete. \end{DoxyCompactList}\item 
 bool \hyperlink{class_word_bundle_a18bcb8912a877fa9e60cd8ec707e75a3}{empty} () const
@@ -30,8 +28,6 @@ void \hyperlink{class_word_bundle_a15e13fdd7380c72be2f42013560d62c3}{set\+Roc\+V
 \item 
 const unsigned int \hyperlink{class_word_bundle_a8c6594819625e90aebfd248a8c11916b}{m\+\_\+readout\+Board\+Number}
 \item 
-const char \hyperlink{class_word_bundle_aad119e71fa785078734438dd49c4dec0}{m\+\_\+slot}
-\item 
 bool \hyperlink{class_word_bundle_a7605157c872054d7ab42b590fac97ca7}{m\+\_\+roc\+Value\+Stored} = false
 \item 
 std\+::queue$<$ unsigned int $>$ \hyperlink{class_word_bundle_a58233a5455b9a594e3441dd79e3d6a3b}{m\+\_\+words}
@@ -41,11 +37,11 @@ unsigned int \hyperlink{class_word_bundle_a2510a567b83584e8b53395168d53c401}{m\+
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_word_bundle_aa619f7a96823c2dfe048676e65064ca4}\label{class_word_bundle_aa619f7a96823c2dfe048676e65064ca4}} 
+\mbox{\Hypertarget{class_word_bundle_aef51ca0125b0b39fff34bfa47ddc4334}\label{class_word_bundle_aef51ca0125b0b39fff34bfa47ddc4334}} 
 \index{Word\+Bundle@{Word\+Bundle}!Word\+Bundle@{Word\+Bundle}}
 \index{Word\+Bundle@{Word\+Bundle}!Word\+Bundle@{Word\+Bundle}}
 \subsubsection{\texorpdfstring{Word\+Bundle()}{WordBundle()}}
-{\footnotesize\ttfamily Word\+Bundle\+::\+Word\+Bundle (\begin{DoxyParamCaption}\item[{const unsigned int}]{readout\+Board\+Number,  }\item[{const char}]{slot }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Word\+Bundle\+::\+Word\+Bundle (\begin{DoxyParamCaption}\item[{const unsigned int}]{readout\+Board\+Number }\end{DoxyParamCaption})}
 
 
 
@@ -104,16 +100,6 @@ Returns readout board number.
 
 Returns the stored R\+OC value. 
 
-\mbox{\Hypertarget{class_word_bundle_a4a8540008b739e4e4b94e665c2e24991}\label{class_word_bundle_a4a8540008b739e4e4b94e665c2e24991}} 
-\index{Word\+Bundle@{Word\+Bundle}!get\+Slot@{get\+Slot}}
-\index{get\+Slot@{get\+Slot}!Word\+Bundle@{Word\+Bundle}}
-\subsubsection{\texorpdfstring{get\+Slot()}{getSlot()}}
-{\footnotesize\ttfamily char Word\+Bundle\+::get\+Slot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Returns slot. 
-
 \mbox{\Hypertarget{class_word_bundle_a0a817b8d4266b5c2418743bf46ef5dee}\label{class_word_bundle_a0a817b8d4266b5c2418743bf46ef5dee}} 
 \index{Word\+Bundle@{Word\+Bundle}!is\+Complete@{is\+Complete}}
 \index{is\+Complete@{is\+Complete}!Word\+Bundle@{Word\+Bundle}}
@@ -154,12 +140,6 @@ Sets the R\+OC Value.
 \index{m\+\_\+roc\+Value\+Stored@{m\+\_\+roc\+Value\+Stored}!Word\+Bundle@{Word\+Bundle}}
 \subsubsection{\texorpdfstring{m\+\_\+roc\+Value\+Stored}{m\_rocValueStored}}
 {\footnotesize\ttfamily bool Word\+Bundle\+::m\+\_\+roc\+Value\+Stored = false\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_word_bundle_aad119e71fa785078734438dd49c4dec0}\label{class_word_bundle_aad119e71fa785078734438dd49c4dec0}} 
-\index{Word\+Bundle@{Word\+Bundle}!m\+\_\+slot@{m\+\_\+slot}}
-\index{m\+\_\+slot@{m\+\_\+slot}!Word\+Bundle@{Word\+Bundle}}
-\subsubsection{\texorpdfstring{m\+\_\+slot}{m\_slot}}
-{\footnotesize\ttfamily const char Word\+Bundle\+::m\+\_\+slot\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_word_bundle_a58233a5455b9a594e3441dd79e3d6a3b}\label{class_word_bundle_a58233a5455b9a594e3441dd79e3d6a3b}} 
 \index{Word\+Bundle@{Word\+Bundle}!m\+\_\+words@{m\+\_\+words}}

@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['wordbundle',['WordBundle',['../class_word_bundle.html#aa619f7a96823c2dfe048676e65064ca4',1,'WordBundle']]],
-  ['writetree',['writeTree',['../class_root_manager.html#adbe916dd56e5ec51f89c7643c4847842',1,'RootManager']]]
+  ['setrocvalue',['setRocValue',['../class_word_bundle.html#a15e13fdd7380c72be2f42013560d62c3',1,'WordBundle']]],
+  ['setuparrbranch',['setupArrBranch',['../class_root_manager.html#aa1eaed1aa026059b8d00e729161c6a43',1,'RootManager']]],
+  ['setupbranches',['setUpBranches',['../class_event_tree_manager.html#a11cbe0078aeb3d0fe320bbeec335babc',1,'EventTreeManager::setUpBranches()'],['../class_packet_tree_manager.html#a3e2aa24c5acd8a87b15cfff2d011f30b',1,'PacketTreeManager::setUpBranches()']]],
+  ['stagefiles',['stageFiles',['../class_file_reader.html#a578a03fc3bf266f3d6d54542bf687579',1,'FileReader']]]
 ];

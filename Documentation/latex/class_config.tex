@@ -16,6 +16,10 @@ Class which manages programs configuration.
 \begin{DoxyCompactList}\small\item\em Constructor with passed config file. \end{DoxyCompactList}\item 
 bool \hyperlink{class_config_a47870f3f5bc52f5d0aa387c25e431055}{is\+Configured} () const
 \begin{DoxyCompactList}\small\item\em Returns whether config was succesfully read. \end{DoxyCompactList}\item 
+const \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} \hyperlink{class_config_a1e69242b7f57068005d5ae195ca16530}{get\+Run\+Mode} () const
+\begin{DoxyCompactList}\small\item\em Returns the run mode. \end{DoxyCompactList}\item 
+const std\+::list$<$ unsigned int $>$ \hyperlink{class_config_a847bc1cf36b3d12da8590a036634a150}{get\+T\+D\+C\+List} () const
+\begin{DoxyCompactList}\small\item\em Returns the list of stored T\+DC Ids. \end{DoxyCompactList}\item 
 void \hyperlink{class_config_af75cb5a60c6cac9d6f6d030e65a5240a}{print} () const
 \begin{DoxyCompactList}\small\item\em Prints details of the stored configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
@@ -24,12 +28,20 @@ void \hyperlink{class_config_af75cb5a60c6cac9d6f6d030e65a5240a}{print} () const
 void \hyperlink{class_config_a3092a6e3ba0458b6bedca09f841f554e}{parse\+Config\+File} (const std\+::string config\+File)
 \begin{DoxyCompactList}\small\item\em Parses options read from the config file. \end{DoxyCompactList}\item 
 void \hyperlink{class_config_a46d81f90a7b6218385e8bfd0a283f6ce}{process\+Node} (T\+X\+M\+L\+Engine $\ast$xml\+Engine, X\+M\+L\+Node\+Pointer\+\_\+t node)
-\begin{DoxyCompactList}\small\item\em Extract information from a node and its children. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Extract information from a node and its children. \end{DoxyCompactList}\item 
+void \hyperlink{class_config_a42e48f8b6446cdc46badd09f6446a328}{process\+Option} (const std\+::string attribute, const std\+::string value)
+\begin{DoxyCompactList}\small\item\em Processes an option read from the config X\+ML file. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_config_a3bd48a0ae54bfd982c02564160d6762b}{get\+Mode\+As\+String} () const
+\begin{DoxyCompactList}\small\item\em Returns the mode of operation as a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 bool \hyperlink{class_config_a82bcc998ae058699369aee4a189f0ad1}{m\+\_\+config\+Read} = false
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Has config been read succesfully? \end{DoxyCompactList}\item 
+\hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} \hyperlink{class_config_a65b1f233533ce1e2acd85f6a4a07c4d4}{m\+\_\+mode} = \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947eaab27270f353006b03c91367e05e44b94}{Run\+Mode\+::\+Serial}
+\begin{DoxyCompactList}\small\item\em Stores the desired run mode. \end{DoxyCompactList}\item 
+std\+::list$<$ unsigned int $>$ \hyperlink{class_config_ac7295451d604cec09ed31ca74411c68c}{m\+\_\+tdc\+List}
+\begin{DoxyCompactList}\small\item\em Stores the available T\+D\+Cs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -51,6 +63,36 @@ Constructor with passed config file.
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_config_a3bd48a0ae54bfd982c02564160d6762b}\label{class_config_a3bd48a0ae54bfd982c02564160d6762b}} 
+\index{Config@{Config}!get\+Mode\+As\+String@{get\+Mode\+As\+String}}
+\index{get\+Mode\+As\+String@{get\+Mode\+As\+String}!Config@{Config}}
+\subsubsection{\texorpdfstring{get\+Mode\+As\+String()}{getModeAsString()}}
+{\footnotesize\ttfamily std\+::string Config\+::get\+Mode\+As\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Returns the mode of operation as a string. 
+
+\mbox{\Hypertarget{class_config_a1e69242b7f57068005d5ae195ca16530}\label{class_config_a1e69242b7f57068005d5ae195ca16530}} 
+\index{Config@{Config}!get\+Run\+Mode@{get\+Run\+Mode}}
+\index{get\+Run\+Mode@{get\+Run\+Mode}!Config@{Config}}
+\subsubsection{\texorpdfstring{get\+Run\+Mode()}{getRunMode()}}
+{\footnotesize\ttfamily const \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} Config\+::get\+Run\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the run mode. 
+
+\mbox{\Hypertarget{class_config_a847bc1cf36b3d12da8590a036634a150}\label{class_config_a847bc1cf36b3d12da8590a036634a150}} 
+\index{Config@{Config}!get\+T\+D\+C\+List@{get\+T\+D\+C\+List}}
+\index{get\+T\+D\+C\+List@{get\+T\+D\+C\+List}!Config@{Config}}
+\subsubsection{\texorpdfstring{get\+T\+D\+C\+List()}{getTDCList()}}
+{\footnotesize\ttfamily const std\+::list$<$unsigned int$>$ Config\+::get\+T\+D\+C\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the list of stored T\+DC Ids. 
+
 \mbox{\Hypertarget{class_config_a47870f3f5bc52f5d0aa387c25e431055}\label{class_config_a47870f3f5bc52f5d0aa387c25e431055}} 
 \index{Config@{Config}!is\+Configured@{is\+Configured}}
 \index{is\+Configured@{is\+Configured}!Config@{Config}}
@@ -103,6 +145,23 @@ Extract information from a node and its children.
 {\em node} & Node to be processed \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_config_a42e48f8b6446cdc46badd09f6446a328}\label{class_config_a42e48f8b6446cdc46badd09f6446a328}} 
+\index{Config@{Config}!process\+Option@{process\+Option}}
+\index{process\+Option@{process\+Option}!Config@{Config}}
+\subsubsection{\texorpdfstring{process\+Option()}{processOption()}}
+{\footnotesize\ttfamily void Config\+::process\+Option (\begin{DoxyParamCaption}\item[{const std\+::string}]{attribute,  }\item[{const std\+::string}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Processes an option read from the config X\+ML file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute} & Attribute name \\
+\hline
+{\em value} & Attribute value \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Data Documentation}
@@ -111,6 +170,30 @@ Extract information from a node and its children.
 \index{m\+\_\+config\+Read@{m\+\_\+config\+Read}!Config@{Config}}
 \subsubsection{\texorpdfstring{m\+\_\+config\+Read}{m\_configRead}}
 {\footnotesize\ttfamily bool Config\+::m\+\_\+config\+Read = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Has config been read succesfully? 
+
+\mbox{\Hypertarget{class_config_a65b1f233533ce1e2acd85f6a4a07c4d4}\label{class_config_a65b1f233533ce1e2acd85f6a4a07c4d4}} 
+\index{Config@{Config}!m\+\_\+mode@{m\+\_\+mode}}
+\index{m\+\_\+mode@{m\+\_\+mode}!Config@{Config}}
+\subsubsection{\texorpdfstring{m\+\_\+mode}{m\_mode}}
+{\footnotesize\ttfamily \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} Config\+::m\+\_\+mode = \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947eaab27270f353006b03c91367e05e44b94}{Run\+Mode\+::\+Serial}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stores the desired run mode. 
+
+\mbox{\Hypertarget{class_config_ac7295451d604cec09ed31ca74411c68c}\label{class_config_ac7295451d604cec09ed31ca74411c68c}} 
+\index{Config@{Config}!m\+\_\+tdc\+List@{m\+\_\+tdc\+List}}
+\index{m\+\_\+tdc\+List@{m\+\_\+tdc\+List}!Config@{Config}}
+\subsubsection{\texorpdfstring{m\+\_\+tdc\+List}{m\_tdcList}}
+{\footnotesize\ttfamily std\+::list$<$unsigned int$>$ Config\+::m\+\_\+tdc\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stores the available T\+D\+Cs. 
 
 
 
