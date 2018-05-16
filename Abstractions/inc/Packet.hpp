@@ -1,12 +1,12 @@
 #ifndef PACKET_H
 #define PACKET_H
 
+// STD
 #include <fstream>
 #include <vector>
 
+// LOCAL
 #include "Debug.hpp"
-// #include "GlobalConfig.hpp"
-// #include "DebugStreamManager.hpp"
 #include "Edge.hpp"
 
 //! Stores all the information relevant to a single packet of data
