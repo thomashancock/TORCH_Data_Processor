@@ -2,7 +2,8 @@
 #define ERRORSPY_H
 
 // STD
-#include <map>
+#include <unordered_map>
+#include <string>
 #include <mutex>
 
 // LOCAL
@@ -39,7 +40,7 @@ public:
 private:
 	mutable std::mutex m_mut; //!< Mutex for thread safety
 
-	std::map<std::string, ErrorCounter> m_errorMap; //!< Map to store error messages
+	std::unordered_map<std::string, ErrorCounter> m_errorMap; //!< Map to store error messages
 };
 
 #endif /* ERRORSPY_H */
