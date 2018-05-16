@@ -59,6 +59,7 @@ private:
 
 private:
 	std::vector< std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
+	std::vector< std::string > m_fileNames; //!< Vector of file lengths
 	std::vector< unsigned int > m_fileLengths; //!< Vector of file lengths
 	std::vector< bundleWorkspace > m_bundleWorkspaces; //!< Vector of pointers used to create WordBundles
 
@@ -93,6 +94,10 @@ void FileReader::clearStreams() {
 	// Set file lengths to 0
 	for (auto& length : m_fileLengths) {
 		length = 0;
+	}
+
+	for (auto& name : m_fileNames) {
+		name.clear();
 	}
 
 	// Delete any semi-constructed bundles

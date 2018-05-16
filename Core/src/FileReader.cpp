@@ -30,6 +30,9 @@ FileReader::FileReader(
 		// Create a file length counter for each readout board
 		m_fileLengths.push_back(0);
 
+		// Create a filename string for each readout board
+		m_fileNames.emplace_back("");
+
 		// Create an array of bundles for readout board
 		m_bundleWorkspaces.emplace_back();
 
@@ -42,6 +45,7 @@ FileReader::FileReader(
 	// Check vector sizes are correct
 	ASSERT(m_inputStreams.size() == nReadoutBoards);
 	ASSERT(m_fileLengths.size() == nReadoutBoards);
+	ASSERT(m_fileNames.size() == nReadoutBoards);
 	ASSERT(m_bundleWorkspaces.size() == nReadoutBoards);
 }
 // -----------------------------------------------------------------------------
@@ -67,6 +71,7 @@ void FileReader::stageFiles(
 			} else {
 				// If file is valid, record file length
 				m_inputStreams[i]->seekg(0, std::ios::end);
+				m_fileNames[i] = m_files[i];
 				m_fileLengths[i] = m_inputStreams[i]->tellg();
 				m_inputStreams[i]->seekg(0);
 			}
@@ -120,20 +125,17 @@ void FileReader::runProcessingLoop() {
 
 			// Check read data is okay
 			if (nDataBytes > 4096) {
-				//TODO: Log Error
-				// STD_ERR("nDataBytes " << nDataBytes << " > 4096 found in file " << fileName << ". Skipping rest of file.");
+				STD_ERR("nDataBytes " << nDataBytes << " > 4096 found in file " << m_fileNames[i] << ". Skipping rest of file.");
 				m_inputStreams[i].reset();
 			}
 
 			if (0 != nDataBytes % 4) {
-				// TODO: Log Error
-				// STD_ERR("Length of data packet is not dividible by 4. File: " << fileName << ". Skipping rest of file.");
+				STD_ERR("Length of data packet is not dividible by 4. File: " << m_fileNames[i] << ". Skipping rest of file.");
 				m_inputStreams[i].reset();
 			}
 
 			if (0 != nDataBytes % 16) {
-				// TODO: Add File Name
-				WARNING("Incomplete data block detected. Will skip to next block");
+				WARNING("Incomplete data block detected in file " << m_fileNames[i] << ". Will skip to next block");
 
 				// Skip requisite number of bytes to find a new header word
 				for (unsigned int i = 0; i < nDataBytes; i++) {
