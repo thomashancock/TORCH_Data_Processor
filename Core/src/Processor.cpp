@@ -5,6 +5,7 @@
 #include <ios>
 #include <map>
 #include <thread>
+#include <sstream>
 
 // LOCAL
 #include "Debug.hpp"
@@ -58,10 +59,6 @@ Processor::~Processor() {
 void Processor::processFiles(
 	const std::vector<std::string> fileNames
 ) {
-	ErrorSpy::getInstance().logError("Test",0,12);
-	ErrorSpy::getInstance().logError("Test",0,12);
-	ErrorSpy::getInstance().logError("Test",0,14);
-
 	if (RunMode::QuickCheck == m_mode) {
 		runQuickCheck(fileNames);
 	} else if (RunMode::LowLevel == m_mode) {
@@ -260,7 +257,9 @@ void Processor::makePackets(
 						ASSERT(currPacket != nullptr);
 						currPacket->addDataline(word);
 					} else {
-						STD_ERR("Invalid Data Type found: " << dataType);
+						std::stringstream errorMessage;
+						errorMessage << "Invalid Datatype " << dataType;
+						ErrorSpy::getInstance().logError(errorMessage.str(),currPacket->getReadoutBoardID(),currPacket->getTDCID());
 					}
 				}
 			}

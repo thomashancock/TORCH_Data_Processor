@@ -22,7 +22,7 @@ void ErrorCounter::print() const {
 		std::cout
 			<< "\tBoard: " << entry.first.first
 			<< ", TDC: " << entry.first.second
-			<< " x " << entry.second
+			<< " (x " << entry.second << ")"
 			<< std::endl;
 	}
 }

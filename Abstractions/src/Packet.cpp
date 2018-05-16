@@ -2,6 +2,7 @@
 
 // LOCAL
 #include "BinaryDecoding.hpp"
+#include "ErrorSpy.hpp"
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -77,7 +78,8 @@ void Packet::addHeader(
 		m_bunchID = bindec::getBunchID(word);
 		m_headerAdded = true;
 	} else {
-		// TODO: Log Error
+		// Log Error
+		ErrorSpy::getInstance().logError("Duplicate Packet Header",m_readoutBoardID,m_tdcIDHeader);
 	}
 }
 // -----------------------------------------------------------------------------
@@ -94,7 +96,8 @@ void Packet::addTrailer(
 		m_wordCount = bindec::getWordCount(word);
 		m_trailerAdded = true;
 	} else {
-		// TODO: Log Error
+		// Log Error
+		ErrorSpy::getInstance().logError("Duplicate Packet Trailer",m_readoutBoardID,m_tdcIDHeader);
 	}
 }
 // -----------------------------------------------------------------------------

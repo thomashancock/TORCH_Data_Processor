@@ -132,7 +132,7 @@ void FileReader::runProcessingLoop() {
 			}
 
 			if (0 != nDataBytes % 16) {
-				// TODO: Replace WARNING with log of error in ErrorSpy
+				// TODO: Add File Name
 				WARNING("Incomplete data block detected. Will skip to next block");
 
 				// Skip requisite number of bytes to find a new header word

@@ -43,7 +43,6 @@ void Event::addPacket(
 	if (found == m_packetMap.end()) {
 		STD_ERR("Event found with unrequested TDC ID");
 	} else if (found->second != nullptr) {
-		// TODO: Add to error logging
 		ErrorSpy::getInstance().logError("Duplicate Packet Found",packet->getReadoutBoardID(),found->first);
 	} else {
 		found->second = std::move(packet);
