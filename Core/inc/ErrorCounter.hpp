@@ -5,31 +5,40 @@
 #include <map>
 #include <utility>
 
+//! Used by ErrorSpy to track which readout board/tdc combinations errors have occured on
 class ErrorCounter {
 	using uintPair = std::pair<unsigned int, unsigned int>;
 public:
+	//! Constructor
 	ErrorCounter();
 
+	//! Incrememnts the count for the readout board/tdc combination
 	inline void addCount(
-		const unsigned int readoutBoardID,
-		const unsigned int tdcID
+		const unsigned int readoutBoardID, //!< The Readout Board ID
+		const unsigned int tdcID //!< The TDC ID
 	);
 
+	//! Returns the count for the readout board/tdc combination
 	inline unsigned int getCount(
-		const unsigned int readoutBoardID,
-		const unsigned int tdcID
-	);
+		const unsigned int readoutBoardID, //!< The Readout Board ID
+		const unsigned int tdcID //!< The TDC ID
+	) const;
 
+	//! Prints the counts stored
 	void print() const;
 
 private:
+	//! Returns a map key for the given readout board/tdc combination
+	/*!
+		Returns auto to facilitate easy modifiaction of map key type
+	 */
 	inline auto makeKey(
 		const unsigned int readoutBoardID,
 		const unsigned int tdcID
-	);
+	) const;
 
 private:
-	std::map<uintPair, unsigned int> m_counts;
+	std::map<uintPair, unsigned int> m_counts; //!< Map to store counts in
 };
 
 #endif /* ERRORCOUNTER_H */
@@ -42,7 +51,8 @@ private:
 inline auto ErrorCounter::makeKey(
 	const unsigned int readoutBoardID,
 	const unsigned int tdcID
-) {
+) const {
+	// Key is currently std::pair, but can be changed
 	return std::make_pair(readoutBoardID,tdcID);
 }
 // -----------------------------------------------------------------------------
@@ -67,7 +77,7 @@ inline void ErrorCounter::addCount(
 inline unsigned int ErrorCounter::getCount(
 	const unsigned int readoutBoardID,
 	const unsigned int tdcID
-) {
+) const {
 	const auto key = makeKey(readoutBoardID,tdcID);
 
 	const auto found = m_counts.find(key);
