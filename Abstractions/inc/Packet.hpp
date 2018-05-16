@@ -4,6 +4,7 @@
 // STD
 #include <fstream>
 #include <vector>
+#include <functional>
 
 // LOCAL
 #include "Debug.hpp"
@@ -87,6 +88,9 @@ public:
 	void print() const;
 
 private:
+	//! Channel Mapping Function
+	static std::function<unsigned int(unsigned int, unsigned int, unsigned int)> m_channelMapper;
+
 	//! Adds information corresponding to a header word to the packet
 	void addHeader(
 		const unsigned int word //!< The word being added

@@ -4,6 +4,23 @@
 #include "BinaryDecoding.hpp"
 #include "ErrorSpy.hpp"
 
+// Useful alias
+using uint = unsigned int;
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Statics:
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
+	uint readoutBoardID,
+	uint tdcID,
+	uint channelID
+) {
+	// Set default as returning the channel ID
+	return channelID;
+};
+
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Public:
@@ -101,6 +118,8 @@ void Packet::addDataline(
 	// Encode TDC ID in channel ID
 	// Note 11 is += 0 so is not included
 	// Apply Channel Mapping:
+
+	channelID = m_channelMapper(m_readoutBoardID, tdcID, channelID);
 
 	// if (8 == tdcID) {
 	// 	channelID += 160;
