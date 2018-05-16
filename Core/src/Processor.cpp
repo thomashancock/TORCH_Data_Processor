@@ -45,6 +45,15 @@ Processor::Processor(
 
 	// Initialise Packet Buffers
 	initializePacketBuffers(m_tdcIDs);
+
+	// Initialise Error Spy
+	m_errorSpy = std::make_shared<ErrorSpy>();
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+Processor::~Processor() {
+	m_errorSpy->print();
 }
 // -----------------------------------------------------------------------------
 //
@@ -52,6 +61,11 @@ Processor::Processor(
 void Processor::processFiles(
 	const std::vector<std::string> fileNames
 ) {
+	ASSERT(nullptr != m_errorSpy);
+	m_errorSpy->logError("Test Message",0,12);
+	m_errorSpy->logError("Test Message",0,12);
+	m_errorSpy->logError("Test Message",0,14);
+
 	if (RunMode::QuickCheck == m_mode) {
 		runQuickCheck(fileNames);
 	} else if (RunMode::LowLevel == m_mode) {

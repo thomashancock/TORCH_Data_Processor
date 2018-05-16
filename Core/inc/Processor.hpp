@@ -12,6 +12,7 @@
 // LOCAL
 #include "Config.hpp"
 #include "ModesEnum.hpp"
+#include "ErrorSpy.hpp"
 #include "FileReader.hpp"
 #include "ThreadSafeQueue.hpp"
 #include "ThreadSafeEventMap.hpp"
@@ -27,9 +28,13 @@ class Processor {
 	using packetBuffer = ThreadSafeQueue< std::unique_ptr<Packet> >;
 
 public:
+	//! Constructor
 	Processor(
 		std::unique_ptr<const Config> config
 	);
+
+	//! Destructor
+	~Processor();
 
 	void processFiles(
 		const std::vector<std::string> fileNames
@@ -74,7 +79,9 @@ private:
 
 	const std::list<unsigned int> m_tdcIDs; //!< List of TDC IDs (set by config)
 
-	const std::set<unsigned int> fillerWords = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 }; //! Set containing filler words (move to config?)
+	// const std::set<unsigned int> fillerWords = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 }; //! Set containing filler words (move to config?)
+
+	std::shared_ptr<ErrorSpy> m_errorSpy;
 
 	std::unique_ptr<FileReader> m_fileReader = nullptr; //!< File Reader object pointer
 
