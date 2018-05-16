@@ -51,6 +51,27 @@ std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
 // };
 
 // -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+std::function<void(uint&)> Packet::m_polarityFixer = [] (
+	uint& word
+) -> void {
+	const auto dataType = bindec::getDataType(word);
+	ASSERT(4 == dataType || 5 == dataType);
+
+	// If channel is even
+	const auto channelID = bindec::getChannelID(word);
+	if (0 == channelID%2) {
+		// Flip polarity
+		if (dataType == 4) {
+			word += 0x10000000;
+		} else {
+			word -= 0x10000000;
+		}
+	}
+};
+
+// -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Public:
 // -----------------------------------------------------------------------------
@@ -135,10 +156,13 @@ void Packet::addTrailer(
 //
 // -----------------------------------------------------------------------------
 void Packet::addDataline(
-	const unsigned int word
+	unsigned int word
 ) {
 	const unsigned int dataType = bindec::getDataType(word);
 	ASSERT(4 == dataType || 5 == dataType);
+
+	// Apply polarity corrections
+	m_polarityFixer(word);
 
 	const unsigned int tdcID = bindec::getTDCID(word);
 

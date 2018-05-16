@@ -42,7 +42,7 @@ public:
 	);
 	//! Adds information corresponding to a data word to the packet
 	void addDataline(
-		const unsigned int word //!< The word being added
+		unsigned int word //!< The word being added
 	);
 
 	//! Returns the stored TDC ID
@@ -90,6 +90,9 @@ public:
 private:
 	//! Channel Mapping Function
 	static std::function<unsigned int(unsigned int, unsigned int, unsigned int)> m_channelMapper;
+
+	//! Polarity correction function
+	static std::function<void(unsigned int&)> m_polarityFixer;
 
 	//! Adds information corresponding to a header word to the packet
 	void addHeader(
