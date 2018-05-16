@@ -11,11 +11,14 @@
 // -----------------------------------------------------------------------------
 Packet::Packet(
 	const unsigned int readoutBoardID,
-	const unsigned int rocValue
+	const unsigned int rocValue,
+	const unsigned int headerWord
 ) :
 	m_readoutBoardID(readoutBoardID),
 	m_rocValue(rocValue)
-{ }
+{
+	this->addHeader(headerWord);
+}
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -63,24 +66,6 @@ bool Packet::isConsistent() const {
 	}
 
 	return true;
-}
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-void Packet::addHeader(
-	const unsigned int word
-) {
-	ASSERT(2 == bindec::getDataType(word));
-
-	if (false == m_headerAdded) {
-		m_tdcIDHeader = bindec::getTDCID(word);
-		m_eventIDHeader = bindec::getEventID(word);
-		m_bunchID = bindec::getBunchID(word);
-		m_headerAdded = true;
-	} else {
-		// Log Error
-		ErrorSpy::getInstance().logError("Duplicate Packet Header",m_readoutBoardID,m_tdcIDHeader);
-	}
 }
 // -----------------------------------------------------------------------------
 //
@@ -233,6 +218,22 @@ void Packet::print() const {
 // -----------------------------------------------------------------------------
 // Private:
 // -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+void Packet::addHeader(
+	const unsigned int word
+) {
+	ASSERT(2 == bindec::getDataType(word));
+
+	// As header is added by constructor, should never be called with a header already in place
+	ASSERT(false == m_headerAdded);
+
+	m_tdcIDHeader = bindec::getTDCID(word);
+	m_eventIDHeader = bindec::getEventID(word);
+	m_bunchID = bindec::getBunchID(word);
+	m_headerAdded = true;
+}
+// -----------------------------------------------------------------------------
+//
 // -----------------------------------------------------------------------------
 unsigned int Packet::getEdgeValue(
 	const bool leading,

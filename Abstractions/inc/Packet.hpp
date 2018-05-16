@@ -18,7 +18,8 @@ public:
 	//! Constructor
 	Packet(
 		const unsigned int readoutBoardID, //!< Readout board ID
-		const unsigned int rocValue //!< ROC value which triggered the packet's creation
+		const unsigned int rocValue, //!< ROC value which triggered the packet's creation
+		const unsigned int headerWord //!< Header word for packet
 	);
 
 	//! Quick check for if the packet is complete and consistent
@@ -34,10 +35,6 @@ public:
 	*/
 	bool isConsistent() const;
 
-	//! Adds information corresponding to a header word to the packet
-	void addHeader(
-		const unsigned int word //!< The word being added
-	);
 	//! Adds information corresponding to a trailer word to the packet
 	void addTrailer(
 		const unsigned int word //!< The word being added
@@ -90,6 +87,11 @@ public:
 	void print() const;
 
 private:
+	//! Adds information corresponding to a header word to the packet
+	void addHeader(
+		const unsigned int word //!< The word being added
+	);
+
 	//! Returns the value returned by the specified getter function for an edge
 	unsigned int getEdgeValue(
 		const bool leading, //!< Get from leading edge of trailing egde

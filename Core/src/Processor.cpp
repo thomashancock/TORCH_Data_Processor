@@ -246,9 +246,8 @@ void Processor::makePackets(
 						currPacket.reset(nullptr);
 					}
 					ASSERT(nullptr == currPacket);
-					currPacket = std::make_unique<Packet>(bundle->getReadoutBoardID(),bundle->getROCValue());
+					currPacket = std::make_unique<Packet>(bundle->getReadoutBoardID(),bundle->getROCValue(),word);
 					ASSERT(currPacket != nullptr);
-					currPacket->addHeader(word);
 				} else if (currPacket != nullptr) {
 					if (3 == dataType) {
 						ASSERT(currPacket != nullptr);
