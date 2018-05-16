@@ -21,6 +21,35 @@ std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
 	return channelID;
 };
 
+// Old Mapping:
+// std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
+// 	uint readoutBoardID,
+// 	uint tdcID,
+// 	uint channelID
+// ) {
+// 	// Encode TDC ID in channel ID
+// 	// Note 11 is += 0 so is not included
+// 	if (8 == tdcID) {
+// 		channelID += 160;
+// 	} else if (9 == tdcID) {
+// 		channelID += 128;
+// 	} else if (10 == tdcID) {
+// 		channelID += 32;
+// 	} else if (12 == tdcID) {
+// 		channelID += 96;
+// 	} else if (13 == tdcID) {
+// 		channelID += 64;
+// 	} else if (14 == tdcID) {
+// 		channelID += 224;
+// 	} else if (15 == tdcID) {
+// 		channelID += 192;
+// 	}
+//
+// 	channelID += 256 * readoutBoardID;
+//
+// 	return channelID;
+// };
+
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Public:
@@ -112,30 +141,10 @@ void Packet::addDataline(
 	ASSERT(4 == dataType || 5 == dataType);
 
 	const unsigned int tdcID = bindec::getTDCID(word);
+
+	// Apply Channel Mapping
 	unsigned int channelID = bindec::getChannelID(word);
-	// channelID += 256 * <readout_board_ID> // Eventually need to be implemented
-
-	// Encode TDC ID in channel ID
-	// Note 11 is += 0 so is not included
-	// Apply Channel Mapping:
-
 	channelID = m_channelMapper(m_readoutBoardID, tdcID, channelID);
-
-	// if (8 == tdcID) {
-	// 	channelID += 160;
-	// } else if (9 == tdcID) {
-	// 	channelID += 128;
-	// } else if (10 == tdcID) {
-	// 	channelID += 32;
-	// } else if (12 == tdcID) {
-	// 	channelID += 96;
-	// } else if (13 == tdcID) {
-	// 	channelID += 64;
-	// } else if (14 == tdcID) {
-	// 	channelID += 224;
-	// } else if (15 == tdcID) {
-	// 	channelID += 192;
-	// }
 
 	const unsigned int timestamp = bindec::getTimestamp(word);
 
