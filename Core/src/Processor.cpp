@@ -110,7 +110,7 @@ void Processor::runQuickCheck(
 					bundleCount += 1;
 					auto bundle = buffer->popFront();
 					std::cout << "New Bundle = "
-					<< "Board: " << bundle->getReadoutBoardNumber() << " "
+					<< "Board: " << bundle->getReadoutBoardID() << " "
 					<< "ROC: " << bundle->getROCValue() << std::endl;
 					while (!bundle->empty()) {
 						bindec::printWord(bundle->getNextWord());
@@ -249,7 +249,7 @@ void Processor::makePackets(
 						currPacket.reset(nullptr);
 					}
 					ASSERT(nullptr == currPacket);
-					currPacket = std::make_unique<Packet>(bundle->getROCValue());
+					currPacket = std::make_unique<Packet>(bundle->getReadoutBoardID(),bundle->getROCValue());
 					ASSERT(currPacket != nullptr);
 					currPacket->addHeader(word);
 				} else if (currPacket != nullptr) {

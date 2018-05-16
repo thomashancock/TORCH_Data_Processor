@@ -6,9 +6,9 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 WordBundle::WordBundle(
-	const unsigned int readoutBoardNumber
+	const unsigned int readoutBoardID
 ) :
-	m_readoutBoardNumber(readoutBoardNumber)
+	m_readoutBoardID(readoutBoardID)
 {
 	ASSERT(m_words.empty());
 }

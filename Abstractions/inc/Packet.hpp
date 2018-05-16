@@ -17,6 +17,7 @@ class Packet {
 public:
 	//! Constructor
 	Packet(
+		const unsigned int readoutBoardID, //!< Readout board ID
 		const unsigned int rocValue //!< ROC value which triggered the packet's creation
 	);
 
@@ -56,6 +57,8 @@ public:
 	unsigned int getWordCount() const { return m_wordCount; }
 	//! Returns the stored ROC value
 	unsigned int getROCValue() const { return m_rocValue; }
+	//! Returns the stored ROC value
+	unsigned int getReadoutBoardID() const { return m_readoutBoardID; }
 
 	//! Returns the number of stored leading edges
 	unsigned int getNLeadingEdges() const { return m_leadingEdges.size(); }
@@ -95,6 +98,7 @@ private:
 	) const;
 
 private:
+	const unsigned int m_readoutBoardID; //!< Packet's Readout Board ID
 	const unsigned int m_rocValue; //!< ROC value which triggered the packet's creation
 
 	// Header Info

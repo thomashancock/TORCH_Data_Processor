@@ -11,11 +11,11 @@ class WordBundle {
 public:
 	//! Constructor
 	WordBundle(
-		const unsigned int readoutBoardNumber
+		const unsigned int readoutBoardID
 	);
 
 	//! Returns readout board number
-	unsigned int getReadoutBoardNumber() const { return m_readoutBoardNumber; }
+	unsigned int getReadoutBoardID() const { return m_readoutBoardID; }
 
 	//! Check if Bundle is complete
 	bool isComplete() const { return m_rocValueStored; }
@@ -40,7 +40,7 @@ public:
 	);
 
 private:
-	const unsigned int m_readoutBoardNumber;
+	const unsigned int m_readoutBoardID;
 
 	bool m_rocValueStored = false;
 

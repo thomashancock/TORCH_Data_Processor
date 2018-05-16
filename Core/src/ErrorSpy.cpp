@@ -66,5 +66,4 @@ void ErrorSpy::print() const {
 // -----------------------------------------------------------------------------
 ErrorSpy::ErrorSpy() {
 	STD_LOG("ErrorSpy Constructor Called");
-	
 }

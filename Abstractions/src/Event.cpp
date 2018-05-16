@@ -1,6 +1,10 @@
 #include "Event.hpp"
 
+// STD
 #include <utility>
+
+// LOCAL
+#include "ErrorSpy.hpp"
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -40,7 +44,7 @@ void Event::addPacket(
 		STD_ERR("Event found with unrequested TDC ID");
 	} else if (found->second != nullptr) {
 		// TODO: Add to error logging
-		WARNING("Event: " << m_eventID << ": TDC ID " << found->first << " is duplicate");
+		ErrorSpy::getInstance().logError("Duplicate Packet Found",packet->getReadoutBoardID(),found->first);
 	} else {
 		found->second = std::move(packet);
 		ASSERT(packet == nullptr);

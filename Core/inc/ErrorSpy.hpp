@@ -11,7 +11,7 @@
 
 //! Keeps track of errors detected during program execution
 /*!
-		Singleton Class.
+		Singleton Class. Threadsafe.
 
 		Tracks and prints errors detected during process execution.
 
