@@ -11,6 +11,8 @@
 
 //! Keeps track of errors detected during program execution
 /*!
+		Singleton Class.
+
 		Tracks and prints errors detected during process execution.
 
 		To Log an error, call logError with a summary message, readout board ID and tdc ID.
@@ -18,14 +20,17 @@
  */
 class ErrorSpy {
 public:
-	//! Constructor
-	ErrorSpy();
+	//! Deconstructor
+	~ErrorSpy();
 
 	// Delete copy and move constructors and assignment operators
 	ErrorSpy(const ErrorSpy& other) = delete;
 	ErrorSpy& operator=(ErrorSpy other) = delete;
 	ErrorSpy(const ErrorSpy&& other) = delete;
 	ErrorSpy& operator=(ErrorSpy&& other) = delete;
+
+	//! Returns a reference to the ErrorSpy
+	static ErrorSpy& getInstance();
 
 	//! Logs an error
 	void logError(
@@ -36,6 +41,13 @@ public:
 
 	//! Prints a summary of logged error messages
 	void print() const;
+
+private:
+	//! Private Constructor
+	/*
+		Prevents initialisation by other code, making the class follow the singleton pattern.
+	*/
+	ErrorSpy();
 
 private:
 	mutable std::mutex m_mut; //!< Mutex for thread safety
