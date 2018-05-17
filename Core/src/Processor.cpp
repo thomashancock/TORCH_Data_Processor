@@ -10,7 +10,6 @@
 // LOCAL
 #include "Debug.hpp"
 #include "BinaryDecoding.hpp"
-#include "EventTreeManager.hpp"
 #include "PacketTreeManager.hpp"
 
 // -----------------------------------------------------------------------------
@@ -189,15 +188,8 @@ void Processor::runSerial(
 			// Make Events
 			makeEvents();
 
-			// Pass events to output manager
-			while (m_eventBuffer.isCompleteStored()) {
-				auto events = m_eventBuffer.popToComplete();
-				for (auto& event : events) {
-					ASSERT(nullptr != event);
-					manager->add(std::move(event));
-					ASSERT(nullptr == event);
-				}
-			}
+			// Write Events
+			writeEvents(manager);
 		}
 	}
 
@@ -286,6 +278,21 @@ void Processor::makeEvents() {
 				// Extract front packet, add to event buffer
 				m_eventBuffer.addPacket(std::move(m_packetBuffers.at(*it).popFront()));
 			}
+		}
+	}
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Processor::writeEvents(
+	std::unique_ptr<EventTreeManager>& manager
+) {
+	while (m_eventBuffer.isCompleteStored()) {
+		auto events = m_eventBuffer.popToComplete();
+		for (auto& event : events) {
+			ASSERT(nullptr != event);
+			manager->add(std::move(event));
+			ASSERT(nullptr == event);
 		}
 	}
 }

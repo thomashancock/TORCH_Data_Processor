@@ -18,6 +18,7 @@
 #include "ThreadSafeEventMap.hpp"
 #include "WordBundle.hpp"
 #include "Packet.hpp"
+#include "EventTreeManager.hpp"
 
 //! Class which manages overall processing of data
 /*!
@@ -73,6 +74,11 @@ private:
 
 	//! Build Events from Packets
 	void makeEvents();
+
+	//! Writes events from the event buffer to a root file through the manager
+	void writeEvents(
+		std::unique_ptr<EventTreeManager>& manager
+	);
 
 private:
 	const RunMode m_mode; //!< Run mode (set by config)
