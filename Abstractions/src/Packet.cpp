@@ -17,8 +17,14 @@ std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
 	uint tdcID,
 	uint channelID
 ) {
-	// Set default as returning the channel ID
-	return channelID;
+	// Set default Channel Mapping for 8x64 MCP
+	uint localID = (tdcID%4)*16 + 128 * static_cast<int>(tdcID / 4.0);
+	if (0 == channelID%2) {
+		localID += 15 - static_cast<int>(channelID / 2); // Integer division
+	} else {
+		localID += 79 - static_cast<int>((channelID - 1) / 2); // Integer division
+	}
+	return localID;
 };
 
 // Old Mapping:
