@@ -20,13 +20,16 @@
 Processor::Processor(
 	std::unique_ptr<const Config> config
 ) :
-	m_mode(config->getRunMode()),
-	m_tdcIDs(config->getTDCList()),
-	m_eventBuffer(m_tdcIDs)
+	m_config(std::move(config)),
+	m_eventBuffer(m_config->getTDCList())
 {
+	// Technically redundant assertion
+	// m_eventBuffer initialization will cause seg fault if m_config == nullptr
+	// Kept in case of future modifications moving the m_eventBuffer initilization
+	ASSERT(nullptr == config);
+
 	// Print config settings
-	ASSERT(nullptr != config);
-	config->print();
+	m_config->print();
 
 	// Initialise Word Bundle Buffers
 	for (auto& ptr : m_wordBundleBuffers) {
@@ -44,7 +47,7 @@ Processor::Processor(
 	}
 
 	// Initialise Packet Buffers
-	initializePacketBuffers(m_tdcIDs);
+	initializePacketBuffers(m_config->getTDCList());
 }
 // -----------------------------------------------------------------------------
 //
@@ -59,11 +62,12 @@ void Processor::processFiles(
 	const std::string outputFile,
 	const std::vector<std::string> fileNames
 ) {
-	if (RunMode::QuickCheck == m_mode) {
+	const auto mode = m_config->getRunMode();
+	if (RunMode::QuickCheck == mode) {
 		runQuickCheck(fileNames);
-	} else if (RunMode::LowLevel == m_mode) {
+	} else if (RunMode::LowLevel == mode) {
 		runLowLevel(outputFile,fileNames);
-	} else if (RunMode::Parallel == m_mode) {
+	} else if (RunMode::Parallel == mode) {
 		runParallel(outputFile,fileNames);
 	} else {
 		// Run Serial by default
@@ -170,7 +174,7 @@ void Processor::runSerial(
 	STD_LOG("Mode: Serial");
 
 	std::unique_ptr<EventTreeManager> manager =
-		std::make_unique<EventTreeManager>(outputFile.c_str(),m_tdcIDs.size());
+		std::make_unique<EventTreeManager>(outputFile.c_str(),m_config->getTDCList().size());
 
 	// Loop through files
 	for (auto& file : fileNames) {

@@ -85,9 +85,7 @@ private:
 	);
 
 private:
-	const RunMode m_mode; //!< Run mode (set by config)
-
-	const std::list<unsigned int> m_tdcIDs; //!< List of TDC IDs (set by config)
+	std::unique_ptr<const Config> m_config; //!< Program configuration
 
 	std::unique_ptr<FileReader> m_fileReader = nullptr; //!< File Reader object pointer
 
