@@ -3,17 +3,17 @@
 // Useful Alias
 using uint = unsigned int;
 
-void ChlMap::setChannelMapping(
+void chlmap::setChannelMapping(
 	const std::string key
 ) {
 	if ("NoMapping" == key) {
-		Packet::setChannelMapping(ChlMap::noMapping);
+		Packet::setChannelMapping(chlmap::noMapping);
 	} else if ("Std8x64Mapping" == key) {
-		Packet::setChannelMapping(ChlMap::std8x64Mapping);
+		Packet::setChannelMapping(chlmap::std8x64Mapping);
 	} else if ("Inv8x64Mapping" == key) {
-		Packet::setChannelMapping(ChlMap::slotInversion8x64Mapping);
+		Packet::setChannelMapping(chlmap::slotInversion8x64Mapping);
 	} else if ("Std4x64Mapping" == key) {
-		Packet::setChannelMapping(ChlMap::std4x64Mapping);
+		Packet::setChannelMapping(chlmap::std4x64Mapping);
 	} else {
 		STD_ERR("Unrecognised Channel Mapping Key: " << key);
 		exit(0);
@@ -22,7 +22,7 @@ void ChlMap::setChannelMapping(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-ChlMap::ChannelMapping ChlMap::noMapping = [] (
+chlmap::ChannelMapping chlmap::noMapping = [] (
 	uint readoutBoardID,
 	uint tdcID,
 	uint channelID
@@ -32,7 +32,7 @@ ChlMap::ChannelMapping ChlMap::noMapping = [] (
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-ChlMap::ChannelMapping ChlMap::std8x64Mapping = [] (
+chlmap::ChannelMapping chlmap::std8x64Mapping = [] (
 	uint readoutBoardID,
 	uint tdcID,
 	uint channelID
@@ -48,7 +48,7 @@ ChlMap::ChannelMapping ChlMap::std8x64Mapping = [] (
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-ChlMap::ChannelMapping ChlMap::slotInversion8x64Mapping = [] (
+chlmap::ChannelMapping chlmap::slotInversion8x64Mapping = [] (
 	uint readoutBoardID,
 	uint tdcID,
 	uint channelID
@@ -62,7 +62,7 @@ ChlMap::ChannelMapping ChlMap::slotInversion8x64Mapping = [] (
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-ChlMap::ChannelMapping ChlMap::std4x64Mapping = [] (
+chlmap::ChannelMapping chlmap::std4x64Mapping = [] (
 	uint readoutBoardID,
 	uint tdcID,
 	uint channelID

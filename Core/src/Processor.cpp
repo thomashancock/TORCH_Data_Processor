@@ -34,8 +34,8 @@ Processor::Processor(
 	m_config->print();
 
 	// Set Channel Mapping and Edge Modifier
-	ChlMap::setChannelMapping(m_config->getChannelMappingKey());
-	PolMod::setEdgeModifier(m_config->getEdgeModifierKey());
+	chlmap::setChannelMapping(m_config->getChannelMappingKey());
+	edgmod::setEdgeModifier(m_config->getEdgeModifierKey());
 
 	// Initialise Word Bundle Buffers
 	for (auto& ptr : m_wordBundleBuffers) {

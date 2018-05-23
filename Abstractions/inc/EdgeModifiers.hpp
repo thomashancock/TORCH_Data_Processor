@@ -7,7 +7,7 @@
 // LOCAL
 #include "Packet.hpp"
 
-namespace PolMod {
+namespace edgmod {
 
 // Useful Alias
 using EdgeModifier = std::function<void(unsigned int&)>;

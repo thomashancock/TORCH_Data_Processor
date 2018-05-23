@@ -7,7 +7,7 @@
 // LOCAL
 #include "Packet.hpp"
 
-namespace ChlMap {
+namespace chlmap {
 
 // Useful Alias
 using ChannelMapping = std::function<unsigned int(unsigned int, unsigned int, unsigned int)>;

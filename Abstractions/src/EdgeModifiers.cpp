@@ -3,13 +3,13 @@
 // LOCAL
 #include "BinaryDecoding.hpp"
 
-void PolMod::setEdgeModifier(
+void edgmod::setEdgeModifier(
 	const std::string key
 ) {
 	if ("NoChange" == key) {
-		Packet::setEdgeModifier(PolMod::noChange);
+		Packet::setEdgeModifier(edgmod::noChange);
 	} else if ("FlipEven" == key) {
-		Packet::setEdgeModifier(PolMod::flipEven);
+		Packet::setEdgeModifier(edgmod::flipEven);
 	} else {
 		STD_ERR("Unrecognised Polarity Modifier Key: " << key);
 		exit(0);
@@ -18,13 +18,13 @@ void PolMod::setEdgeModifier(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-PolMod::EdgeModifier PolMod::noChange = [] (
+edgmod::EdgeModifier edgmod::noChange = [] (
 	unsigned int& word
 ) -> void { };
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-PolMod::EdgeModifier PolMod::flipEven = [] (
+edgmod::EdgeModifier edgmod::flipEven = [] (
 	unsigned int& word
 ) -> void {
 	const auto dataType = bindec::getDataType(word);
