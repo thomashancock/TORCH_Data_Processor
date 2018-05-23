@@ -38,6 +38,7 @@ public:
 	~Processor();
 
 	void processFiles(
+		const std::string outputFile,
 		const std::vector<std::string> fileNames
 	);
 
@@ -54,16 +55,19 @@ private:
 
 	//! Runs LowLevel Mode
 	void runLowLevel(
+		const std::string outputFile,
 		const std::vector<std::string>& fileNames //!< List of files to process
 	);
 
 	//! Runs Serial Mode
 	void runSerial(
+		const std::string outputFile,
 		const std::vector<std::string>& fileNames //!< List of files to process
 	);
 
 	//! Runs Parallel Mode
 	void runParallel(
+		const std::string outputFile,
 		const std::vector<std::string>& fileNames //!< List of files to process
 	);
 

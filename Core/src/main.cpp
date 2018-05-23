@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
 
 	// Set Default location for file
 	std::string configFile = "./Config.xml";
-	std::string outputFile = "./TORCH_Tree.root";
+	std::string outputFile = "./Output.root";
 
 	// Create input file vector
 	std::vector<std::string> fileNames;
@@ -67,7 +67,7 @@ int main(int argc, char** argv) {
 		ASSERT(nullptr == config);
 
 		try {
-			processor.processFiles(fileNames);
+			processor.processFiles(outputFile,fileNames);
 		} catch (std::exception& e) {
 			STD_ERR("Exception: " << e.what());
 		}

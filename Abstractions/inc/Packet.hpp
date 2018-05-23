@@ -23,6 +23,16 @@ public:
 		const unsigned int headerWord //!< Header word for packet
 	);
 
+	//! Static function to set global channel mapping
+	static void setChannelMapping(
+		std::function<uint(uint, uint, uint)> mappingFunction
+	);
+
+	//! Static function to set global channel mapping
+	static void setPolarityModifier(
+		std::function<void(uint&)> polarityFunction
+	);
+
 	//! Quick check for if the packet is complete and consistent
 	bool isGood() const { return isComplete()*isConsistent(); };
 

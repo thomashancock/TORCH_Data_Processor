@@ -32,6 +32,20 @@ std::function<uint(uint, uint, uint)> std8x64Mapping = [] (
 	return localID;
 };
 
+//! 0 - 511 Channel Mapping for 8x64 MCP
+std::function<uint(uint, uint, uint)> slotInversion8x64Mapping = [] (
+	uint readoutBoardID,
+	uint tdcID,
+	uint channelID
+) {
+	// Swap localTDCID to account for inversion
+	uint localTDCID = (0 == tdcID%2) ? tdcID + 1 : tdcID - 1;
+
+	// Calculate channel ID using standard mapping
+	return std8x64Mapping(readoutBoardID,localTDCID,channelID);
+};
+
+
 //! 0 - 255 4x64 Channel Mapping
 std::function<uint(uint, uint, uint)> std4x64Mapping = [] (
 	uint readoutBoardID,

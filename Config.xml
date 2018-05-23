@@ -8,9 +8,15 @@
 -->
 <config mode="LowLevel">
 	<board id="0">
-		<slot name="D" tdcID1="14" tdcID2="15"/>
+		<slot name="D" tdcID1="0" tdcID2="1"/>
+		<slot name="C" tdcID1="4" tdcID2="5"/>
+		<slot name="B" tdcID1="2" tdcID2="3"/>
+		<slot name="A" tdcID1="6" tdcID2="7"/>
+	</board>
+	<board id="1">
+		<slot name="D" tdcID1="8" tdcID2="9"/>
 		<slot name="C" tdcID1="12" tdcID2="13"/>
-		<slot name="B" tdcID1="8" tdcID2="9"/>
-		<slot name="A" tdcID1="10" tdcID2="11"/>
+		<slot name="B" tdcID1="10" tdcID2="11"/>
+		<slot name="A" tdcID1="14" tdcID2="15"/>
 	</board>
 </config>

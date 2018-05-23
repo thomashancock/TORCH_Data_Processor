@@ -14,14 +14,29 @@ using uint = unsigned int;
 // Statics:
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
+void Packet::setChannelMapping(
+	std::function<uint(uint, uint, uint)> mappingFunction
+) {
+	m_channelMapper = mappingFunction;
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Packet::setPolarityModifier(
+	std::function<void(uint&)> polarityFunction
+) {
+	m_polarityFixer = polarityFunction;
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 // Set default Channel Mapping for 8x64 MCP
 std::function<uint(uint, uint, uint)> Packet::m_channelMapper = ChlMap::std8x64Mapping;
-
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 // Set default polarity fixer function
-std::function<void(uint&)> Packet::m_polarityFixer = PolMod::noChange;
+std::function<void(uint&)> Packet::m_polarityFixer = PolMod::flipEven;
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------

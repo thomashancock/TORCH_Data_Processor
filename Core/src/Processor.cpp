@@ -56,17 +56,18 @@ Processor::~Processor() {
 //
 // -----------------------------------------------------------------------------
 void Processor::processFiles(
+	const std::string outputFile,
 	const std::vector<std::string> fileNames
 ) {
 	if (RunMode::QuickCheck == m_mode) {
 		runQuickCheck(fileNames);
 	} else if (RunMode::LowLevel == m_mode) {
-		runLowLevel(fileNames);
+		runLowLevel(outputFile,fileNames);
 	} else if (RunMode::Parallel == m_mode) {
-		runParallel(fileNames);
+		runParallel(outputFile,fileNames);
 	} else {
 		// Run Serial by default
-		runSerial(fileNames);
+		runSerial(outputFile,fileNames);
 	}
 }
 
@@ -122,13 +123,14 @@ void Processor::runQuickCheck(
 //
 // -----------------------------------------------------------------------------
 void Processor::runLowLevel(
+	const std::string outputFile,
 	const std::vector<std::string>& fileNames
 ) {
 	STD_LOG("Mode: LowLevel");
 
 	// Declare Output Manager
 	std::unique_ptr<PacketTreeManager> manager =
-		std::make_unique<PacketTreeManager>("Output.root");
+		std::make_unique<PacketTreeManager>(outputFile.c_str());
 
 	// Loop through files
 	for (auto& file : fileNames) {
@@ -162,12 +164,13 @@ void Processor::runLowLevel(
 //
 // -----------------------------------------------------------------------------
 void Processor::runSerial(
+	const std::string outputFile,
 	const std::vector<std::string>& fileNames
 ) {
 	STD_LOG("Mode: Serial");
 
 	std::unique_ptr<EventTreeManager> manager =
-		std::make_unique<EventTreeManager>("Output.root",m_tdcIDs.size());
+		std::make_unique<EventTreeManager>(outputFile.c_str(),m_tdcIDs.size());
 
 	// Loop through files
 	for (auto& file : fileNames) {
@@ -200,6 +203,7 @@ void Processor::runSerial(
 //
 // -----------------------------------------------------------------------------
 void Processor::runParallel(
+	const std::string outputFile,
 	const std::vector<std::string>& fileNames
 ) {
 	STD_LOG("Mode: Parallel");
@@ -213,7 +217,7 @@ void Processor::runParallel(
 
 	// INCOMPLETE
 	// std::unique_ptr<EventTreeManager> manager =
-	// 	std::make_unique<EventTreeManager>("Output.root",m_tdcIDs.size());
+	// 	std::make_unique<EventTreeManager>(outputFile.c_str(),m_tdcIDs.size());
   //
 	// std::atomic_bool isComplete { false };
 	// while (!isComplete) {
@@ -258,7 +262,7 @@ void Processor::makePackets(
 						try {
 							m_packetBuffers.at(index).push(std::move(currPacket));
 						} catch (std::exception& e) {
-							STD_ERR("Exception: " << e.what());
+							STD_ERR("Exception: " << e.what() << ". Index " << index);
 						}
 					} else {
 						// If packet is not good, delete it
