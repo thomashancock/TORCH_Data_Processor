@@ -3,8 +3,6 @@
 // LOCAL
 #include "BinaryDecoding.hpp"
 #include "ErrorSpy.hpp"
-#include "ChannelMappings.hpp"
-#include "PolarityModifiers.hpp"
 
 // Useful alias
 using uint = unsigned int;
@@ -30,13 +28,17 @@ void Packet::setPolarityModifier(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-// Set default Channel Mapping for 8x64 MCP
-std::function<uint(uint, uint, uint)> Packet::m_channelMapper = ChlMap::std8x64Mapping;
+std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
+	uint ,
+	uint ,
+	uint channelID
+) {
+	return channelID;
+};
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-// Set default polarity fixer function
-std::function<void(uint&)> Packet::m_polarityFixer = PolMod::flipEven;
+std::function<void(uint&)> Packet::m_polarityFixer = [] (uint&) { };
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------

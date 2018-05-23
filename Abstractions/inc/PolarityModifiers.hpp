@@ -4,6 +4,9 @@
 // STD
 #include <functional>
 
+// LOCAL
+#include "Packet.hpp"
+
 namespace PolMod {
 
 using uint = unsigned int;
@@ -12,7 +15,9 @@ using uint = unsigned int;
 std::function<void(uint&)> noChange = [] (
 	uint& word
 ) -> void { };
-
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 //! Even channel edge flip
 std::function<void(uint&)> flipEven = [] (
 	uint& word
@@ -31,6 +36,21 @@ std::function<void(uint&)> flipEven = [] (
 		}
 	}
 };
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void setPolarityModifier(
+	const std::string key
+) {
+	if ("NoChange" == key) {
+		Packet::setPolarityModifier(PolMod::noChange);
+	} else if ("FlipEven" == key) {
+		Packet::setPolarityModifier(PolMod::flipEven);
+	} else {
+		STD_ERR("Unrecognised Polarity Modifier Key: " << key);
+		exit(0);
+	}
+}
 
 };
 

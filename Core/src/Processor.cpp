@@ -11,6 +11,8 @@
 #include "Debug.hpp"
 #include "BinaryDecoding.hpp"
 #include "PacketTreeManager.hpp"
+#include "ChannelMappings.hpp"
+#include "PolarityModifiers.hpp"
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -30,6 +32,10 @@ Processor::Processor(
 
 	// Print config settings
 	m_config->print();
+
+	// Set Channel Mapping and Edge Modifier
+	ChlMap::setChannelMapping(m_config->getChannelMappingKey());
+	PolMod::setPolarityModifier(m_config->getEdgeModifierKey());
 
 	// Initialise Word Bundle Buffers
 	for (auto& ptr : m_wordBundleBuffers) {

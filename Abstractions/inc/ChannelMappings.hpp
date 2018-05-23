@@ -4,6 +4,9 @@
 // STD
 #include <functional>
 
+// LOCAL
+#include "Packet.hpp"
+
 namespace ChlMap {
 
 using uint = unsigned int;
@@ -16,7 +19,9 @@ std::function<uint(uint, uint, uint)> noMapping = [] (
 ) {
 	return channelID;
 };
-
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 //! 0 - 511 Channel Mapping for 8x64 MCP
 std::function<uint(uint, uint, uint)> std8x64Mapping = [] (
 	uint readoutBoardID,
@@ -31,7 +36,9 @@ std::function<uint(uint, uint, uint)> std8x64Mapping = [] (
 	}
 	return localID;
 };
-
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 //! 0 - 511 Channel Mapping for 8x64 MCP
 std::function<uint(uint, uint, uint)> slotInversion8x64Mapping = [] (
 	uint readoutBoardID,
@@ -44,8 +51,9 @@ std::function<uint(uint, uint, uint)> slotInversion8x64Mapping = [] (
 	// Calculate channel ID using standard mapping
 	return std8x64Mapping(readoutBoardID,localTDCID,channelID);
 };
-
-
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 //! 0 - 255 4x64 Channel Mapping
 std::function<uint(uint, uint, uint)> std4x64Mapping = [] (
 	uint readoutBoardID,
@@ -74,6 +82,25 @@ std::function<uint(uint, uint, uint)> std4x64Mapping = [] (
 
 	return channelID;
 };
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void setChannelMapping(
+	const std::string key
+) {
+	if ("NoMapping" == key) {
+		Packet::setChannelMapping(ChlMap::noMapping);
+	} else if ("Std8x64Mapping" == key) {
+		Packet::setChannelMapping(ChlMap::std8x64Mapping);
+	} else if ("Inv8x64Mapping" == key) {
+		Packet::setChannelMapping(ChlMap::slotInversion8x64Mapping);
+	} else if ("Std4x64Mapping" == key) {
+		Packet::setChannelMapping(ChlMap::std4x64Mapping);
+	} else {
+		STD_ERR("Unrecognised Channel Mapping Key: " << key);
+		exit(0);
+	}
+}
 
 };
 
