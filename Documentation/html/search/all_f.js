@@ -1,14 +1,20 @@
 var searchData=
 [
-  ['s_5fhitsmax',['s_hitsMax',['../class_event_tree_manager.html#aab35ad52374d52149bde894c8af7a8c5',1,'EventTreeManager']]],
-  ['s_5fmaxedges',['s_maxEdges',['../class_packet_tree_manager.html#a4ba06517ad1cb912ff70df1ff69231a5',1,'PacketTreeManager']]],
-  ['serial',['Serial',['../_modes_enum_8hpp.html#a3dfe11cf1a3a8121f6cd7fec4bf5947eaab27270f353006b03c91367e05e44b94',1,'ModesEnum.hpp']]],
-  ['setrocvalue',['setRocValue',['../class_word_bundle.html#a15e13fdd7380c72be2f42013560d62c3',1,'WordBundle']]],
-  ['setuparrbranch',['setupArrBranch',['../class_root_manager.html#aa1eaed1aa026059b8d00e729161c6a43',1,'RootManager']]],
-  ['setupbranches',['setUpBranches',['../class_event_tree_manager.html#a11cbe0078aeb3d0fe320bbeec335babc',1,'EventTreeManager::setUpBranches()'],['../class_packet_tree_manager.html#a3e2aa24c5acd8a87b15cfff2d011f30b',1,'PacketTreeManager::setUpBranches()']]],
-  ['stagefiles',['stageFiles',['../class_file_reader.html#a578a03fc3bf266f3d6d54542bf687579',1,'FileReader']]],
-  ['std_5ferr',['STD_ERR',['../_debug_8hpp.html#a2e40cf1121da97f65cd8cd7a0f4b875c',1,'Debug.hpp']]],
-  ['std_5flog',['STD_LOG',['../_debug_8hpp.html#aa91b2b6aa2442d8685e651ffa9500ee2',1,'Debug.hpp']]],
-  ['std_5flog_5fvar',['STD_LOG_VAR',['../_debug_8hpp.html#a2c4628fa536258a74e9047ed17420ac2',1,'Debug.hpp']]],
-  ['std_5flog_5fvar_5fhex',['STD_LOG_VAR_HEX',['../_debug_8hpp.html#a33be4044dbfd4b89b4bef8602b50004a',1,'Debug.hpp']]]
+  ['readdatablock',['readDataBlock',['../class_file_reader.html#ac578b683eba751027766a2c30f03a28b',1,'FileReader']]],
+  ['readheaderline',['readHeaderLine',['../class_file_reader.html#a94a71d0a05ececd1e84fa71d80b7e6ba',1,'FileReader']]],
+  ['readme_2emd',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['removepackets',['removePackets',['../class_event.html#a4a7c0f87ea9fd8526451d6eddc3a592e',1,'Event']]],
+  ['resettreevariables',['resetTreeVariables',['../class_event_tree_manager.html#a88cf8288ad022053b35192445e77f9a7',1,'EventTreeManager']]],
+  ['rootmanager',['RootManager',['../class_root_manager.html',1,'RootManager&lt; T &gt;'],['../class_root_manager.html#a152803255b94d68cbe4c4f8e24fc2352',1,'RootManager::RootManager()']]],
+  ['rootmanager_2ehpp',['RootManager.hpp',['../_root_manager_8hpp.html',1,'']]],
+  ['rootmanager_2einl',['RootManager.inl',['../_root_manager_8inl.html',1,'']]],
+  ['rootmanager_3c_20event_20_3e',['RootManager&lt; Event &gt;',['../class_root_manager.html',1,'']]],
+  ['rootmanager_3c_20packet_20_3e',['RootManager&lt; Packet &gt;',['../class_root_manager.html',1,'']]],
+  ['runlowlevel',['runLowLevel',['../class_processor.html#ae697c1dd3136d1cf973d0ecc5a65a53a',1,'Processor']]],
+  ['runmode',['RunMode',['../_modes_enum_8hpp.html#a3dfe11cf1a3a8121f6cd7fec4bf5947e',1,'ModesEnum.hpp']]],
+  ['runparallel',['runParallel',['../class_processor.html#a1e5a47f8539e3568e2ba8f14f1fddea2',1,'Processor']]],
+  ['runprocessingloop',['runProcessingLoop',['../class_file_reader.html#a98606ec7d315f1ed6f90c531df0d09f9',1,'FileReader']]],
+  ['runprocessingloops',['runProcessingLoops',['../class_file_reader.html#a478ed77f1b8f76e15cb2faa8964a26e6',1,'FileReader']]],
+  ['runquickcheck',['runQuickCheck',['../class_processor.html#ae045ebe853cd1f2124ecb93b829a9113',1,'Processor']]],
+  ['runserial',['runSerial',['../class_processor.html#a7475d40a755f8afa7b6746c7949454d9',1,'Processor']]]
 ];

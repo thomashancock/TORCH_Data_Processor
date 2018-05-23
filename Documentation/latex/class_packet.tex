@@ -12,7 +12,7 @@ Stores all the information relevant to a single packet of data.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_packet_a4b142794d6864d4d7949ba5e800ee1be}{Packet} (const unsigned int roc\+Value)
+\hyperlink{class_packet_ac78ad72c2d0333e03dfdd5460fd6e816}{Packet} (const unsigned int readout\+Board\+ID, const unsigned int roc\+Value, const unsigned int header\+Word)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 bool \hyperlink{class_packet_ae70511a50e1f186b8a3369ee6ab8589c}{is\+Good} () const
 \begin{DoxyCompactList}\small\item\em Quick check for if the packet is complete and consistent. \end{DoxyCompactList}\item 
@@ -20,11 +20,9 @@ bool \hyperlink{class_packet_a6b5ce354c03663c98cccd31ad9a6f5ff}{is\+Complete} ()
 \begin{DoxyCompactList}\small\item\em Checks the packet contains both header and trailer information. \end{DoxyCompactList}\item 
 bool \hyperlink{class_packet_a8d9e544f6f56389fa13bb01b2d37ca58}{is\+Consistent} () const
 \begin{DoxyCompactList}\small\item\em Checks the packet contains consitent information. \end{DoxyCompactList}\item 
-void \hyperlink{class_packet_a7f710ea08bf8d264beb1361f19cc3afb}{add\+Header} (const unsigned int word)
-\begin{DoxyCompactList}\small\item\em Adds information corresponding to a header word to the packet. \end{DoxyCompactList}\item 
 void \hyperlink{class_packet_a13eccb2f6b6d527549839579920e5105}{add\+Trailer} (const unsigned int word)
 \begin{DoxyCompactList}\small\item\em Adds information corresponding to a trailer word to the packet. \end{DoxyCompactList}\item 
-void \hyperlink{class_packet_af3582cfb4893a3f61cb3e7b11e75787f}{add\+Dataline} (const unsigned int word)
+void \hyperlink{class_packet_a5a3c458b3587775aba89a8e09c214155}{add\+Dataline} (unsigned int word)
 \begin{DoxyCompactList}\small\item\em Adds information corresponding to a data word to the packet. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_packet_a4f4c3d99d89506a577073a2ce9e75e95}{get\+T\+D\+C\+ID} () const
 \begin{DoxyCompactList}\small\item\em Returns the stored T\+DC ID. \end{DoxyCompactList}\item 
@@ -35,6 +33,8 @@ unsigned int \hyperlink{class_packet_a3965d1b3a0e88e2af7cd1bd5ca97e009}{get\+Bun
 unsigned int \hyperlink{class_packet_aaa356da77eccb505207544c8034c1356}{get\+Word\+Count} () const
 \begin{DoxyCompactList}\small\item\em Returns the stored word count. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_packet_a2a46912b82833c80b53e01114ef701a1}{get\+R\+O\+C\+Value} () const
+\begin{DoxyCompactList}\small\item\em Returns the stored R\+OC value. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_packet_a85eb57c2213797b64d6102bff9311e1b}{get\+Readout\+Board\+ID} () const
 \begin{DoxyCompactList}\small\item\em Returns the stored R\+OC value. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_packet_a461a138986888a01fb04205512a37410}{get\+N\+Leading\+Edges} () const
 \begin{DoxyCompactList}\small\item\em Returns the number of stored leading edges. \end{DoxyCompactList}\item 
@@ -53,11 +53,15 @@ void \hyperlink{class_packet_aec87fc2f2473111a694ad8b6f60e7666}{print} () const
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \hyperlink{class_packet_a7f710ea08bf8d264beb1361f19cc3afb}{add\+Header} (const unsigned int word)
+\begin{DoxyCompactList}\small\item\em Adds information corresponding to a header word to the packet. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_packet_af3abe7485b62e417e83b11c8891ba7a6}{get\+Edge\+Value} (const bool leading, const unsigned int edge\+No, unsigned int(Edge\+::$\ast$getter)() const) const
 \begin{DoxyCompactList}\small\item\em Returns the value returned by the specified getter function for an edge. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
+const unsigned int \hyperlink{class_packet_af10be9c0821e98433b534b17017081db}{m\+\_\+readout\+Board\+ID}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_packet}{Packet}\textquotesingle{}s Readout Board ID. \end{DoxyCompactList}\item 
 const unsigned int \hyperlink{class_packet_ac4587a52a089f8fa1b7a899e4b46cb7d}{m\+\_\+roc\+Value}
 \begin{DoxyCompactList}\small\item\em R\+OC value which triggered the packet\textquotesingle{}s creation. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_packet_a0f39ba4b6d5a8732381c1bcbbeeb7eb9}{m\+\_\+tdc\+I\+D\+Header} = 0
@@ -80,6 +84,13 @@ bool \hyperlink{class_packet_aaf9fa3ad2c94bec82a748366fb00ecc7}{m\+\_\+header\+A
 \begin{DoxyCompactList}\small\item\em Stores whether a header line has been added. \end{DoxyCompactList}\item 
 bool \hyperlink{class_packet_a046581698cdcca7297109ceaeed7e014}{m\+\_\+trailer\+Added} = false
 \begin{DoxyCompactList}\small\item\em Stores whether a trailer line has been added. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::function$<$ unsigned int(unsigned int, unsigned int, unsigned int)$>$ \hyperlink{class_packet_a27f9a040a63e06e20a2097133a588997}{m\+\_\+channel\+Mapper} = \hyperlink{namespace_chl_map_a1c25ae4d560fda9abe7fb0684c6ceae7}{Chl\+Map\+::std8x64\+Mapping}
+\begin{DoxyCompactList}\small\item\em Channel Mapping Function. \end{DoxyCompactList}\item 
+static std\+::function$<$ void(unsigned int \&)$>$ \hyperlink{class_packet_a89f279819afdfb930b201009d821e7f9}{m\+\_\+polarity\+Fixer} = \hyperlink{namespace_pol_mod_ab917c96757340e5d8901808f819ddf4c}{Pol\+Mod\+::no\+Change}
+\begin{DoxyCompactList}\small\item\em Polarity correction function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -88,11 +99,11 @@ Stores all the information relevant to a single packet of data.
 Decodes data lines and stores the decoded information. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_packet_a4b142794d6864d4d7949ba5e800ee1be}\label{class_packet_a4b142794d6864d4d7949ba5e800ee1be}} 
+\mbox{\Hypertarget{class_packet_ac78ad72c2d0333e03dfdd5460fd6e816}\label{class_packet_ac78ad72c2d0333e03dfdd5460fd6e816}} 
 \index{Packet@{Packet}!Packet@{Packet}}
 \index{Packet@{Packet}!Packet@{Packet}}
 \subsubsection{\texorpdfstring{Packet()}{Packet()}}
-{\footnotesize\ttfamily Packet\+::\+Packet (\begin{DoxyParamCaption}\item[{const unsigned int}]{roc\+Value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Packet\+::\+Packet (\begin{DoxyParamCaption}\item[{const unsigned int}]{readout\+Board\+ID,  }\item[{const unsigned int}]{roc\+Value,  }\item[{const unsigned int}]{header\+Word }\end{DoxyParamCaption})}
 
 
 
@@ -100,17 +111,21 @@ Constructor.
 
 
 \begin{DoxyParams}{Parameters}
+{\em readout\+Board\+ID} & Readout board ID \\
+\hline
 {\em roc\+Value} & R\+OC value which triggered the packet\textquotesingle{}s creation \\
+\hline
+{\em header\+Word} & Header word for packet \\
 \hline
 \end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_packet_af3582cfb4893a3f61cb3e7b11e75787f}\label{class_packet_af3582cfb4893a3f61cb3e7b11e75787f}} 
+\mbox{\Hypertarget{class_packet_a5a3c458b3587775aba89a8e09c214155}\label{class_packet_a5a3c458b3587775aba89a8e09c214155}} 
 \index{Packet@{Packet}!add\+Dataline@{add\+Dataline}}
 \index{add\+Dataline@{add\+Dataline}!Packet@{Packet}}
 \subsubsection{\texorpdfstring{add\+Dataline()}{addDataline()}}
-{\footnotesize\ttfamily void Packet\+::add\+Dataline (\begin{DoxyParamCaption}\item[{const unsigned int}]{word }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Packet\+::add\+Dataline (\begin{DoxyParamCaption}\item[{unsigned int}]{word }\end{DoxyParamCaption})}
 
 
 
@@ -125,7 +140,7 @@ Adds information corresponding to a data word to the packet.
 \index{Packet@{Packet}!add\+Header@{add\+Header}}
 \index{add\+Header@{add\+Header}!Packet@{Packet}}
 \subsubsection{\texorpdfstring{add\+Header()}{addHeader()}}
-{\footnotesize\ttfamily void Packet\+::add\+Header (\begin{DoxyParamCaption}\item[{const unsigned int}]{word }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Packet\+::add\+Header (\begin{DoxyParamCaption}\item[{const unsigned int}]{word }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -261,6 +276,16 @@ Returns the number of stored leading edges.
 
 Returns the number of stored trailing edges. 
 
+\mbox{\Hypertarget{class_packet_a85eb57c2213797b64d6102bff9311e1b}\label{class_packet_a85eb57c2213797b64d6102bff9311e1b}} 
+\index{Packet@{Packet}!get\+Readout\+Board\+ID@{get\+Readout\+Board\+ID}}
+\index{get\+Readout\+Board\+ID@{get\+Readout\+Board\+ID}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{get\+Readout\+Board\+I\+D()}{getReadoutBoardID()}}
+{\footnotesize\ttfamily unsigned int Packet\+::get\+Readout\+Board\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the stored R\+OC value. 
+
 \mbox{\Hypertarget{class_packet_a2a46912b82833c80b53e01114ef701a1}\label{class_packet_a2a46912b82833c80b53e01114ef701a1}} 
 \index{Packet@{Packet}!get\+R\+O\+C\+Value@{get\+R\+O\+C\+Value}}
 \index{get\+R\+O\+C\+Value@{get\+R\+O\+C\+Value}!Packet@{Packet}}
@@ -361,6 +386,16 @@ Write human-\/readable informaton about the packet.
 
 The bunch ID decoded from the header. 
 
+\mbox{\Hypertarget{class_packet_a27f9a040a63e06e20a2097133a588997}\label{class_packet_a27f9a040a63e06e20a2097133a588997}} 
+\index{Packet@{Packet}!m\+\_\+channel\+Mapper@{m\+\_\+channel\+Mapper}}
+\index{m\+\_\+channel\+Mapper@{m\+\_\+channel\+Mapper}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+channel\+Mapper}{m\_channelMapper}}
+{\footnotesize\ttfamily std\+::function$<$ \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}(\hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint})$>$ Packet\+::m\+\_\+channel\+Mapper = \hyperlink{namespace_chl_map_a1c25ae4d560fda9abe7fb0684c6ceae7}{Chl\+Map\+::std8x64\+Mapping}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Channel Mapping Function. 
+
 \mbox{\Hypertarget{class_packet_a3abf93570be0669506f39b391bc574ca}\label{class_packet_a3abf93570be0669506f39b391bc574ca}} 
 \index{Packet@{Packet}!m\+\_\+event\+I\+D\+Header@{m\+\_\+event\+I\+D\+Header}}
 \index{m\+\_\+event\+I\+D\+Header@{m\+\_\+event\+I\+D\+Header}!Packet@{Packet}}
@@ -400,6 +435,26 @@ Stores whether a header line has been added.
 
 
 Vector storing all leading edge information. 
+
+\mbox{\Hypertarget{class_packet_a89f279819afdfb930b201009d821e7f9}\label{class_packet_a89f279819afdfb930b201009d821e7f9}} 
+\index{Packet@{Packet}!m\+\_\+polarity\+Fixer@{m\+\_\+polarity\+Fixer}}
+\index{m\+\_\+polarity\+Fixer@{m\+\_\+polarity\+Fixer}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+polarity\+Fixer}{m\_polarityFixer}}
+{\footnotesize\ttfamily std\+::function$<$ void(\hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} \&)$>$ Packet\+::m\+\_\+polarity\+Fixer = \hyperlink{namespace_pol_mod_ab917c96757340e5d8901808f819ddf4c}{Pol\+Mod\+::no\+Change}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Polarity correction function. 
+
+\mbox{\Hypertarget{class_packet_af10be9c0821e98433b534b17017081db}\label{class_packet_af10be9c0821e98433b534b17017081db}} 
+\index{Packet@{Packet}!m\+\_\+readout\+Board\+ID@{m\+\_\+readout\+Board\+ID}}
+\index{m\+\_\+readout\+Board\+ID@{m\+\_\+readout\+Board\+ID}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+readout\+Board\+ID}{m\_readoutBoardID}}
+{\footnotesize\ttfamily const unsigned int Packet\+::m\+\_\+readout\+Board\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\hyperlink{class_packet}{Packet}\textquotesingle{}s Readout Board ID. 
 
 \mbox{\Hypertarget{class_packet_ac4587a52a089f8fa1b7a899e4b46cb7d}\label{class_packet_ac4587a52a089f8fa1b7a899e4b46cb7d}} 
 \index{Packet@{Packet}!m\+\_\+roc\+Value@{m\+\_\+roc\+Value}}

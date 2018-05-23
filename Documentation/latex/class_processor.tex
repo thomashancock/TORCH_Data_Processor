@@ -41,7 +41,9 @@ void \hyperlink{class_processor_a1e5a47f8539e3568e2ba8f14f1fddea2}{run\+Parallel
 void \hyperlink{class_processor_a554de487c5e8205872151fbedb315291}{make\+Packets} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_processor_a531b4c5f7c0d810fc6e9e1dd3d115725}{bundle\+Buffer} $>$ word\+Bundle\+Buffer)
 \begin{DoxyCompactList}\small\item\em Process word bundles into packets. \end{DoxyCompactList}\item 
 void \hyperlink{class_processor_ae06672fc3ac6ef73525b64d4f9f769e7}{make\+Events} ()
-\begin{DoxyCompactList}\small\item\em Build Events from Packets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Build Events from Packets. \end{DoxyCompactList}\item 
+void \hyperlink{class_processor_a1a19cb73f339992d6dd1be580c8efef0}{write\+Events} (std\+::unique\+\_\+ptr$<$ \hyperlink{class_event_tree_manager}{Event\+Tree\+Manager} $>$ \&manager)
+\begin{DoxyCompactList}\small\item\em Writes events from the event buffer to a root file through the manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -49,8 +51,6 @@ const \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} 
 \begin{DoxyCompactList}\small\item\em Run mode (set by config) \end{DoxyCompactList}\item 
 const std\+::list$<$ unsigned int $>$ \hyperlink{class_processor_a8eaa993665bf2a2ed71f84ffc0630574}{m\+\_\+tdc\+I\+Ds}
 \begin{DoxyCompactList}\small\item\em List of T\+DC I\+Ds (set by config) \end{DoxyCompactList}\item 
-std\+::shared\+\_\+ptr$<$ \hyperlink{class_error_spy}{Error\+Spy} $>$ \hyperlink{class_processor_a4f79251b6b5048bb3f4b3c0e67557766}{m\+\_\+error\+Spy}
-\item 
 std\+::unique\+\_\+ptr$<$ \hyperlink{class_file_reader}{File\+Reader} $>$ \hyperlink{class_processor_aafe2ae55e609005c0e88226f1dd1dcb5}{m\+\_\+file\+Reader} = nullptr
 \begin{DoxyCompactList}\small\item\em File Reader object pointer. \end{DoxyCompactList}\item 
 std\+::array$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_processor_a531b4c5f7c0d810fc6e9e1dd3d115725}{bundle\+Buffer} $>$, 4 $>$ \hyperlink{class_processor_a8277cf1524daaa16f0dacfddd02ffd13}{m\+\_\+word\+Bundle\+Buffers} = \{\{ nullptr \}\}
@@ -206,15 +206,19 @@ Runs Serial Mode.
 {\em file\+Names} & List of files to process \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_processor_a1a19cb73f339992d6dd1be580c8efef0}\label{class_processor_a1a19cb73f339992d6dd1be580c8efef0}} 
+\index{Processor@{Processor}!write\+Events@{write\+Events}}
+\index{write\+Events@{write\+Events}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{write\+Events()}{writeEvents()}}
+{\footnotesize\ttfamily void Processor\+::write\+Events (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \hyperlink{class_event_tree_manager}{Event\+Tree\+Manager} $>$ \&}]{manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Writes events from the event buffer to a root file through the manager. 
+
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{class_processor_a4f79251b6b5048bb3f4b3c0e67557766}\label{class_processor_a4f79251b6b5048bb3f4b3c0e67557766}} 
-\index{Processor@{Processor}!m\+\_\+error\+Spy@{m\+\_\+error\+Spy}}
-\index{m\+\_\+error\+Spy@{m\+\_\+error\+Spy}!Processor@{Processor}}
-\subsubsection{\texorpdfstring{m\+\_\+error\+Spy}{m\_errorSpy}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\hyperlink{class_error_spy}{Error\+Spy}$>$ Processor\+::m\+\_\+error\+Spy\hspace{0.3cm}{\ttfamily [private]}}
-
 \mbox{\Hypertarget{class_processor_a7cb15fbab19fceb6bc5a607629ff5040}\label{class_processor_a7cb15fbab19fceb6bc5a607629ff5040}} 
 \index{Processor@{Processor}!m\+\_\+event\+Buffer@{m\+\_\+event\+Buffer}}
 \index{m\+\_\+event\+Buffer@{m\+\_\+event\+Buffer}!Processor@{Processor}}

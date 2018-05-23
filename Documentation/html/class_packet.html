@@ -63,6 +63,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_packet-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Packet Class Reference</div>  </div>
@@ -76,9 +77,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4b142794d6864d4d7949ba5e800ee1be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a4b142794d6864d4d7949ba5e800ee1be">Packet</a> (const unsigned int rocValue)</td></tr>
-<tr class="memdesc:a4b142794d6864d4d7949ba5e800ee1be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a4b142794d6864d4d7949ba5e800ee1be">More...</a><br /></td></tr>
-<tr class="separator:a4b142794d6864d4d7949ba5e800ee1be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac78ad72c2d0333e03dfdd5460fd6e816"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#ac78ad72c2d0333e03dfdd5460fd6e816">Packet</a> (const unsigned int readoutBoardID, const unsigned int rocValue, const unsigned int headerWord)</td></tr>
+<tr class="memdesc:ac78ad72c2d0333e03dfdd5460fd6e816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ac78ad72c2d0333e03dfdd5460fd6e816">More...</a><br /></td></tr>
+<tr class="separator:ac78ad72c2d0333e03dfdd5460fd6e816"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae70511a50e1f186b8a3369ee6ab8589c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#ae70511a50e1f186b8a3369ee6ab8589c">isGood</a> () const</td></tr>
 <tr class="memdesc:ae70511a50e1f186b8a3369ee6ab8589c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quick check for if the packet is complete and consistent.  <a href="#ae70511a50e1f186b8a3369ee6ab8589c">More...</a><br /></td></tr>
 <tr class="separator:ae70511a50e1f186b8a3369ee6ab8589c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -88,15 +89,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8d9e544f6f56389fa13bb01b2d37ca58"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a8d9e544f6f56389fa13bb01b2d37ca58">isConsistent</a> () const</td></tr>
 <tr class="memdesc:a8d9e544f6f56389fa13bb01b2d37ca58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the packet contains consitent information.  <a href="#a8d9e544f6f56389fa13bb01b2d37ca58">More...</a><br /></td></tr>
 <tr class="separator:a8d9e544f6f56389fa13bb01b2d37ca58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f710ea08bf8d264beb1361f19cc3afb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a7f710ea08bf8d264beb1361f19cc3afb">addHeader</a> (const unsigned int word)</td></tr>
-<tr class="memdesc:a7f710ea08bf8d264beb1361f19cc3afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds information corresponding to a header word to the packet.  <a href="#a7f710ea08bf8d264beb1361f19cc3afb">More...</a><br /></td></tr>
-<tr class="separator:a7f710ea08bf8d264beb1361f19cc3afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13eccb2f6b6d527549839579920e5105"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a13eccb2f6b6d527549839579920e5105">addTrailer</a> (const unsigned int word)</td></tr>
 <tr class="memdesc:a13eccb2f6b6d527549839579920e5105"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds information corresponding to a trailer word to the packet.  <a href="#a13eccb2f6b6d527549839579920e5105">More...</a><br /></td></tr>
 <tr class="separator:a13eccb2f6b6d527549839579920e5105"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3582cfb4893a3f61cb3e7b11e75787f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#af3582cfb4893a3f61cb3e7b11e75787f">addDataline</a> (const unsigned int word)</td></tr>
-<tr class="memdesc:af3582cfb4893a3f61cb3e7b11e75787f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds information corresponding to a data word to the packet.  <a href="#af3582cfb4893a3f61cb3e7b11e75787f">More...</a><br /></td></tr>
-<tr class="separator:af3582cfb4893a3f61cb3e7b11e75787f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a3c458b3587775aba89a8e09c214155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a5a3c458b3587775aba89a8e09c214155">addDataline</a> (unsigned int word)</td></tr>
+<tr class="memdesc:a5a3c458b3587775aba89a8e09c214155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds information corresponding to a data word to the packet.  <a href="#a5a3c458b3587775aba89a8e09c214155">More...</a><br /></td></tr>
+<tr class="separator:a5a3c458b3587775aba89a8e09c214155"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f4c3d99d89506a577073a2ce9e75e95"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a4f4c3d99d89506a577073a2ce9e75e95">getTDCID</a> () const</td></tr>
 <tr class="memdesc:a4f4c3d99d89506a577073a2ce9e75e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the stored TDC ID.  <a href="#a4f4c3d99d89506a577073a2ce9e75e95">More...</a><br /></td></tr>
 <tr class="separator:a4f4c3d99d89506a577073a2ce9e75e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2a46912b82833c80b53e01114ef701a1"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a2a46912b82833c80b53e01114ef701a1">getROCValue</a> () const</td></tr>
 <tr class="memdesc:a2a46912b82833c80b53e01114ef701a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the stored ROC value.  <a href="#a2a46912b82833c80b53e01114ef701a1">More...</a><br /></td></tr>
 <tr class="separator:a2a46912b82833c80b53e01114ef701a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85eb57c2213797b64d6102bff9311e1b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a85eb57c2213797b64d6102bff9311e1b">getReadoutBoardID</a> () const</td></tr>
+<tr class="memdesc:a85eb57c2213797b64d6102bff9311e1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the stored ROC value.  <a href="#a85eb57c2213797b64d6102bff9311e1b">More...</a><br /></td></tr>
+<tr class="separator:a85eb57c2213797b64d6102bff9311e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a461a138986888a01fb04205512a37410"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a461a138986888a01fb04205512a37410">getNLeadingEdges</a> () const</td></tr>
 <tr class="memdesc:a461a138986888a01fb04205512a37410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of stored leading edges.  <a href="#a461a138986888a01fb04205512a37410">More...</a><br /></td></tr>
 <tr class="separator:a461a138986888a01fb04205512a37410"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,12 +137,18 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:a7f710ea08bf8d264beb1361f19cc3afb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a7f710ea08bf8d264beb1361f19cc3afb">addHeader</a> (const unsigned int word)</td></tr>
+<tr class="memdesc:a7f710ea08bf8d264beb1361f19cc3afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds information corresponding to a header word to the packet.  <a href="#a7f710ea08bf8d264beb1361f19cc3afb">More...</a><br /></td></tr>
+<tr class="separator:a7f710ea08bf8d264beb1361f19cc3afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3abe7485b62e417e83b11c8891ba7a6"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#af3abe7485b62e417e83b11c8891ba7a6">getEdgeValue</a> (const bool leading, const unsigned int edgeNo, unsigned int(Edge::*getter)() const) const</td></tr>
 <tr class="memdesc:af3abe7485b62e417e83b11c8891ba7a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value returned by the specified getter function for an edge.  <a href="#af3abe7485b62e417e83b11c8891ba7a6">More...</a><br /></td></tr>
 <tr class="separator:af3abe7485b62e417e83b11c8891ba7a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:af10be9c0821e98433b534b17017081db"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#af10be9c0821e98433b534b17017081db">m_readoutBoardID</a></td></tr>
+<tr class="memdesc:af10be9c0821e98433b534b17017081db"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_packet.html" title="Stores all the information relevant to a single packet of data. ">Packet</a>'s Readout Board ID.  <a href="#af10be9c0821e98433b534b17017081db">More...</a><br /></td></tr>
+<tr class="separator:af10be9c0821e98433b534b17017081db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4587a52a089f8fa1b7a899e4b46cb7d"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#ac4587a52a089f8fa1b7a899e4b46cb7d">m_rocValue</a></td></tr>
 <tr class="memdesc:ac4587a52a089f8fa1b7a899e4b46cb7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROC value which triggered the packet's creation.  <a href="#ac4587a52a089f8fa1b7a899e4b46cb7d">More...</a><br /></td></tr>
 <tr class="separator:ac4587a52a089f8fa1b7a899e4b46cb7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,13 +182,22 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a046581698cdcca7297109ceaeed7e014"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a046581698cdcca7297109ceaeed7e014">m_trailerAdded</a> = false</td></tr>
 <tr class="memdesc:a046581698cdcca7297109ceaeed7e014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores whether a trailer line has been added.  <a href="#a046581698cdcca7297109ceaeed7e014">More...</a><br /></td></tr>
 <tr class="separator:a046581698cdcca7297109ceaeed7e014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a27f9a040a63e06e20a2097133a588997"><td class="memItemLeft" align="right" valign="top">static std::function&lt; unsigned int(unsigned int, unsigned int, unsigned int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a27f9a040a63e06e20a2097133a588997">m_channelMapper</a> = <a class="el" href="namespace_chl_map.html#a1c25ae4d560fda9abe7fb0684c6ceae7">ChlMap::std8x64Mapping</a></td></tr>
+<tr class="memdesc:a27f9a040a63e06e20a2097133a588997"><td class="mdescLeft">&#160;</td><td class="mdescRight">Channel Mapping Function.  <a href="#a27f9a040a63e06e20a2097133a588997">More...</a><br /></td></tr>
+<tr class="separator:a27f9a040a63e06e20a2097133a588997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89f279819afdfb930b201009d821e7f9"><td class="memItemLeft" align="right" valign="top">static std::function&lt; void(unsigned int &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet.html#a89f279819afdfb930b201009d821e7f9">m_polarityFixer</a> = <a class="el" href="namespace_pol_mod.html#ab917c96757340e5d8901808f819ddf4c">PolMod::noChange</a></td></tr>
+<tr class="memdesc:a89f279819afdfb930b201009d821e7f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polarity correction function.  <a href="#a89f279819afdfb930b201009d821e7f9">More...</a><br /></td></tr>
+<tr class="separator:a89f279819afdfb930b201009d821e7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stores all the information relevant to a single packet of data. </p>
 <p>Decodes data lines and stores the decoded information. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4b142794d6864d4d7949ba5e800ee1be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b142794d6864d4d7949ba5e800ee1be">&#9670;&nbsp;</a></span>Packet()</h2>
+<a id="ac78ad72c2d0333e03dfdd5460fd6e816"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac78ad72c2d0333e03dfdd5460fd6e816">&#9670;&nbsp;</a></span>Packet()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -190,8 +206,24 @@ Private Attributes</h2></td></tr>
           <td class="memname">Packet::Packet </td>
           <td>(</td>
           <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>rocValue</em></td><td>)</td>
+          <td class="paramname"><em>readoutBoardID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>rocValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>headerWord</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -199,7 +231,9 @@ Private Attributes</h2></td></tr>
 <p>Constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">readoutBoardID</td><td>Readout board ID </td></tr>
     <tr><td class="paramname">rocValue</td><td>ROC value which triggered the packet's creation </td></tr>
+    <tr><td class="paramname">headerWord</td><td>Header word for packet </td></tr>
   </table>
   </dd>
 </dl>
@@ -207,8 +241,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af3582cfb4893a3f61cb3e7b11e75787f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3582cfb4893a3f61cb3e7b11e75787f">&#9670;&nbsp;</a></span>addDataline()</h2>
+<a id="a5a3c458b3587775aba89a8e09c214155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3c458b3587775aba89a8e09c214155">&#9670;&nbsp;</a></span>addDataline()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -216,7 +250,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Packet::addDataline </td>
           <td>(</td>
-          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>word</em></td><td>)</td>
           <td></td>
         </tr>
@@ -238,6 +272,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Packet::addHeader </td>
@@ -247,6 +284,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Adds information corresponding to a header word to the packet. </p>
@@ -556,6 +598,33 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a85eb57c2213797b64d6102bff9311e1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85eb57c2213797b64d6102bff9311e1b">&#9670;&nbsp;</a></span>getReadoutBoardID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Packet::getReadoutBoardID </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the stored ROC value. </p>
+
+</div>
+</div>
 <a id="a2a46912b82833c80b53e01114ef701a1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a46912b82833c80b53e01114ef701a1">&#9670;&nbsp;</a></span>getROCValue()</h2>
 
@@ -784,6 +853,30 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a27f9a040a63e06e20a2097133a588997"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27f9a040a63e06e20a2097133a588997">&#9670;&nbsp;</a></span>m_channelMapper</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt; <a class="el" href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a>(<a class="el" href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a>, <a class="el" href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a>, <a class="el" href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a>)&gt; Packet::m_channelMapper = <a class="el" href="namespace_chl_map.html#a1c25ae4d560fda9abe7fb0684c6ceae7">ChlMap::std8x64Mapping</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Channel Mapping Function. </p>
+
+</div>
+</div>
 <a id="a3abf93570be0669506f39b391bc574ca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3abf93570be0669506f39b391bc574ca">&#9670;&nbsp;</a></span>m_eventIDHeader</h2>
 
@@ -877,6 +970,54 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Vector storing all leading edge information. </p>
+
+</div>
+</div>
+<a id="a89f279819afdfb930b201009d821e7f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89f279819afdfb930b201009d821e7f9">&#9670;&nbsp;</a></span>m_polarityFixer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt; void(<a class="el" href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a> &amp;)&gt; Packet::m_polarityFixer = <a class="el" href="namespace_pol_mod.html#ab917c96757340e5d8901808f819ddf4c">PolMod::noChange</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Polarity correction function. </p>
+
+</div>
+</div>
+<a id="af10be9c0821e98433b534b17017081db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af10be9c0821e98433b534b17017081db">&#9670;&nbsp;</a></span>m_readoutBoardID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int Packet::m_readoutBoardID</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_packet.html" title="Stores all the information relevant to a single packet of data. ">Packet</a>'s Readout Board ID. </p>
 
 </div>
 </div>

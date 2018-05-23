@@ -1,0 +1,72 @@
+\hypertarget{namespace_pol_mod}{}\section{Pol\+Mod Namespace Reference}
+\label{namespace_pol_mod}\index{Pol\+Mod@{Pol\+Mod}}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{uint} = unsigned int
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::function$<$ void(\hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{uint} \&)$>$ \hyperlink{namespace_pol_mod_ab917c96757340e5d8901808f819ddf4c}{no\+Change}
+\begin{DoxyCompactList}\small\item\em Don\textquotesingle{}t apply any changes. \end{DoxyCompactList}\item 
+std\+::function$<$ void(\hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{uint} \&)$>$ \hyperlink{namespace_pol_mod_a40220fc636b5ce60f937d5e3e001f630}{flip\+Even}
+\begin{DoxyCompactList}\small\item\em Even channel edge flip. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}\label{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}} 
+\index{Pol\+Mod@{Pol\+Mod}!uint@{uint}}
+\index{uint@{uint}!Pol\+Mod@{Pol\+Mod}}
+\subsubsection{\texorpdfstring{uint}{uint}}
+{\footnotesize\ttfamily using \hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{Pol\+Mod\+::uint} = typedef unsigned int}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespace_pol_mod_a40220fc636b5ce60f937d5e3e001f630}\label{namespace_pol_mod_a40220fc636b5ce60f937d5e3e001f630}} 
+\index{Pol\+Mod@{Pol\+Mod}!flip\+Even@{flip\+Even}}
+\index{flip\+Even@{flip\+Even}!Pol\+Mod@{Pol\+Mod}}
+\subsubsection{\texorpdfstring{flip\+Even}{flipEven}}
+{\footnotesize\ttfamily std\+::function$<$void(\hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{uint}\&)$>$ Pol\+Mod\+::flip\+Even}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= [] (
+    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}& word
+) -> \textcolor{keywordtype}{void} \{
+    \textcolor{keyword}{const} \textcolor{keyword}{auto} dataType = \hyperlink{namespacebindec_a7a98adfd04c65f870f74a423bfd744fe}{bindec::getDataType}(word);
+    \hyperlink{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}{ASSERT}(4 == dataType || 5 == dataType);
+
+    
+    \textcolor{keyword}{const} \textcolor{keyword}{auto} channelID = \hyperlink{namespacebindec_af1997af0743251d010780a8f728fcd7e}{bindec::getChannelID}(word);
+    \textcolor{keywordflow}{if} (0 == channelID%2) \{
+        
+        \textcolor{keywordflow}{if} (dataType == 4) \{
+            word += 0x10000000;
+        \} \textcolor{keywordflow}{else} \{
+            word -= 0x10000000;
+        \}
+    \}
+\}
+\end{DoxyCode}
+
+
+Even channel edge flip. 
+
+\mbox{\Hypertarget{namespace_pol_mod_ab917c96757340e5d8901808f819ddf4c}\label{namespace_pol_mod_ab917c96757340e5d8901808f819ddf4c}} 
+\index{Pol\+Mod@{Pol\+Mod}!no\+Change@{no\+Change}}
+\index{no\+Change@{no\+Change}!Pol\+Mod@{Pol\+Mod}}
+\subsubsection{\texorpdfstring{no\+Change}{noChange}}
+{\footnotesize\ttfamily std\+::function$<$void(\hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{uint}\&)$>$ Pol\+Mod\+::no\+Change}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= [] (
+    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}& word
+) -> \textcolor{keywordtype}{void} \{ \}
+\end{DoxyCode}
+
+
+Don\textquotesingle{}t apply any changes. 
+

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['s_5fhitsmax',['s_hitsMax',['../class_event_tree_manager.html#aab35ad52374d52149bde894c8af7a8c5',1,'EventTreeManager']]],
-  ['s_5fmaxedges',['s_maxEdges',['../class_packet_tree_manager.html#a4ba06517ad1cb912ff70df1ff69231a5',1,'PacketTreeManager']]]
+  ['nochange',['noChange',['../namespace_pol_mod.html#ab917c96757340e5d8901808f819ddf4c',1,'PolMod']]],
+  ['nomapping',['noMapping',['../namespace_chl_map.html#a737b285621b10b9c3980dc18b8ba1b18',1,'ChlMap']]]
 ];

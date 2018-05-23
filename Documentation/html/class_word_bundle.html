@@ -72,12 +72,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aef51ca0125b0b39fff34bfa47ddc4334"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_bundle.html#aef51ca0125b0b39fff34bfa47ddc4334">WordBundle</a> (const unsigned int readoutBoardNumber)</td></tr>
-<tr class="memdesc:aef51ca0125b0b39fff34bfa47ddc4334"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aef51ca0125b0b39fff34bfa47ddc4334">More...</a><br /></td></tr>
-<tr class="separator:aef51ca0125b0b39fff34bfa47ddc4334"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d781e8e2bf5b1c0b67346bd6fd44ff9"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_bundle.html#a6d781e8e2bf5b1c0b67346bd6fd44ff9">getReadoutBoardNumber</a> () const</td></tr>
-<tr class="memdesc:a6d781e8e2bf5b1c0b67346bd6fd44ff9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns readout board number.  <a href="#a6d781e8e2bf5b1c0b67346bd6fd44ff9">More...</a><br /></td></tr>
-<tr class="separator:a6d781e8e2bf5b1c0b67346bd6fd44ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56afa743b30e4b20775b7ecad180c465"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_bundle.html#a56afa743b30e4b20775b7ecad180c465">WordBundle</a> (const unsigned int readoutBoardID)</td></tr>
+<tr class="memdesc:a56afa743b30e4b20775b7ecad180c465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a56afa743b30e4b20775b7ecad180c465">More...</a><br /></td></tr>
+<tr class="separator:a56afa743b30e4b20775b7ecad180c465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a595de21d0dabc8b99a8d28053c0370fc"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_bundle.html#a595de21d0dabc8b99a8d28053c0370fc">getReadoutBoardID</a> () const</td></tr>
+<tr class="memdesc:a595de21d0dabc8b99a8d28053c0370fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns readout board number.  <a href="#a595de21d0dabc8b99a8d28053c0370fc">More...</a><br /></td></tr>
+<tr class="separator:a595de21d0dabc8b99a8d28053c0370fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a817b8d4266b5c2418743bf46ef5dee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_bundle.html#a0a817b8d4266b5c2418743bf46ef5dee">isComplete</a> () const</td></tr>
 <tr class="memdesc:a0a817b8d4266b5c2418743bf46ef5dee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if Bundle is complete.  <a href="#a0a817b8d4266b5c2418743bf46ef5dee">More...</a><br /></td></tr>
 <tr class="separator:a0a817b8d4266b5c2418743bf46ef5dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,8 +99,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a8c6594819625e90aebfd248a8c11916b"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_bundle.html#a8c6594819625e90aebfd248a8c11916b">m_readoutBoardNumber</a></td></tr>
-<tr class="separator:a8c6594819625e90aebfd248a8c11916b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75e4429454ea028f2fbfa2f144330215"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_bundle.html#a75e4429454ea028f2fbfa2f144330215">m_readoutBoardID</a></td></tr>
+<tr class="separator:a75e4429454ea028f2fbfa2f144330215"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7605157c872054d7ab42b590fac97ca7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_bundle.html#a7605157c872054d7ab42b590fac97ca7">m_rocValueStored</a> = false</td></tr>
 <tr class="separator:a7605157c872054d7ab42b590fac97ca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58233a5455b9a594e3441dd79e3d6a3b"><td class="memItemLeft" align="right" valign="top">std::queue&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_bundle.html#a58233a5455b9a594e3441dd79e3d6a3b">m_words</a></td></tr>
@@ -109,8 +109,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a2510a567b83584e8b53395168d53c401"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aef51ca0125b0b39fff34bfa47ddc4334"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef51ca0125b0b39fff34bfa47ddc4334">&#9670;&nbsp;</a></span>WordBundle()</h2>
+<a id="a56afa743b30e4b20775b7ecad180c465"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56afa743b30e4b20775b7ecad180c465">&#9670;&nbsp;</a></span>WordBundle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -119,7 +119,7 @@ Private Attributes</h2></td></tr>
           <td class="memname">WordBundle::WordBundle </td>
           <td>(</td>
           <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>readoutBoardNumber</em></td><td>)</td>
+          <td class="paramname"><em>readoutBoardID</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -212,8 +212,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6d781e8e2bf5b1c0b67346bd6fd44ff9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d781e8e2bf5b1c0b67346bd6fd44ff9">&#9670;&nbsp;</a></span>getReadoutBoardNumber()</h2>
+<a id="a595de21d0dabc8b99a8d28053c0370fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a595de21d0dabc8b99a8d28053c0370fc">&#9670;&nbsp;</a></span>getReadoutBoardID()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,7 +222,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int WordBundle::getReadoutBoardNumber </td>
+          <td class="memname">unsigned int WordBundle::getReadoutBoardID </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -322,8 +322,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a8c6594819625e90aebfd248a8c11916b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c6594819625e90aebfd248a8c11916b">&#9670;&nbsp;</a></span>m_readoutBoardNumber</h2>
+<a id="a75e4429454ea028f2fbfa2f144330215"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75e4429454ea028f2fbfa2f144330215">&#9670;&nbsp;</a></span>m_readoutBoardID</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -332,7 +332,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const unsigned int WordBundle::m_readoutBoardNumber</td>
+          <td class="memname">const unsigned int WordBundle::m_readoutBoardID</td>
         </tr>
       </table>
   </td>
