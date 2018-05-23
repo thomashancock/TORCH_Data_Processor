@@ -86,16 +86,16 @@ Inheritance diagram for EventTreeManager:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac97238d5991e325f1de2268684889c63"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#ac97238d5991e325f1de2268684889c63">EventTreeManager</a> (const std::string outfileName, const unsigned int nTDCs)</td></tr>
-<tr class="memdesc:ac97238d5991e325f1de2268684889c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ac97238d5991e325f1de2268684889c63">More...</a><br /></td></tr>
-<tr class="separator:ac97238d5991e325f1de2268684889c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac56641a71c28863d76fcc598ac8e32df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#ac56641a71c28863d76fcc598ac8e32df">EventTreeManager</a> (std::shared_ptr&lt; const <a class="el" href="class_config.html">Config</a> &gt; config, const std::string outfileName, const unsigned int nTDCs)</td></tr>
+<tr class="memdesc:ac56641a71c28863d76fcc598ac8e32df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ac56641a71c28863d76fcc598ac8e32df">More...</a><br /></td></tr>
+<tr class="separator:ac56641a71c28863d76fcc598ac8e32df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acabb2f6c8dd0e08375b4cf8bf2c148fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#acabb2f6c8dd0e08375b4cf8bf2c148fd">add</a> (std::unique_ptr&lt; <a class="el" href="class_event.html">Event</a> &gt; event) final</td></tr>
 <tr class="memdesc:acabb2f6c8dd0e08375b4cf8bf2c148fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an event to the tree, then destroys the event.  <a href="#acabb2f6c8dd0e08375b4cf8bf2c148fd">More...</a><br /></td></tr>
 <tr class="separator:acabb2f6c8dd0e08375b4cf8bf2c148fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_root_manager"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_root_manager')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_root_manager.html">RootManager&lt; Event &gt;</a></td></tr>
-<tr class="memitem:a152803255b94d68cbe4c4f8e24fc2352 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a152803255b94d68cbe4c4f8e24fc2352">RootManager</a> (const std::string outFileName, const std::string treeName)</td></tr>
-<tr class="memdesc:a152803255b94d68cbe4c4f8e24fc2352 inherit pub_methods_class_root_manager"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_root_manager.html#a152803255b94d68cbe4c4f8e24fc2352">More...</a><br /></td></tr>
-<tr class="separator:a152803255b94d68cbe4c4f8e24fc2352 inherit pub_methods_class_root_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90ff78b3122c0b3fad62bc927778dda9 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a90ff78b3122c0b3fad62bc927778dda9">RootManager</a> (std::shared_ptr&lt; const <a class="el" href="class_config.html">Config</a> &gt; config, const std::string outFileName, const std::string treeName)</td></tr>
+<tr class="memdesc:a90ff78b3122c0b3fad62bc927778dda9 inherit pub_methods_class_root_manager"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_root_manager.html#a90ff78b3122c0b3fad62bc927778dda9">More...</a><br /></td></tr>
+<tr class="separator:a90ff78b3122c0b3fad62bc927778dda9 inherit pub_methods_class_root_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61">~RootManager</a> ()</td></tr>
 <tr class="memdesc:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explicit deconstructor.  <a href="class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61">More...</a><br /></td></tr>
 <tr class="separator:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,8 +195,8 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class which manages storage of <a class="el" href="class_event.html" title="Container class for Packets. ">Event</a> data in root file output. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac97238d5991e325f1de2268684889c63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac97238d5991e325f1de2268684889c63">&#9670;&nbsp;</a></span>EventTreeManager()</h2>
+<a id="ac56641a71c28863d76fcc598ac8e32df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac56641a71c28863d76fcc598ac8e32df">&#9670;&nbsp;</a></span>EventTreeManager()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -204,6 +204,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">EventTreeManager::EventTreeManager </td>
           <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; const <a class="el" href="class_config.html">Config</a> &gt;&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const std::string&#160;</td>
           <td class="paramname"><em>outfileName</em>, </td>
         </tr>
@@ -224,6 +230,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">config</td><td>Ptr to program configuration </td></tr>
     <tr><td class="paramname">outfileName</td><td>The desired output file name </td></tr>
     <tr><td class="paramname">nTDCs</td><td>Number of TDCs present from config </td></tr>
   </table>

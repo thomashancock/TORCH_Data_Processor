@@ -50,6 +50,13 @@ unsigned int \hyperlink{class_packet_aafbf1d7b7303ef5f3919e7ed9f8065f8}{get\+Fin
 \begin{DoxyCompactList}\small\item\em Returns the fine timestamp of the egde requested. \end{DoxyCompactList}\item 
 void \hyperlink{class_packet_aec87fc2f2473111a694ad8b6f60e7666}{print} () const
 \begin{DoxyCompactList}\small\item\em Write human-\/readable informaton about the packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_packet_aab292dda74224f53a94d005f49a1c3a8}{set\+Channel\+Mapping} (std\+::function$<$ \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}(\hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint})$>$ mapping\+Function)
+\begin{DoxyCompactList}\small\item\em Static function to set global channel mapping. \end{DoxyCompactList}\item 
+static void \hyperlink{class_packet_a2316cd4582e675d52de8c302c192d46f}{set\+Edge\+Modifier} (std\+::function$<$ void(\hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} \&)$>$ modifier\+Function)
+\begin{DoxyCompactList}\small\item\em Static function to set global channel mapping. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -87,10 +94,10 @@ bool \hyperlink{class_packet_a046581698cdcca7297109ceaeed7e014}{m\+\_\+trailer\+
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static std\+::function$<$ unsigned int(unsigned int, unsigned int, unsigned int)$>$ \hyperlink{class_packet_a27f9a040a63e06e20a2097133a588997}{m\+\_\+channel\+Mapper} = \hyperlink{namespace_chl_map_a1c25ae4d560fda9abe7fb0684c6ceae7}{Chl\+Map\+::std8x64\+Mapping}
+static std\+::function$<$ unsigned int(unsigned int, unsigned int, unsigned int)$>$ \hyperlink{class_packet_a27f9a040a63e06e20a2097133a588997}{m\+\_\+channel\+Mapper}
 \begin{DoxyCompactList}\small\item\em Channel Mapping Function. \end{DoxyCompactList}\item 
-static std\+::function$<$ void(unsigned int \&)$>$ \hyperlink{class_packet_a89f279819afdfb930b201009d821e7f9}{m\+\_\+polarity\+Fixer} = \hyperlink{namespace_pol_mod_ab917c96757340e5d8901808f819ddf4c}{Pol\+Mod\+::no\+Change}
-\begin{DoxyCompactList}\small\item\em Polarity correction function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static std\+::function$<$ void(unsigned int \&)$>$ \hyperlink{class_packet_aa95ed5326667f67a5c2d101cd5a4afca}{m\+\_\+edge\+Modifier}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_edge}{Edge} polarity correction function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -373,6 +380,26 @@ Quick check for if the packet is complete and consistent.
 
 Write human-\/readable informaton about the packet. 
 
+\mbox{\Hypertarget{class_packet_aab292dda74224f53a94d005f49a1c3a8}\label{class_packet_aab292dda74224f53a94d005f49a1c3a8}} 
+\index{Packet@{Packet}!set\+Channel\+Mapping@{set\+Channel\+Mapping}}
+\index{set\+Channel\+Mapping@{set\+Channel\+Mapping}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{set\+Channel\+Mapping()}{setChannelMapping()}}
+{\footnotesize\ttfamily void Packet\+::set\+Channel\+Mapping (\begin{DoxyParamCaption}\item[{std\+::function$<$ \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}(\hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint})$>$}]{mapping\+Function }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Static function to set global channel mapping. 
+
+\mbox{\Hypertarget{class_packet_a2316cd4582e675d52de8c302c192d46f}\label{class_packet_a2316cd4582e675d52de8c302c192d46f}} 
+\index{Packet@{Packet}!set\+Edge\+Modifier@{set\+Edge\+Modifier}}
+\index{set\+Edge\+Modifier@{set\+Edge\+Modifier}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{set\+Edge\+Modifier()}{setEdgeModifier()}}
+{\footnotesize\ttfamily void Packet\+::set\+Edge\+Modifier (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(\hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} \&)$>$}]{modifier\+Function }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Static function to set global channel mapping. 
+
 
 
 \subsection{Member Data Documentation}
@@ -390,11 +417,38 @@ The bunch ID decoded from the header.
 \index{Packet@{Packet}!m\+\_\+channel\+Mapper@{m\+\_\+channel\+Mapper}}
 \index{m\+\_\+channel\+Mapper@{m\+\_\+channel\+Mapper}!Packet@{Packet}}
 \subsubsection{\texorpdfstring{m\+\_\+channel\+Mapper}{m\_channelMapper}}
-{\footnotesize\ttfamily std\+::function$<$ \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}(\hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint})$>$ Packet\+::m\+\_\+channel\+Mapper = \hyperlink{namespace_chl_map_a1c25ae4d560fda9abe7fb0684c6ceae7}{Chl\+Map\+::std8x64\+Mapping}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::function$<$ \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}(\hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint})$>$ Packet\+::m\+\_\+channel\+Mapper\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= [] (
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} ,
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} ,
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channelID
+) \{
+    \hyperlink{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}{ASSERT}(\textcolor{keyword}{false}); 
+    \textcolor{keywordflow}{return} channelID;
+\}
+\end{DoxyCode}
 
 
 Channel Mapping Function. 
+
+\mbox{\Hypertarget{class_packet_aa95ed5326667f67a5c2d101cd5a4afca}\label{class_packet_aa95ed5326667f67a5c2d101cd5a4afca}} 
+\index{Packet@{Packet}!m\+\_\+edge\+Modifier@{m\+\_\+edge\+Modifier}}
+\index{m\+\_\+edge\+Modifier@{m\+\_\+edge\+Modifier}!Packet@{Packet}}
+\subsubsection{\texorpdfstring{m\+\_\+edge\+Modifier}{m\_edgeModifier}}
+{\footnotesize\ttfamily std\+::function$<$ void(\hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} \&)$>$ Packet\+::m\+\_\+edge\+Modifier\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= [] (\hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}&) \{
+    \hyperlink{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}{ASSERT}(\textcolor{keyword}{false}); 
+\}
+\end{DoxyCode}
+
+
+\hyperlink{class_edge}{Edge} polarity correction function. 
 
 \mbox{\Hypertarget{class_packet_a3abf93570be0669506f39b391bc574ca}\label{class_packet_a3abf93570be0669506f39b391bc574ca}} 
 \index{Packet@{Packet}!m\+\_\+event\+I\+D\+Header@{m\+\_\+event\+I\+D\+Header}}
@@ -435,16 +489,6 @@ Stores whether a header line has been added.
 
 
 Vector storing all leading edge information. 
-
-\mbox{\Hypertarget{class_packet_a89f279819afdfb930b201009d821e7f9}\label{class_packet_a89f279819afdfb930b201009d821e7f9}} 
-\index{Packet@{Packet}!m\+\_\+polarity\+Fixer@{m\+\_\+polarity\+Fixer}}
-\index{m\+\_\+polarity\+Fixer@{m\+\_\+polarity\+Fixer}!Packet@{Packet}}
-\subsubsection{\texorpdfstring{m\+\_\+polarity\+Fixer}{m\_polarityFixer}}
-{\footnotesize\ttfamily std\+::function$<$ void(\hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} \&)$>$ Packet\+::m\+\_\+polarity\+Fixer = \hyperlink{namespace_pol_mod_ab917c96757340e5d8901808f819ddf4c}{Pol\+Mod\+::no\+Change}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
-
-
-
-Polarity correction function. 
 
 \mbox{\Hypertarget{class_packet_af10be9c0821e98433b534b17017081db}\label{class_packet_af10be9c0821e98433b534b17017081db}} 
 \index{Packet@{Packet}!m\+\_\+readout\+Board\+ID@{m\+\_\+readout\+Board\+ID}}

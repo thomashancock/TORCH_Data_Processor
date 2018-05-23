@@ -18,7 +18,7 @@ Inheritance diagram for Event\+Tree\+Manager\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_event_tree_manager_ac97238d5991e325f1de2268684889c63}{Event\+Tree\+Manager} (const std\+::string outfile\+Name, const unsigned int n\+T\+D\+Cs)
+\hyperlink{class_event_tree_manager_ac56641a71c28863d76fcc598ac8e32df}{Event\+Tree\+Manager} (std\+::shared\+\_\+ptr$<$ const \hyperlink{class_config}{Config} $>$ config, const std\+::string outfile\+Name, const unsigned int n\+T\+D\+Cs)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 void \hyperlink{class_event_tree_manager_acabb2f6c8dd0e08375b4cf8bf2c148fd}{add} (std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ event) final
 \begin{DoxyCompactList}\small\item\em Adds an event to the tree, then destroys the event. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -82,11 +82,11 @@ static constexpr unsigned int \hyperlink{class_event_tree_manager_aab35ad52374d5
 Class which manages storage of \hyperlink{class_event}{Event} data in root file output. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_event_tree_manager_ac97238d5991e325f1de2268684889c63}\label{class_event_tree_manager_ac97238d5991e325f1de2268684889c63}} 
+\mbox{\Hypertarget{class_event_tree_manager_ac56641a71c28863d76fcc598ac8e32df}\label{class_event_tree_manager_ac56641a71c28863d76fcc598ac8e32df}} 
 \index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
 \index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
 \subsubsection{\texorpdfstring{Event\+Tree\+Manager()}{EventTreeManager()}}
-{\footnotesize\ttfamily Event\+Tree\+Manager\+::\+Event\+Tree\+Manager (\begin{DoxyParamCaption}\item[{const std\+::string}]{outfile\+Name,  }\item[{const unsigned int}]{n\+T\+D\+Cs }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Event\+Tree\+Manager\+::\+Event\+Tree\+Manager (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ const \hyperlink{class_config}{Config} $>$}]{config,  }\item[{const std\+::string}]{outfile\+Name,  }\item[{const unsigned int}]{n\+T\+D\+Cs }\end{DoxyParamCaption})}
 
 
 
@@ -94,6 +94,8 @@ Constructor.
 
 
 \begin{DoxyParams}{Parameters}
+{\em config} & Ptr to program configuration \\
+\hline
 {\em outfile\+Name} & The desired output file name \\
 \hline
 {\em n\+T\+D\+Cs} & Number of T\+D\+Cs present from config \\

@@ -3,37 +3,60 @@
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{uint} = unsigned int
+using \hyperlink{namespace_pol_mod_a85db6c8495e67b2d486ea7dcf7f6aad4}{Edge\+Modifier} = std\+::function$<$ void(unsigned int \&)$>$
 \end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespace_pol_mod_afc8b6cf3366cdb9a14e5ae6d2f2e8326}{set\+Edge\+Modifier} (const std\+::string key)
+\begin{DoxyCompactList}\small\item\em Global function to set edge modifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-std\+::function$<$ void(\hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{uint} \&)$>$ \hyperlink{namespace_pol_mod_ab917c96757340e5d8901808f819ddf4c}{no\+Change}
+\hyperlink{namespace_pol_mod_a85db6c8495e67b2d486ea7dcf7f6aad4}{Edge\+Modifier} \hyperlink{namespace_pol_mod_a3bf89c0439812d613ba363a866c30817}{no\+Change}
 \begin{DoxyCompactList}\small\item\em Don\textquotesingle{}t apply any changes. \end{DoxyCompactList}\item 
-std\+::function$<$ void(\hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{uint} \&)$>$ \hyperlink{namespace_pol_mod_a40220fc636b5ce60f937d5e3e001f630}{flip\+Even}
+\hyperlink{namespace_pol_mod_a85db6c8495e67b2d486ea7dcf7f6aad4}{Edge\+Modifier} \hyperlink{namespace_pol_mod_ae33c3fdc58614d743b65a5db0859b6a7}{flip\+Even}
 \begin{DoxyCompactList}\small\item\em Even channel edge flip. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Typedef Documentation}
-\mbox{\Hypertarget{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}\label{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}} 
-\index{Pol\+Mod@{Pol\+Mod}!uint@{uint}}
-\index{uint@{uint}!Pol\+Mod@{Pol\+Mod}}
-\subsubsection{\texorpdfstring{uint}{uint}}
-{\footnotesize\ttfamily using \hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{Pol\+Mod\+::uint} = typedef unsigned int}
+\mbox{\Hypertarget{namespace_pol_mod_a85db6c8495e67b2d486ea7dcf7f6aad4}\label{namespace_pol_mod_a85db6c8495e67b2d486ea7dcf7f6aad4}} 
+\index{Pol\+Mod@{Pol\+Mod}!Edge\+Modifier@{Edge\+Modifier}}
+\index{Edge\+Modifier@{Edge\+Modifier}!Pol\+Mod@{Pol\+Mod}}
+\subsubsection{\texorpdfstring{Edge\+Modifier}{EdgeModifier}}
+{\footnotesize\ttfamily using \hyperlink{namespace_pol_mod_a85db6c8495e67b2d486ea7dcf7f6aad4}{Pol\+Mod\+::\+Edge\+Modifier} = typedef std\+::function$<$void(unsigned int\&)$>$}
 
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespace_pol_mod_afc8b6cf3366cdb9a14e5ae6d2f2e8326}\label{namespace_pol_mod_afc8b6cf3366cdb9a14e5ae6d2f2e8326}} 
+\index{Pol\+Mod@{Pol\+Mod}!set\+Edge\+Modifier@{set\+Edge\+Modifier}}
+\index{set\+Edge\+Modifier@{set\+Edge\+Modifier}!Pol\+Mod@{Pol\+Mod}}
+\subsubsection{\texorpdfstring{set\+Edge\+Modifier()}{setEdgeModifier()}}
+{\footnotesize\ttfamily void Pol\+Mod\+::set\+Edge\+Modifier (\begin{DoxyParamCaption}\item[{const std\+::string}]{key }\end{DoxyParamCaption})}
+
+
+
+Global function to set edge modifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Key to identify desired edge modifier \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespace_pol_mod_a40220fc636b5ce60f937d5e3e001f630}\label{namespace_pol_mod_a40220fc636b5ce60f937d5e3e001f630}} 
+\mbox{\Hypertarget{namespace_pol_mod_ae33c3fdc58614d743b65a5db0859b6a7}\label{namespace_pol_mod_ae33c3fdc58614d743b65a5db0859b6a7}} 
 \index{Pol\+Mod@{Pol\+Mod}!flip\+Even@{flip\+Even}}
 \index{flip\+Even@{flip\+Even}!Pol\+Mod@{Pol\+Mod}}
 \subsubsection{\texorpdfstring{flip\+Even}{flipEven}}
-{\footnotesize\ttfamily std\+::function$<$void(\hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{uint}\&)$>$ Pol\+Mod\+::flip\+Even}
+{\footnotesize\ttfamily \hyperlink{namespace_pol_mod_a85db6c8495e67b2d486ea7dcf7f6aad4}{Pol\+Mod\+::\+Edge\+Modifier} Pol\+Mod\+::flip\+Even}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}
 = [] (
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}& word
+    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}& word
 ) -> \textcolor{keywordtype}{void} \{
     \textcolor{keyword}{const} \textcolor{keyword}{auto} dataType = \hyperlink{namespacebindec_a7a98adfd04c65f870f74a423bfd744fe}{bindec::getDataType}(word);
     \hyperlink{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}{ASSERT}(4 == dataType || 5 == dataType);
@@ -54,16 +77,16 @@ std\+::function$<$ void(\hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa0
 
 Even channel edge flip. 
 
-\mbox{\Hypertarget{namespace_pol_mod_ab917c96757340e5d8901808f819ddf4c}\label{namespace_pol_mod_ab917c96757340e5d8901808f819ddf4c}} 
+\mbox{\Hypertarget{namespace_pol_mod_a3bf89c0439812d613ba363a866c30817}\label{namespace_pol_mod_a3bf89c0439812d613ba363a866c30817}} 
 \index{Pol\+Mod@{Pol\+Mod}!no\+Change@{no\+Change}}
 \index{no\+Change@{no\+Change}!Pol\+Mod@{Pol\+Mod}}
 \subsubsection{\texorpdfstring{no\+Change}{noChange}}
-{\footnotesize\ttfamily std\+::function$<$void(\hyperlink{namespace_pol_mod_a4d3b4a5eef6446c873dc0b5aa02c4f99}{uint}\&)$>$ Pol\+Mod\+::no\+Change}
+{\footnotesize\ttfamily \hyperlink{namespace_pol_mod_a85db6c8495e67b2d486ea7dcf7f6aad4}{Pol\+Mod\+::\+Edge\+Modifier} Pol\+Mod\+::no\+Change}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}
 = [] (
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}& word
+    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}& word
 ) -> \textcolor{keywordtype}{void} \{ \}
 \end{DoxyCode}
 

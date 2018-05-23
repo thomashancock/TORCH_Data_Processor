@@ -18,7 +18,7 @@ Inheritance diagram for Packet\+Tree\+Manager\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_packet_tree_manager_acab253ad1d9eb8d7b316d05f52bd064e}{Packet\+Tree\+Manager} (const std\+::string outfile\+Name)
+\hyperlink{class_packet_tree_manager_ab5393bcd3be4255232d9750cf85a4b13}{Packet\+Tree\+Manager} (std\+::shared\+\_\+ptr$<$ const \hyperlink{class_config}{Config} $>$ config, const std\+::string outfile\+Name)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 void \hyperlink{class_packet_tree_manager_a855e71512fe6365c11f312584afff70a}{add} (std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ packet) final
 \begin{DoxyCompactList}\small\item\em Adds a packet to the tree, then destroys the packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -68,11 +68,11 @@ static constexpr unsigned int \hyperlink{class_packet_tree_manager_a4ba06517ad1c
 Class which manages storage of \hyperlink{class_packet}{Packet} data in root file output. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_packet_tree_manager_acab253ad1d9eb8d7b316d05f52bd064e}\label{class_packet_tree_manager_acab253ad1d9eb8d7b316d05f52bd064e}} 
+\mbox{\Hypertarget{class_packet_tree_manager_ab5393bcd3be4255232d9750cf85a4b13}\label{class_packet_tree_manager_ab5393bcd3be4255232d9750cf85a4b13}} 
 \index{Packet\+Tree\+Manager@{Packet\+Tree\+Manager}!Packet\+Tree\+Manager@{Packet\+Tree\+Manager}}
 \index{Packet\+Tree\+Manager@{Packet\+Tree\+Manager}!Packet\+Tree\+Manager@{Packet\+Tree\+Manager}}
 \subsubsection{\texorpdfstring{Packet\+Tree\+Manager()}{PacketTreeManager()}}
-{\footnotesize\ttfamily Packet\+Tree\+Manager\+::\+Packet\+Tree\+Manager (\begin{DoxyParamCaption}\item[{const std\+::string}]{outfile\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Packet\+Tree\+Manager\+::\+Packet\+Tree\+Manager (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ const \hyperlink{class_config}{Config} $>$}]{config,  }\item[{const std\+::string}]{outfile\+Name }\end{DoxyParamCaption})}
 
 
 
@@ -80,6 +80,8 @@ Constructor.
 
 
 \begin{DoxyParams}{Parameters}
+{\em config} & Ptr to program configuration \\
+\hline
 {\em outfile\+Name} & The desired output file name \\
 \hline
 \end{DoxyParams}

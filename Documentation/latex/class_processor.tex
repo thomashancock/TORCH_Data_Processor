@@ -16,7 +16,7 @@ Class which manages overall processing of data.
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 \hyperlink{class_processor_acf37952c5b420d4e903a512571678692}{$\sim$\+Processor} ()
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
-void \hyperlink{class_processor_a4186d391ddee1f68d763931dad346c4a}{process\+Files} (const std\+::vector$<$ std\+::string $>$ file\+Names)
+void \hyperlink{class_processor_ad3862d616c58f790ab6d3e9725ce5b10}{process\+Files} (const std\+::string output\+File, const std\+::vector$<$ std\+::string $>$ file\+Names)
 \end{DoxyCompactItemize}
 \subsection*{Private Types}
 \begin{DoxyCompactItemize}
@@ -32,11 +32,11 @@ void \hyperlink{class_processor_aa9ad1e9d6f3d217e23649e42cd07de90}{initialize\+P
 \begin{DoxyCompactList}\small\item\em Initilises a packet buffer for each T\+DC ID. \end{DoxyCompactList}\item 
 void \hyperlink{class_processor_ae045ebe853cd1f2124ecb93b829a9113}{run\+Quick\+Check} (const std\+::vector$<$ std\+::string $>$ \&file\+Names)
 \begin{DoxyCompactList}\small\item\em Runs Quick\+Check Mode. \end{DoxyCompactList}\item 
-void \hyperlink{class_processor_ae697c1dd3136d1cf973d0ecc5a65a53a}{run\+Low\+Level} (const std\+::vector$<$ std\+::string $>$ \&file\+Names)
+void \hyperlink{class_processor_abb921abb494ace88b4ef5ba9137f21d2}{run\+Low\+Level} (const std\+::string output\+File, const std\+::vector$<$ std\+::string $>$ \&file\+Names)
 \begin{DoxyCompactList}\small\item\em Runs Low\+Level Mode. \end{DoxyCompactList}\item 
-void \hyperlink{class_processor_a7475d40a755f8afa7b6746c7949454d9}{run\+Serial} (const std\+::vector$<$ std\+::string $>$ \&file\+Names)
+void \hyperlink{class_processor_a0f2fc9c7e8c9271f7a9b171814ad094f}{run\+Serial} (const std\+::string output\+File, const std\+::vector$<$ std\+::string $>$ \&file\+Names)
 \begin{DoxyCompactList}\small\item\em Runs Serial Mode. \end{DoxyCompactList}\item 
-void \hyperlink{class_processor_a1e5a47f8539e3568e2ba8f14f1fddea2}{run\+Parallel} (const std\+::vector$<$ std\+::string $>$ \&file\+Names)
+void \hyperlink{class_processor_ac95806facc4b5cbeb8a1b6df0cc9e431}{run\+Parallel} (const std\+::string output\+File, const std\+::vector$<$ std\+::string $>$ \&file\+Names)
 \begin{DoxyCompactList}\small\item\em Runs Parallel Mode. \end{DoxyCompactList}\item 
 void \hyperlink{class_processor_a554de487c5e8205872151fbedb315291}{make\+Packets} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_processor_a531b4c5f7c0d810fc6e9e1dd3d115725}{bundle\+Buffer} $>$ word\+Bundle\+Buffer)
 \begin{DoxyCompactList}\small\item\em Process word bundles into packets. \end{DoxyCompactList}\item 
@@ -47,10 +47,8 @@ void \hyperlink{class_processor_a1a19cb73f339992d6dd1be580c8efef0}{write\+Events
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-const \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} \hyperlink{class_processor_ac22f412163181f546d847ce23d71978d}{m\+\_\+mode}
-\begin{DoxyCompactList}\small\item\em Run mode (set by config) \end{DoxyCompactList}\item 
-const std\+::list$<$ unsigned int $>$ \hyperlink{class_processor_a8eaa993665bf2a2ed71f84ffc0630574}{m\+\_\+tdc\+I\+Ds}
-\begin{DoxyCompactList}\small\item\em List of T\+DC I\+Ds (set by config) \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ const \hyperlink{class_config}{Config} $>$ \hyperlink{class_processor_ae6ebab331300f556a5c9b58d3dbfff60}{m\+\_\+config}
+\begin{DoxyCompactList}\small\item\em Program configuration. \end{DoxyCompactList}\item 
 std\+::unique\+\_\+ptr$<$ \hyperlink{class_file_reader}{File\+Reader} $>$ \hyperlink{class_processor_aafe2ae55e609005c0e88226f1dd1dcb5}{m\+\_\+file\+Reader} = nullptr
 \begin{DoxyCompactList}\small\item\em File Reader object pointer. \end{DoxyCompactList}\item 
 std\+::array$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_processor_a531b4c5f7c0d810fc6e9e1dd3d115725}{bundle\+Buffer} $>$, 4 $>$ \hyperlink{class_processor_a8277cf1524daaa16f0dacfddd02ffd13}{m\+\_\+word\+Bundle\+Buffers} = \{\{ nullptr \}\}
@@ -140,17 +138,17 @@ Process word bundles into packets.
 {\em word\+Bundle\+Buffer} & Buffer to read from \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_processor_a4186d391ddee1f68d763931dad346c4a}\label{class_processor_a4186d391ddee1f68d763931dad346c4a}} 
+\mbox{\Hypertarget{class_processor_ad3862d616c58f790ab6d3e9725ce5b10}\label{class_processor_ad3862d616c58f790ab6d3e9725ce5b10}} 
 \index{Processor@{Processor}!process\+Files@{process\+Files}}
 \index{process\+Files@{process\+Files}!Processor@{Processor}}
 \subsubsection{\texorpdfstring{process\+Files()}{processFiles()}}
-{\footnotesize\ttfamily void Processor\+::process\+Files (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$}]{file\+Names }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Processor\+::process\+Files (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File,  }\item[{const std\+::vector$<$ std\+::string $>$}]{file\+Names }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_processor_ae697c1dd3136d1cf973d0ecc5a65a53a}\label{class_processor_ae697c1dd3136d1cf973d0ecc5a65a53a}} 
+\mbox{\Hypertarget{class_processor_abb921abb494ace88b4ef5ba9137f21d2}\label{class_processor_abb921abb494ace88b4ef5ba9137f21d2}} 
 \index{Processor@{Processor}!run\+Low\+Level@{run\+Low\+Level}}
 \index{run\+Low\+Level@{run\+Low\+Level}!Processor@{Processor}}
 \subsubsection{\texorpdfstring{run\+Low\+Level()}{runLowLevel()}}
-{\footnotesize\ttfamily void Processor\+::run\+Low\+Level (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Processor\+::run\+Low\+Level (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -161,11 +159,11 @@ Runs Low\+Level Mode.
 {\em file\+Names} & List of files to process \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_processor_a1e5a47f8539e3568e2ba8f14f1fddea2}\label{class_processor_a1e5a47f8539e3568e2ba8f14f1fddea2}} 
+\mbox{\Hypertarget{class_processor_ac95806facc4b5cbeb8a1b6df0cc9e431}\label{class_processor_ac95806facc4b5cbeb8a1b6df0cc9e431}} 
 \index{Processor@{Processor}!run\+Parallel@{run\+Parallel}}
 \index{run\+Parallel@{run\+Parallel}!Processor@{Processor}}
 \subsubsection{\texorpdfstring{run\+Parallel()}{runParallel()}}
-{\footnotesize\ttfamily void Processor\+::run\+Parallel (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Processor\+::run\+Parallel (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -191,11 +189,11 @@ Runs Quick\+Check Mode.
 {\em file\+Names} & List of files to process \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_processor_a7475d40a755f8afa7b6746c7949454d9}\label{class_processor_a7475d40a755f8afa7b6746c7949454d9}} 
+\mbox{\Hypertarget{class_processor_a0f2fc9c7e8c9271f7a9b171814ad094f}\label{class_processor_a0f2fc9c7e8c9271f7a9b171814ad094f}} 
 \index{Processor@{Processor}!run\+Serial@{run\+Serial}}
 \index{run\+Serial@{run\+Serial}!Processor@{Processor}}
 \subsubsection{\texorpdfstring{run\+Serial()}{runSerial()}}
-{\footnotesize\ttfamily void Processor\+::run\+Serial (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Processor\+::run\+Serial (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -219,6 +217,16 @@ Writes events from the event buffer to a root file through the manager.
 
 
 \subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_processor_ae6ebab331300f556a5c9b58d3dbfff60}\label{class_processor_ae6ebab331300f556a5c9b58d3dbfff60}} 
+\index{Processor@{Processor}!m\+\_\+config@{m\+\_\+config}}
+\index{m\+\_\+config@{m\+\_\+config}!Processor@{Processor}}
+\subsubsection{\texorpdfstring{m\+\_\+config}{m\_config}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$const \hyperlink{class_config}{Config}$>$ Processor\+::m\+\_\+config\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Program configuration. 
+
 \mbox{\Hypertarget{class_processor_a7cb15fbab19fceb6bc5a607629ff5040}\label{class_processor_a7cb15fbab19fceb6bc5a607629ff5040}} 
 \index{Processor@{Processor}!m\+\_\+event\+Buffer@{m\+\_\+event\+Buffer}}
 \index{m\+\_\+event\+Buffer@{m\+\_\+event\+Buffer}!Processor@{Processor}}
@@ -239,16 +247,6 @@ Writes events from the event buffer to a root file through the manager.
 
 File Reader object pointer. 
 
-\mbox{\Hypertarget{class_processor_ac22f412163181f546d847ce23d71978d}\label{class_processor_ac22f412163181f546d847ce23d71978d}} 
-\index{Processor@{Processor}!m\+\_\+mode@{m\+\_\+mode}}
-\index{m\+\_\+mode@{m\+\_\+mode}!Processor@{Processor}}
-\subsubsection{\texorpdfstring{m\+\_\+mode}{m\_mode}}
-{\footnotesize\ttfamily const \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} Processor\+::m\+\_\+mode\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Run mode (set by config) 
-
 \mbox{\Hypertarget{class_processor_ab75c789ec03e38e8621f000332daa285}\label{class_processor_ab75c789ec03e38e8621f000332daa285}} 
 \index{Processor@{Processor}!m\+\_\+packet\+Buffers@{m\+\_\+packet\+Buffers}}
 \index{m\+\_\+packet\+Buffers@{m\+\_\+packet\+Buffers}!Processor@{Processor}}
@@ -258,16 +256,6 @@ Run mode (set by config)
 
 
 \hyperlink{class_packet}{Packet} Buffers. 
-
-\mbox{\Hypertarget{class_processor_a8eaa993665bf2a2ed71f84ffc0630574}\label{class_processor_a8eaa993665bf2a2ed71f84ffc0630574}} 
-\index{Processor@{Processor}!m\+\_\+tdc\+I\+Ds@{m\+\_\+tdc\+I\+Ds}}
-\index{m\+\_\+tdc\+I\+Ds@{m\+\_\+tdc\+I\+Ds}!Processor@{Processor}}
-\subsubsection{\texorpdfstring{m\+\_\+tdc\+I\+Ds}{m\_tdcIDs}}
-{\footnotesize\ttfamily const std\+::list$<$unsigned int$>$ Processor\+::m\+\_\+tdc\+I\+Ds\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-List of T\+DC I\+Ds (set by config) 
 
 \mbox{\Hypertarget{class_processor_a8277cf1524daaa16f0dacfddd02ffd13}\label{class_processor_a8277cf1524daaa16f0dacfddd02ffd13}} 
 \index{Processor@{Processor}!m\+\_\+word\+Bundle\+Buffers@{m\+\_\+word\+Bundle\+Buffers}}

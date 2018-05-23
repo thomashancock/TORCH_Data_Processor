@@ -77,9 +77,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a152803255b94d68cbe4c4f8e24fc2352"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a152803255b94d68cbe4c4f8e24fc2352">RootManager</a> (const std::string outFileName, const std::string treeName)</td></tr>
-<tr class="memdesc:a152803255b94d68cbe4c4f8e24fc2352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a152803255b94d68cbe4c4f8e24fc2352">More...</a><br /></td></tr>
-<tr class="separator:a152803255b94d68cbe4c4f8e24fc2352"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90ff78b3122c0b3fad62bc927778dda9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a90ff78b3122c0b3fad62bc927778dda9">RootManager</a> (std::shared_ptr&lt; const <a class="el" href="class_config.html">Config</a> &gt; config, const std::string outFileName, const std::string treeName)</td></tr>
+<tr class="memdesc:a90ff78b3122c0b3fad62bc927778dda9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a90ff78b3122c0b3fad62bc927778dda9">More...</a><br /></td></tr>
+<tr class="separator:a90ff78b3122c0b3fad62bc927778dda9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68a189a7705b9da1da82a95ef9840d61"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61">~RootManager</a> ()</td></tr>
 <tr class="memdesc:a68a189a7705b9da1da82a95ef9840d61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explicit deconstructor.  <a href="#a68a189a7705b9da1da82a95ef9840d61">More...</a><br /></td></tr>
 <tr class="separator:a68a189a7705b9da1da82a95ef9840d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,6 +114,12 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a14d81290e5a98ec6f62459f1016e7dcc"><td class="memItemLeft" align="right" valign="top">const TNamed&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a14d81290e5a98ec6f62459f1016e7dcc">m_programVersion</a></td></tr>
 <tr class="memdesc:a14d81290e5a98ec6f62459f1016e7dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">TNamed which writes build version to output tree.  <a href="#a14d81290e5a98ec6f62459f1016e7dcc">More...</a><br /></td></tr>
 <tr class="separator:a14d81290e5a98ec6f62459f1016e7dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d92834cf49004700cafa3afa3659cd5"><td class="memItemLeft" align="right" valign="top">const TNamed&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a4d92834cf49004700cafa3afa3659cd5">m_channelMapping</a></td></tr>
+<tr class="memdesc:a4d92834cf49004700cafa3afa3659cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">TNamed to write channel mapping.  <a href="#a4d92834cf49004700cafa3afa3659cd5">More...</a><br /></td></tr>
+<tr class="separator:a4d92834cf49004700cafa3afa3659cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f17186761c3e5b61e569bc3f3946ddb"><td class="memItemLeft" align="right" valign="top">const TNamed&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a3f17186761c3e5b61e569bc3f3946ddb">m_edgeModifier</a></td></tr>
+<tr class="memdesc:a3f17186761c3e5b61e569bc3f3946ddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">TNamed to write edge modifier.  <a href="#a3f17186761c3e5b61e569bc3f3946ddb">More...</a><br /></td></tr>
+<tr class="separator:a3f17186761c3e5b61e569bc3f3946ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T&gt;<br />
@@ -127,8 +133,8 @@ class RootManager&lt; T &gt;</h3>
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a152803255b94d68cbe4c4f8e24fc2352"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a152803255b94d68cbe4c4f8e24fc2352">&#9670;&nbsp;</a></span>RootManager()</h2>
+<a id="a90ff78b3122c0b3fad62bc927778dda9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90ff78b3122c0b3fad62bc927778dda9">&#9670;&nbsp;</a></span>RootManager()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,6 +144,12 @@ template&lt;class T &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_root_manager.html">RootManager</a>&lt; T &gt;::<a class="el" href="class_root_manager.html">RootManager</a> </td>
           <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; const <a class="el" href="class_config.html">Config</a> &gt;&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const std::string&#160;</td>
           <td class="paramname"><em>outFileName</em>, </td>
         </tr>
@@ -158,6 +170,7 @@ template&lt;class T &gt; </div>
 <p>Constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">config</td><td>Ptr to program configuration </td></tr>
     <tr><td class="paramname">outFileName</td><td>The output root files name </td></tr>
     <tr><td class="paramname">treeName</td><td>The desired ttree name </td></tr>
   </table>
@@ -320,6 +333,58 @@ template&lt;class T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4d92834cf49004700cafa3afa3659cd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d92834cf49004700cafa3afa3659cd5">&#9670;&nbsp;</a></span>m_channelMapping</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const TNamed <a class="el" href="class_root_manager.html">RootManager</a>&lt; T &gt;::m_channelMapping</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>TNamed to write channel mapping. </p>
+
+</div>
+</div>
+<a id="a3f17186761c3e5b61e569bc3f3946ddb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f17186761c3e5b61e569bc3f3946ddb">&#9670;&nbsp;</a></span>m_edgeModifier</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const TNamed <a class="el" href="class_root_manager.html">RootManager</a>&lt; T &gt;::m_edgeModifier</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>TNamed to write edge modifier. </p>
+
+</div>
+</div>
 <a id="a8f8a185d6d25b3e1207416c7cd8c333c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8f8a185d6d25b3e1207416c7cd8c333c">&#9670;&nbsp;</a></span>m_mut</h2>
 

@@ -3,41 +3,66 @@
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint} = unsigned int
+using \hyperlink{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}{Channel\+Mapping} = std\+::function$<$ unsigned int(unsigned int, unsigned int, unsigned int)$>$
 \end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespace_chl_map_a478e1376df593ae2963ad83ee2710ff1}{set\+Channel\+Mapping} (const std\+::string key)
+\begin{DoxyCompactList}\small\item\em Global function to set channel mapping. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-std\+::function$<$ \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}(\hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint})$>$ \hyperlink{namespace_chl_map_a737b285621b10b9c3980dc18b8ba1b18}{no\+Mapping}
+\hyperlink{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}{Channel\+Mapping} \hyperlink{namespace_chl_map_a5912e55252670a1e71857a1374bbfa1a}{no\+Mapping}
 \begin{DoxyCompactList}\small\item\em Raw Electronics Channel ID. \end{DoxyCompactList}\item 
-std\+::function$<$ \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}(\hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint})$>$ \hyperlink{namespace_chl_map_a1c25ae4d560fda9abe7fb0684c6ceae7}{std8x64\+Mapping}
+\hyperlink{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}{Channel\+Mapping} \hyperlink{namespace_chl_map_a615e236287cdfca8b2521b4280e3c972}{std8x64\+Mapping}
 \begin{DoxyCompactList}\small\item\em 0 -\/ 511 Channel Mapping for 8x64 M\+CP \end{DoxyCompactList}\item 
-std\+::function$<$ \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}(\hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint})$>$ \hyperlink{namespace_chl_map_a0c1a33254dc47f2250f48c234f6f91f7}{std4x64\+Mapping}
+\hyperlink{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}{Channel\+Mapping} \hyperlink{namespace_chl_map_ab1f62d041d8393301f88f6290753a519}{slot\+Inversion8x64\+Mapping}
+\begin{DoxyCompactList}\small\item\em 0 -\/ 511 Channel Mapping for 8x64 M\+CP \end{DoxyCompactList}\item 
+\hyperlink{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}{Channel\+Mapping} \hyperlink{namespace_chl_map_a12fcd0b1200b8a5db9a23360a588719d}{std4x64\+Mapping}
 \begin{DoxyCompactList}\small\item\em 0 -\/ 255 4x64 Channel Mapping \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Typedef Documentation}
-\mbox{\Hypertarget{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}\label{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}} 
-\index{Chl\+Map@{Chl\+Map}!uint@{uint}}
-\index{uint@{uint}!Chl\+Map@{Chl\+Map}}
-\subsubsection{\texorpdfstring{uint}{uint}}
-{\footnotesize\ttfamily using \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{Chl\+Map\+::uint} = typedef unsigned int}
+\mbox{\Hypertarget{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}\label{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}} 
+\index{Chl\+Map@{Chl\+Map}!Channel\+Mapping@{Channel\+Mapping}}
+\index{Channel\+Mapping@{Channel\+Mapping}!Chl\+Map@{Chl\+Map}}
+\subsubsection{\texorpdfstring{Channel\+Mapping}{ChannelMapping}}
+{\footnotesize\ttfamily using \hyperlink{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}{Chl\+Map\+::\+Channel\+Mapping} = typedef std\+::function$<$unsigned int(unsigned int, unsigned int, unsigned int)$>$}
 
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespace_chl_map_a478e1376df593ae2963ad83ee2710ff1}\label{namespace_chl_map_a478e1376df593ae2963ad83ee2710ff1}} 
+\index{Chl\+Map@{Chl\+Map}!set\+Channel\+Mapping@{set\+Channel\+Mapping}}
+\index{set\+Channel\+Mapping@{set\+Channel\+Mapping}!Chl\+Map@{Chl\+Map}}
+\subsubsection{\texorpdfstring{set\+Channel\+Mapping()}{setChannelMapping()}}
+{\footnotesize\ttfamily void Chl\+Map\+::set\+Channel\+Mapping (\begin{DoxyParamCaption}\item[{const std\+::string}]{key }\end{DoxyParamCaption})}
+
+
+
+Global function to set channel mapping. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Key to identify desired mapping \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespace_chl_map_a737b285621b10b9c3980dc18b8ba1b18}\label{namespace_chl_map_a737b285621b10b9c3980dc18b8ba1b18}} 
+\mbox{\Hypertarget{namespace_chl_map_a5912e55252670a1e71857a1374bbfa1a}\label{namespace_chl_map_a5912e55252670a1e71857a1374bbfa1a}} 
 \index{Chl\+Map@{Chl\+Map}!no\+Mapping@{no\+Mapping}}
 \index{no\+Mapping@{no\+Mapping}!Chl\+Map@{Chl\+Map}}
 \subsubsection{\texorpdfstring{no\+Mapping}{noMapping}}
-{\footnotesize\ttfamily std\+::function$<$\hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}(\hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint})$>$ Chl\+Map\+::no\+Mapping}
+{\footnotesize\ttfamily \hyperlink{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}{Chl\+Map\+::\+Channel\+Mapping} Chl\+Map\+::no\+Mapping}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}
 = [] (
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} readoutBoardID,
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} tdcID,
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channelID
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} readoutBoardID,
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} tdcID,
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channelID
 ) \{
     \textcolor{keywordflow}{return} channelID;
 \}
@@ -46,18 +71,42 @@ std\+::function$<$ \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe9125
 
 Raw Electronics Channel ID. 
 
-\mbox{\Hypertarget{namespace_chl_map_a0c1a33254dc47f2250f48c234f6f91f7}\label{namespace_chl_map_a0c1a33254dc47f2250f48c234f6f91f7}} 
-\index{Chl\+Map@{Chl\+Map}!std4x64\+Mapping@{std4x64\+Mapping}}
-\index{std4x64\+Mapping@{std4x64\+Mapping}!Chl\+Map@{Chl\+Map}}
-\subsubsection{\texorpdfstring{std4x64\+Mapping}{std4x64Mapping}}
-{\footnotesize\ttfamily std\+::function$<$\hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}(\hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint})$>$ Chl\+Map\+::std4x64\+Mapping}
+\mbox{\Hypertarget{namespace_chl_map_ab1f62d041d8393301f88f6290753a519}\label{namespace_chl_map_ab1f62d041d8393301f88f6290753a519}} 
+\index{Chl\+Map@{Chl\+Map}!slot\+Inversion8x64\+Mapping@{slot\+Inversion8x64\+Mapping}}
+\index{slot\+Inversion8x64\+Mapping@{slot\+Inversion8x64\+Mapping}!Chl\+Map@{Chl\+Map}}
+\subsubsection{\texorpdfstring{slot\+Inversion8x64\+Mapping}{slotInversion8x64Mapping}}
+{\footnotesize\ttfamily \hyperlink{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}{Chl\+Map\+::\+Channel\+Mapping} Chl\+Map\+::slot\+Inversion8x64\+Mapping}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}
 = [] (
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} readoutBoardID,
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} tdcID,
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channelID
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} readoutBoardID,
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} tdcID,
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channelID
+) \{
+    
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} localTDCID = (0 == tdcID%2) ? tdcID + 1 : tdcID - 1;
+
+    
+    \textcolor{keywordflow}{return} \hyperlink{namespace_chl_map_a615e236287cdfca8b2521b4280e3c972}{std8x64Mapping}(readoutBoardID,localTDCID,channelID);
+\}
+\end{DoxyCode}
+
+
+0 -\/ 511 Channel Mapping for 8x64 M\+CP 
+
+\mbox{\Hypertarget{namespace_chl_map_a12fcd0b1200b8a5db9a23360a588719d}\label{namespace_chl_map_a12fcd0b1200b8a5db9a23360a588719d}} 
+\index{Chl\+Map@{Chl\+Map}!std4x64\+Mapping@{std4x64\+Mapping}}
+\index{std4x64\+Mapping@{std4x64\+Mapping}!Chl\+Map@{Chl\+Map}}
+\subsubsection{\texorpdfstring{std4x64\+Mapping}{std4x64Mapping}}
+{\footnotesize\ttfamily \hyperlink{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}{Chl\+Map\+::\+Channel\+Mapping} Chl\+Map\+::std4x64\+Mapping}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= [] (
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} readoutBoardID,
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} tdcID,
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channelID
 ) \{
     
     
@@ -86,20 +135,20 @@ Raw Electronics Channel ID.
 
 0 -\/ 255 4x64 Channel Mapping 
 
-\mbox{\Hypertarget{namespace_chl_map_a1c25ae4d560fda9abe7fb0684c6ceae7}\label{namespace_chl_map_a1c25ae4d560fda9abe7fb0684c6ceae7}} 
+\mbox{\Hypertarget{namespace_chl_map_a615e236287cdfca8b2521b4280e3c972}\label{namespace_chl_map_a615e236287cdfca8b2521b4280e3c972}} 
 \index{Chl\+Map@{Chl\+Map}!std8x64\+Mapping@{std8x64\+Mapping}}
 \index{std8x64\+Mapping@{std8x64\+Mapping}!Chl\+Map@{Chl\+Map}}
 \subsubsection{\texorpdfstring{std8x64\+Mapping}{std8x64Mapping}}
-{\footnotesize\ttfamily std\+::function$<$\hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}(\hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint}, \hyperlink{namespace_chl_map_a7ef435046de5fb240ed873ae9fe91254}{uint})$>$ Chl\+Map\+::std8x64\+Mapping}
+{\footnotesize\ttfamily \hyperlink{namespace_chl_map_a02f93d10e11f82c0ea2330212cf70545}{Chl\+Map\+::\+Channel\+Mapping} Chl\+Map\+::std8x64\+Mapping}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}
 = [] (
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} readoutBoardID,
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} tdcID,
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channelID
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} readoutBoardID,
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} tdcID,
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channelID
 ) \{
-    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} localID = (tdcID%4)*16 + 128 * static\_cast<int>(tdcID / 4.0);
+    \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} localID = (tdcID%4)*16 + 128 * static\_cast<int>(tdcID / 4.0);
     \textcolor{keywordflow}{if} (0 == channelID%2) \{
         localID += 15 - \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(channelID / 2); 
     \} \textcolor{keywordflow}{else} \{

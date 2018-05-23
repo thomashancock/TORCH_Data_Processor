@@ -18,6 +18,12 @@ bool \hyperlink{class_config_a47870f3f5bc52f5d0aa387c25e431055}{is\+Configured} 
 \begin{DoxyCompactList}\small\item\em Returns whether config was succesfully read. \end{DoxyCompactList}\item 
 const \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} \hyperlink{class_config_a1e69242b7f57068005d5ae195ca16530}{get\+Run\+Mode} () const
 \begin{DoxyCompactList}\small\item\em Returns the run mode. \end{DoxyCompactList}\item 
+const std\+::string \hyperlink{class_config_af674521a99614ecbd0cb8885b257663b}{get\+Channel\+Mapping\+Key} () const
+\begin{DoxyCompactList}\small\item\em Return the channel mapping. \end{DoxyCompactList}\item 
+const std\+::string \hyperlink{class_config_ae702b1e2139529bb2dc39905d7b35d12}{get\+Edge\+Modifier\+Key} () const
+\begin{DoxyCompactList}\small\item\em Return the edge modifier. \end{DoxyCompactList}\item 
+const std\+::list$<$ unsigned int $>$ \hyperlink{class_config_a197838ef4fbdf274759c01f612666e93}{get\+Readout\+Board\+List} () const
+\begin{DoxyCompactList}\small\item\em Returns the list of stored readout board Ids. \end{DoxyCompactList}\item 
 const std\+::list$<$ unsigned int $>$ \hyperlink{class_config_a847bc1cf36b3d12da8590a036634a150}{get\+T\+D\+C\+List} () const
 \begin{DoxyCompactList}\small\item\em Returns the list of stored T\+DC Ids. \end{DoxyCompactList}\item 
 void \hyperlink{class_config_af75cb5a60c6cac9d6f6d030e65a5240a}{print} () const
@@ -29,7 +35,7 @@ void \hyperlink{class_config_a3092a6e3ba0458b6bedca09f841f554e}{parse\+Config\+F
 \begin{DoxyCompactList}\small\item\em Parses options read from the config file. \end{DoxyCompactList}\item 
 void \hyperlink{class_config_a46d81f90a7b6218385e8bfd0a283f6ce}{process\+Node} (T\+X\+M\+L\+Engine $\ast$xml\+Engine, X\+M\+L\+Node\+Pointer\+\_\+t node)
 \begin{DoxyCompactList}\small\item\em Extract information from a node and its children. \end{DoxyCompactList}\item 
-void \hyperlink{class_config_a42e48f8b6446cdc46badd09f6446a328}{process\+Option} (const std\+::string attribute, const std\+::string value)
+void \hyperlink{class_config_a5f1048494003d7deb4edd9064fc6e9c5}{process\+Option} (const std\+::string node\+Name, const std\+::string attribute, const std\+::string value)
 \begin{DoxyCompactList}\small\item\em Processes an option read from the config X\+ML file. \end{DoxyCompactList}\item 
 std\+::string \hyperlink{class_config_a3bd48a0ae54bfd982c02564160d6762b}{get\+Mode\+As\+String} () const
 \begin{DoxyCompactList}\small\item\em Returns the mode of operation as a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -40,6 +46,12 @@ bool \hyperlink{class_config_a82bcc998ae058699369aee4a189f0ad1}{m\+\_\+config\+R
 \begin{DoxyCompactList}\small\item\em Has config been read succesfully? \end{DoxyCompactList}\item 
 \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947e}{Run\+Mode} \hyperlink{class_config_a65b1f233533ce1e2acd85f6a4a07c4d4}{m\+\_\+mode} = \hyperlink{_modes_enum_8hpp_a3dfe11cf1a3a8121f6cd7fec4bf5947eaab27270f353006b03c91367e05e44b94}{Run\+Mode\+::\+Serial}
 \begin{DoxyCompactList}\small\item\em Stores the desired run mode. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_config_ae3e78aedeeb5fa9a2bf7dcebeb0f4f31}{m\+\_\+channel\+Mapping} = \char`\"{}Std8x64\+Mapping\char`\"{}
+\begin{DoxyCompactList}\small\item\em Stores the channel mapping. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_config_a70f6a43e8c14536beb7a03807c797d69}{m\+\_\+edge\+Modifier} = \char`\"{}Flip\+Even\char`\"{}
+\begin{DoxyCompactList}\small\item\em Stores the edge modifier. \end{DoxyCompactList}\item 
+std\+::list$<$ unsigned int $>$ \hyperlink{class_config_a8d85379538e001e40dbc42aa5dbca616}{m\+\_\+board\+List}
+\begin{DoxyCompactList}\small\item\em Stores the available T\+D\+Cs. \end{DoxyCompactList}\item 
 std\+::list$<$ unsigned int $>$ \hyperlink{class_config_ac7295451d604cec09ed31ca74411c68c}{m\+\_\+tdc\+List}
 \begin{DoxyCompactList}\small\item\em Stores the available T\+D\+Cs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -63,6 +75,26 @@ Constructor with passed config file.
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_config_af674521a99614ecbd0cb8885b257663b}\label{class_config_af674521a99614ecbd0cb8885b257663b}} 
+\index{Config@{Config}!get\+Channel\+Mapping\+Key@{get\+Channel\+Mapping\+Key}}
+\index{get\+Channel\+Mapping\+Key@{get\+Channel\+Mapping\+Key}!Config@{Config}}
+\subsubsection{\texorpdfstring{get\+Channel\+Mapping\+Key()}{getChannelMappingKey()}}
+{\footnotesize\ttfamily const std\+::string Config\+::get\+Channel\+Mapping\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the channel mapping. 
+
+\mbox{\Hypertarget{class_config_ae702b1e2139529bb2dc39905d7b35d12}\label{class_config_ae702b1e2139529bb2dc39905d7b35d12}} 
+\index{Config@{Config}!get\+Edge\+Modifier\+Key@{get\+Edge\+Modifier\+Key}}
+\index{get\+Edge\+Modifier\+Key@{get\+Edge\+Modifier\+Key}!Config@{Config}}
+\subsubsection{\texorpdfstring{get\+Edge\+Modifier\+Key()}{getEdgeModifierKey()}}
+{\footnotesize\ttfamily const std\+::string Config\+::get\+Edge\+Modifier\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the edge modifier. 
+
 \mbox{\Hypertarget{class_config_a3bd48a0ae54bfd982c02564160d6762b}\label{class_config_a3bd48a0ae54bfd982c02564160d6762b}} 
 \index{Config@{Config}!get\+Mode\+As\+String@{get\+Mode\+As\+String}}
 \index{get\+Mode\+As\+String@{get\+Mode\+As\+String}!Config@{Config}}
@@ -72,6 +104,16 @@ Constructor with passed config file.
 
 
 Returns the mode of operation as a string. 
+
+\mbox{\Hypertarget{class_config_a197838ef4fbdf274759c01f612666e93}\label{class_config_a197838ef4fbdf274759c01f612666e93}} 
+\index{Config@{Config}!get\+Readout\+Board\+List@{get\+Readout\+Board\+List}}
+\index{get\+Readout\+Board\+List@{get\+Readout\+Board\+List}!Config@{Config}}
+\subsubsection{\texorpdfstring{get\+Readout\+Board\+List()}{getReadoutBoardList()}}
+{\footnotesize\ttfamily const std\+::list$<$unsigned int$>$ Config\+::get\+Readout\+Board\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the list of stored readout board Ids. 
 
 \mbox{\Hypertarget{class_config_a1e69242b7f57068005d5ae195ca16530}\label{class_config_a1e69242b7f57068005d5ae195ca16530}} 
 \index{Config@{Config}!get\+Run\+Mode@{get\+Run\+Mode}}
@@ -145,11 +187,11 @@ Extract information from a node and its children.
 {\em node} & Node to be processed \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_config_a42e48f8b6446cdc46badd09f6446a328}\label{class_config_a42e48f8b6446cdc46badd09f6446a328}} 
+\mbox{\Hypertarget{class_config_a5f1048494003d7deb4edd9064fc6e9c5}\label{class_config_a5f1048494003d7deb4edd9064fc6e9c5}} 
 \index{Config@{Config}!process\+Option@{process\+Option}}
 \index{process\+Option@{process\+Option}!Config@{Config}}
 \subsubsection{\texorpdfstring{process\+Option()}{processOption()}}
-{\footnotesize\ttfamily void Config\+::process\+Option (\begin{DoxyParamCaption}\item[{const std\+::string}]{attribute,  }\item[{const std\+::string}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Config\+::process\+Option (\begin{DoxyParamCaption}\item[{const std\+::string}]{node\+Name,  }\item[{const std\+::string}]{attribute,  }\item[{const std\+::string}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -157,6 +199,8 @@ Processes an option read from the config X\+ML file.
 
 
 \begin{DoxyParams}{Parameters}
+{\em node\+Name} & Node the attribute belongs to \\
+\hline
 {\em attribute} & Attribute name \\
 \hline
 {\em value} & Attribute value \\
@@ -165,6 +209,26 @@ Processes an option read from the config X\+ML file.
 
 
 \subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_config_a8d85379538e001e40dbc42aa5dbca616}\label{class_config_a8d85379538e001e40dbc42aa5dbca616}} 
+\index{Config@{Config}!m\+\_\+board\+List@{m\+\_\+board\+List}}
+\index{m\+\_\+board\+List@{m\+\_\+board\+List}!Config@{Config}}
+\subsubsection{\texorpdfstring{m\+\_\+board\+List}{m\_boardList}}
+{\footnotesize\ttfamily std\+::list$<$unsigned int$>$ Config\+::m\+\_\+board\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stores the available T\+D\+Cs. 
+
+\mbox{\Hypertarget{class_config_ae3e78aedeeb5fa9a2bf7dcebeb0f4f31}\label{class_config_ae3e78aedeeb5fa9a2bf7dcebeb0f4f31}} 
+\index{Config@{Config}!m\+\_\+channel\+Mapping@{m\+\_\+channel\+Mapping}}
+\index{m\+\_\+channel\+Mapping@{m\+\_\+channel\+Mapping}!Config@{Config}}
+\subsubsection{\texorpdfstring{m\+\_\+channel\+Mapping}{m\_channelMapping}}
+{\footnotesize\ttfamily std\+::string Config\+::m\+\_\+channel\+Mapping = \char`\"{}Std8x64\+Mapping\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stores the channel mapping. 
+
 \mbox{\Hypertarget{class_config_a82bcc998ae058699369aee4a189f0ad1}\label{class_config_a82bcc998ae058699369aee4a189f0ad1}} 
 \index{Config@{Config}!m\+\_\+config\+Read@{m\+\_\+config\+Read}}
 \index{m\+\_\+config\+Read@{m\+\_\+config\+Read}!Config@{Config}}
@@ -174,6 +238,16 @@ Processes an option read from the config X\+ML file.
 
 
 Has config been read succesfully? 
+
+\mbox{\Hypertarget{class_config_a70f6a43e8c14536beb7a03807c797d69}\label{class_config_a70f6a43e8c14536beb7a03807c797d69}} 
+\index{Config@{Config}!m\+\_\+edge\+Modifier@{m\+\_\+edge\+Modifier}}
+\index{m\+\_\+edge\+Modifier@{m\+\_\+edge\+Modifier}!Config@{Config}}
+\subsubsection{\texorpdfstring{m\+\_\+edge\+Modifier}{m\_edgeModifier}}
+{\footnotesize\ttfamily std\+::string Config\+::m\+\_\+edge\+Modifier = \char`\"{}Flip\+Even\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stores the edge modifier. 
 
 \mbox{\Hypertarget{class_config_a65b1f233533ce1e2acd85f6a4a07c4d4}\label{class_config_a65b1f233533ce1e2acd85f6a4a07c4d4}} 
 \index{Config@{Config}!m\+\_\+mode@{m\+\_\+mode}}
