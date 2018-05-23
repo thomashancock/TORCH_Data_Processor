@@ -28,17 +28,22 @@ void Packet::setEdgeModifier(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+// Default initialisation is to return channel ID
 std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
 	uint ,
 	uint ,
 	uint channelID
 ) {
+	ASSERT(false); // This function should never be called
 	return channelID;
 };
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-std::function<void(uint&)> Packet::m_edgeModifier = [] (uint&) { };
+// Default initialization is to do nothing
+std::function<void(uint&)> Packet::m_edgeModifier = [] (uint&) {
+	ASSERT(false); // This function should never be called
+};
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
