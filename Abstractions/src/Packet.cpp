@@ -3,6 +3,8 @@
 // LOCAL
 #include "BinaryDecoding.hpp"
 #include "ErrorSpy.hpp"
+#include "ChannelMappings.hpp"
+#include "PolarityModifiers.hpp"
 
 // Useful alias
 using uint = unsigned int;
@@ -12,70 +14,14 @@ using uint = unsigned int;
 // Statics:
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
-	uint readoutBoardID,
-	uint tdcID,
-	uint channelID
-) {
-	// Set default Channel Mapping for 8x64 MCP
-	uint localID = (tdcID%4)*16 + 128 * static_cast<int>(tdcID / 4.0);
-	if (0 == channelID%2) {
-		localID += 15 - static_cast<int>(channelID / 2); // Integer division
-	} else {
-		localID += 79 - static_cast<int>((channelID - 1) / 2); // Integer division
-	}
-	return localID;
-};
-
-// Old Mapping:
-// std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
-// 	uint readoutBoardID,
-// 	uint tdcID,
-// 	uint channelID
-// ) {
-// 	// Encode TDC ID in channel ID
-// 	// Note 11 is += 0 so is not included
-// 	if (8 == tdcID) {
-// 		channelID += 160;
-// 	} else if (9 == tdcID) {
-// 		channelID += 128;
-// 	} else if (10 == tdcID) {
-// 		channelID += 32;
-// 	} else if (12 == tdcID) {
-// 		channelID += 96;
-// 	} else if (13 == tdcID) {
-// 		channelID += 64;
-// 	} else if (14 == tdcID) {
-// 		channelID += 224;
-// 	} else if (15 == tdcID) {
-// 		channelID += 192;
-// 	}
-//
-// 	channelID += 256 * readoutBoardID;
-//
-// 	return channelID;
-// };
+// Set default Channel Mapping for 8x64 MCP
+std::function<uint(uint, uint, uint)> Packet::m_channelMapper = ChlMap::std8x64Mapping;
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-std::function<void(uint&)> Packet::m_polarityFixer = [] (
-	uint& word
-) -> void {
-	const auto dataType = bindec::getDataType(word);
-	ASSERT(4 == dataType || 5 == dataType);
-
-	// If channel is even
-	const auto channelID = bindec::getChannelID(word);
-	if (0 == channelID%2) {
-		// Flip polarity
-		if (dataType == 4) {
-			word += 0x10000000;
-		} else {
-			word -= 0x10000000;
-		}
-	}
-};
+// Set default polarity fixer function
+std::function<void(uint&)> Packet::m_polarityFixer = PolMod::noChange;
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------

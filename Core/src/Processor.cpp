@@ -204,8 +204,35 @@ void Processor::runParallel(
 ) {
 	STD_LOG("Mode: Parallel");
 
-	const auto nCores = std::thread::hardware_concurrency();
-	std::cout << nCores << " Cores Detected" << std::endl;
+	const auto maxTasks = std::thread::hardware_concurrency() - 1;
+	if (0 == maxTasks) {
+		STD_ERR("Only single core is available. Please run in serial mode instead.");
+		return;
+	}
+	STD_LOG("NCores Detected: " << maxTasks + 1);
+
+	// INCOMPLETE
+	// std::unique_ptr<EventTreeManager> manager =
+	// 	std::make_unique<EventTreeManager>("Output.root",m_tdcIDs.size());
+  //
+	// std::atomic_bool isComplete { false };
+	// while (!isComplete) {
+	// 	// If a complete event is present, schedule a write task
+	// 	if (m_eventBuffer.isCompleteStored()) {
+	// 		writeEvents();
+	// 	}
+  //
+	// 	// Schedule make events
+  //
+	// 	// If Bundle Buffer is not empty, schedule packet making
+  //
+	// 	//
+  //
+  //
+	// }
+
+	// Write output tree
+	// manager->writeTree();
 }
 // -----------------------------------------------------------------------------
 //
