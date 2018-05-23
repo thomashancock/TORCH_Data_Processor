@@ -25,7 +25,23 @@ Config::Config(
 // -----------------------------------------------------------------------------
 void Config::print() const {
 	std::cout << "Configuration:" << std::endl;
+	// Print Mode
 	std::cout << "\tMode: " << this->getModeAsString() << std::endl;
+
+	// Print Mapping
+	std::cout << "\tChannel Mapping: " << m_channelMapping << std::endl;
+
+	// Print Edge Modifier
+	std::cout << "\tEdge Modifier: " << m_edgeModifier << std::endl;
+
+	// Print Readout Board IDs
+	std::cout << "\tReadout Board IDs: ";
+	for (const auto& id : m_boardList) {
+		std::cout << id << " ";
+	}
+	std::cout << std::endl;
+
+	// Print TDC IDs
 	std::cout << "\tTDC IDs: ";
 	for (const auto& id : m_tdcList) {
 		std::cout << id << " ";
@@ -79,7 +95,7 @@ void Config::processNode(
 	// Process Attributes
 	auto attr = xmlEngine->GetFirstAttr(node);
 	while (attr) {
-		processOption(xmlEngine->GetAttrName(attr),xmlEngine->GetAttrValue(attr));
+		processOption(name, xmlEngine->GetAttrName(attr),xmlEngine->GetAttrValue(attr));
 		attr = xmlEngine->GetNextAttr(attr);
 	}
 
@@ -94,11 +110,13 @@ void Config::processNode(
 //
 // -----------------------------------------------------------------------------
 void Config::processOption(
+	const std::string nodeName,
 	const std::string attribute,
 	const std::string value
 ) {
-	STD_LOG("Adding attr: " << attribute << " value: " << value);
+	STD_LOG("Node: " << nodeName << " | Attr: " << attribute << " | Value: " << value);
 
+	// Read mode of operation
 	if ("mode" == attribute) {
 		if ("QuickCheck" == value) {
 			m_mode = RunMode::QuickCheck;
@@ -114,14 +132,38 @@ void Config::processOption(
 		}
 	}
 
-	if ("tdcID1" == attribute || "tdcID2" == attribute) {
+	// Get Channel Mapping
+	if (("channelMapping" == nodeName)&&("mapping" == attribute)) {
+		m_channelMapping = value;
+	}
+
+	// Get Edge Modifier
+	if (("edgeModifier" == nodeName)&&("modifier" == attribute)) {
+		m_edgeModifier = value;
+	}
+
+	// Lambda for adding to lists
+	auto addToList = [&nodeName] (
+		std::list<unsigned int>& list,
+		const std::string value
+	) -> void {
 		const auto id = static_cast<unsigned int>(std::stoi(value));
-		const auto found = std::find(m_tdcList.begin(), m_tdcList.end(), id);
-		if (found == m_tdcList.end()) {
-			m_tdcList.push_back(id);
+		const auto found = std::find(list.begin(), list.end(), id);
+		if (found == list.end()) {
+			list.push_back(id);
 		} else {
-			WARNING("TDC ID " << id << " is a duplicate");
+			WARNING("Node: " << nodeName << ", value " << id << " is a duplicate");
 		}
+	};
+
+	// Extract Readout Board IDs
+	if (("board" == nodeName)&&("id" == attribute)) {
+		addToList(m_boardList,value);
+	}
+
+	// Extract TDC IDs
+	if ("tdcID1" == attribute || "tdcID2" == attribute) {
+		addToList(m_tdcList,value);
 	}
 }
 // -----------------------------------------------------------------------------

@@ -28,6 +28,15 @@ public:
 	//! Returns the run mode
 	const RunMode getRunMode() const { return m_mode; }
 
+	//! Return the channel mapping
+	const std::string getChannelMappingKey() const { return m_channelMapping; }
+
+	//! Return the edge modifier
+	const std::string getEdgeModifierKey() const { return m_edgeModifier; }
+
+	//! Returns the list of stored readout board Ids
+	const std::list<unsigned int> getReadoutBoardList() const { return m_tdcList; }
+
 	//! Returns the list of stored TDC Ids
 	const std::list<unsigned int> getTDCList() const { return m_tdcList; }
 
@@ -48,6 +57,7 @@ private:
 
 	//! Processes an option read from the config XML file
 	void processOption(
+		const std::string nodeName, //!< Node the attribute belongs to
 		const std::string attribute, //!< Attribute name
 		const std::string value //!< Attribute value
 	);
@@ -60,6 +70,10 @@ private:
 
 	RunMode m_mode = RunMode::Serial; //!< Stores the desired run mode
 
+	std::string m_channelMapping = "Std8x64Mapping"; //!< Stores the channel mapping
+	std::string m_edgeModifier = "FlipEven"; //!< Stores the edge modifier
+
+	std::list<unsigned int> m_boardList; //!< Stores the available TDCs
 	std::list<unsigned int> m_tdcList; //!< Stores the available TDCs
 };
 
