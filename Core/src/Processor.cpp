@@ -12,7 +12,7 @@
 #include "BinaryDecoding.hpp"
 #include "PacketTreeManager.hpp"
 #include "ChannelMappings.hpp"
-#include "PolarityModifiers.hpp"
+#include "EdgeModifiers.hpp"
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -35,7 +35,7 @@ Processor::Processor(
 
 	// Set Channel Mapping and Edge Modifier
 	ChlMap::setChannelMapping(m_config->getChannelMappingKey());
-	PolMod::setPolarityModifier(m_config->getEdgeModifierKey());
+	PolMod::setEdgeModifier(m_config->getEdgeModifierKey());
 
 	// Initialise Word Bundle Buffers
 	for (auto& ptr : m_wordBundleBuffers) {

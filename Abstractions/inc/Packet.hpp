@@ -29,8 +29,8 @@ public:
 	);
 
 	//! Static function to set global channel mapping
-	static void setPolarityModifier(
-		std::function<void(uint&)> polarityFunction
+	static void setEdgeModifier(
+		std::function<void(uint&)> modifierFunction
 	);
 
 	//! Quick check for if the packet is complete and consistent
@@ -101,8 +101,8 @@ private:
 	//! Channel Mapping Function
 	static std::function<unsigned int(unsigned int, unsigned int, unsigned int)> m_channelMapper;
 
-	//! Polarity correction function
-	static std::function<void(unsigned int&)> m_polarityFixer;
+	//! Edge polarity correction function
+	static std::function<void(unsigned int&)> m_edgeModifier;
 
 	//! Adds information corresponding to a header word to the packet
 	void addHeader(

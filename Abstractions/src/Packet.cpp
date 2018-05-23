@@ -20,10 +20,10 @@ void Packet::setChannelMapping(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-void Packet::setPolarityModifier(
-	std::function<void(uint&)> polarityFunction
+void Packet::setEdgeModifier(
+	std::function<void(uint&)> modifierFunction
 ) {
-	m_polarityFixer = polarityFunction;
+	m_edgeModifier = modifierFunction;
 }
 // -----------------------------------------------------------------------------
 //
@@ -38,7 +38,7 @@ std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-std::function<void(uint&)> Packet::m_polarityFixer = [] (uint&) { };
+std::function<void(uint&)> Packet::m_edgeModifier = [] (uint&) { };
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -130,8 +130,8 @@ void Packet::addDataline(
 	const unsigned int dataType = bindec::getDataType(word);
 	ASSERT(4 == dataType || 5 == dataType);
 
-	// Apply polarity corrections
-	m_polarityFixer(word);
+	// Apply edge polarity correction
+	m_edgeModifier(word);
 
 	const unsigned int tdcID = bindec::getTDCID(word);
 
