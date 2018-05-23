@@ -12,10 +12,11 @@ using pairVectors = std::pair< std::vector< unsigned int >, std::vector< unsigne
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 EventTreeManager::EventTreeManager(
+	std::shared_ptr<const Config> config,
 	const std::string outfileName,
 	const unsigned int nTDCs
 ) :
-	RootManager(outfileName,"event_tree"),
+	RootManager(std::move(config),outfileName,"event_tree"),
 	m_nTDCs(nTDCs)
 {
 	STD_LOG("EventTreeManager Constructor Called");

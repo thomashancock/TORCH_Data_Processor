@@ -8,10 +8,13 @@
 // -----------------------------------------------------------------------------
 template <class T>
 RootManager<T>::RootManager(
+	std::shared_ptr<const Config> config,
 	const std::string outFileName,
 	const std::string treeName
 ) :
-	m_programVersion("Build_Version",GITTAG)
+	m_programVersion("Build_Version",GITTAG),
+	m_channelMapping("Channel_Mapping",config->getChannelMappingKey().c_str()),
+	m_edgeModifier("Edge_Modifier",config->getEdgeModifierKey().c_str())
 {
 	STD_LOG("RootManager Constructor Called");
 
@@ -20,6 +23,8 @@ RootManager<T>::RootManager(
 
 	// Write program version
 	m_programVersion.Write();
+	m_channelMapping.Write();
+	m_edgeModifier.Write();
 }
 // -----------------------------------------------------------------------------
 //

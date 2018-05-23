@@ -85,7 +85,7 @@ private:
 	);
 
 private:
-	std::unique_ptr<const Config> m_config; //!< Program configuration
+	std::shared_ptr<const Config> m_config; //!< Program configuration
 
 	std::unique_ptr<FileReader> m_fileReader = nullptr; //!< File Reader object pointer
 

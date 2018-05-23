@@ -11,6 +11,9 @@
 #include "TTree.h"
 #include "TNamed.h"
 
+// LOCAL
+#include "Config.hpp"
+
 //! Class which manages root output
 /*!
 	@tparam T The class which will be used to provide information for the root tree
@@ -20,6 +23,7 @@ class RootManager {
 public:
 	//! Constructor
 	RootManager(
+		std::shared_ptr<const Config> config, //!< Ptr to program configuration
 		const std::string outFileName, //!< The output root files name
 		const std::string treeName //!< The desired ttree name
 	);
@@ -61,6 +65,8 @@ private:
 	TFile* m_outFile = nullptr; //!< Output file pointer
 
 	const TNamed m_programVersion; //!< TNamed which writes build version to output tree
+	const TNamed m_channelMapping; //!< TNamed to write channel mapping
+	const TNamed m_edgeModifier; //!< TNamed to write edge modifier
 };
 
 // Include function implementations

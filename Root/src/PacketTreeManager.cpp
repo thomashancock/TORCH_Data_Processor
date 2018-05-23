@@ -9,9 +9,10 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 PacketTreeManager::PacketTreeManager(
+	std::shared_ptr<const Config> config,
 	const std::string outfileName
 ) :
-	RootManager(outfileName,"packet_tree")
+	RootManager(std::move(config),outfileName,"packet_tree")
 {
 	STD_LOG("PacketTreeManager Constructor Called");
 

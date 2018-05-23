@@ -4,12 +4,14 @@
 // LOCAL
 #include "RootManager.hpp"
 #include "Packet.hpp"
+#include "Config.hpp"
 
 //! Class which manages storage of Packet data in root file output
 class PacketTreeManager : public RootManager<Packet> {
 public:
 	//! Constructor
 	PacketTreeManager(
+		std::shared_ptr<const Config> config, //!< Ptr to program configuration
 		const std::string outfileName //!< The desired output file name
 	);
 

@@ -4,12 +4,14 @@
 // LOCAL
 #include "RootManager.hpp"
 #include "Event.hpp"
+#include "Config.hpp"
 
 //! Class which manages storage of Event data in root file output
 class EventTreeManager : public RootManager<Event> {
 public:
 	//! Constructor
 	EventTreeManager(
+		std::shared_ptr<const Config> config, //!< Ptr to program configuration
 		const std::string outfileName, //!< The desired output file name
 		const unsigned int nTDCs //!< Number of TDCs present from config
 	);

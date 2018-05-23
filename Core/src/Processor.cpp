@@ -134,7 +134,7 @@ void Processor::runLowLevel(
 
 	// Declare Output Manager
 	std::unique_ptr<PacketTreeManager> manager =
-		std::make_unique<PacketTreeManager>(outputFile.c_str());
+		std::make_unique<PacketTreeManager>(m_config,outputFile.c_str());
 
 	// Loop through files
 	for (auto& file : fileNames) {
@@ -174,7 +174,7 @@ void Processor::runSerial(
 	STD_LOG("Mode: Serial");
 
 	std::unique_ptr<EventTreeManager> manager =
-		std::make_unique<EventTreeManager>(outputFile.c_str(),m_config->getTDCList().size());
+		std::make_unique<EventTreeManager>(m_config,outputFile.c_str(),m_config->getTDCList().size());
 
 	// Loop through files
 	for (auto& file : fileNames) {
