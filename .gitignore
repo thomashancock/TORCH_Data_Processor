@@ -1,6 +1,6 @@
 obj/*
 data/*/*
-!/data/Laser_Test_Data/*
+!/data/Test_Data/*
 TORCH_Data_Processor
 *.sh
 !run_test.sh
