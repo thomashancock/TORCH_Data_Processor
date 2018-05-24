@@ -45,12 +45,12 @@ public:
 private:
 	//! Adds a file to be read out
 	void addFile(
-		const std::string& filePath
+		const std::string& filePath //!< Path fo the file to add
 	);
 
 	//! Stages a new file
 	inline void stageNextFile(
-		const unsigned int readoutBoardID
+		const unsigned int readoutBoardID //!< Readout Board ID to stage for
 	);
 
 	//! Reads a single data block from each file
@@ -59,10 +59,9 @@ private:
 	//! Reads a header line from the passed stream
 	inline unsigned int readHeaderLine(
 		std::unique_ptr<std::ifstream>& inputData //!< The stream to read from
-		// unsigned int& readoutBoardNumber, //!< Return variable for the readout board number
-		// unsigned int& nDataBytes //!< Return variable for the number of data bytes
 	);
 
+	//! Checks if a number of bytes is valid, and takes action if not
 	inline bool isNDataBytesValid(
 		const unsigned int boardID,
 		std::unique_ptr<std::ifstream>& inputData, //!< Stream nDataBytes was read from
@@ -78,13 +77,8 @@ private:
 	std::map< unsigned int, std::list<InputFile> > m_inputFiles; //!< Input file storage
 	std::map< unsigned int, std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
 
-	std::unordered_map< unsigned int, unsigned int > m_fileLengths;
-	std::unordered_map< unsigned int, bundleWorkspace > m_bundleWorkspaces;
-
-	// std::vector< std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
-	// std::vector< std::string > m_fileNames; //!< Vector of file lengths
-	// std::vector< unsigned int > m_fileLengths; //!< Vector of file lengths
-	// std::vector< bundleWorkspace > m_bundleWorkspaces; //!< Vector of pointers used to create WordBundles
+	std::unordered_map< unsigned int, unsigned int > m_fileLengths; //!< Map to store file lengths
+	std::unordered_map< unsigned int, bundleWorkspace > m_bundleWorkspaces; //!< Map of pointers used to create WordBundles
 
 	std::array< std::shared_ptr<bundleBuffer>, 4> m_wordBundleBuffers; //!< Pointers to shared WordBundle buffers
 
@@ -138,8 +132,6 @@ void FileReader::stageNextFile(
 // -----------------------------------------------------------------------------
 unsigned int FileReader::readHeaderLine(
 	std::unique_ptr<std::ifstream>& inputData
-	// unsigned int& readoutBoardNumber,
-	// unsigned int& nDataBytes
 ) {
 	// Read 4 bytes of data
 	inputData->get();

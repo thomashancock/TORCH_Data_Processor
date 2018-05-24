@@ -68,16 +68,21 @@ void Processor::processFiles(
 	const std::string outputFile,
 	const std::vector<std::string> fileNames
 ) {
+	// Load files into file reader
+	ASSERT(nullptr != m_fileReader);
+	m_fileReader->stageFiles(fileNames);
+
+	// Run chosen mode
 	const auto mode = m_config->getRunMode();
 	if (RunMode::QuickCheck == mode) {
-		runQuickCheck(fileNames);
+		runQuickCheck();
 	} else if (RunMode::LowLevel == mode) {
-		runLowLevel(outputFile,fileNames);
+		runLowLevel(outputFile);
 	} else if (RunMode::Parallel == mode) {
-		runParallel(outputFile,fileNames);
+		runParallel(outputFile);
 	} else {
 		// Run Serial by default
-		runSerial(outputFile,fileNames);
+		runSerial(outputFile);
 	}
 }
 
@@ -99,13 +104,8 @@ void Processor::initializePacketBuffers(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-void Processor::runQuickCheck(
-	const std::vector<std::string>& fileNames
-) {
+void Processor::runQuickCheck() {
 	STD_LOG("Mode: QuickCheck");
-
-	ASSERT(nullptr != m_fileReader);
-	m_fileReader->stageFiles(fileNames);
 
 	int bundleCount = 0;
 	while (!m_fileReader->haveFilesExpired()) {
@@ -131,8 +131,7 @@ void Processor::runQuickCheck(
 //
 // -----------------------------------------------------------------------------
 void Processor::runLowLevel(
-	const std::string outputFile,
-	const std::vector<std::string>& fileNames
+	const std::string outputFile
 ) {
 	STD_LOG("Mode: LowLevel");
 
@@ -140,27 +139,20 @@ void Processor::runLowLevel(
 	std::unique_ptr<PacketTreeManager> manager =
 		std::make_unique<PacketTreeManager>(m_config,outputFile.c_str());
 
-	// Loop through files
-	for (auto& file : fileNames) {
-		// Stage file for reading
-		ASSERT(nullptr != m_fileReader);
-		m_fileReader->stageFiles(std::vector<std::string>{ file });
+	// Process files
+	while (!m_fileReader->haveFilesExpired()) {
+		// Run a processing loop
+		m_fileReader->runProcessingLoops(1);
 
-		// While file is good
-		while (!m_fileReader->haveFilesExpired()) {
-			// Run a processing loop
-			m_fileReader->runProcessingLoops(1);
+		// Make packets from the bundles produced by FileReader
+		for (auto& buffer : m_wordBundleBuffers) {
+			makePackets(buffer);
+		}
 
-			// Make packets from the bundles produced by FileReader
-			for (auto& buffer : m_wordBundleBuffers) {
-				makePackets(buffer);
-			}
-
-			// Pass packets to output manager
-			for (auto& entry : m_packetBuffers) {
-				while(!entry.second.empty()) {
-					manager->add(std::move(entry.second.popFront()));
-				}
+		// Pass packets to output manager
+		for (auto& entry : m_packetBuffers) {
+			while(!entry.second.empty()) {
+				manager->add(std::move(entry.second.popFront()));
 			}
 		}
 	}
@@ -172,36 +164,28 @@ void Processor::runLowLevel(
 //
 // -----------------------------------------------------------------------------
 void Processor::runSerial(
-	const std::string outputFile,
-	const std::vector<std::string>& fileNames
+	const std::string outputFile
 ) {
 	STD_LOG("Mode: Serial");
 
 	std::unique_ptr<EventTreeManager> manager =
 		std::make_unique<EventTreeManager>(m_config,outputFile.c_str(),m_config->getTDCList().size());
 
-	// Loop through files
-	for (auto& file : fileNames) {
-		// Stage file for reading
-		ASSERT(nullptr != m_fileReader);
-		m_fileReader->stageFiles(std::vector<std::string>{ file });
+	// Process files
+	while (!m_fileReader->haveFilesExpired()) {
+		// Run a processing loop
+		m_fileReader->runProcessingLoops(1);
 
-		// While file is good
-		while (!m_fileReader->haveFilesExpired()) {
-			// Run a processing loop
-			m_fileReader->runProcessingLoops(1);
-
-			// Make packets from the bundles produced by FileReader
-			for (auto& buffer : m_wordBundleBuffers) {
-				makePackets(buffer);
-			}
-
-			// Make Events
-			makeEvents();
-
-			// Write Events
-			writeEvents(manager);
+		// Make packets from the bundles produced by FileReader
+		for (auto& buffer : m_wordBundleBuffers) {
+			makePackets(buffer);
 		}
+
+		// Make Events
+		makeEvents();
+
+		// Write Events
+		writeEvents(manager);
 	}
 
 	// Write output tree
@@ -211,8 +195,7 @@ void Processor::runSerial(
 //
 // -----------------------------------------------------------------------------
 void Processor::runParallel(
-	const std::string outputFile,
-	const std::vector<std::string>& fileNames
+	const std::string outputFile
 ) {
 	STD_LOG("Mode: Parallel");
 

@@ -49,26 +49,21 @@ private:
 	);
 
 	//! Runs QuickCheck Mode
-	void runQuickCheck(
-		const std::vector<std::string>& fileNames //!< List of files to process
-	);
+	void runQuickCheck();
 
 	//! Runs LowLevel Mode
 	void runLowLevel(
-		const std::string outputFile,
-		const std::vector<std::string>& fileNames //!< List of files to process
+		const std::string outputFile //!< Output file name
 	);
 
 	//! Runs Serial Mode
 	void runSerial(
-		const std::string outputFile,
-		const std::vector<std::string>& fileNames //!< List of files to process
+		const std::string outputFile //!< Output file name
 	);
 
 	//! Runs Parallel Mode
 	void runParallel(
-		const std::string outputFile,
-		const std::vector<std::string>& fileNames //!< List of files to process
+		const std::string outputFile //!< Output file name
 	);
 
 	//! Process word bundles into packets

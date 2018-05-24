@@ -3,12 +3,10 @@
 // STD
 #include <atomic>
 #include <sstream>
-#include <algorithm>
 #include <utility>
 
 // LOCAL
 #include "BinaryDecoding.hpp"
-#include "Edge.hpp"
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -21,6 +19,7 @@ FileReader::FileReader(
 ) :
 	m_wordBundleBuffers(std::move(wordBundleBuffers))
 {
+	// Validate inputs
 	for (auto& bufferPtr : m_wordBundleBuffers) {
 		ASSERT(nullptr != bufferPtr);
 	}
@@ -32,10 +31,13 @@ FileReader::FileReader(
 
 	// Initialise maps
 	for (const auto& boardID : readoutBoardList) {
+		// Create a space to store files corresponding to the readout board ID
 		m_inputFiles.insert(std::make_pair(boardID, std::list<InputFile>() ));
 
+		// Create an input stream for the board ID
 		m_inputStreams[boardID] = std::make_unique<std::ifstream>(nullptr);
 
+		// Create a space to store the input stream length
 		m_fileLengths.emplace(std::make_pair(boardID, 0));
 
 		// Add a workspace to the bundle workspace map
@@ -48,7 +50,7 @@ FileReader::FileReader(
 		stageNextFile(entry.first);
 	}
 
-	// Check vector sizes are correct
+	// Check map sizes are correct
 	ASSERT(m_inputFiles.size() == readoutBoardList.size());
 	ASSERT(m_inputStreams.size() == readoutBoardList.size());
 	ASSERT(m_fileLengths.size() == readoutBoardList.size());
@@ -60,11 +62,12 @@ FileReader::FileReader(
 void FileReader::stageFiles(
 	const std::vector<std::string>& files
 ) {
+	// Add files to file reader storage
 	for (const auto& file : files) {
 		addFile(file);
 	}
 
-	// Sort files according to file number for each readout
+	// Sort stored files according to file number for each readout
 	for (auto& entry : m_inputFiles) {
 		entry.second.sort();
 	}
@@ -102,13 +105,19 @@ void FileReader::runProcessingLoops(
 void FileReader::addFile(
 	const std::string& filePath
 ) {
+	// Create an input file object from the file path
 	InputFile inputFile(filePath);
 
-	auto found = m_inputFiles.find(inputFile.getReadoutBoardID());
-	if (m_inputFiles.end() != found) {
-		found->second.push_back(std::move(inputFile));
+	if (inputFile.isComplete()) {
+		// Add the input file to the map of input files
+		auto found = m_inputFiles.find(inputFile.getReadoutBoardID());
+		if (m_inputFiles.end() != found) {
+			found->second.push_back(std::move(inputFile));
+		} else {
+			STD_ERR("File " << inputFile.getFilePath() << " has invalid ReadoutBoardID: " << inputFile.getReadoutBoardID());
+		}
 	} else {
-		STD_ERR("File " << inputFile.getFilePath() << " has invalid ReadoutBoardID: " << inputFile.getReadoutBoardID());
+		STD_ERR("Unable to dervie sufficient information from file path: " << filePath);
 	}
 }
 // -----------------------------------------------------------------------------
@@ -129,7 +138,6 @@ void FileReader::runProcessingLoop() {
 				stageNextFile(boardID);
 			}
 		} else {
-			// STD_LOG("Running Processing Loop " << boardID);
 			// Check if stream has expired
 			if (!streamPtr->good()) {
 				streamPtr.reset();
@@ -197,5 +205,4 @@ void FileReader::runProcessingLoop() {
 			}
 		}
 	}
-
 }
