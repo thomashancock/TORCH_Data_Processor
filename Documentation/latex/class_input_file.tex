@@ -1,0 +1,211 @@
+\hypertarget{class_input_file}{}\section{Input\+File Class Reference}
+\label{class_input_file}\index{Input\+File@{Input\+File}}
+
+
+Stores information about a specific input file.  
+
+
+
+
+{\ttfamily \#include $<$Input\+File.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_input_file_a36704203477e78e7de3ff4b98276e3a6}{Input\+File} (const std\+::string file\+Path)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+auto \hyperlink{class_input_file_a65406d6a016391c2cccb0e6e4ee08099}{is\+Complete} () const
+\begin{DoxyCompactList}\small\item\em Was all information able to be extracted? \end{DoxyCompactList}\item 
+auto \hyperlink{class_input_file_a2e3685bddcae984f458e7fc6a20e7a44}{get\+File\+Path} () const
+\begin{DoxyCompactList}\small\item\em Getter for file path. \end{DoxyCompactList}\item 
+auto \hyperlink{class_input_file_a96c696bb882f54671ad897501440fd17}{get\+Readout\+Board\+ID} () const
+\begin{DoxyCompactList}\small\item\em Getter for readout board ID. \end{DoxyCompactList}\item 
+auto \hyperlink{class_input_file_a1a1a9c0d87f77e580e03da608b1b5291}{get\+File\+Number} () const
+\begin{DoxyCompactList}\small\item\em Getter for file number. \end{DoxyCompactList}\item 
+void \hyperlink{class_input_file_a7a27c978d7aebf861360c642ddb47ef5}{print} () const
+\begin{DoxyCompactList}\small\item\em Prints information about the file. \end{DoxyCompactList}\item 
+bool \hyperlink{class_input_file_a8c7c438538b8b183454632c27a55f701}{operator$<$} (const \hyperlink{class_input_file}{Input\+File} \&other) const
+\begin{DoxyCompactList}\small\item\em Operator overload for $<$. \end{DoxyCompactList}\item 
+bool \hyperlink{class_input_file_a4bf7efae68f3f378d1d4d1565fce8081}{operator$>$} (const \hyperlink{class_input_file}{Input\+File} \&other) const
+\begin{DoxyCompactList}\small\item\em Operator overload for $>$ \end{DoxyCompactList}\item 
+bool \hyperlink{class_input_file_aba80d895922ad25de1bdd7724d35755a}{operator==} (const \hyperlink{class_input_file}{Input\+File} \&other) const
+\begin{DoxyCompactList}\small\item\em Equality operator overload. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_input_file_ab4724adf6c3da88760dccc42d6b6401d}{m\+\_\+information\+Complete} = false
+\begin{DoxyCompactList}\small\item\em Records whether all information was able to be extracted from the file path. \end{DoxyCompactList}\item 
+const std\+::string \hyperlink{class_input_file_ae3a763e9997cebb9f50aef29499d53c2}{m\+\_\+file\+Path}
+\begin{DoxyCompactList}\small\item\em Path of the file. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_input_file_a15431dd487c5ac563745856544c9261d}{m\+\_\+readout\+Board\+ID} = 0
+\begin{DoxyCompactList}\small\item\em Readout board ID of the file. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_input_file_af5c90eb7ded9297cc12248935968ee87}{m\+\_\+file\+Number} = 0
+\begin{DoxyCompactList}\small\item\em File number of the file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores information about a specific input file. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_input_file_a36704203477e78e7de3ff4b98276e3a6}\label{class_input_file_a36704203477e78e7de3ff4b98276e3a6}} 
+\index{Input\+File@{Input\+File}!Input\+File@{Input\+File}}
+\index{Input\+File@{Input\+File}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{Input\+File()}{InputFile()}}
+{\footnotesize\ttfamily Input\+File\+::\+Input\+File (\begin{DoxyParamCaption}\item[{const std\+::string}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & Path of the file \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_input_file_a1a1a9c0d87f77e580e03da608b1b5291}\label{class_input_file_a1a1a9c0d87f77e580e03da608b1b5291}} 
+\index{Input\+File@{Input\+File}!get\+File\+Number@{get\+File\+Number}}
+\index{get\+File\+Number@{get\+File\+Number}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{get\+File\+Number()}{getFileNumber()}}
+{\footnotesize\ttfamily auto Input\+File\+::get\+File\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for file number. 
+
+\mbox{\Hypertarget{class_input_file_a2e3685bddcae984f458e7fc6a20e7a44}\label{class_input_file_a2e3685bddcae984f458e7fc6a20e7a44}} 
+\index{Input\+File@{Input\+File}!get\+File\+Path@{get\+File\+Path}}
+\index{get\+File\+Path@{get\+File\+Path}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{get\+File\+Path()}{getFilePath()}}
+{\footnotesize\ttfamily auto Input\+File\+::get\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for file path. 
+
+\mbox{\Hypertarget{class_input_file_a96c696bb882f54671ad897501440fd17}\label{class_input_file_a96c696bb882f54671ad897501440fd17}} 
+\index{Input\+File@{Input\+File}!get\+Readout\+Board\+ID@{get\+Readout\+Board\+ID}}
+\index{get\+Readout\+Board\+ID@{get\+Readout\+Board\+ID}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{get\+Readout\+Board\+I\+D()}{getReadoutBoardID()}}
+{\footnotesize\ttfamily auto Input\+File\+::get\+Readout\+Board\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for readout board ID. 
+
+\mbox{\Hypertarget{class_input_file_a65406d6a016391c2cccb0e6e4ee08099}\label{class_input_file_a65406d6a016391c2cccb0e6e4ee08099}} 
+\index{Input\+File@{Input\+File}!is\+Complete@{is\+Complete}}
+\index{is\+Complete@{is\+Complete}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{is\+Complete()}{isComplete()}}
+{\footnotesize\ttfamily auto Input\+File\+::is\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Was all information able to be extracted? 
+
+\mbox{\Hypertarget{class_input_file_a8c7c438538b8b183454632c27a55f701}\label{class_input_file_a8c7c438538b8b183454632c27a55f701}} 
+\index{Input\+File@{Input\+File}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Input\+File\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_input_file}{Input\+File} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Operator overload for $<$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \hyperlink{class_input_file}{Input\+File} to be compared to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_file_aba80d895922ad25de1bdd7724d35755a}\label{class_input_file_aba80d895922ad25de1bdd7724d35755a}} 
+\index{Input\+File@{Input\+File}!operator==@{operator==}}
+\index{operator==@{operator==}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Input\+File\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{class_input_file}{Input\+File} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Equality operator overload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \hyperlink{class_input_file}{Input\+File} to be compared to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_file_a4bf7efae68f3f378d1d4d1565fce8081}\label{class_input_file_a4bf7efae68f3f378d1d4d1565fce8081}} 
+\index{Input\+File@{Input\+File}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool Input\+File\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_input_file}{Input\+File} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Operator overload for $>$ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \hyperlink{class_input_file}{Input\+File} to be compared to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_file_a7a27c978d7aebf861360c642ddb47ef5}\label{class_input_file_a7a27c978d7aebf861360c642ddb47ef5}} 
+\index{Input\+File@{Input\+File}!print@{print}}
+\index{print@{print}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Input\+File\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints information about the file. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_input_file_af5c90eb7ded9297cc12248935968ee87}\label{class_input_file_af5c90eb7ded9297cc12248935968ee87}} 
+\index{Input\+File@{Input\+File}!m\+\_\+file\+Number@{m\+\_\+file\+Number}}
+\index{m\+\_\+file\+Number@{m\+\_\+file\+Number}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{m\+\_\+file\+Number}{m\_fileNumber}}
+{\footnotesize\ttfamily unsigned int Input\+File\+::m\+\_\+file\+Number = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+File number of the file. 
+
+\mbox{\Hypertarget{class_input_file_ae3a763e9997cebb9f50aef29499d53c2}\label{class_input_file_ae3a763e9997cebb9f50aef29499d53c2}} 
+\index{Input\+File@{Input\+File}!m\+\_\+file\+Path@{m\+\_\+file\+Path}}
+\index{m\+\_\+file\+Path@{m\+\_\+file\+Path}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{m\+\_\+file\+Path}{m\_filePath}}
+{\footnotesize\ttfamily const std\+::string Input\+File\+::m\+\_\+file\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Path of the file. 
+
+\mbox{\Hypertarget{class_input_file_ab4724adf6c3da88760dccc42d6b6401d}\label{class_input_file_ab4724adf6c3da88760dccc42d6b6401d}} 
+\index{Input\+File@{Input\+File}!m\+\_\+information\+Complete@{m\+\_\+information\+Complete}}
+\index{m\+\_\+information\+Complete@{m\+\_\+information\+Complete}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{m\+\_\+information\+Complete}{m\_informationComplete}}
+{\footnotesize\ttfamily bool Input\+File\+::m\+\_\+information\+Complete = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Records whether all information was able to be extracted from the file path. 
+
+\mbox{\Hypertarget{class_input_file_a15431dd487c5ac563745856544c9261d}\label{class_input_file_a15431dd487c5ac563745856544c9261d}} 
+\index{Input\+File@{Input\+File}!m\+\_\+readout\+Board\+ID@{m\+\_\+readout\+Board\+ID}}
+\index{m\+\_\+readout\+Board\+ID@{m\+\_\+readout\+Board\+ID}!Input\+File@{Input\+File}}
+\subsubsection{\texorpdfstring{m\+\_\+readout\+Board\+ID}{m\_readoutBoardID}}
+{\footnotesize\ttfamily unsigned int Input\+File\+::m\+\_\+readout\+Board\+ID = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Readout board ID of the file. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Core/inc/\hyperlink{_input_file_8hpp}{Input\+File.\+hpp}\item 
+Core/src/\hyperlink{_input_file_8cpp}{Input\+File.\+cpp}\end{DoxyCompactItemize}

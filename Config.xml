@@ -31,7 +31,8 @@
 			<slot name="A" tdcID1="6" tdcID2="7"/>
 		</board>
 		<board id="1">
-			<slot name="D" tdcID1="8" tdcID2="9"/>
+			<slot name="D" tdcID2="9"/>
+			<!-- <slot name="D" tdcID1="8" tdcID2="9"/> -->
 			<slot name="C" tdcID1="12" tdcID2="13"/>
 			<slot name="B" tdcID1="10" tdcID2="11"/>
 			<slot name="A" tdcID1="14" tdcID2="15"/>

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['threadsafeeventmap',['ThreadSafeEventMap',['../class_thread_safe_event_map.html',1,'']]],
-  ['threadsafequeue',['ThreadSafeQueue',['../class_thread_safe_queue.html',1,'']]]
+  ['rootmanager',['RootManager',['../class_root_manager.html',1,'']]],
+  ['rootmanager_3c_20event_20_3e',['RootManager&lt; Event &gt;',['../class_root_manager.html',1,'']]],
+  ['rootmanager_3c_20packet_20_3e',['RootManager&lt; Packet &gt;',['../class_root_manager.html',1,'']]]
 ];

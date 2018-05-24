@@ -10,9 +10,9 @@ public:
 	//! Constructor
 	InputFile(
 		const std::string filePath //!< Path of the file
-	) noexcept;
+	);
 
-	//! Was all information able to be extracted
+	//! Was all information able to be extracted?
 	auto isComplete() const { return m_informationComplete; }
 
 	//! Getter for file path
@@ -37,13 +37,13 @@ public:
 		const InputFile& other //!< InputFile to be compared to
 	) const;
 
-	// Equality operator overload
+	//! Equality operator overload
 	bool operator==(
 		const InputFile& other //!< InputFile to be compared to
 	) const;
 
 private:
-	bool m_informationComplete = false;
+	bool m_informationComplete = false; //!< Records whether all information was able to be extracted from the file path
 
 	const std::string m_filePath; //!< Path of the file
 	unsigned int m_readoutBoardID = 0; //!< Readout board ID of the file

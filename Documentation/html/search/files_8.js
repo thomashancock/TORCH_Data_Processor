@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['threadsafeeventmap_2ecpp',['ThreadSafeEventMap.cpp',['../_thread_safe_event_map_8cpp.html',1,'']]],
-  ['threadsafeeventmap_2ehpp',['ThreadSafeEventMap.hpp',['../_thread_safe_event_map_8hpp.html',1,'']]],
-  ['threadsafequeue_2ehpp',['ThreadSafeQueue.hpp',['../_thread_safe_queue_8hpp.html',1,'']]],
-  ['threadsafequeue_2einl',['ThreadSafeQueue.inl',['../_thread_safe_queue_8inl.html',1,'']]]
+  ['readme_2emd',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['rootmanager_2ehpp',['RootManager.hpp',['../_root_manager_8hpp.html',1,'']]],
+  ['rootmanager_2einl',['RootManager.inl',['../_root_manager_8inl.html',1,'']]]
 ];

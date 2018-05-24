@@ -30,13 +30,13 @@ using \hyperlink{class_processor_a0cfd8ed0721769db91c142a19a392e0f}{packet\+Buff
 \item 
 void \hyperlink{class_processor_aa9ad1e9d6f3d217e23649e42cd07de90}{initialize\+Packet\+Buffers} (const std\+::list$<$ unsigned int $>$ \&tdc\+I\+Ds)
 \begin{DoxyCompactList}\small\item\em Initilises a packet buffer for each T\+DC ID. \end{DoxyCompactList}\item 
-void \hyperlink{class_processor_ae045ebe853cd1f2124ecb93b829a9113}{run\+Quick\+Check} (const std\+::vector$<$ std\+::string $>$ \&file\+Names)
+void \hyperlink{class_processor_aa04640b32910d2daae25306f35ddcad8}{run\+Quick\+Check} ()
 \begin{DoxyCompactList}\small\item\em Runs Quick\+Check Mode. \end{DoxyCompactList}\item 
-void \hyperlink{class_processor_abb921abb494ace88b4ef5ba9137f21d2}{run\+Low\+Level} (const std\+::string output\+File, const std\+::vector$<$ std\+::string $>$ \&file\+Names)
+void \hyperlink{class_processor_a3710adfb2311c70d9402e25a8615ace4}{run\+Low\+Level} (const std\+::string output\+File)
 \begin{DoxyCompactList}\small\item\em Runs Low\+Level Mode. \end{DoxyCompactList}\item 
-void \hyperlink{class_processor_a0f2fc9c7e8c9271f7a9b171814ad094f}{run\+Serial} (const std\+::string output\+File, const std\+::vector$<$ std\+::string $>$ \&file\+Names)
+void \hyperlink{class_processor_adf50ef4f51094892e979ebd7cd15af04}{run\+Serial} (const std\+::string output\+File)
 \begin{DoxyCompactList}\small\item\em Runs Serial Mode. \end{DoxyCompactList}\item 
-void \hyperlink{class_processor_ac95806facc4b5cbeb8a1b6df0cc9e431}{run\+Parallel} (const std\+::string output\+File, const std\+::vector$<$ std\+::string $>$ \&file\+Names)
+void \hyperlink{class_processor_a32965f4a6587e9bf54eeeb11de43a4ad}{run\+Parallel} (const std\+::string output\+File)
 \begin{DoxyCompactList}\small\item\em Runs Parallel Mode. \end{DoxyCompactList}\item 
 void \hyperlink{class_processor_a554de487c5e8205872151fbedb315291}{make\+Packets} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_processor_a531b4c5f7c0d810fc6e9e1dd3d115725}{bundle\+Buffer} $>$ word\+Bundle\+Buffer)
 \begin{DoxyCompactList}\small\item\em Process word bundles into packets. \end{DoxyCompactList}\item 
@@ -144,11 +144,11 @@ Process word bundles into packets.
 \subsubsection{\texorpdfstring{process\+Files()}{processFiles()}}
 {\footnotesize\ttfamily void Processor\+::process\+Files (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File,  }\item[{const std\+::vector$<$ std\+::string $>$}]{file\+Names }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_processor_abb921abb494ace88b4ef5ba9137f21d2}\label{class_processor_abb921abb494ace88b4ef5ba9137f21d2}} 
+\mbox{\Hypertarget{class_processor_a3710adfb2311c70d9402e25a8615ace4}\label{class_processor_a3710adfb2311c70d9402e25a8615ace4}} 
 \index{Processor@{Processor}!run\+Low\+Level@{run\+Low\+Level}}
 \index{run\+Low\+Level@{run\+Low\+Level}!Processor@{Processor}}
 \subsubsection{\texorpdfstring{run\+Low\+Level()}{runLowLevel()}}
-{\footnotesize\ttfamily void Processor\+::run\+Low\+Level (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Processor\+::run\+Low\+Level (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -156,14 +156,14 @@ Runs Low\+Level Mode.
 
 
 \begin{DoxyParams}{Parameters}
-{\em file\+Names} & List of files to process \\
+{\em output\+File} & Output file name \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_processor_ac95806facc4b5cbeb8a1b6df0cc9e431}\label{class_processor_ac95806facc4b5cbeb8a1b6df0cc9e431}} 
+\mbox{\Hypertarget{class_processor_a32965f4a6587e9bf54eeeb11de43a4ad}\label{class_processor_a32965f4a6587e9bf54eeeb11de43a4ad}} 
 \index{Processor@{Processor}!run\+Parallel@{run\+Parallel}}
 \index{run\+Parallel@{run\+Parallel}!Processor@{Processor}}
 \subsubsection{\texorpdfstring{run\+Parallel()}{runParallel()}}
-{\footnotesize\ttfamily void Processor\+::run\+Parallel (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Processor\+::run\+Parallel (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -171,29 +171,24 @@ Runs Parallel Mode.
 
 
 \begin{DoxyParams}{Parameters}
-{\em file\+Names} & List of files to process \\
+{\em output\+File} & Output file name \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_processor_ae045ebe853cd1f2124ecb93b829a9113}\label{class_processor_ae045ebe853cd1f2124ecb93b829a9113}} 
+\mbox{\Hypertarget{class_processor_aa04640b32910d2daae25306f35ddcad8}\label{class_processor_aa04640b32910d2daae25306f35ddcad8}} 
 \index{Processor@{Processor}!run\+Quick\+Check@{run\+Quick\+Check}}
 \index{run\+Quick\+Check@{run\+Quick\+Check}!Processor@{Processor}}
 \subsubsection{\texorpdfstring{run\+Quick\+Check()}{runQuickCheck()}}
-{\footnotesize\ttfamily void Processor\+::run\+Quick\+Check (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Processor\+::run\+Quick\+Check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
 Runs Quick\+Check Mode. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em file\+Names} & List of files to process \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{class_processor_a0f2fc9c7e8c9271f7a9b171814ad094f}\label{class_processor_a0f2fc9c7e8c9271f7a9b171814ad094f}} 
+\mbox{\Hypertarget{class_processor_adf50ef4f51094892e979ebd7cd15af04}\label{class_processor_adf50ef4f51094892e979ebd7cd15af04}} 
 \index{Processor@{Processor}!run\+Serial@{run\+Serial}}
 \index{run\+Serial@{run\+Serial}!Processor@{Processor}}
 \subsubsection{\texorpdfstring{run\+Serial()}{runSerial()}}
-{\footnotesize\ttfamily void Processor\+::run\+Serial (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily void Processor\+::run\+Serial (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -201,7 +196,7 @@ Runs Serial Mode.
 
 
 \begin{DoxyParams}{Parameters}
-{\em file\+Names} & List of files to process \\
+{\em output\+File} & Output file name \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_processor_a1a19cb73f339992d6dd1be580c8efef0}\label{class_processor_a1a19cb73f339992d6dd1be580c8efef0}} 

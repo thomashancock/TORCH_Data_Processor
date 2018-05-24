@@ -11,7 +11,7 @@
 // -----------------------------------------------------------------------------
 InputFile::InputFile(
 	const std::string filePath
-) noexcept :
+) :
 	m_filePath(filePath)
 	// m_filePath(std::move(filePath))
 {

@@ -73,6 +73,9 @@ $(function() {
 <li>addDataline()
 : <a class="el" href="class_packet.html#a5a3c458b3587775aba89a8e09c214155">Packet</a>
 </li>
+<li>addFile()
+: <a class="el" href="class_file_reader.html#a3404694daef538fdd001a3e2ae898fb8">FileReader</a>
+</li>
 <li>addHeader()
 : <a class="el" href="class_packet.html#a7f710ea08bf8d264beb1361f19cc3afb">Packet</a>
 </li>
@@ -90,9 +93,6 @@ $(function() {
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
-<li>clearStreams()
-: <a class="el" href="class_file_reader.html#abf01d994f77beae0653de481ea739ebb">FileReader</a>
-</li>
 <li>Config()
 : <a class="el" href="class_config.html#af8b0e9dc72b16b73ebb32d177fb93e1b">Config</a>
 </li>
@@ -124,7 +124,7 @@ $(function() {
 
 <h3><a id="index_f"></a>- f -</h3><ul>
 <li>FileReader()
-: <a class="el" href="class_file_reader.html#af7f6550dfccc640680792a51d997adca">FileReader</a>
+: <a class="el" href="class_file_reader.html#a3be44012f3dc81ad7943b1012b64e52d">FileReader</a>
 </li>
 </ul>
 
@@ -156,6 +156,12 @@ $(function() {
 : <a class="el" href="class_event.html#a3f48bec589c70aa0d36fd5cb253ad88c">Event</a>
 , <a class="el" href="class_packet.html#a9a4d664eb908d788fc71bee88b905747">Packet</a>
 </li>
+<li>getFileNumber()
+: <a class="el" href="class_input_file.html#a1a1a9c0d87f77e580e03da608b1b5291">InputFile</a>
+</li>
+<li>getFilePath()
+: <a class="el" href="class_input_file.html#a2e3685bddcae984f458e7fc6a20e7a44">InputFile</a>
+</li>
 <li>getFineTimestamp()
 : <a class="el" href="class_edge.html#a67a04612cd6037408c691ab35d076ed7">Edge</a>
 , <a class="el" href="class_packet.html#aafbf1d7b7303ef5f3919e7ed9f8065f8">Packet</a>
@@ -176,7 +182,8 @@ $(function() {
 : <a class="el" href="class_packet.html#aed7b21042c14e00546a2f4600d3b57d1">Packet</a>
 </li>
 <li>getReadoutBoardID()
-: <a class="el" href="class_packet.html#a85eb57c2213797b64d6102bff9311e1b">Packet</a>
+: <a class="el" href="class_input_file.html#a96c696bb882f54671ad897501440fd17">InputFile</a>
+, <a class="el" href="class_packet.html#a85eb57c2213797b64d6102bff9311e1b">Packet</a>
 , <a class="el" href="class_word_bundle.html#a595de21d0dabc8b99a8d28053c0370fc">WordBundle</a>
 </li>
 <li>getReadoutBoardList()
@@ -217,8 +224,12 @@ $(function() {
 <li>initializePacketBuffers()
 : <a class="el" href="class_processor.html#aa9ad1e9d6f3d217e23649e42cd07de90">Processor</a>
 </li>
+<li>InputFile()
+: <a class="el" href="class_input_file.html#a36704203477e78e7de3ff4b98276e3a6">InputFile</a>
+</li>
 <li>isComplete()
 : <a class="el" href="class_event.html#a2a00b2c0c579397ac93c834cf987cbd9">Event</a>
+, <a class="el" href="class_input_file.html#a65406d6a016391c2cccb0e6e4ee08099">InputFile</a>
 , <a class="el" href="class_packet.html#a6b5ce354c03663c98cccd31ad9a6f5ff">Packet</a>
 , <a class="el" href="class_word_bundle.html#a0a817b8d4266b5c2418743bf46ef5dee">WordBundle</a>
 </li>
@@ -233,6 +244,9 @@ $(function() {
 </li>
 <li>isGood()
 : <a class="el" href="class_packet.html#ae70511a50e1f186b8a3369ee6ab8589c">Packet</a>
+</li>
+<li>isNDataBytesValid()
+: <a class="el" href="class_file_reader.html#ac3938817d6fd8b2d90ac479e323bdc03">FileReader</a>
 </li>
 </ul>
 
@@ -260,11 +274,18 @@ $(function() {
 <h3><a id="index_o"></a>- o -</h3><ul>
 <li>operator&lt;()
 : <a class="el" href="class_edge.html#ab6a06c5da57efed1991960f61e870c8b">Edge</a>
+, <a class="el" href="class_input_file.html#a8c7c438538b8b183454632c27a55f701">InputFile</a>
 </li>
 <li>operator=()
 : <a class="el" href="class_error_spy.html#a1ee5e050efa950d40f48245550cb5aad">ErrorSpy</a>
 , <a class="el" href="class_thread_safe_event_map.html#a1d438208fcc3936dd4384a8a2b55bdf8">ThreadSafeEventMap</a>
 , <a class="el" href="class_thread_safe_queue.html#a6efd6d8c1d87c21d5bb422e18775e410">ThreadSafeQueue&lt; T &gt;</a>
+</li>
+<li>operator==()
+: <a class="el" href="class_input_file.html#aba80d895922ad25de1bdd7724d35755a">InputFile</a>
+</li>
+<li>operator&gt;()
+: <a class="el" href="class_input_file.html#a4bf7efae68f3f378d1d4d1565fce8081">InputFile</a>
 </li>
 </ul>
 
@@ -290,6 +311,7 @@ $(function() {
 , <a class="el" href="class_error_counter.html#a12b0eba237f5de0c56d5365bb84fa025">ErrorCounter</a>
 , <a class="el" href="class_error_spy.html#a85e971684266e774c896ee681850614a">ErrorSpy</a>
 , <a class="el" href="class_event.html#ab1b48a39a41a7fc92a25617adcf68aa8">Event</a>
+, <a class="el" href="class_input_file.html#a7a27c978d7aebf861360c642ddb47ef5">InputFile</a>
 , <a class="el" href="class_packet.html#aec87fc2f2473111a694ad8b6f60e7666">Packet</a>
 </li>
 <li>processFiles()
@@ -315,7 +337,7 @@ $(function() {
 : <a class="el" href="class_file_reader.html#ac578b683eba751027766a2c30f03a28b">FileReader</a>
 </li>
 <li>readHeaderLine()
-: <a class="el" href="class_file_reader.html#a94a71d0a05ececd1e84fa71d80b7e6ba">FileReader</a>
+: <a class="el" href="class_file_reader.html#a94181d78b29ebacf2a4b3b3cd03a6750">FileReader</a>
 </li>
 <li>removePackets()
 : <a class="el" href="class_event.html#a4a7c0f87ea9fd8526451d6eddc3a592e">Event</a>
@@ -327,10 +349,10 @@ $(function() {
 : <a class="el" href="class_root_manager.html#a90ff78b3122c0b3fad62bc927778dda9">RootManager&lt; T &gt;</a>
 </li>
 <li>runLowLevel()
-: <a class="el" href="class_processor.html#abb921abb494ace88b4ef5ba9137f21d2">Processor</a>
+: <a class="el" href="class_processor.html#a3710adfb2311c70d9402e25a8615ace4">Processor</a>
 </li>
 <li>runParallel()
-: <a class="el" href="class_processor.html#ac95806facc4b5cbeb8a1b6df0cc9e431">Processor</a>
+: <a class="el" href="class_processor.html#a32965f4a6587e9bf54eeeb11de43a4ad">Processor</a>
 </li>
 <li>runProcessingLoop()
 : <a class="el" href="class_file_reader.html#a98606ec7d315f1ed6f90c531df0d09f9">FileReader</a>
@@ -339,10 +361,10 @@ $(function() {
 : <a class="el" href="class_file_reader.html#a478ed77f1b8f76e15cb2faa8964a26e6">FileReader</a>
 </li>
 <li>runQuickCheck()
-: <a class="el" href="class_processor.html#ae045ebe853cd1f2124ecb93b829a9113">Processor</a>
+: <a class="el" href="class_processor.html#aa04640b32910d2daae25306f35ddcad8">Processor</a>
 </li>
 <li>runSerial()
-: <a class="el" href="class_processor.html#a0f2fc9c7e8c9271f7a9b171814ad094f">Processor</a>
+: <a class="el" href="class_processor.html#adf50ef4f51094892e979ebd7cd15af04">Processor</a>
 </li>
 </ul>
 
@@ -365,7 +387,10 @@ $(function() {
 , <a class="el" href="class_packet_tree_manager.html#a3e2aa24c5acd8a87b15cfff2d011f30b">PacketTreeManager</a>
 </li>
 <li>stageFiles()
-: <a class="el" href="class_file_reader.html#a578a03fc3bf266f3d6d54542bf687579">FileReader</a>
+: <a class="el" href="class_file_reader.html#a5d487d37857d537ace41c31d6594ef3a">FileReader</a>
+</li>
+<li>stageNextFile()
+: <a class="el" href="class_file_reader.html#a381cceb460883f24a8113333ae1bf5bb">FileReader</a>
 </li>
 </ul>
 

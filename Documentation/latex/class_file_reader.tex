@@ -12,9 +12,9 @@ Read files and outputs word bundles.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_file_reader_af7f6550dfccc640680792a51d997adca}{File\+Reader} (const unsigned int n\+Readout\+Boards, std\+::array$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_file_reader_ac755c1e271610c2c12a7fc5b55cc048b}{bundle\+Buffer} $>$, 4 $>$)
+\hyperlink{class_file_reader_a3be44012f3dc81ad7943b1012b64e52d}{File\+Reader} (const std\+::list$<$ unsigned int $>$ \&readout\+Board\+List, std\+::array$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_file_reader_ac755c1e271610c2c12a7fc5b55cc048b}{bundle\+Buffer} $>$, 4 $>$)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-void \hyperlink{class_file_reader_a578a03fc3bf266f3d6d54542bf687579}{stage\+Files} (const std\+::vector$<$ std\+::string $>$ \&m\+\_\+files)
+void \hyperlink{class_file_reader_a5d487d37857d537ace41c31d6594ef3a}{stage\+Files} (const std\+::vector$<$ std\+::string $>$ \&files)
 \begin{DoxyCompactList}\small\item\em Stages files to be read out together. \end{DoxyCompactList}\item 
 bool \hyperlink{class_file_reader_a58b80f2c9c2ec8381527bdfca1008007}{have\+Files\+Expired} () const
 \begin{DoxyCompactList}\small\item\em Checks if all files have finished being read. \end{DoxyCompactList}\item 
@@ -30,25 +30,29 @@ using \hyperlink{class_file_reader_a7fb625dc45cee3256d37cc19c65cad86}{bundle\+Wo
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{class_file_reader_abf01d994f77beae0653de481ea739ebb}{clear\+Streams} ()
-\begin{DoxyCompactList}\small\item\em Clears all streams and closes the respective files. \end{DoxyCompactList}\item 
+void \hyperlink{class_file_reader_a3404694daef538fdd001a3e2ae898fb8}{add\+File} (const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Adds a file to be read out. \end{DoxyCompactList}\item 
+void \hyperlink{class_file_reader_a381cceb460883f24a8113333ae1bf5bb}{stage\+Next\+File} (const unsigned int readout\+Board\+ID)
+\begin{DoxyCompactList}\small\item\em Stages a new file. \end{DoxyCompactList}\item 
 void \hyperlink{class_file_reader_a98606ec7d315f1ed6f90c531df0d09f9}{run\+Processing\+Loop} ()
 \begin{DoxyCompactList}\small\item\em Reads a single data block from each file. \end{DoxyCompactList}\item 
-void \hyperlink{class_file_reader_a94a71d0a05ececd1e84fa71d80b7e6ba}{read\+Header\+Line} (std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&input\+Data, unsigned int \&readout\+Board\+Number, unsigned int \&n\+Data\+Bytes)
+unsigned int \hyperlink{class_file_reader_a94181d78b29ebacf2a4b3b3cd03a6750}{read\+Header\+Line} (std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&input\+Data)
 \begin{DoxyCompactList}\small\item\em Reads a header line from the passed stream. \end{DoxyCompactList}\item 
+bool \hyperlink{class_file_reader_ac3938817d6fd8b2d90ac479e323bdc03}{is\+N\+Data\+Bytes\+Valid} (const unsigned int board\+ID, std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&input\+Data, const unsigned int n\+Data\+Bytes)
+\begin{DoxyCompactList}\small\item\em Checks if a number of bytes is valid, and takes action if not. \end{DoxyCompactList}\item 
 std\+::array$<$ unsigned int, 4 $>$ \hyperlink{class_file_reader_ac578b683eba751027766a2c30f03a28b}{read\+Data\+Block} (std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&input\+Data)
 \begin{DoxyCompactList}\small\item\em Reads a data block line from the passed stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ $>$ \hyperlink{class_file_reader_a8dfdb072d4bb1052a52d7be93fb44f07}{m\+\_\+input\+Streams}
+std\+::map$<$ unsigned int, std\+::list$<$ \hyperlink{class_input_file}{Input\+File} $>$ $>$ \hyperlink{class_file_reader_a8b144dccc96fcc95e43a96a300341855}{m\+\_\+input\+Files}
+\begin{DoxyCompactList}\small\item\em Input file storage. \end{DoxyCompactList}\item 
+std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ $>$ \hyperlink{class_file_reader_af7ac8567ed5b1fa022a8f98099e23f43}{m\+\_\+input\+Streams}
 \begin{DoxyCompactList}\small\item\em Vector of input streams. \end{DoxyCompactList}\item 
-std\+::vector$<$ std\+::string $>$ \hyperlink{class_file_reader_ac1fd6ccb07797fa82caad2906c5a4fab}{m\+\_\+file\+Names}
-\begin{DoxyCompactList}\small\item\em Vector of file lengths. \end{DoxyCompactList}\item 
-std\+::vector$<$ unsigned int $>$ \hyperlink{class_file_reader_a7269438e7187e9abbdde1361a46d1fa6}{m\+\_\+file\+Lengths}
-\begin{DoxyCompactList}\small\item\em Vector of file lengths. \end{DoxyCompactList}\item 
-std\+::vector$<$ \hyperlink{class_file_reader_a7fb625dc45cee3256d37cc19c65cad86}{bundle\+Workspace} $>$ \hyperlink{class_file_reader_ab59c633bc2943dcea7c977585e7e48b3}{m\+\_\+bundle\+Workspaces}
-\begin{DoxyCompactList}\small\item\em Vector of pointers used to create Word\+Bundles. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ unsigned int, unsigned int $>$ \hyperlink{class_file_reader_a2d560dd766f6866a1c11cc44e059c246}{m\+\_\+file\+Lengths}
+\begin{DoxyCompactList}\small\item\em Map to store file lengths. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ unsigned int, \hyperlink{class_file_reader_a7fb625dc45cee3256d37cc19c65cad86}{bundle\+Workspace} $>$ \hyperlink{class_file_reader_aa04e6f9a40c9186cae2c89352e75d69c}{m\+\_\+bundle\+Workspaces}
+\begin{DoxyCompactList}\small\item\em Map of pointers used to create Word\+Bundles. \end{DoxyCompactList}\item 
 std\+::array$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_file_reader_ac755c1e271610c2c12a7fc5b55cc048b}{bundle\+Buffer} $>$, 4 $>$ \hyperlink{class_file_reader_a038d1362d7e0458b3450ab8584eab688}{m\+\_\+word\+Bundle\+Buffers}
 \begin{DoxyCompactList}\small\item\em Pointers to shared \hyperlink{class_word_bundle}{Word\+Bundle} buffers. \end{DoxyCompactList}\item 
 const std\+::set$<$ unsigned int $>$ \hyperlink{class_file_reader_a7a0bb5e7cb117f6a415f005665893509}{filler\+Words} = \{ 0x\+A0\+A0\+A0\+A0, 0x\+B0\+B0\+B0\+B0, 0x\+C0\+C0\+C0\+C0, 0x\+D0\+D0\+D0\+D0 \}
@@ -74,11 +78,11 @@ Read files and outputs word bundles.
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_file_reader_af7f6550dfccc640680792a51d997adca}\label{class_file_reader_af7f6550dfccc640680792a51d997adca}} 
+\mbox{\Hypertarget{class_file_reader_a3be44012f3dc81ad7943b1012b64e52d}\label{class_file_reader_a3be44012f3dc81ad7943b1012b64e52d}} 
 \index{File\+Reader@{File\+Reader}!File\+Reader@{File\+Reader}}
 \index{File\+Reader@{File\+Reader}!File\+Reader@{File\+Reader}}
 \subsubsection{\texorpdfstring{File\+Reader()}{FileReader()}}
-{\footnotesize\ttfamily File\+Reader\+::\+File\+Reader (\begin{DoxyParamCaption}\item[{const unsigned int}]{n\+Readout\+Boards,  }\item[{std\+::array$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_file_reader_ac755c1e271610c2c12a7fc5b55cc048b}{bundle\+Buffer} $>$, 4 $>$}]{word\+Bundle\+Buffers }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily File\+Reader\+::\+File\+Reader (\begin{DoxyParamCaption}\item[{const std\+::list$<$ unsigned int $>$ \&}]{readout\+Board\+List,  }\item[{std\+::array$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_file_reader_ac755c1e271610c2c12a7fc5b55cc048b}{bundle\+Buffer} $>$, 4 $>$}]{word\+Bundle\+Buffers }\end{DoxyParamCaption})}
 
 
 
@@ -86,7 +90,7 @@ Constructor.
 
 
 \begin{DoxyParams}{Parameters}
-{\em n\+Readout\+Boards} & Number of readout boards present \\
+{\em readout\+Board\+List} & List of readout boards present \\
 \hline
 {\em word\+Bundle\+Buffers} & Shared Pointer to \hyperlink{class_word_bundle}{Word\+Bundle} buffers \\
 \hline
@@ -94,16 +98,21 @@ Constructor.
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_file_reader_abf01d994f77beae0653de481ea739ebb}\label{class_file_reader_abf01d994f77beae0653de481ea739ebb}} 
-\index{File\+Reader@{File\+Reader}!clear\+Streams@{clear\+Streams}}
-\index{clear\+Streams@{clear\+Streams}!File\+Reader@{File\+Reader}}
-\subsubsection{\texorpdfstring{clear\+Streams()}{clearStreams()}}
-{\footnotesize\ttfamily void File\+Reader\+::clear\+Streams (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+\mbox{\Hypertarget{class_file_reader_a3404694daef538fdd001a3e2ae898fb8}\label{class_file_reader_a3404694daef538fdd001a3e2ae898fb8}} 
+\index{File\+Reader@{File\+Reader}!add\+File@{add\+File}}
+\index{add\+File@{add\+File}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{add\+File()}{addFile()}}
+{\footnotesize\ttfamily void File\+Reader\+::add\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Clears all streams and closes the respective files. 
+Adds a file to be read out. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & Path fo the file to add \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_file_reader_a58b80f2c9c2ec8381527bdfca1008007}\label{class_file_reader_a58b80f2c9c2ec8381527bdfca1008007}} 
 \index{File\+Reader@{File\+Reader}!have\+Files\+Expired@{have\+Files\+Expired}}
 \index{have\+Files\+Expired@{have\+Files\+Expired}!File\+Reader@{File\+Reader}}
@@ -114,6 +123,21 @@ Clears all streams and closes the respective files.
 
 Checks if all files have finished being read. 
 
+\mbox{\Hypertarget{class_file_reader_ac3938817d6fd8b2d90ac479e323bdc03}\label{class_file_reader_ac3938817d6fd8b2d90ac479e323bdc03}} 
+\index{File\+Reader@{File\+Reader}!is\+N\+Data\+Bytes\+Valid@{is\+N\+Data\+Bytes\+Valid}}
+\index{is\+N\+Data\+Bytes\+Valid@{is\+N\+Data\+Bytes\+Valid}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{is\+N\+Data\+Bytes\+Valid()}{isNDataBytesValid()}}
+{\footnotesize\ttfamily bool File\+Reader\+::is\+N\+Data\+Bytes\+Valid (\begin{DoxyParamCaption}\item[{const unsigned int}]{board\+ID,  }\item[{std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&}]{input\+Data,  }\item[{const unsigned int}]{n\+Data\+Bytes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Checks if a number of bytes is valid, and takes action if not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Data} & Stream n\+Data\+Bytes was read from \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_file_reader_ac578b683eba751027766a2c30f03a28b}\label{class_file_reader_ac578b683eba751027766a2c30f03a28b}} 
 \index{File\+Reader@{File\+Reader}!read\+Data\+Block@{read\+Data\+Block}}
 \index{read\+Data\+Block@{read\+Data\+Block}!File\+Reader@{File\+Reader}}
@@ -129,11 +153,11 @@ Reads a data block line from the passed stream.
 {\em input\+Data} & The stream to read from \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_file_reader_a94a71d0a05ececd1e84fa71d80b7e6ba}\label{class_file_reader_a94a71d0a05ececd1e84fa71d80b7e6ba}} 
+\mbox{\Hypertarget{class_file_reader_a94181d78b29ebacf2a4b3b3cd03a6750}\label{class_file_reader_a94181d78b29ebacf2a4b3b3cd03a6750}} 
 \index{File\+Reader@{File\+Reader}!read\+Header\+Line@{read\+Header\+Line}}
 \index{read\+Header\+Line@{read\+Header\+Line}!File\+Reader@{File\+Reader}}
 \subsubsection{\texorpdfstring{read\+Header\+Line()}{readHeaderLine()}}
-{\footnotesize\ttfamily void File\+Reader\+::read\+Header\+Line (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&}]{input\+Data,  }\item[{unsigned int \&}]{readout\+Board\+Number,  }\item[{unsigned int \&}]{n\+Data\+Bytes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+{\footnotesize\ttfamily unsigned int File\+Reader\+::read\+Header\+Line (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&}]{input\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
 
 
@@ -142,10 +166,6 @@ Reads a header line from the passed stream.
 
 \begin{DoxyParams}{Parameters}
 {\em input\+Data} & The stream to read from \\
-\hline
-{\em readout\+Board\+Number} & Return variable for the readout board number \\
-\hline
-{\em n\+Data\+Bytes} & Return variable for the number of data bytes \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_file_reader_a98606ec7d315f1ed6f90c531df0d09f9}\label{class_file_reader_a98606ec7d315f1ed6f90c531df0d09f9}} 
@@ -168,16 +188,31 @@ Reads a single data block from each file.
 
 Reads n\+Loops data blocks from each staged file. 
 
-\mbox{\Hypertarget{class_file_reader_a578a03fc3bf266f3d6d54542bf687579}\label{class_file_reader_a578a03fc3bf266f3d6d54542bf687579}} 
+\mbox{\Hypertarget{class_file_reader_a5d487d37857d537ace41c31d6594ef3a}\label{class_file_reader_a5d487d37857d537ace41c31d6594ef3a}} 
 \index{File\+Reader@{File\+Reader}!stage\+Files@{stage\+Files}}
 \index{stage\+Files@{stage\+Files}!File\+Reader@{File\+Reader}}
 \subsubsection{\texorpdfstring{stage\+Files()}{stageFiles()}}
-{\footnotesize\ttfamily void File\+Reader\+::stage\+Files (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{m\+\_\+files }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void File\+Reader\+::stage\+Files (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{files }\end{DoxyParamCaption})}
 
 
 
 Stages files to be read out together. 
 
+\mbox{\Hypertarget{class_file_reader_a381cceb460883f24a8113333ae1bf5bb}\label{class_file_reader_a381cceb460883f24a8113333ae1bf5bb}} 
+\index{File\+Reader@{File\+Reader}!stage\+Next\+File@{stage\+Next\+File}}
+\index{stage\+Next\+File@{stage\+Next\+File}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{stage\+Next\+File()}{stageNextFile()}}
+{\footnotesize\ttfamily void File\+Reader\+::stage\+Next\+File (\begin{DoxyParamCaption}\item[{const unsigned int}]{readout\+Board\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Stages a new file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em readout\+Board\+ID} & Readout Board ID to stage for \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Data Documentation}
@@ -187,41 +222,41 @@ Stages files to be read out together.
 \subsubsection{\texorpdfstring{filler\+Words}{fillerWords}}
 {\footnotesize\ttfamily const std\+::set$<$unsigned int$>$ File\+Reader\+::filler\+Words = \{ 0x\+A0\+A0\+A0\+A0, 0x\+B0\+B0\+B0\+B0, 0x\+C0\+C0\+C0\+C0, 0x\+D0\+D0\+D0\+D0 \}\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_file_reader_ab59c633bc2943dcea7c977585e7e48b3}\label{class_file_reader_ab59c633bc2943dcea7c977585e7e48b3}} 
+\mbox{\Hypertarget{class_file_reader_aa04e6f9a40c9186cae2c89352e75d69c}\label{class_file_reader_aa04e6f9a40c9186cae2c89352e75d69c}} 
 \index{File\+Reader@{File\+Reader}!m\+\_\+bundle\+Workspaces@{m\+\_\+bundle\+Workspaces}}
 \index{m\+\_\+bundle\+Workspaces@{m\+\_\+bundle\+Workspaces}!File\+Reader@{File\+Reader}}
 \subsubsection{\texorpdfstring{m\+\_\+bundle\+Workspaces}{m\_bundleWorkspaces}}
-{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_file_reader_a7fb625dc45cee3256d37cc19c65cad86}{bundle\+Workspace} $>$ File\+Reader\+::m\+\_\+bundle\+Workspaces\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ unsigned int, \hyperlink{class_file_reader_a7fb625dc45cee3256d37cc19c65cad86}{bundle\+Workspace} $>$ File\+Reader\+::m\+\_\+bundle\+Workspaces\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Vector of pointers used to create Word\+Bundles. 
+Map of pointers used to create Word\+Bundles. 
 
-\mbox{\Hypertarget{class_file_reader_a7269438e7187e9abbdde1361a46d1fa6}\label{class_file_reader_a7269438e7187e9abbdde1361a46d1fa6}} 
+\mbox{\Hypertarget{class_file_reader_a2d560dd766f6866a1c11cc44e059c246}\label{class_file_reader_a2d560dd766f6866a1c11cc44e059c246}} 
 \index{File\+Reader@{File\+Reader}!m\+\_\+file\+Lengths@{m\+\_\+file\+Lengths}}
 \index{m\+\_\+file\+Lengths@{m\+\_\+file\+Lengths}!File\+Reader@{File\+Reader}}
 \subsubsection{\texorpdfstring{m\+\_\+file\+Lengths}{m\_fileLengths}}
-{\footnotesize\ttfamily std\+::vector$<$ unsigned int $>$ File\+Reader\+::m\+\_\+file\+Lengths\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ unsigned int, unsigned int $>$ File\+Reader\+::m\+\_\+file\+Lengths\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Vector of file lengths. 
+Map to store file lengths. 
 
-\mbox{\Hypertarget{class_file_reader_ac1fd6ccb07797fa82caad2906c5a4fab}\label{class_file_reader_ac1fd6ccb07797fa82caad2906c5a4fab}} 
-\index{File\+Reader@{File\+Reader}!m\+\_\+file\+Names@{m\+\_\+file\+Names}}
-\index{m\+\_\+file\+Names@{m\+\_\+file\+Names}!File\+Reader@{File\+Reader}}
-\subsubsection{\texorpdfstring{m\+\_\+file\+Names}{m\_fileNames}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ File\+Reader\+::m\+\_\+file\+Names\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_file_reader_a8b144dccc96fcc95e43a96a300341855}\label{class_file_reader_a8b144dccc96fcc95e43a96a300341855}} 
+\index{File\+Reader@{File\+Reader}!m\+\_\+input\+Files@{m\+\_\+input\+Files}}
+\index{m\+\_\+input\+Files@{m\+\_\+input\+Files}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{m\+\_\+input\+Files}{m\_inputFiles}}
+{\footnotesize\ttfamily std\+::map$<$ unsigned int, std\+::list$<$\hyperlink{class_input_file}{Input\+File}$>$ $>$ File\+Reader\+::m\+\_\+input\+Files\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Vector of file lengths. 
+Input file storage. 
 
-\mbox{\Hypertarget{class_file_reader_a8dfdb072d4bb1052a52d7be93fb44f07}\label{class_file_reader_a8dfdb072d4bb1052a52d7be93fb44f07}} 
+\mbox{\Hypertarget{class_file_reader_af7ac8567ed5b1fa022a8f98099e23f43}\label{class_file_reader_af7ac8567ed5b1fa022a8f98099e23f43}} 
 \index{File\+Reader@{File\+Reader}!m\+\_\+input\+Streams@{m\+\_\+input\+Streams}}
 \index{m\+\_\+input\+Streams@{m\+\_\+input\+Streams}!File\+Reader@{File\+Reader}}
 \subsubsection{\texorpdfstring{m\+\_\+input\+Streams}{m\_inputStreams}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ $>$ File\+Reader\+::m\+\_\+input\+Streams\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ $>$ File\+Reader\+::m\+\_\+input\+Streams\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
