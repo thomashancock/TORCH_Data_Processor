@@ -37,39 +37,37 @@ void EventTreeManager::add(
 
 	const unsigned int eventID = event->getEventID();
 
-	resetTreeVariables(); // Reset count variables
-	unsigned int tdcEntryNo = 0;
+	// Reset count variables
+	b_nTDCs = 0;
+	b_nEdges = 0;
+	b_nHits = 0;
+
+	// Add packets to tree
 	const auto packets = event->removePackets();
 	for (const auto& packet : packets) {
-		// STD_LOG("LOOP TRIGGER");
 		// Check packet pointer is valid
 		ASSERT(packet != nullptr);
 		// Only good packets should reach this point
 		ASSERT(packet->isGood());
 
 		// Fill tree branches from packet
-		// STD_LOG("FILLING TDC BRANCHES");
-		ASSERT(tdcEntryNo < m_nTDCs);
-		ASSERT(nullptr != b_tdcID);
-		b_tdcID[tdcEntryNo] = packet->getTDCID();
-		// STD_LOG("FILLING TDC BRANCHES");
-		b_eventID[tdcEntryNo] = eventID;
-		b_bunchID[tdcEntryNo] = packet->getBunchID();
-		b_rocTime[tdcEntryNo] = packet->getROCValue();
-		b_nHeaders[tdcEntryNo] = 1;
-		b_nLeadingEdges[tdcEntryNo] = packet->getNLeadingEdges();
-		b_nTrailingEdges[tdcEntryNo] = packet->getNTrailingEdges();
-		b_nTrailers[tdcEntryNo] = 1;
-		b_wordCount[tdcEntryNo] = packet->getWordCount();
+		ASSERT(b_nTDCs < m_nTDCs);
+		b_tdcID[b_nTDCs] = packet->getTDCID();
+		b_eventID[b_nTDCs] = eventID;
+		b_bunchID[b_nTDCs] = packet->getBunchID();
+		b_rocTime[b_nTDCs] = packet->getROCValue();
+		b_nHeaders[b_nTDCs] = 1;
+		b_nLeadingEdges[b_nTDCs] = packet->getNLeadingEdges();
+		b_nTrailingEdges[b_nTDCs] = packet->getNTrailingEdges();
+		b_nTrailers[b_nTDCs] = 1;
+		b_wordCount[b_nTDCs] = packet->getWordCount();
 
 		// Add edges to total sum
-		// STD_LOG("ADDING EDGE COUNT");
-		b_nEdges += b_nLeadingEdges[tdcEntryNo];
-		b_nEdges += b_nTrailingEdges[tdcEntryNo];
-		tdcEntryNo++;
+		b_nEdges += b_nLeadingEdges[b_nTDCs];
+		b_nEdges += b_nTrailingEdges[b_nTDCs];
+		b_nTDCs++;
 
 		// Write edge information to file
-		// STD_LOG("Writing Edge Information");
 		std::map< unsigned int, pairVectors > edgeMap;
 
 		auto addEdgesToMap = [&packet, &edgeMap] (
@@ -131,7 +129,7 @@ void EventTreeManager::add(
 				b_trailingTime[b_nHits] = trailingTimes.at(iPair);
 				b_leadingTimeFine[b_nHits] = leadingTimes.at(iPair)%256;
 				b_trailingTimeFine[b_nHits] = trailingTimes.at(iPair)%256;
-				b_width[b_nHits] = trailingTimes.at(iPair) - leadingTimes.at(iPair);
+				b_width[b_nHits] = static_cast<int>(trailingTimes.at(iPair)) - static_cast<int>(leadingTimes.at(iPair));
 				b_nHits++;
 			}
 		}
@@ -153,34 +151,24 @@ void EventTreeManager::setUpBranches() {
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Setup branches
-	m_tree->Branch("num_tdcs", &b_nTDCs, "num_tdcs/I");
-	setupArrBranch<Int_t>("tdc_id", b_tdcID, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch<Int_t>("event_id", b_eventID, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch<Int_t>("tdc_time", b_bunchID, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch<Int_t>("roc_time", b_rocTime, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch<Int_t>("num_headers", b_nHeaders, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch<Int_t>("num_leading_edges", b_nLeadingEdges, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch<Int_t>("num_trailing_edges", b_nTrailingEdges, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch<Int_t>("num_trailers", b_nTrailers, "[num_tdcs]/I", s_hitsMax);
-	setupArrBranch<Int_t>("word_count", b_wordCount, "[num_tdcs]/I", s_hitsMax);
+	m_tree->Branch("num_tdcs", &b_nTDCs, "num_tdcs/i");
+	setupArrBranch<UInt_t>("tdc_id", b_tdcID, "[num_tdcs]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("event_id", b_eventID, "[num_tdcs]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("tdc_time", b_bunchID, "[num_tdcs]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("roc_time", b_rocTime, "[num_tdcs]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("num_headers", b_nHeaders, "[num_tdcs]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("num_leading_edges", b_nLeadingEdges, "[num_tdcs]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("num_trailing_edges", b_nTrailingEdges, "[num_tdcs]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("num_trailers", b_nTrailers, "[num_tdcs]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("word_count", b_wordCount, "[num_tdcs]/i", s_hitsMax);
 
-	m_tree->Branch("num_edges_total", &b_nEdges, "num_edges_total/I");
+	m_tree->Branch("num_edges_total", &b_nEdges, "num_edges_total/i");
 
-	m_tree->Branch("num_hits", &b_nHits, "num_hits/I");
-	setupArrBranch<Int_t>("channel_id", b_channelID, "[num_hits]/I", m_nTDCs);
-	setupArrBranch<Int_t>("leading_time", b_leadingTime, "[num_hits]/I", m_nTDCs);
-	setupArrBranch<Int_t>("trailing_time", b_trailingTime, "[num_hits]/I", m_nTDCs);
-	setupArrBranch<Int_t>("leading_time_tdc_bin", b_leadingTimeFine, "[num_hits]/I", m_nTDCs);
-	setupArrBranch<Int_t>("trailing_time_tdc_bin", b_trailingTimeFine, "[num_hits]/I", m_nTDCs);
+	m_tree->Branch("num_hits", &b_nHits, "num_hits/i");
+	setupArrBranch<UInt_t>("channel_id", b_channelID, "[num_hits]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("leading_time", b_leadingTime, "[num_hits]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("trailing_time", b_trailingTime, "[num_hits]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("leading_time_tdc_bin", b_leadingTimeFine, "[num_hits]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("trailing_time_tdc_bin", b_trailingTimeFine, "[num_hits]/i", m_nTDCs);
 	setupArrBranch<Int_t>("width", b_width, "[num_hits]/I", m_nTDCs);
-
-	resetTreeVariables();
-}
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-void EventTreeManager::resetTreeVariables() {
-	b_nTDCs = static_cast<Int_t>(m_nTDCs);
-	b_nEdges = 0;
-	b_nHits = 0;
 }
