@@ -8,10 +8,14 @@
 #include <string>
 #include <set>
 #include <array>
+#include <list>
+#include <map>
+#include <unordered_map>
 
 // LOCAL
 #include "WordBundle.hpp"
 #include "ThreadSafeQueue.hpp"
+#include "InputFile.hpp"
 
 //! Read files and outputs word bundles
 class FileReader {
@@ -21,13 +25,13 @@ class FileReader {
 public:
 	//! Constructor
 	FileReader(
-		const unsigned int nReadoutBoards, //!< Number of readout boards present
+		const std::list<unsigned int>& readoutBoardList, //!< List of readout boards present
 		std::array< std::shared_ptr<bundleBuffer>, 4> //!< Shared Pointer to WordBundle buffers
 	);
 
 	//! Stages files to be read out together
 	void stageFiles(
-		const std::vector<std::string>& m_files
+		const std::vector<std::string>& files
 	);
 
 	//! Checks if all files have finished being read
@@ -39,17 +43,30 @@ public:
 	);
 
 private:
-	//! Clears all streams and closes the respective files
-	inline void clearStreams();
+	//! Adds a file to be read out
+	void addFile(
+		const std::string& filePath
+	);
+
+	//! Stages a new file
+	inline void stageNextFile(
+		const unsigned int readoutBoardID
+	);
 
 	//! Reads a single data block from each file
 	void runProcessingLoop();
 
 	//! Reads a header line from the passed stream
-	inline void readHeaderLine(
-		std::unique_ptr<std::ifstream>& inputData, //!< The stream to read from
-		unsigned int& readoutBoardNumber, //!< Return variable for the readout board number
-		unsigned int& nDataBytes //!< Return variable for the number of data bytes
+	inline unsigned int readHeaderLine(
+		std::unique_ptr<std::ifstream>& inputData //!< The stream to read from
+		// unsigned int& readoutBoardNumber, //!< Return variable for the readout board number
+		// unsigned int& nDataBytes //!< Return variable for the number of data bytes
+	);
+
+	inline bool isNDataBytesValid(
+		const unsigned int boardID,
+		std::unique_ptr<std::ifstream>& inputData, //!< Stream nDataBytes was read from
+		const unsigned int nDataBytes
 	);
 
 	//! Reads a data block line from the passed stream
@@ -58,10 +75,16 @@ private:
 	);
 
 private:
-	std::vector< std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
-	std::vector< std::string > m_fileNames; //!< Vector of file lengths
-	std::vector< unsigned int > m_fileLengths; //!< Vector of file lengths
-	std::vector< bundleWorkspace > m_bundleWorkspaces; //!< Vector of pointers used to create WordBundles
+	std::map< unsigned int, std::list<InputFile> > m_inputFiles; //!< Input file storage
+	std::map< unsigned int, std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
+
+	std::unordered_map< unsigned int, unsigned int > m_fileLengths;
+	std::unordered_map< unsigned int, bundleWorkspace > m_bundleWorkspaces;
+
+	// std::vector< std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
+	// std::vector< std::string > m_fileNames; //!< Vector of file lengths
+	// std::vector< unsigned int > m_fileLengths; //!< Vector of file lengths
+	// std::vector< bundleWorkspace > m_bundleWorkspaces; //!< Vector of pointers used to create WordBundles
 
 	std::array< std::shared_ptr<bundleBuffer>, 4> m_wordBundleBuffers; //!< Pointers to shared WordBundle buffers
 
@@ -74,9 +97,10 @@ private:
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 bool FileReader::haveFilesExpired() const {
-	// Check for non-null streams
-	for (const auto& streamPtr : m_inputStreams) {
-		if (streamPtr != nullptr) {
+	// When a file is exhausted, it's popped from the file list
+	// Therefore, check for non-empty lists
+	for (const auto& entry : m_inputFiles) {
+		if (!entry.second.empty()) {
 			return false;
 		}
 	}
@@ -85,46 +109,80 @@ bool FileReader::haveFilesExpired() const {
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-void FileReader::clearStreams() {
-	// Close streams
-	for (auto& streamPtr : m_inputStreams) {
-		streamPtr.reset();
-	}
+void FileReader::stageNextFile(
+	const unsigned int readoutBoardID
+) {
+	if (!m_inputFiles[readoutBoardID].empty()) {
+		auto& streamPtr = m_inputStreams[readoutBoardID];
+		const auto& filePath = m_inputFiles[readoutBoardID].front().getFilePath();
+		ASSERT(nullptr == streamPtr);
+		streamPtr = std::make_unique<std::ifstream>(filePath, std::ios::in | std::ios::binary);
+		ASSERT(nullptr != streamPtr);
 
-	// Set file lengths to 0
-	for (auto& length : m_fileLengths) {
-		length = 0;
-	}
+		STD_LOG("Staging " << filePath);
 
-	for (auto& name : m_fileNames) {
-		name.clear();
-	}
-
-	// Delete any semi-constructed bundles
-	for (auto& bundlePtrArr : m_bundleWorkspaces) {
-		for (auto& bundlePtr : bundlePtrArr) {
-			bundlePtr.reset();
+		// Check file is valid
+		if (!streamPtr->good()) {
+			WARNING("Error reading " << filePath);
+			return;
+		} else {
+			// If file is valid, record file length
+			streamPtr->seekg(0, std::ios::end);
+			m_fileLengths[readoutBoardID] = streamPtr->tellg();
+			streamPtr->seekg(0);
 		}
 	}
 }
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-void FileReader::readHeaderLine(
-	std::unique_ptr<std::ifstream>& inputData,
-	unsigned int& readoutBoardNumber,
-	unsigned int& nDataBytes
+unsigned int FileReader::readHeaderLine(
+	std::unique_ptr<std::ifstream>& inputData
+	// unsigned int& readoutBoardNumber,
+	// unsigned int& nDataBytes
 ) {
 	// Read 4 bytes of data
-	char byte1 = inputData->get();
-	char byte2 = inputData->get();
+	inputData->get();
+	inputData->get();
 	char byte3 = inputData->get();
 	char byte4 = inputData->get();
 
 	// Reconstruct bytes into appropriate variables
 	// bytes implicitly converted to int to combine into unsigned integer
-	readoutBoardNumber = (256 * byte1) + byte2;
-	nDataBytes = (256 * byte3) + byte4;
+	return (256 * byte3) + byte4;
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+bool FileReader::isNDataBytesValid(
+	const unsigned int boardID,
+	std::unique_ptr<std::ifstream>& streamPtr,
+	const unsigned int nDataBytes
+) {
+	const auto& filePath = m_inputFiles[boardID].front().getFilePath();
+
+	if (nDataBytes > 4096) {
+		STD_ERR("nDataBytes " << nDataBytes << " > 4096 found in file " << filePath << ". Skipping rest of file.");
+		streamPtr.reset();
+		return false;
+	}
+
+	if (0 != nDataBytes % 4) {
+		STD_ERR("Length of data packet is not dividible by 4. File: " << filePath << ". Skipping rest of file.");
+		streamPtr.reset();
+		return false;
+	}
+
+	if (0 != nDataBytes % 16) {
+		WARNING("Incomplete data block detected in file " << filePath << ". Will skip to next block");
+
+		// Skip requisite number of bytes to find a new header word
+		for (unsigned int i = 0; i < nDataBytes; i++) {
+			streamPtr->get();
+		}
+	}
+
+	return true;
 }
 // -----------------------------------------------------------------------------
 //

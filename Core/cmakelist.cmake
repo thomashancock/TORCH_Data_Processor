@@ -5,6 +5,7 @@ set(SOURCE_FILES ${SOURCE_FILES}
 	Core/src/Config.cpp
 	Core/src/Processor.cpp
 	Core/src/FileReader.cpp
+	Core/src/InputFile.cpp
 	Core/src/ErrorSpy.cpp
 	Core/src/ErrorCounter.cpp
 )

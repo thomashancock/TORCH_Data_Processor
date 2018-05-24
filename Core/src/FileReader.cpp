@@ -2,9 +2,13 @@
 
 // STD
 #include <atomic>
+#include <sstream>
+#include <algorithm>
+#include <utility>
 
 // LOCAL
 #include "BinaryDecoding.hpp"
+#include "Edge.hpp"
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -12,7 +16,7 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 FileReader::FileReader(
-	const unsigned int nReadoutBoards,
+	const std::list<unsigned int>& readoutBoardList,
 	std::array< std::shared_ptr<bundleBuffer>, 4> wordBundleBuffers
 ) :
 	m_wordBundleBuffers(std::move(wordBundleBuffers))
@@ -20,62 +24,49 @@ FileReader::FileReader(
 	for (auto& bufferPtr : m_wordBundleBuffers) {
 		ASSERT(nullptr != bufferPtr);
 	}
+	ASSERT(m_inputFiles.empty());
 	ASSERT(m_inputStreams.empty());
-	ASSERT(nReadoutBoards > 0);
+	ASSERT(readoutBoardList.size() > 0);
 
-	for (auto i = 0; i < nReadoutBoards; i++) {
-		// Create a stream for each readout board
-		m_inputStreams.emplace_back(std::move(nullptr));
+	// TODO: Check all readoutBoardIDs are unique
 
-		// Create a file length counter for each readout board
-		m_fileLengths.push_back(0);
+	// Initialise maps
+	for (const auto& boardID : readoutBoardList) {
+		m_inputFiles.insert(std::make_pair(boardID, std::list<InputFile>() ));
 
-		// Create a filename string for each readout board
-		m_fileNames.emplace_back("");
+		m_inputStreams[boardID] = std::make_unique<std::ifstream>(nullptr);
 
-		// Create an array of bundles for readout board
-		m_bundleWorkspaces.emplace_back();
+		m_fileLengths.emplace(std::make_pair(boardID, 0));
 
-		// Set array of bundle pointers to be nullptr
-		for (auto& ptr : m_bundleWorkspaces.back()) {
-			ptr.reset();
-		}
+		// Add a workspace to the bundle workspace map
+		bundleWorkspace newWorkspace {nullptr};
+		m_bundleWorkspaces.insert(std::make_pair(boardID, std::move(newWorkspace)));
+	}
+
+	// Stage the first set of files
+	for (const auto& entry : m_inputFiles) {
+		stageNextFile(entry.first);
 	}
 
 	// Check vector sizes are correct
-	ASSERT(m_inputStreams.size() == nReadoutBoards);
-	ASSERT(m_fileLengths.size() == nReadoutBoards);
-	ASSERT(m_fileNames.size() == nReadoutBoards);
-	ASSERT(m_bundleWorkspaces.size() == nReadoutBoards);
+	ASSERT(m_inputFiles.size() == readoutBoardList.size());
+	ASSERT(m_inputStreams.size() == readoutBoardList.size());
+	ASSERT(m_fileLengths.size() == readoutBoardList.size());
+	ASSERT(m_bundleWorkspaces.size() == readoutBoardList.size());
 }
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 void FileReader::stageFiles(
-	const std::vector<std::string>& m_files
+	const std::vector<std::string>& files
 ) {
-	ASSERT(m_files.size() == m_inputStreams.size());
+	for (const auto& file : files) {
+		addFile(file);
+	}
 
-	if (!this->haveFilesExpired()) {
-		STD_ERR("Cannot stage files while not all previous files have expired");
-	} else {
-		for (auto i = 0; i < m_files.size(); i++) {
-			// Load each file into an input stream
-			m_inputStreams[i] = std::make_unique<std::ifstream>(m_files[i], std::ios::in | std::ios::binary);
-			ASSERT(m_inputStreams[i] != nullptr);
-			// Check file is valid
-			if (!m_inputStreams[i]->good()) {
-				WARNING("Error reading " << m_files[i]);
-				this->clearStreams();
-				return;
-			} else {
-				// If file is valid, record file length
-				m_inputStreams[i]->seekg(0, std::ios::end);
-				m_fileNames[i] = m_files[i];
-				m_fileLengths[i] = m_inputStreams[i]->tellg();
-				m_inputStreams[i]->seekg(0);
-			}
-		}
+	// Sort files according to file number for each readout
+	for (auto& entry : m_inputFiles) {
+		entry.second.sort();
 	}
 }
 // -----------------------------------------------------------------------------
@@ -99,7 +90,7 @@ void FileReader::runProcessingLoops(
 		this->runProcessingLoop();
 	}
 
-	// Mark functoon as done
+	// Mark function as done
 	readLock = false;
 }
 
@@ -108,94 +99,103 @@ void FileReader::runProcessingLoops(
 // Private:
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-void FileReader::runProcessingLoop() {
-	for (unsigned int i = 0; i < m_inputStreams.size(); i++) {
-		if (m_inputStreams[i] != nullptr) {
+void FileReader::addFile(
+	const std::string& filePath
+) {
+	InputFile inputFile(filePath);
 
+	auto found = m_inputFiles.find(inputFile.getReadoutBoardID());
+	if (m_inputFiles.end() != found) {
+		found->second.push_back(std::move(inputFile));
+	} else {
+		STD_ERR("File " << inputFile.getFilePath() << " has invalid ReadoutBoardID: " << inputFile.getReadoutBoardID());
+	}
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void FileReader::runProcessingLoop() {
+	for (auto& entry : m_inputStreams) {
+		auto& boardID = entry.first;
+		auto& streamPtr = entry.second;
+
+		if (nullptr == streamPtr) {
+			// Check if there are more files to process
+			if (!m_inputFiles[boardID].empty()) {
+				// Remove previous first file from list if is not the first file
+				m_inputFiles[boardID].pop_front();
+
+				// Stage a new file
+				stageNextFile(boardID);
+			}
+		} else {
+			// STD_LOG("Running Processing Loop " << boardID);
 			// Check if stream has expired
-			if (!m_inputStreams[i]->good()) {
-				m_inputStreams[i].reset();
+			if (!streamPtr->good()) {
+				streamPtr.reset();
 				continue;
 			}
 
-			// Read Header information
-			unsigned int readoutBoardNumber = 0;
-			unsigned int nDataBytes = 0;
-			readHeaderLine(m_inputStreams[i],readoutBoardNumber,nDataBytes);
+			// Read Header Information
+			const auto nDataBytes = readHeaderLine(streamPtr);
 
-			// Check read data is okay
-			if (nDataBytes > 4096) {
-				STD_ERR("nDataBytes " << nDataBytes << " > 4096 found in file " << m_fileNames[i] << ". Skipping rest of file.");
-				m_inputStreams[i].reset();
+			// Check number of bytes is as expected
+			if (!isNDataBytesValid(boardID, streamPtr, nDataBytes)) {
+				continue;
 			}
 
-			if (0 != nDataBytes % 4) {
-				STD_ERR("Length of data packet is not dividible by 4. File: " << m_fileNames[i] << ". Skipping rest of file.");
-				m_inputStreams[i].reset();
-			}
-
-			if (0 != nDataBytes % 16) {
-				WARNING("Incomplete data block detected in file " << m_fileNames[i] << ". Will skip to next block");
-
-				// Skip requisite number of bytes to find a new header word
-				for (unsigned int i = 0; i < nDataBytes; i++) {
-					m_inputStreams[i]->get();
-				}
-			}
+			// Get workspace to create bundles
+			auto& workspace = m_bundleWorkspaces[boardID];
 
 			// Calculate number of blocks using bit shift to protect against floating point precision errors
 			// 1 Block = 4 Words = 16 Bytes
-			auto& workspace = m_bundleWorkspaces[i];
-
 			const unsigned int nDataBlocks = nDataBytes >> 4;
 			for (unsigned int iBlock = 0; iBlock < nDataBlocks; iBlock++) {
-				const auto block = readDataBlock(m_inputStreams[i]);
+				const auto block = readDataBlock(streamPtr);
 				// Block => Slot Mapping
 				// 0 => A, 1 => B, 2 => C, 3 => D
 
 				ASSERT(workspace.size() == block.size());
 
-				for (int j = 0; j < workspace.size(); j++) {
+				for (int i = 0; i < workspace.size(); i++) {
 					// Reference assignment to ease readbility
-					const auto& word = block[j];
+					const auto& word = block[i];
 
 					// Check word is not a filler word
 					if (fillerWords.find(word) == fillerWords.end()) {
 						// See if existing bundle has been created
-						if (workspace[j] != nullptr) {
+						if (workspace[i] != nullptr) {
 							// If bundle exists, check for ROC value
 							if (15 == bindec::getDataType(word)) {
 								// If ROC found, add to bundle
-								workspace[j]->setRocValue(bindec::getROCValue(word));
+								workspace[i]->setRocValue(bindec::getROCValue(word));
 
 								// Add bundle to buffer
 								ASSERT(i < m_wordBundleBuffers.size());
-								m_wordBundleBuffers[i]->push(std::move(workspace[j]));
+								m_wordBundleBuffers[boardID]->push(std::move(workspace[i]));
 								// Ensure move was succesful
-								ASSERT(workspace[j] == nullptr);
+								ASSERT(workspace[i] == nullptr);
 							} else {
 								// If ROC is not found, add word to bundle
-								ASSERT(workspace[j] != nullptr);
-								workspace[j]->addWord(word);
+								ASSERT(workspace[i] != nullptr);
+								workspace[i]->addWord(word);
 							}
 						} else {
 							// If no bundle exists, add a new bundle
-							workspace[j] = std::make_unique<WordBundle>(readoutBoardNumber);
+							workspace[i] = std::make_unique<WordBundle>(boardID);
 							// Ensure bundle was created
-							ASSERT(workspace[j] != nullptr);
+							ASSERT(workspace[i] != nullptr);
 							// Add word to bundle
-							workspace[j]->addWord(word);
+							workspace[i]->addWord(word);
 						}
 					}
 				}
 			}
+
+			if (streamPtr->tellg() == m_fileLengths[boardID]) {
+				streamPtr.reset();
+			}
 		}
 	}
 
-	// Close any exhausted streams
-	for (auto i = 0; i < m_inputStreams.size(); i++) {
-		if (m_inputStreams[i]->tellg() == m_fileLengths[i]) {
-			m_inputStreams[i].reset();
-		}
-	}
 }

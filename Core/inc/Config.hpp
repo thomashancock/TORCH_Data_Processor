@@ -35,7 +35,7 @@ public:
 	const std::string getEdgeModifierKey() const { return m_edgeModifier; }
 
 	//! Returns the list of stored readout board Ids
-	const std::list<unsigned int> getReadoutBoardList() const { return m_tdcList; }
+	const std::list<unsigned int> getReadoutBoardList() const { return m_boardList; }
 
 	//! Returns the list of stored TDC Ids
 	const std::list<unsigned int> getTDCList() const { return m_tdcList; }

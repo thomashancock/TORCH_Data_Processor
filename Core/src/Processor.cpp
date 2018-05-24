@@ -43,7 +43,7 @@ Processor::Processor(
 	}
 
 	// Initialise file reader
-	m_fileReader = std::make_unique<FileReader>(1,m_wordBundleBuffers);
+	m_fileReader = std::make_unique<FileReader>(m_config->getReadoutBoardList(),m_wordBundleBuffers);
 	ASSERT(nullptr != m_fileReader);
 
 	// After FileReader initialization, should be two pointers refering to the bundle buffers
@@ -104,24 +104,22 @@ void Processor::runQuickCheck(
 ) {
 	STD_LOG("Mode: QuickCheck");
 
+	ASSERT(nullptr != m_fileReader);
+	m_fileReader->stageFiles(fileNames);
+
 	int bundleCount = 0;
-	for (auto& file : fileNames) {
-		ASSERT(nullptr != m_fileReader);
-		m_fileReader->stageFiles(std::vector<std::string>{ file });
+	while (!m_fileReader->haveFilesExpired()) {
+		m_fileReader->runProcessingLoops(1);
 
-		while (!m_fileReader->haveFilesExpired()) {
-			m_fileReader->runProcessingLoops(1);
-
-			for (auto& buffer : m_wordBundleBuffers) {
-				while(!buffer->empty()) {
-					bundleCount += 1;
-					auto bundle = buffer->popFront();
-					std::cout << "New Bundle = "
-					<< "Board: " << bundle->getReadoutBoardID() << " "
-					<< "ROC: " << bundle->getROCValue() << std::endl;
-					while (!bundle->empty()) {
-						bindec::printWord(bundle->getNextWord());
-					}
+		for (auto& buffer : m_wordBundleBuffers) {
+			while(!buffer->empty()) {
+				bundleCount += 1;
+				auto bundle = buffer->popFront();
+				std::cout << "New Bundle = "
+				<< "Board: " << bundle->getReadoutBoardID() << " "
+				<< "ROC: " << bundle->getROCValue() << std::endl;
+				while (!bundle->empty()) {
+					bindec::printWord(bundle->getNextWord());
 				}
 			}
 		}
