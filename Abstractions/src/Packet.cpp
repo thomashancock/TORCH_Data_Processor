@@ -132,12 +132,12 @@ void Packet::addTrailer(
 void Packet::addDataline(
 	unsigned int word
 ) {
-	const unsigned int dataType = bindec::getDataType(word);
-	ASSERT(4 == dataType || 5 == dataType);
+	ASSERT(4 == bindec::getDataType(word) || 5 == bindec::getDataType(word));
 
 	// Apply edge polarity correction
 	m_edgeModifier(word);
 
+	const unsigned int dataType = bindec::getDataType(word);
 	const unsigned int tdcID = bindec::getTDCID(word);
 
 	// Apply Channel Mapping
