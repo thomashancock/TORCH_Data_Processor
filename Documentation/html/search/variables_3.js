@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['nochange',['noChange',['../namespace_pol_mod.html#a3bf89c0439812d613ba363a866c30817',1,'PolMod']]],
-  ['nomapping',['noMapping',['../namespace_chl_map.html#a5912e55252670a1e71857a1374bbfa1a',1,'ChlMap']]]
+  ['nochange',['noChange',['../namespaceedgmod.html#a912724097db2099cc7793a83e42673d7',1,'edgmod']]],
+  ['nomapping',['noMapping',['../namespacechlmap.html#adeefba45d9765c580e5f7ef9cb99acc5',1,'chlmap']]]
 ];

@@ -1,0 +1,95 @@
+\hypertarget{namespaceedgmod}{}\section{edgmod Namespace Reference}
+\label{namespaceedgmod}\index{edgmod@{edgmod}}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{namespaceedgmod_abd975beb42f73310619eb134f62d7712}{Edge\+Modifier} = std\+::function$<$ void(unsigned int \&)$>$
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespaceedgmod_abf9bf9a87d7a5e31d233545b0e8a3c36}{set\+Edge\+Modifier} (const std\+::string key)
+\begin{DoxyCompactList}\small\item\em Global function to set edge modifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceedgmod_abd975beb42f73310619eb134f62d7712}{Edge\+Modifier} \hyperlink{namespaceedgmod_a912724097db2099cc7793a83e42673d7}{no\+Change}
+\begin{DoxyCompactList}\small\item\em Don\textquotesingle{}t apply any changes. \end{DoxyCompactList}\item 
+\hyperlink{namespaceedgmod_abd975beb42f73310619eb134f62d7712}{Edge\+Modifier} \hyperlink{namespaceedgmod_af31c90c50e8178bf4618a65e5252faff}{flip\+Even}
+\begin{DoxyCompactList}\small\item\em Even channel edge flip. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{namespaceedgmod_abd975beb42f73310619eb134f62d7712}\label{namespaceedgmod_abd975beb42f73310619eb134f62d7712}} 
+\index{edgmod@{edgmod}!Edge\+Modifier@{Edge\+Modifier}}
+\index{Edge\+Modifier@{Edge\+Modifier}!edgmod@{edgmod}}
+\subsubsection{\texorpdfstring{Edge\+Modifier}{EdgeModifier}}
+{\footnotesize\ttfamily using \hyperlink{namespaceedgmod_abd975beb42f73310619eb134f62d7712}{edgmod\+::\+Edge\+Modifier} = typedef std\+::function$<$void(unsigned int\&)$>$}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceedgmod_abf9bf9a87d7a5e31d233545b0e8a3c36}\label{namespaceedgmod_abf9bf9a87d7a5e31d233545b0e8a3c36}} 
+\index{edgmod@{edgmod}!set\+Edge\+Modifier@{set\+Edge\+Modifier}}
+\index{set\+Edge\+Modifier@{set\+Edge\+Modifier}!edgmod@{edgmod}}
+\subsubsection{\texorpdfstring{set\+Edge\+Modifier()}{setEdgeModifier()}}
+{\footnotesize\ttfamily void edgmod\+::set\+Edge\+Modifier (\begin{DoxyParamCaption}\item[{const std\+::string}]{key }\end{DoxyParamCaption})}
+
+
+
+Global function to set edge modifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Key to identify desired edge modifier \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceedgmod_af31c90c50e8178bf4618a65e5252faff}\label{namespaceedgmod_af31c90c50e8178bf4618a65e5252faff}} 
+\index{edgmod@{edgmod}!flip\+Even@{flip\+Even}}
+\index{flip\+Even@{flip\+Even}!edgmod@{edgmod}}
+\subsubsection{\texorpdfstring{flip\+Even}{flipEven}}
+{\footnotesize\ttfamily \hyperlink{namespaceedgmod_abd975beb42f73310619eb134f62d7712}{edgmod\+::\+Edge\+Modifier} edgmod\+::flip\+Even}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= [] (
+    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}& word
+) -> \textcolor{keywordtype}{void} \{
+    \textcolor{keyword}{const} \textcolor{keyword}{auto} dataType = \hyperlink{namespacebindec_a7a98adfd04c65f870f74a423bfd744fe}{bindec::getDataType}(word);
+    \hyperlink{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}{ASSERT}(4 == dataType || 5 == dataType);
+
+    
+    \textcolor{keyword}{const} \textcolor{keyword}{auto} channelID = \hyperlink{namespacebindec_af1997af0743251d010780a8f728fcd7e}{bindec::getChannelID}(word);
+    \textcolor{keywordflow}{if} (0 == channelID%2) \{
+        
+        \textcolor{keywordflow}{if} (dataType == 4) \{
+            word += 0x10000000;
+        \} \textcolor{keywordflow}{else} \{
+            word -= 0x10000000;
+        \}
+    \}
+\}
+\end{DoxyCode}
+
+
+Even channel edge flip. 
+
+\mbox{\Hypertarget{namespaceedgmod_a912724097db2099cc7793a83e42673d7}\label{namespaceedgmod_a912724097db2099cc7793a83e42673d7}} 
+\index{edgmod@{edgmod}!no\+Change@{no\+Change}}
+\index{no\+Change@{no\+Change}!edgmod@{edgmod}}
+\subsubsection{\texorpdfstring{no\+Change}{noChange}}
+{\footnotesize\ttfamily \hyperlink{namespaceedgmod_abd975beb42f73310619eb134f62d7712}{edgmod\+::\+Edge\+Modifier} edgmod\+::no\+Change}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= [] (
+    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}& word
+) -> \textcolor{keywordtype}{void} \{ \}
+\end{DoxyCode}
+
+
+Don\textquotesingle{}t apply any changes. 
+

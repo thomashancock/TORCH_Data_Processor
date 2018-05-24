@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['edgemodifier',['EdgeModifier',['../namespace_pol_mod.html#a85db6c8495e67b2d486ea7dcf7f6aad4',1,'PolMod']]]
+  ['edgemodifier',['EdgeModifier',['../namespaceedgmod.html#abd975beb42f73310619eb134f62d7712',1,'edgmod']]]
 ];
