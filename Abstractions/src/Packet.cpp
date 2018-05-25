@@ -123,7 +123,12 @@ void Packet::addTrailer(
 		m_trailerAdded = true;
 	} else {
 		// Log Error
-		ErrorSpy::getInstance().logError("Duplicate Packet Trailer",m_readoutBoardID,m_tdcIDHeader);
+		const auto wordTDCID = bindec::getTDCID(word);
+		if (wordTDCID == m_tdcIDTrailer) {
+			ErrorSpy::getInstance().logError("Duplicate Packet Trailer Found",m_readoutBoardID,m_tdcIDTrailer);
+		} else {
+			ErrorSpy::getInstance().logError("Erroneous Trailer Found",m_readoutBoardID,wordTDCID);
+		}
 	}
 }
 // -----------------------------------------------------------------------------

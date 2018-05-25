@@ -6,6 +6,7 @@
 
 // LOCAL
 #include "Debug.hpp"
+#include "BinaryDecoding.hpp"
 
 class WordBundle {
 public:
@@ -56,6 +57,8 @@ private:
 inline void WordBundle::addWord(
 	const unsigned int word
 ) {
+	// ROC words should not be stored in Word Bundles
+	ASSERT(15 != bindec::getDataType(word));
 	m_words.push(word);
 }
 // -----------------------------------------------------------------------------
