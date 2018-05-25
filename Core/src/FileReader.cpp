@@ -7,6 +7,7 @@
 
 // LOCAL
 #include "BinaryDecoding.hpp"
+#include "ErrorSpy.hpp"
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -68,7 +69,7 @@ void FileReader::stageFiles(
 		entry.second.sort();
 	}
 
-	// Stage the first set of files
+	// Stage the first file for each readout board
 	for (const auto& entry : m_inputFiles) {
 		stageNextFile(entry.first);
 	}
@@ -191,11 +192,14 @@ void FileReader::runProcessingLoop() {
 							}
 						} else {
 							// If no bundle exists, add a new bundle
-							workspace[i] = std::make_unique<WordBundle>(boardID);
-							// Ensure bundle was created
-							ASSERT(workspace[i] != nullptr);
-							// Add word to bundle
-							workspace[i]->addWord(word);
+							if (15 != bindec::getDataType(word)) {
+								// Only make a new bundle for a non-roc words
+								workspace[i] = std::make_unique<WordBundle>(boardID);
+								// Ensure bundle was created
+								ASSERT(workspace[i] != nullptr);
+								// Add word to bundle
+								workspace[i]->addWord(word);
+							}
 						}
 					}
 				}
