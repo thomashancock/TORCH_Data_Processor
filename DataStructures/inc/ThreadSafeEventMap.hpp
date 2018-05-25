@@ -13,6 +13,8 @@
 #include "Event.hpp"
 
 class ThreadSafeEventMap {
+	using key = std::pair<unsigned int, unsigned int>;
+
 public:
 	//! Constructor
 	ThreadSafeEventMap(
@@ -37,11 +39,13 @@ public:
 	std::vector< std::unique_ptr<Event> > popToComplete();
 
 private:
-	const std::list<unsigned int> m_tdcIDs;
+	const std::list<unsigned int> m_tdcIDs; //!< List of TDCs
 
 	mutable std::mutex m_mut; //!< Mutex used for thread safety
 
-	std::map< unsigned int, std::unique_ptr<Event> > m_map;
+	const static std::function<bool(const key&, const key&)> s_comparator; //!< Static comparator for map
+
+	std::map< key, std::unique_ptr<Event>, decltype(s_comparator) > m_map; //!< Map of events
 };
 
 // -----------------------------------------------------------------------------
