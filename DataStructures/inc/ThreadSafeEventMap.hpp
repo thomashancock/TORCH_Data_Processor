@@ -35,8 +35,17 @@ public:
 	//! Is a complete event stored?
 	inline bool isCompleteStored() const;
 
+	//! Returns whether the buffer is reaching capacity
+	inline bool isBloated() const;
+
 	//! Returns events up to the next complete event
 	std::vector< std::unique_ptr<Event> > popToComplete();
+
+	//! Returns first half of the events stored in the buffer
+	std::vector< std::unique_ptr<Event> > dumpHalf();
+
+	//! Returns all events in the buffer
+	std::vector< std::unique_ptr<Event> > dumpAll();
 
 private:
 	const std::list<unsigned int> m_tdcIDs;
@@ -57,18 +66,25 @@ bool ThreadSafeEventMap::isCompleteStored() const {
 	// Lock Mutex
 	std::lock_guard<std::mutex> lk(m_mut);
 
-	// Search for complete event in map
-	// for (const auto& entry : m_map) {
-	// 	if (entry.second->isComplete()) {
-	// 		return true;
-	// 	}
-	// }
+	// Search for complete event in event tracker list
 	for (const auto& entry : m_eventTracker) {
 		if (entry->second->isComplete()) {
 			return true;
 		}
 	}
 	return false;
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+inline bool ThreadSafeEventMap::isBloated() const {
+	// Lock Mutex
+	std::lock_guard<std::mutex> lk(m_mut);
+
+	ASSERT(m_map.size() == m_eventTracker.size());
+	// Map is bloated if it contains more than 3000 events
+	// Max is 4096, so this is ~3/4 full
+	return m_map.size() > 3000;
 }
 
 #endif /* THREADSAFEEVENTMAP_H */

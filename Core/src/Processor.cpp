@@ -188,6 +188,14 @@ void Processor::runSerial(
 		writeEvents(manager);
 	}
 
+	// Dump remaining events
+	auto events = m_eventBuffer.dumpAll();
+	for (auto& event : events) {
+		ASSERT(nullptr != event);
+		manager->add(std::move(event));
+		ASSERT(nullptr == event);
+	}
+
 	// Write output tree
 	manager->writeTree();
 }
@@ -309,8 +317,20 @@ void Processor::makeEvents() {
 void Processor::writeEvents(
 	std::unique_ptr<EventTreeManager>& manager
 ) {
+	// Check for complete events and write to file if found
 	while (m_eventBuffer.isCompleteStored()) {
 		auto events = m_eventBuffer.popToComplete();
+		for (auto& event : events) {
+			ASSERT(nullptr != event);
+			manager->add(std::move(event));
+			ASSERT(nullptr == event);
+		}
+	}
+
+	// Check for buffer bloat and dump if needed
+	if (m_eventBuffer.isBloated()) {
+		WARNING("Dumping events due to buffer bloat");
+		auto events = m_eventBuffer.dumpHalf();
 		for (auto& event : events) {
 			ASSERT(nullptr != event);
 			manager->add(std::move(event));
