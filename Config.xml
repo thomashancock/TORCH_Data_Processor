@@ -6,7 +6,7 @@
      Serial - Processes files in series. The standard running mode. Out: ROOT
      Parallel - Concurrent processing for increased speed. Out: ROOT
 -->
-<config mode="LowLevel">
+<config mode="Serial">
 	
 	<!-- Channel Mappings:
        NoMapping - Channels read directly from electronics
