@@ -35,6 +35,12 @@ public:
 	//! Gets the Event ID for which the Event object is storing Packets
 	inline unsigned int getEventID();
 
+	//! Marks event as having been dumped
+	inline void setDumped() { m_wasDumped = true; }
+
+	//! Returns whether the event was dumped
+	inline auto wasDumped() { return m_wasDumped; }
+
 	//! Returns a stored Packet
 	std::vector< std::unique_ptr<Packet> > removePackets();
 
@@ -44,6 +50,8 @@ public:
 private:
 	unsigned int m_eventID = 0;      //!< Event ID which all stored packets should have
 	bool m_isEventIDSet = false; //!< bool to tell whether Event ID has been set by the first stored Packet
+
+	bool m_wasDumped = false; //!< Was event dumped without waiting for a complete event?
 
 	std::map< unsigned int, std::unique_ptr<Packet> > m_packetMap; //!< Map to store Packets by TDC ID
 };

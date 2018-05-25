@@ -37,6 +37,10 @@ void EventTreeManager::add(
 
 	const unsigned int eventID = event->getEventID();
 
+	// Must check is complete before packets are removed!
+	b_isComplete = event->isComplete();
+	b_wasDumped = event->wasDumped();
+
 	// Reset count variables
 	b_nTDCs = 0;
 	b_nEdges = 0;
@@ -151,6 +155,9 @@ void EventTreeManager::setUpBranches() {
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Setup branches
+	m_tree->Branch("isComplete", &b_isComplete, "nTDCs/O");
+	m_tree->Branch("wasDumped", &b_wasDumped, "nTDCs/O");
+
 	m_tree->Branch("nTDCs", &b_nTDCs, "nTDCs/i");
 	setupArrBranch<UInt_t>("tdcID", b_tdcID, "[nTDCs]/i", s_hitsMax);
 	setupArrBranch<UInt_t>("eventID", b_eventID, "[nTDCs]/i", s_hitsMax);

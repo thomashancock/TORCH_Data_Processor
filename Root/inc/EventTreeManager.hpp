@@ -33,6 +33,9 @@ private:
 	constexpr static unsigned int s_hitsMax = 500; //!< Array size for hit branches
 
 	// Set branch variables
+	Bool_t b_isComplete = false; //!< Branch Variable: Is event complete?
+	Bool_t b_wasDumped = false; //!< Branch Variable: Was the event dumped?
+
 	UInt_t b_nTDCs = 0;                   //!< Branch Variable: The number of TDCs
 	UInt_t* b_tdcID = nullptr;            //!< Branch Variable [nTDCs]: TCD ID
 	UInt_t* b_eventID = nullptr;          //!< Branch Variable [nTDCs]: Event ID for each TDC
@@ -43,6 +46,7 @@ private:
 	UInt_t* b_nTrailingEdges = nullptr;   //!< Branch Variable [nTDCs]: Number for trailing edges for each TDC
 	UInt_t* b_nTrailers = nullptr;        //!< Branch Variable [nTDCs]: Number for trailers for each TDC
 	UInt_t* b_wordCount = nullptr;        //!< Branch Variable [nTDCs]: Word count for each TDC
+
 	UInt_t b_nEdges = 0;                  //!< Branch Variable: Total number of  edges
 	UInt_t b_nHits = 0;                   //!< Branch Variable: Total number of hits
 	UInt_t* b_channelID = nullptr;        //!< Branch Variable [nHits]: Channel IDs for each hit
