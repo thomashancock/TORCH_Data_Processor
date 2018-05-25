@@ -108,8 +108,8 @@ void FileReader::stageNextFile(
 ) {
 	if (!m_inputFiles[readoutBoardID].empty()) {
 		auto& streamPtr = m_inputStreams[readoutBoardID];
-		const auto& filePath = m_inputFiles[readoutBoardID].front().getFilePath();
 		ASSERT(nullptr == streamPtr);
+		const auto& filePath = m_inputFiles[readoutBoardID].front().getFilePath();
 		streamPtr = std::make_unique<std::ifstream>(filePath, std::ios::in | std::ios::binary);
 		ASSERT(nullptr != streamPtr);
 

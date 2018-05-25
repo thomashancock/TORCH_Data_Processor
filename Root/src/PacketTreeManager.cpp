@@ -46,15 +46,27 @@ void PacketTreeManager::add(
 		b_leadingTDCBin[b_nLeadingEdges] = packet->getFineTimestamp(true,i);
 		b_nLeadingEdges++;
 	}
+	ASSERT(nLeadingEdges == b_nLeadingEdges);
 
 	// Write trailing edges
 	const auto nTrailingEdges = packet->getNTrailingEdges();
 	b_nTrailingEdges = 0;
 	for (unsigned int i = 0; i < nTrailingEdges; i++) {
+		if (packet->getChannelID(false,i) < 10) {
+			std::cout << "ERROR" << std::endl;
+		}
 		b_trailingChannelID[b_nTrailingEdges] = packet->getChannelID(false,i);
 		b_trailingTimestamp[b_nTrailingEdges] = packet->getTimestamp(false,i);
 		b_trailingTDCBin[b_nTrailingEdges] = packet->getFineTimestamp(false,i);
 		b_nTrailingEdges++;
+	}
+	ASSERT(nTrailingEdges == b_nTrailingEdges);
+
+	for (unsigned int i = 0; i < b_nTrailingEdges; i++) {
+		const auto channelID = b_trailingChannelID[i];
+		if (channelID < 10) {
+			std::cout << channelID << std::endl;
+		}
 	}
 
 	// Fill Tree

@@ -35,7 +35,8 @@ FileReader::FileReader(
 		m_inputFiles.insert(std::make_pair(boardID, std::list<InputFile>() ));
 
 		// Create an input stream for the board ID
-		m_inputStreams[boardID] = std::make_unique<std::ifstream>(nullptr);
+		m_inputStreams[boardID] = std::unique_ptr<std::ifstream>(nullptr);
+		ASSERT(nullptr == m_inputStreams[boardID]);
 
 		// Create a space to store the input stream length
 		m_fileLengths.emplace(std::make_pair(boardID, 0));
@@ -43,11 +44,6 @@ FileReader::FileReader(
 		// Add a workspace to the bundle workspace map
 		bundleWorkspace newWorkspace {nullptr};
 		m_bundleWorkspaces.insert(std::make_pair(boardID, std::move(newWorkspace)));
-	}
-
-	// Stage the first set of files
-	for (const auto& entry : m_inputFiles) {
-		stageNextFile(entry.first);
 	}
 
 	// Check map sizes are correct
@@ -70,6 +66,11 @@ void FileReader::stageFiles(
 	// Sort stored files according to file number for each readout
 	for (auto& entry : m_inputFiles) {
 		entry.second.sort();
+	}
+
+	// Stage the first set of files
+	for (const auto& entry : m_inputFiles) {
+		stageNextFile(entry.first);
 	}
 }
 // -----------------------------------------------------------------------------
@@ -117,7 +118,7 @@ void FileReader::addFile(
 			STD_ERR("File " << inputFile.getFilePath() << " has invalid ReadoutBoardID: " << inputFile.getReadoutBoardID());
 		}
 	} else {
-		STD_ERR("Unable to dervie sufficient information from file path: " << filePath);
+		STD_ERR("Unable to derive sufficient information from file path: " << filePath);
 	}
 }
 // -----------------------------------------------------------------------------
