@@ -4,7 +4,7 @@
 // STD
 #include <mutex>
 #include <memory>
-#include <map>
+#include <unordered_map>
 #include <list>
 #include <vector>
 #include <atomic>
@@ -13,7 +13,7 @@
 #include "Event.hpp"
 
 class ThreadSafeEventMap {
-	using eventMap = std::map< unsigned int, std::unique_ptr<Event> >;
+	using eventMap = std::unordered_map< unsigned int, std::unique_ptr<Event> >;
 
 public:
 	//! Constructor
