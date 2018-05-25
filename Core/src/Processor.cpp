@@ -66,7 +66,7 @@ Processor::~Processor() {
 // -----------------------------------------------------------------------------
 void Processor::processFiles(
 	const std::string outputFile,
-	const std::vector<std::string> fileNames
+	const std::vector<std::string>& fileNames
 ) {
 	// Load files into file reader
 	ASSERT(nullptr != m_fileReader);

@@ -37,9 +37,10 @@ public:
 	//! Destructor
 	~Processor();
 
+	//! Runs the processing chain on a set of files
 	void processFiles(
-		const std::string outputFile,
-		const std::vector<std::string> fileNames
+		const std::string outputFile, //!< Name of the output file
+		const std::vector<std::string>& fileNames //!< List of file names to run over
 	);
 
 private:
