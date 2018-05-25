@@ -52,22 +52,12 @@ void PacketTreeManager::add(
 	const auto nTrailingEdges = packet->getNTrailingEdges();
 	b_nTrailingEdges = 0;
 	for (unsigned int i = 0; i < nTrailingEdges; i++) {
-		if (packet->getChannelID(false,i) < 10) {
-			std::cout << "ERROR" << std::endl;
-		}
 		b_trailingChannelID[b_nTrailingEdges] = packet->getChannelID(false,i);
 		b_trailingTimestamp[b_nTrailingEdges] = packet->getTimestamp(false,i);
 		b_trailingTDCBin[b_nTrailingEdges] = packet->getFineTimestamp(false,i);
 		b_nTrailingEdges++;
 	}
 	ASSERT(nTrailingEdges == b_nTrailingEdges);
-
-	for (unsigned int i = 0; i < b_nTrailingEdges; i++) {
-		const auto channelID = b_trailingChannelID[i];
-		if (channelID < 10) {
-			std::cout << channelID << std::endl;
-		}
-	}
 
 	// Fill Tree
 	m_tree->Fill();
@@ -97,7 +87,7 @@ void PacketTreeManager::setUpBranches() {
 	setupArrBranch<UInt_t>("leadingTDCBin", b_leadingTDCBin, "[nLeadingEdges]/i", s_maxEdges);
 
 	m_tree->Branch("nTrailingEdges", &b_nTrailingEdges, "nTrailingEdges/i");
-	setupArrBranch<UInt_t>("trailingChannelID", b_trailingChannelID, "[nLeadingEdges]/i", s_maxEdges);
-	setupArrBranch<UInt_t>("trailingTimestamp", b_trailingTimestamp, "[nLeadingEdges]/i", s_maxEdges);
-	setupArrBranch<UInt_t>("trailingTDCBin", b_trailingTDCBin, "[nLeadingEdges]/i", s_maxEdges);
+	setupArrBranch<UInt_t>("trailingChannelID", b_trailingChannelID, "[nTrailingEdges]/i", s_maxEdges);
+	setupArrBranch<UInt_t>("trailingTimestamp", b_trailingTimestamp, "[nTrailingEdges]/i", s_maxEdges);
+	setupArrBranch<UInt_t>("trailingTDCBin", b_trailingTDCBin, "[nTrailingEdges]/i", s_maxEdges);
 }
