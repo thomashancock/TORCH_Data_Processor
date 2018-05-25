@@ -13,6 +13,8 @@
 #include "Event.hpp"
 
 class ThreadSafeEventMap {
+	using eventMap = std::map< unsigned int, std::unique_ptr<Event> >;
+
 public:
 	//! Constructor
 	ThreadSafeEventMap(
@@ -41,7 +43,9 @@ private:
 
 	mutable std::mutex m_mut; //!< Mutex used for thread safety
 
-	std::map< unsigned int, std::unique_ptr<Event> > m_map;
+	eventMap m_map;
+
+	std::list<eventMap::iterator> m_eventTracker;
 };
 
 // -----------------------------------------------------------------------------
@@ -54,8 +58,13 @@ bool ThreadSafeEventMap::isCompleteStored() const {
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Search for complete event in map
-	for (const auto& entry : m_map) {
-		if (entry.second->isComplete()) {
+	// for (const auto& entry : m_map) {
+	// 	if (entry.second->isComplete()) {
+	// 		return true;
+	// 	}
+	// }
+	for (const auto& entry : m_eventTracker) {
+		if (entry->second->isComplete()) {
 			return true;
 		}
 	}
