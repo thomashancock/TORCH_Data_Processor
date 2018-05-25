@@ -64,9 +64,18 @@ void FileReader::stageFiles(
 		addFile(file);
 	}
 
-	// Sort stored files according to file number for each readout
 	for (auto& entry : m_inputFiles) {
+		// Sort stored files according to file number for each readout
 		entry.second.sort();
+		// Set relative rate based on number of files
+		m_relativeRates[entry.first] = entry.second.size();
+	}
+
+	//TODO: Scale relative rate to smallest possible integer for each boardID
+
+	// Set m_counterMax to max value in rates
+	for (const auto& entry : m_relativeRates) {
+		m_counterMax = (entry.second > m_counterMax) ? entry.second : m_counterMax;
 	}
 
 	// Stage the first file for each readout board
@@ -126,10 +135,20 @@ void FileReader::addFile(
 //
 // -----------------------------------------------------------------------------
 void FileReader::runProcessingLoop() {
+	ASSERT(m_counterMax > 0);
+
+	// Loop through input streams
 	for (auto& entry : m_inputStreams) {
 		auto& boardID = entry.first;
-		auto& streamPtr = entry.second;
 
+		// If rate counter is greater than realtive rate for the boardID, skip this processing pass
+		// This helps ensure syncronisation between the different readouts
+		if (m_rateCounter > m_relativeRates[boardID]) {
+			continue;
+		}
+
+		// Run processing pass of file
+		auto& streamPtr = entry.second;
 		if (nullptr == streamPtr) {
 			// Check if there are more files to process
 			if (!m_inputFiles[boardID].empty()) {
@@ -210,4 +229,7 @@ void FileReader::runProcessingLoop() {
 			}
 		}
 	}
+
+	// Update rate counter
+	m_rateCounter = (m_rateCounter > m_counterMax) ? 0 : m_rateCounter + 1;
 }

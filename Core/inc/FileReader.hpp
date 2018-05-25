@@ -77,6 +77,10 @@ private:
 	std::map< unsigned int, std::list<InputFile> > m_inputFiles; //!< Input file storage
 	std::map< unsigned int, std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
 
+	unsigned int m_rateCounter = 0;
+	unsigned int m_counterMax = 0;
+	std::unordered_map< unsigned int, unsigned int > m_relativeRates;
+
 	std::unordered_map< unsigned int, unsigned int > m_fileLengths; //!< Map to store file lengths
 	std::unordered_map< unsigned int, bundleWorkspace > m_bundleWorkspaces; //!< Map of pointers used to create WordBundles
 
