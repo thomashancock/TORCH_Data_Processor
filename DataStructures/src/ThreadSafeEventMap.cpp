@@ -59,18 +59,6 @@ std::vector< std::unique_ptr<Event> > ThreadSafeEventMap::popToComplete() {
 		// Mutex must be locked here to avoid deadlock with isCompleteStored()!
 		std::lock_guard<std::mutex> lk(m_mut);
 
-		// for (auto it = m_map.begin(); it != m_map.end(); /* no increment */) {
-		// 	returnVec.push_back(std::move(it->second));
-		// 	ASSERT(nullptr == it->second);
-		// 	m_map.erase(it++);
-		// 	if (returnVec.back()->isComplete()) {
-		// 		break;
-		// 	}
-		// }
-		std::cout << "\t\t\tBeginning Write" << std::endl;
-		// std::cout << "Map Size " << m_map.size() << std::endl;
-		std::cout << "\t\t\tTracker Size " << m_eventTracker.size() << std::endl;
-
 		ASSERT(m_map.size() == m_eventTracker.size());
 
 		while (!m_eventTracker.empty()) {
@@ -92,15 +80,6 @@ std::vector< std::unique_ptr<Event> > ThreadSafeEventMap::popToComplete() {
 		}
 
 		ASSERT(m_map.size() == m_eventTracker.size());
-
-		std::cout << "Ending Write" << std::endl;
-		if (m_eventTracker.empty()) {
-			std::cout << "\tEvent Tracker Empty" << std::endl;
-		} else {
-			std::cout << "\tEvent tracker range " << m_eventTracker.front()->first << " - " << m_eventTracker.back()->first << std::endl;
-		}
-		// std::cout << "Map Size " << m_map.size() << std::endl;
-		// std::cout << "Tracker Size " << m_eventTracker.size() << std::endl;
 	}
 
 	// returnVec will be moved due to RVO

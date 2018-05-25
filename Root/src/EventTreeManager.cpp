@@ -155,8 +155,8 @@ void EventTreeManager::setUpBranches() {
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Setup branches
-	m_tree->Branch("isComplete", &b_isComplete, "nTDCs/O");
-	m_tree->Branch("wasDumped", &b_wasDumped, "nTDCs/O");
+	m_tree->Branch("isComplete", &b_isComplete, "isComplete/O");
+	m_tree->Branch("wasDumped", &b_wasDumped, "wasDumped/O");
 
 	m_tree->Branch("nTDCs", &b_nTDCs, "nTDCs/i");
 	setupArrBranch<UInt_t>("tdcID", b_tdcID, "[nTDCs]/i", s_hitsMax);
