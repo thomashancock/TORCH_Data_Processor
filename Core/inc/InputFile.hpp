@@ -48,6 +48,7 @@ private:
 	const std::string m_filePath; //!< Path of the file
 	unsigned int m_readoutBoardID = 0; //!< Readout board ID of the file
 	unsigned int m_fileNumber = 0; //!< File number of the file
+	unsigned long long m_timestamp = 0; //!< Timestamp of the file
 };
 
 #endif /* INPUTFILE_H */

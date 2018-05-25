@@ -32,6 +32,10 @@ InputFile::InputFile(
 		} else if (2 == count) {
 			// If count == 2, the file number is next
 			m_fileNumber = std::stoi(segment);
+			count++;
+		} else if (3 == count) {
+			// If count == 2, the file number is next
+			m_timestamp = std::stoll(segment);
 			m_informationComplete = true;
 			break;
 		}
@@ -44,6 +48,7 @@ void InputFile::print() const {
 	std::cout << "Path: " << m_filePath << std::endl;
 	std::cout << "ReadoutBoardID: " << m_readoutBoardID << std::endl;
 	std::cout << "FileNumber:     " << m_fileNumber << std::endl;
+	std::cout << "Timestamp:      " << m_timestamp << std::endl;
 }
 // -----------------------------------------------------------------------------
 //
