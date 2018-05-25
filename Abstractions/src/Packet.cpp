@@ -206,7 +206,7 @@ void Packet::print() const {
 	// Print Header Information
 	std::cout << "Packet Info: " << ((!this->isConsistent()) ? "Not Consistent!" : "") << std::endl;
 	std::cout << "\tTDC: " << m_tdcIDHeader << std::endl;
-	std::cout << "\tEvt: " << m_tdcIDHeader << std::endl;
+	std::cout << "\tEvt: " << m_eventIDHeader << std::endl;
 	std::cout << "\tBch: " << m_bunchID << std::endl;
 
 	if (0 == m_leadingEdges.size() && 0 == m_trailingEdges.size()) {
