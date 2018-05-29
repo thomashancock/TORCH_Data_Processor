@@ -68,11 +68,17 @@ void ChannelHisto (
 	}
 
 	// Make and save plot
-	TCanvas canvas("canvas","canvas",10,10,1780,1000);
 	timeRefHits->SetLineColor(kRed);
-	timeRefHits->Draw();
 	otherHits->SetLineColor(kBlue);
-	otherHits->Draw("same");
+
+	TCanvas canvas("canvas","canvas",10,10,1780,1000);
+	if (timeRefHits->GetMaximum() > otherHits->GetMaximum()) {
+		timeRefHits->Draw();
+		otherHits->Draw("same");
+	} else {
+		otherHits->Draw();
+		timeRefHits->Draw("same");
+	}
 	canvas.SaveAs("ChannelIDHistogram.pdf");
 
 	return;
