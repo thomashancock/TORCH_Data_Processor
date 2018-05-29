@@ -38,7 +38,6 @@ void ChannelHisto (
 		isEventTree = true;
 	}
 	assert(nullptr != inTree);
-
 	std::cout << ((true == isEventTree) ? "Event" : "Packet") << " tree detected" << std::endl;
 
 	// Set branch addresses
@@ -50,6 +49,8 @@ void ChannelHisto (
 	inTree->GetBranch(channelBranchName.c_str())->SetAddress(channelIDs);
 
 	// Create histrograms
+	// Stored as pointers so they are accessible from the root interactive
+	//  session after the macro finishes execution
 	TH1D* timeRefHits = new TH1D("timeRefHits","timeRefHits",512,0,512);
 	TH1D* otherHits = new TH1D("otherHits","otherHits",512,0,512);
 
