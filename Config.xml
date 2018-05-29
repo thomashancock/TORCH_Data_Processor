@@ -6,7 +6,7 @@
      Serial - Processes files in series. The standard running mode. Out: ROOT
      Parallel - Concurrent processing for increased speed. Out: ROOT
 -->
-<config mode="Serial">
+<config mode="LowLevel">
 	
 	<!-- Channel Mappings:
        NoMapping - Channels read directly from electronics
@@ -14,7 +14,7 @@
        Inv8x64Mapping - 0 -> 511 mapping with TDC ID pairs swapped
        Std4x64Mapping - Standard 0 -> 255 mapping for 4x64 tubes 
 	-->
-	<channelMapping mapping="Std8x64Mapping"/>
+	<channelMapping mapping="Inv8x64Mapping"/>
 	
 	<!-- Edge Modifiers:
        NoChange - Leaves edges unchanged
@@ -32,8 +32,8 @@
 			<slot name="A" tdcID1="6" tdcID2="7"/>
 		</board>
 		<board id="1">
-			<slot name="D" tdcID2="9"/>
-			<!-- <slot name="D" tdcID1="8" tdcID2="9"/> -->
+			<!-- <slot name="D" tdcID2="9"/> -->
+			<slot name="D" tdcID1="8" tdcID2="9"/>
 			<slot name="C" tdcID1="12" tdcID2="13"/>
 			<slot name="B" tdcID1="10" tdcID2="11"/>
 			<slot name="A" tdcID1="14" tdcID2="15"/>
