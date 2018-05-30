@@ -30,7 +30,6 @@ void EventTreeManager::add(
 	std::unique_ptr<Event> event
 ) {
 	ASSERT(nullptr != event);
-	ASSERT(nullptr != m_tree);
 
 	// Lock Mutex
 	std::lock_guard<std::mutex> lk(m_mut);
@@ -56,14 +55,23 @@ void EventTreeManager::add(
 
 		// Fill tree branches from packet
 		ASSERT(b_nTDCs < m_nTDCs);
+		ASSERT(nullptr != b_tdcID);
 		b_tdcID[b_nTDCs] = packet->getTDCID();
+		ASSERT(nullptr != b_eventID);
 		b_eventID[b_nTDCs] = eventID;
+		ASSERT(nullptr != b_bunchID);
 		b_bunchID[b_nTDCs] = packet->getBunchID();
+		ASSERT(nullptr != b_rocTime);
 		b_rocTime[b_nTDCs] = packet->getROCValue();
+		ASSERT(nullptr != b_nHeaders);
 		b_nHeaders[b_nTDCs] = 1;
+		ASSERT(nullptr != b_nLeadingEdges);
 		b_nLeadingEdges[b_nTDCs] = packet->getNLeadingEdges();
+		ASSERT(nullptr != b_nTrailingEdges);
 		b_nTrailingEdges[b_nTDCs] = packet->getNTrailingEdges();
+		ASSERT(nullptr != b_nTrailers);
 		b_nTrailers[b_nTDCs] = 1;
+		ASSERT(nullptr != b_wordCount);
 		b_wordCount[b_nTDCs] = packet->getWordCount();
 
 		// Add edges to total sum
@@ -128,18 +136,24 @@ void EventTreeManager::add(
 			// Write times until one vector is exhausted
 			for (unsigned int iPair = 0; iPair < nPairs; iPair++) {
 				ASSERT(b_nHits < s_hitsMax);
+				ASSERT(nullptr != b_channelID);
 				b_channelID[b_nHits] = channelID;
+				ASSERT(nullptr != b_leadingTime);
 				b_leadingTime[b_nHits] = leadingTimes.at(iPair);
+				ASSERT(nullptr != b_trailingTime);
 				b_trailingTime[b_nHits] = trailingTimes.at(iPair);
+				ASSERT(nullptr != b_leadingTimeFine);
 				b_leadingTimeFine[b_nHits] = leadingTimes.at(iPair)%256;
+				ASSERT(nullptr != b_trailingTimeFine);
 				b_trailingTimeFine[b_nHits] = trailingTimes.at(iPair)%256;
+				ASSERT(nullptr != b_width);
 				b_width[b_nHits] = static_cast<int>(trailingTimes.at(iPair)) - static_cast<int>(leadingTimes.at(iPair));
 				b_nHits++;
 			}
 		}
 	}
 
-	// Fill Tree
+	ASSERT(nullptr != m_tree);
 	m_tree->Fill();
 }
 
@@ -159,23 +173,23 @@ void EventTreeManager::setUpBranches() {
 	m_tree->Branch("wasDumped", &b_wasDumped, "wasDumped/O");
 
 	m_tree->Branch("nTDCs", &b_nTDCs, "nTDCs/i");
-	setupArrBranch<UInt_t>("tdcID", b_tdcID, "[nTDCs]/i", s_hitsMax);
-	setupArrBranch<UInt_t>("eventID", b_eventID, "[nTDCs]/i", s_hitsMax);
-	setupArrBranch<UInt_t>("tdcTime", b_bunchID, "[nTDCs]/i", s_hitsMax);
-	setupArrBranch<UInt_t>("rocTime", b_rocTime, "[nTDCs]/i", s_hitsMax);
-	setupArrBranch<UInt_t>("nHeaders", b_nHeaders, "[nTDCs]/i", s_hitsMax);
-	setupArrBranch<UInt_t>("nLeadingEdges", b_nLeadingEdges, "[nTDCs]/i", s_hitsMax);
-	setupArrBranch<UInt_t>("nTrailingEdges", b_nTrailingEdges, "[nTDCs]/i", s_hitsMax);
-	setupArrBranch<UInt_t>("nTrailers", b_nTrailers, "[nTDCs]/i", s_hitsMax);
-	setupArrBranch<UInt_t>("wordCount", b_wordCount, "[nTDCs]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("tdcID", b_tdcID, "[nTDCs]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("eventID", b_eventID, "[nTDCs]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("tdcTime", b_bunchID, "[nTDCs]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("rocTime", b_rocTime, "[nTDCs]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("nHeaders", b_nHeaders, "[nTDCs]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("nLeadingEdges", b_nLeadingEdges, "[nTDCs]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("nTrailingEdges", b_nTrailingEdges, "[nTDCs]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("nTrailers", b_nTrailers, "[nTDCs]/i", m_nTDCs);
+	setupArrBranch<UInt_t>("wordCount", b_wordCount, "[nTDCs]/i", m_nTDCs);
 
 	m_tree->Branch("nEdgesTotal", &b_nEdges, "num_edges_total/i");
 
 	m_tree->Branch("nHits", &b_nHits, "nHits/i");
-	setupArrBranch<UInt_t>("channelID", b_channelID, "[nHits]/i", m_nTDCs);
-	setupArrBranch<UInt_t>("leadingTime", b_leadingTime, "[nHits]/i", m_nTDCs);
-	setupArrBranch<UInt_t>("trailingTime", b_trailingTime, "[nHits]/i", m_nTDCs);
-	setupArrBranch<UInt_t>("leadingTimeTDCBin", b_leadingTimeFine, "[nHits]/i", m_nTDCs);
-	setupArrBranch<UInt_t>("trailingTimeTDCBin", b_trailingTimeFine, "[nHits]/i", m_nTDCs);
-	setupArrBranch<Int_t>("width", b_width, "[nHits]/I", m_nTDCs);
+	setupArrBranch<UInt_t>("channelID", b_channelID, "[nHits]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("leadingTime", b_leadingTime, "[nHits]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("trailingTime", b_trailingTime, "[nHits]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("leadingTimeTDCBin", b_leadingTimeFine, "[nHits]/i", s_hitsMax);
+	setupArrBranch<UInt_t>("trailingTimeTDCBin", b_trailingTimeFine, "[nHits]/i", s_hitsMax);
+	setupArrBranch<Int_t>("width", b_width, "[nHits]/I", s_hitsMax);
 }

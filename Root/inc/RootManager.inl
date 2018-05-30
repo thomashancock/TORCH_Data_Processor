@@ -70,5 +70,6 @@ void RootManager<T>::setupArrBranch(
 ) {
 	const auto leafList = branchName + leafType;
 	arrayPtr = new U[arraySize] { 0 };
+	ASSERT(nullptr != m_tree);
 	m_tree->Branch(branchName.c_str(),arrayPtr,leafList.c_str());
 }
