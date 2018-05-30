@@ -9,5 +9,8 @@ Notes.txt
 *.txt
 *.pdf
 
+*.xml
+!Example_Config.xml
+
 Build/*
 Install/*

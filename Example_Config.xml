@@ -6,16 +6,16 @@
      Serial - Processes files in series. The standard running mode. Out: ROOT
      Parallel - Concurrent processing for increased speed. Out: ROOT
 -->
-<config mode="LowLevel">
-	
+<config mode="Serial">
+
 	<!-- Channel Mappings:
        NoMapping - Channels read directly from electronics
-       Std8x64Mapping - Standard 0 -> 511 mapping for 8x64 tubes 
+       Std8x64Mapping - Standard 0 -> 511 mapping for 8x64 tubes
        Inv8x64Mapping - 0 -> 511 mapping with TDC ID pairs swapped
-       Std4x64Mapping - Standard 0 -> 255 mapping for 4x64 tubes 
+       Std4x64Mapping - Standard 0 -> 255 mapping for 4x64 tubes
 	-->
-	<channelMapping mapping="Inv8x64Mapping"/>
-	
+	<channelMapping mapping="Std8x64Mapping"/>
+
 	<!-- Edge Modifiers:
        NoChange - Leaves edges unchanged
        FlipEven - Flips L/T edges on even channels
