@@ -206,6 +206,7 @@ void Processor::runParallel(
 	const std::string outputFile
 ) {
 	STD_LOG("Mode: Parallel");
+	WARNING("This mode is not currently implemented. Please run in \"Serial\" mode instead.");
 
 	const auto maxTasks = std::thread::hardware_concurrency() - 1;
 	if (0 == maxTasks) {
@@ -261,7 +262,9 @@ void Processor::makePackets(
 						try {
 							m_packetBuffers.at(index).push(std::move(currPacket));
 						} catch (std::exception& e) {
-							STD_ERR("Exception: " << e.what() << ". Index " << index);
+							STD_ERR("Exception: " << e.what() << ". Index " << index << ". Please ensure TDC ID " << index << " is present in the arrangement section of the config file.");
+							// Packet cannot be moved, so destory it
+							currPacket.reset(nullptr);
 						}
 					} else {
 						// If packet is not good, delete it
