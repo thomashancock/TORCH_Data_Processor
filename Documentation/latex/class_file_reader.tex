@@ -49,6 +49,12 @@ std\+::map$<$ unsigned int, std\+::list$<$ \hyperlink{class_input_file}{Input\+F
 \begin{DoxyCompactList}\small\item\em Input file storage. \end{DoxyCompactList}\item 
 std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ $>$ \hyperlink{class_file_reader_af7ac8567ed5b1fa022a8f98099e23f43}{m\+\_\+input\+Streams}
 \begin{DoxyCompactList}\small\item\em Vector of input streams. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_file_reader_a2e6b51dae972af878f7751f2b6a54d75}{m\+\_\+rate\+Counter} = 0
+\item 
+unsigned int \hyperlink{class_file_reader_a7e3ce1501c6bd018d818aab3bfa18cdb}{m\+\_\+counter\+Max} = 0
+\item 
+std\+::unordered\+\_\+map$<$ unsigned int, unsigned int $>$ \hyperlink{class_file_reader_ab47bb74c4b6d3e038501cc93ec669d33}{m\+\_\+relative\+Rates}
+\item 
 std\+::unordered\+\_\+map$<$ unsigned int, unsigned int $>$ \hyperlink{class_file_reader_a2d560dd766f6866a1c11cc44e059c246}{m\+\_\+file\+Lengths}
 \begin{DoxyCompactList}\small\item\em Map to store file lengths. \end{DoxyCompactList}\item 
 std\+::unordered\+\_\+map$<$ unsigned int, \hyperlink{class_file_reader_a7fb625dc45cee3256d37cc19c65cad86}{bundle\+Workspace} $>$ \hyperlink{class_file_reader_aa04e6f9a40c9186cae2c89352e75d69c}{m\+\_\+bundle\+Workspaces}
@@ -232,6 +238,12 @@ Stages a new file.
 
 Map of pointers used to create Word\+Bundles. 
 
+\mbox{\Hypertarget{class_file_reader_a7e3ce1501c6bd018d818aab3bfa18cdb}\label{class_file_reader_a7e3ce1501c6bd018d818aab3bfa18cdb}} 
+\index{File\+Reader@{File\+Reader}!m\+\_\+counter\+Max@{m\+\_\+counter\+Max}}
+\index{m\+\_\+counter\+Max@{m\+\_\+counter\+Max}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{m\+\_\+counter\+Max}{m\_counterMax}}
+{\footnotesize\ttfamily unsigned int File\+Reader\+::m\+\_\+counter\+Max = 0\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{class_file_reader_a2d560dd766f6866a1c11cc44e059c246}\label{class_file_reader_a2d560dd766f6866a1c11cc44e059c246}} 
 \index{File\+Reader@{File\+Reader}!m\+\_\+file\+Lengths@{m\+\_\+file\+Lengths}}
 \index{m\+\_\+file\+Lengths@{m\+\_\+file\+Lengths}!File\+Reader@{File\+Reader}}
@@ -261,6 +273,18 @@ Input file storage.
 
 
 Vector of input streams. 
+
+\mbox{\Hypertarget{class_file_reader_a2e6b51dae972af878f7751f2b6a54d75}\label{class_file_reader_a2e6b51dae972af878f7751f2b6a54d75}} 
+\index{File\+Reader@{File\+Reader}!m\+\_\+rate\+Counter@{m\+\_\+rate\+Counter}}
+\index{m\+\_\+rate\+Counter@{m\+\_\+rate\+Counter}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{m\+\_\+rate\+Counter}{m\_rateCounter}}
+{\footnotesize\ttfamily unsigned int File\+Reader\+::m\+\_\+rate\+Counter = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_file_reader_ab47bb74c4b6d3e038501cc93ec669d33}\label{class_file_reader_ab47bb74c4b6d3e038501cc93ec669d33}} 
+\index{File\+Reader@{File\+Reader}!m\+\_\+relative\+Rates@{m\+\_\+relative\+Rates}}
+\index{m\+\_\+relative\+Rates@{m\+\_\+relative\+Rates}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{m\+\_\+relative\+Rates}{m\_relativeRates}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ unsigned int, unsigned int $>$ File\+Reader\+::m\+\_\+relative\+Rates\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_file_reader_a038d1362d7e0458b3450ab8584eab688}\label{class_file_reader_a038d1362d7e0458b3450ab8584eab688}} 
 \index{File\+Reader@{File\+Reader}!m\+\_\+word\+Bundle\+Buffers@{m\+\_\+word\+Bundle\+Buffers}}

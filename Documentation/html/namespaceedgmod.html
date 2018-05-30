@@ -87,6 +87,9 @@ Variables</h2></td></tr>
 <tr class="memitem:af31c90c50e8178bf4618a65e5252faff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceedgmod.html#abd975beb42f73310619eb134f62d7712">EdgeModifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceedgmod.html#af31c90c50e8178bf4618a65e5252faff">flipEven</a></td></tr>
 <tr class="memdesc:af31c90c50e8178bf4618a65e5252faff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Even channel edge flip.  <a href="#af31c90c50e8178bf4618a65e5252faff">More...</a><br /></td></tr>
 <tr class="separator:af31c90c50e8178bf4618a65e5252faff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abedd27017e7b73a6aaf3aae39d324eb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceedgmod.html#abd975beb42f73310619eb134f62d7712">EdgeModifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceedgmod.html#abedd27017e7b73a6aaf3aae39d324eb6">flipOdd</a></td></tr>
+<tr class="memdesc:abedd27017e7b73a6aaf3aae39d324eb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odd channel edge flip.  <a href="#abedd27017e7b73a6aaf3aae39d324eb6">More...</a><br /></td></tr>
+<tr class="separator:abedd27017e7b73a6aaf3aae39d324eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="abd975beb42f73310619eb134f62d7712"></a>
@@ -147,6 +150,25 @@ Variables</h2></td></tr>
 <div class="ttc" id="namespacebindec_html_af1997af0743251d010780a8f728fcd7e"><div class="ttname"><a href="namespacebindec.html#af1997af0743251d010780a8f728fcd7e">bindec::getChannelID</a></div><div class="ttdeci">uint getChannelID(const uint word)</div><div class="ttdoc">Extracts the Channel ID from the word (for data types 4 &amp; 5) </div><div class="ttdef"><b>Definition:</b> BinaryDecoding.hpp:46</div></div>
 </div><!-- fragment -->
 <p>Even channel edge flip. </p>
+
+</div>
+</div>
+<a id="abedd27017e7b73a6aaf3aae39d324eb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abedd27017e7b73a6aaf3aae39d324eb6">&#9670;&nbsp;</a></span>flipOdd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceedgmod.html#abd975beb42f73310619eb134f62d7712">edgmod::EdgeModifier</a> edgmod::flipOdd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= [] (</div><div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; word</div><div class="line">) -&gt; <span class="keywordtype">void</span> {</div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> dataType = <a class="code" href="namespacebindec.html#a7a98adfd04c65f870f74a423bfd744fe">bindec::getDataType</a>(word);</div><div class="line">    <a class="code" href="_debug_8hpp.html#aca68c0d4ac8df0838e209fb5300f7be3">ASSERT</a>(4 == dataType || 5 == dataType);</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> channelID = <a class="code" href="namespacebindec.html#af1997af0743251d010780a8f728fcd7e">bindec::getChannelID</a>(word);</div><div class="line">    <span class="keywordflow">if</span> (1 == channelID%2) {</div><div class="line">        </div><div class="line">        <span class="keywordflow">if</span> (dataType == 4) {</div><div class="line">            word += 0x10000000;</div><div class="line">        } <span class="keywordflow">else</span> {</div><div class="line">            word -= 0x10000000;</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div><div class="ttc" id="_debug_8hpp_html_aca68c0d4ac8df0838e209fb5300f7be3"><div class="ttname"><a href="_debug_8hpp.html#aca68c0d4ac8df0838e209fb5300f7be3">ASSERT</a></div><div class="ttdeci">#define ASSERT(x)</div><div class="ttdef"><b>Definition:</b> Debug.hpp:63</div></div>
+<div class="ttc" id="namespacebindec_html_a7a98adfd04c65f870f74a423bfd744fe"><div class="ttname"><a href="namespacebindec.html#a7a98adfd04c65f870f74a423bfd744fe">bindec::getDataType</a></div><div class="ttdeci">uint getDataType(const uint word)</div><div class="ttdoc">Extracts the datatype of the word. </div><div class="ttdef"><b>Definition:</b> BinaryDecoding.hpp:16</div></div>
+<div class="ttc" id="namespacebindec_html_af1997af0743251d010780a8f728fcd7e"><div class="ttname"><a href="namespacebindec.html#af1997af0743251d010780a8f728fcd7e">bindec::getChannelID</a></div><div class="ttdeci">uint getChannelID(const uint word)</div><div class="ttdoc">Extracts the Channel ID from the word (for data types 4 &amp; 5) </div><div class="ttdef"><b>Definition:</b> BinaryDecoding.hpp:46</div></div>
+</div><!-- fragment -->
+<p>Odd channel edge flip. </p>
 
 </div>
 </div>

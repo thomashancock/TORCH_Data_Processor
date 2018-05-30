@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['_7eerrorspy',['~ErrorSpy',['../class_error_spy.html#aa9afe918ddadd03debbbbae613c89e74',1,'ErrorSpy']]],
-  ['_7eprocessor',['~Processor',['../class_processor.html#acf37952c5b420d4e903a512571678692',1,'Processor']]],
-  ['_7erootmanager',['~RootManager',['../class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61',1,'RootManager']]]
+  ['wasdumped',['wasDumped',['../class_event.html#a51ba784cf88a5f581d426e9a8c6f4764',1,'Event']]],
+  ['wordbundle',['WordBundle',['../class_word_bundle.html#a56afa743b30e4b20775b7ecad180c465',1,'WordBundle']]],
+  ['writeevents',['writeEvents',['../class_processor.html#a1a19cb73f339992d6dd1be580c8efef0',1,'Processor']]],
+  ['writetree',['writeTree',['../class_root_manager.html#adbe916dd56e5ec51f89c7643c4847842',1,'RootManager']]]
 ];

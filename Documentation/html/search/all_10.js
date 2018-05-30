@@ -4,6 +4,7 @@ var searchData=
   ['s_5fmaxedges',['s_maxEdges',['../class_packet_tree_manager.html#a4ba06517ad1cb912ff70df1ff69231a5',1,'PacketTreeManager']]],
   ['serial',['Serial',['../_modes_enum_8hpp.html#a3dfe11cf1a3a8121f6cd7fec4bf5947eaab27270f353006b03c91367e05e44b94',1,'ModesEnum.hpp']]],
   ['setchannelmapping',['setChannelMapping',['../class_packet.html#aab292dda74224f53a94d005f49a1c3a8',1,'Packet::setChannelMapping()'],['../namespacechlmap.html#a945bd413e64427712373da77277dd443',1,'chlmap::setChannelMapping()']]],
+  ['setdumped',['setDumped',['../class_event.html#ae0c56d36ba53360683e0917e4caac6ed',1,'Event']]],
   ['setedgemodifier',['setEdgeModifier',['../class_packet.html#a2316cd4582e675d52de8c302c192d46f',1,'Packet::setEdgeModifier()'],['../namespaceedgmod.html#abf9bf9a87d7a5e31d233545b0e8a3c36',1,'edgmod::setEdgeModifier()']]],
   ['setrocvalue',['setRocValue',['../class_word_bundle.html#a15e13fdd7380c72be2f42013560d62c3',1,'WordBundle']]],
   ['setuparrbranch',['setupArrBranch',['../class_root_manager.html#aa1eaed1aa026059b8d00e729161c6a43',1,'RootManager']]],

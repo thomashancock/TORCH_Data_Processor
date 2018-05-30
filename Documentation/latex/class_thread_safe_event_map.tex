@@ -21,8 +21,19 @@ void \hyperlink{class_thread_safe_event_map_aafd485696f0a50da8afa864f04f0aa07}{a
 \begin{DoxyCompactList}\small\item\em Add a packet to the events. \end{DoxyCompactList}\item 
 bool \hyperlink{class_thread_safe_event_map_a9fb58083137d147811de5b93f991d044}{is\+Complete\+Stored} () const
 \begin{DoxyCompactList}\small\item\em Is a complete event stored? \end{DoxyCompactList}\item 
+bool \hyperlink{class_thread_safe_event_map_a203143086874b97171101871ba2c4f6f}{is\+Bloated} () const
+\begin{DoxyCompactList}\small\item\em Returns whether the buffer is reaching capacity. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ $>$ \hyperlink{class_thread_safe_event_map_adc6c905693e3b9b54671299e7610d5b6}{pop\+To\+Complete} ()
-\begin{DoxyCompactList}\small\item\em Returns events up to the next complete event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns events up to the next complete event. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ $>$ \hyperlink{class_thread_safe_event_map_a655bf86c67d1e8d0e8276b012f5fab8d}{dump\+Half} ()
+\begin{DoxyCompactList}\small\item\em Returns first half of the events stored in the buffer. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ $>$ \hyperlink{class_thread_safe_event_map_af65f8dbd177f3db92d227b86839c275d}{dump\+All} ()
+\begin{DoxyCompactList}\small\item\em Returns all events in the buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}{event\+Map} = std\+::unordered\+\_\+map$<$ unsigned int, std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ $>$
+\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -30,8 +41,19 @@ const std\+::list$<$ unsigned int $>$ \hyperlink{class_thread_safe_event_map_ad0
 \item 
 std\+::mutex \hyperlink{class_thread_safe_event_map_ada4e8c2f2195df86503e73674ff30935}{m\+\_\+mut}
 \begin{DoxyCompactList}\small\item\em Mutex used for thread safety. \end{DoxyCompactList}\item 
-std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ $>$ \hyperlink{class_thread_safe_event_map_a27b0ae4416f249242636545a0600d7c5}{m\+\_\+map}
+\hyperlink{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}{event\+Map} \hyperlink{class_thread_safe_event_map_a15d9d8928ff7dc51fa48a1829575b47e}{m\+\_\+map}
+\item 
+std\+::list$<$ event\+Map\+::iterator $>$ \hyperlink{class_thread_safe_event_map_abfd8bf29e9ff254df217bd2b9e32f50c}{m\+\_\+event\+Tracker}
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}\label{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!event\+Map@{event\+Map}}
+\index{event\+Map@{event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{event\+Map}{eventMap}}
+{\footnotesize\ttfamily using \hyperlink{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}{Thread\+Safe\+Event\+Map\+::event\+Map} =  std\+::unordered\+\_\+map$<$ unsigned int, std\+::unique\+\_\+ptr$<$\hyperlink{class_event}{Event}$>$ $>$\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -70,6 +92,36 @@ Constructor.
 
 Add a packet to the events. 
 
+\mbox{\Hypertarget{class_thread_safe_event_map_af65f8dbd177f3db92d227b86839c275d}\label{class_thread_safe_event_map_af65f8dbd177f3db92d227b86839c275d}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!dump\+All@{dump\+All}}
+\index{dump\+All@{dump\+All}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{dump\+All()}{dumpAll()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ $>$ Thread\+Safe\+Event\+Map\+::dump\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns all events in the buffer. 
+
+\mbox{\Hypertarget{class_thread_safe_event_map_a655bf86c67d1e8d0e8276b012f5fab8d}\label{class_thread_safe_event_map_a655bf86c67d1e8d0e8276b012f5fab8d}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!dump\+Half@{dump\+Half}}
+\index{dump\+Half@{dump\+Half}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{dump\+Half()}{dumpHalf()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_event}{Event} $>$ $>$ Thread\+Safe\+Event\+Map\+::dump\+Half (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns first half of the events stored in the buffer. 
+
+\mbox{\Hypertarget{class_thread_safe_event_map_a203143086874b97171101871ba2c4f6f}\label{class_thread_safe_event_map_a203143086874b97171101871ba2c4f6f}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!is\+Bloated@{is\+Bloated}}
+\index{is\+Bloated@{is\+Bloated}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{is\+Bloated()}{isBloated()}}
+{\footnotesize\ttfamily bool Thread\+Safe\+Event\+Map\+::is\+Bloated (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns whether the buffer is reaching capacity. 
+
 \mbox{\Hypertarget{class_thread_safe_event_map_a9fb58083137d147811de5b93f991d044}\label{class_thread_safe_event_map_a9fb58083137d147811de5b93f991d044}} 
 \index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!is\+Complete\+Stored@{is\+Complete\+Stored}}
 \index{is\+Complete\+Stored@{is\+Complete\+Stored}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
@@ -105,11 +157,17 @@ Returns events up to the next complete event.
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{class_thread_safe_event_map_a27b0ae4416f249242636545a0600d7c5}\label{class_thread_safe_event_map_a27b0ae4416f249242636545a0600d7c5}} 
+\mbox{\Hypertarget{class_thread_safe_event_map_abfd8bf29e9ff254df217bd2b9e32f50c}\label{class_thread_safe_event_map_abfd8bf29e9ff254df217bd2b9e32f50c}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!m\+\_\+event\+Tracker@{m\+\_\+event\+Tracker}}
+\index{m\+\_\+event\+Tracker@{m\+\_\+event\+Tracker}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{m\+\_\+event\+Tracker}{m\_eventTracker}}
+{\footnotesize\ttfamily std\+::list$<$event\+Map\+::iterator$>$ Thread\+Safe\+Event\+Map\+::m\+\_\+event\+Tracker\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_thread_safe_event_map_a15d9d8928ff7dc51fa48a1829575b47e}\label{class_thread_safe_event_map_a15d9d8928ff7dc51fa48a1829575b47e}} 
 \index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!m\+\_\+map@{m\+\_\+map}}
 \index{m\+\_\+map@{m\+\_\+map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
 \subsubsection{\texorpdfstring{m\+\_\+map}{m\_map}}
-{\footnotesize\ttfamily std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$\hyperlink{class_event}{Event}$>$ $>$ Thread\+Safe\+Event\+Map\+::m\+\_\+map\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \hyperlink{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}{event\+Map} Thread\+Safe\+Event\+Map\+::m\+\_\+map\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_thread_safe_event_map_ada4e8c2f2195df86503e73674ff30935}\label{class_thread_safe_event_map_ada4e8c2f2195df86503e73674ff30935}} 
 \index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!m\+\_\+mut@{m\+\_\+mut}}

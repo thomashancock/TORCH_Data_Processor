@@ -4,7 +4,6 @@ var searchData=
   ['readheaderline',['readHeaderLine',['../class_file_reader.html#a94181d78b29ebacf2a4b3b3cd03a6750',1,'FileReader']]],
   ['readme_2emd',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
   ['removepackets',['removePackets',['../class_event.html#a4a7c0f87ea9fd8526451d6eddc3a592e',1,'Event']]],
-  ['resettreevariables',['resetTreeVariables',['../class_event_tree_manager.html#a88cf8288ad022053b35192445e77f9a7',1,'EventTreeManager']]],
   ['rootmanager',['RootManager',['../class_root_manager.html',1,'RootManager&lt; T &gt;'],['../class_root_manager.html#a90ff78b3122c0b3fad62bc927778dda9',1,'RootManager::RootManager()']]],
   ['rootmanager_2ehpp',['RootManager.hpp',['../_root_manager_8hpp.html',1,'']]],
   ['rootmanager_2einl',['RootManager.inl',['../_root_manager_8inl.html',1,'']]],

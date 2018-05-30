@@ -20,6 +20,10 @@ bool \hyperlink{class_event_a2a00b2c0c579397ac93c834cf987cbd9}{is\+Complete} () 
 \begin{DoxyCompactList}\small\item\em Checks whether a \hyperlink{class_packet}{Packet} is stored for all T\+DC I\+Ds. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_event_a3f48bec589c70aa0d36fd5cb253ad88c}{get\+Event\+ID} ()
 \begin{DoxyCompactList}\small\item\em Gets the \hyperlink{class_event}{Event} ID for which the \hyperlink{class_event}{Event} object is storing Packets. \end{DoxyCompactList}\item 
+void \hyperlink{class_event_ae0c56d36ba53360683e0917e4caac6ed}{set\+Dumped} ()
+\begin{DoxyCompactList}\small\item\em Marks event as having been dumped. \end{DoxyCompactList}\item 
+auto \hyperlink{class_event_a51ba784cf88a5f581d426e9a8c6f4764}{was\+Dumped} ()
+\begin{DoxyCompactList}\small\item\em Returns whether the event was dumped. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ $>$ \hyperlink{class_event_a4a7c0f87ea9fd8526451d6eddc3a592e}{remove\+Packets} ()
 \begin{DoxyCompactList}\small\item\em Returns a stored \hyperlink{class_packet}{Packet}. \end{DoxyCompactList}\item 
 void \hyperlink{class_event_ab1b48a39a41a7fc92a25617adcf68aa8}{print} () const
@@ -31,6 +35,8 @@ unsigned int \hyperlink{class_event_af0c352ab6a128f9df56b231d941aff25}{m\+\_\+ev
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_event}{Event} ID which all stored packets should have. \end{DoxyCompactList}\item 
 bool \hyperlink{class_event_a3b435b2fe840647c01ae0ee838b66a54}{m\+\_\+is\+Event\+I\+D\+Set} = false
 \begin{DoxyCompactList}\small\item\em bool to tell whether \hyperlink{class_event}{Event} ID has been set by the first stored \hyperlink{class_packet}{Packet} \end{DoxyCompactList}\item 
+bool \hyperlink{class_event_adf297e8a9a7f7e7496dbb2e1ea61c893}{m\+\_\+was\+Dumped} = false
+\begin{DoxyCompactList}\small\item\em Was event dumped without waiting for a complete event? \end{DoxyCompactList}\item 
 std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ $>$ \hyperlink{class_event_a6aabddb7af6189a884d8eacd582bc10f}{m\+\_\+packet\+Map}
 \begin{DoxyCompactList}\small\item\em Map to store Packets by T\+DC ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -114,6 +120,26 @@ Prints information about the event.
 
 Returns a stored \hyperlink{class_packet}{Packet}. 
 
+\mbox{\Hypertarget{class_event_ae0c56d36ba53360683e0917e4caac6ed}\label{class_event_ae0c56d36ba53360683e0917e4caac6ed}} 
+\index{Event@{Event}!set\+Dumped@{set\+Dumped}}
+\index{set\+Dumped@{set\+Dumped}!Event@{Event}}
+\subsubsection{\texorpdfstring{set\+Dumped()}{setDumped()}}
+{\footnotesize\ttfamily void Event\+::set\+Dumped (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Marks event as having been dumped. 
+
+\mbox{\Hypertarget{class_event_a51ba784cf88a5f581d426e9a8c6f4764}\label{class_event_a51ba784cf88a5f581d426e9a8c6f4764}} 
+\index{Event@{Event}!was\+Dumped@{was\+Dumped}}
+\index{was\+Dumped@{was\+Dumped}!Event@{Event}}
+\subsubsection{\texorpdfstring{was\+Dumped()}{wasDumped()}}
+{\footnotesize\ttfamily auto Event\+::was\+Dumped (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns whether the event was dumped. 
+
 
 
 \subsection{Member Data Documentation}
@@ -146,6 +172,16 @@ bool to tell whether \hyperlink{class_event}{Event} ID has been set by the first
 
 
 Map to store Packets by T\+DC ID. 
+
+\mbox{\Hypertarget{class_event_adf297e8a9a7f7e7496dbb2e1ea61c893}\label{class_event_adf297e8a9a7f7e7496dbb2e1ea61c893}} 
+\index{Event@{Event}!m\+\_\+was\+Dumped@{m\+\_\+was\+Dumped}}
+\index{m\+\_\+was\+Dumped@{m\+\_\+was\+Dumped}!Event@{Event}}
+\subsubsection{\texorpdfstring{m\+\_\+was\+Dumped}{m\_wasDumped}}
+{\footnotesize\ttfamily bool Event\+::m\+\_\+was\+Dumped = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Was event dumped without waiting for a complete event? 
 
 
 

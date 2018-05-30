@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['threadsafeeventmap',['ThreadSafeEventMap',['../class_thread_safe_event_map.html#ace03ee2a6017dfee50a61c68626d2345',1,'ThreadSafeEventMap::ThreadSafeEventMap(const std::list&lt; unsigned int &gt; tdcIDs)'],['../class_thread_safe_event_map.html#a523d5bf6c632e3803e721ef3fd94e318',1,'ThreadSafeEventMap::ThreadSafeEventMap(const ThreadSafeEventMap &amp;other)=delete'],['../class_thread_safe_event_map.html#af28959f5fbd84f00d227d10e1b37e5e5',1,'ThreadSafeEventMap::ThreadSafeEventMap(const ThreadSafeEventMap &amp;&amp;other)=delete']]],
-  ['threadsafequeue',['ThreadSafeQueue',['../class_thread_safe_queue.html#a06e14823003cc9b5d9e9151380077f08',1,'ThreadSafeQueue::ThreadSafeQueue()'],['../class_thread_safe_queue.html#a0f3f492104e38b019a5e1a74647cec39',1,'ThreadSafeQueue::ThreadSafeQueue(const ThreadSafeQueue &amp;other)=delete'],['../class_thread_safe_queue.html#a51c1e1c4eb980e2cb5d3012de447bbd5',1,'ThreadSafeQueue::ThreadSafeQueue(const ThreadSafeQueue &amp;&amp;other)=delete']]],
-  ['trimmedstring',['trimmedString',['../_debug_8hpp.html#ade29d44b4fecc53de55b7bd5dd9fcff7',1,'Debug.hpp']]]
+  ['setchannelmapping',['setChannelMapping',['../class_packet.html#aab292dda74224f53a94d005f49a1c3a8',1,'Packet::setChannelMapping()'],['../namespacechlmap.html#a945bd413e64427712373da77277dd443',1,'chlmap::setChannelMapping()']]],
+  ['setdumped',['setDumped',['../class_event.html#ae0c56d36ba53360683e0917e4caac6ed',1,'Event']]],
+  ['setedgemodifier',['setEdgeModifier',['../class_packet.html#a2316cd4582e675d52de8c302c192d46f',1,'Packet::setEdgeModifier()'],['../namespaceedgmod.html#abf9bf9a87d7a5e31d233545b0e8a3c36',1,'edgmod::setEdgeModifier()']]],
+  ['setrocvalue',['setRocValue',['../class_word_bundle.html#a15e13fdd7380c72be2f42013560d62c3',1,'WordBundle']]],
+  ['setuparrbranch',['setupArrBranch',['../class_root_manager.html#aa1eaed1aa026059b8d00e729161c6a43',1,'RootManager']]],
+  ['setupbranches',['setUpBranches',['../class_event_tree_manager.html#a11cbe0078aeb3d0fe320bbeec335babc',1,'EventTreeManager::setUpBranches()'],['../class_packet_tree_manager.html#a3e2aa24c5acd8a87b15cfff2d011f30b',1,'PacketTreeManager::setUpBranches()']]],
+  ['stagefiles',['stageFiles',['../class_file_reader.html#a5d487d37857d537ace41c31d6594ef3a',1,'FileReader']]],
+  ['stagenextfile',['stageNextFile',['../class_file_reader.html#a381cceb460883f24a8113333ae1bf5bb',1,'FileReader']]]
 ];

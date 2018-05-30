@@ -87,6 +87,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3f48bec589c70aa0d36fd5cb253ad88c"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a3f48bec589c70aa0d36fd5cb253ad88c">getEventID</a> ()</td></tr>
 <tr class="memdesc:a3f48bec589c70aa0d36fd5cb253ad88c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="class_event.html" title="Container class for Packets. ">Event</a> ID for which the <a class="el" href="class_event.html" title="Container class for Packets. ">Event</a> object is storing Packets.  <a href="#a3f48bec589c70aa0d36fd5cb253ad88c">More...</a><br /></td></tr>
 <tr class="separator:a3f48bec589c70aa0d36fd5cb253ad88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0c56d36ba53360683e0917e4caac6ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#ae0c56d36ba53360683e0917e4caac6ed">setDumped</a> ()</td></tr>
+<tr class="memdesc:ae0c56d36ba53360683e0917e4caac6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks event as having been dumped.  <a href="#ae0c56d36ba53360683e0917e4caac6ed">More...</a><br /></td></tr>
+<tr class="separator:ae0c56d36ba53360683e0917e4caac6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ba784cf88a5f581d426e9a8c6f4764"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a51ba784cf88a5f581d426e9a8c6f4764">wasDumped</a> ()</td></tr>
+<tr class="memdesc:a51ba784cf88a5f581d426e9a8c6f4764"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the event was dumped.  <a href="#a51ba784cf88a5f581d426e9a8c6f4764">More...</a><br /></td></tr>
+<tr class="separator:a51ba784cf88a5f581d426e9a8c6f4764"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a7c0f87ea9fd8526451d6eddc3a592e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="class_packet.html">Packet</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a4a7c0f87ea9fd8526451d6eddc3a592e">removePackets</a> ()</td></tr>
 <tr class="memdesc:a4a7c0f87ea9fd8526451d6eddc3a592e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a stored <a class="el" href="class_packet.html" title="Stores all the information relevant to a single packet of data. ">Packet</a>.  <a href="#a4a7c0f87ea9fd8526451d6eddc3a592e">More...</a><br /></td></tr>
 <tr class="separator:a4a7c0f87ea9fd8526451d6eddc3a592e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,6 +108,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a3b435b2fe840647c01ae0ee838b66a54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a3b435b2fe840647c01ae0ee838b66a54">m_isEventIDSet</a> = false</td></tr>
 <tr class="memdesc:a3b435b2fe840647c01ae0ee838b66a54"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool to tell whether <a class="el" href="class_event.html" title="Container class for Packets. ">Event</a> ID has been set by the first stored <a class="el" href="class_packet.html" title="Stores all the information relevant to a single packet of data. ">Packet</a>  <a href="#a3b435b2fe840647c01ae0ee838b66a54">More...</a><br /></td></tr>
 <tr class="separator:a3b435b2fe840647c01ae0ee838b66a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf297e8a9a7f7e7496dbb2e1ea61c893"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#adf297e8a9a7f7e7496dbb2e1ea61c893">m_wasDumped</a> = false</td></tr>
+<tr class="memdesc:adf297e8a9a7f7e7496dbb2e1ea61c893"><td class="mdescLeft">&#160;</td><td class="mdescRight">Was event dumped without waiting for a complete event?  <a href="#adf297e8a9a7f7e7496dbb2e1ea61c893">More...</a><br /></td></tr>
+<tr class="separator:adf297e8a9a7f7e7496dbb2e1ea61c893"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6aabddb7af6189a884d8eacd582bc10f"><td class="memItemLeft" align="right" valign="top">std::map&lt; unsigned int, std::unique_ptr&lt; <a class="el" href="class_packet.html">Packet</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a6aabddb7af6189a884d8eacd582bc10f">m_packetMap</a></td></tr>
 <tr class="memdesc:a6aabddb7af6189a884d8eacd582bc10f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store Packets by TDC ID.  <a href="#a6aabddb7af6189a884d8eacd582bc10f">More...</a><br /></td></tr>
 <tr class="separator:a6aabddb7af6189a884d8eacd582bc10f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -251,6 +260,60 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ae0c56d36ba53360683e0917e4caac6ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0c56d36ba53360683e0917e4caac6ed">&#9670;&nbsp;</a></span>setDumped()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Event::setDumped </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Marks event as having been dumped. </p>
+
+</div>
+</div>
+<a id="a51ba784cf88a5f581d426e9a8c6f4764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ba784cf88a5f581d426e9a8c6f4764">&#9670;&nbsp;</a></span>wasDumped()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto Event::wasDumped </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns whether the event was dumped. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="af0c352ab6a128f9df56b231d941aff25"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0c352ab6a128f9df56b231d941aff25">&#9670;&nbsp;</a></span>m_eventID</h2>
@@ -321,6 +384,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Map to store Packets by TDC ID. </p>
+
+</div>
+</div>
+<a id="adf297e8a9a7f7e7496dbb2e1ea61c893"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf297e8a9a7f7e7496dbb2e1ea61c893">&#9670;&nbsp;</a></span>m_wasDumped</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Event::m_wasDumped = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Was event dumped without waiting for a complete event? </p>
 
 </div>
 </div>

@@ -16,7 +16,9 @@ void \hyperlink{namespaceedgmod_abf9bf9a87d7a5e31d233545b0e8a3c36}{set\+Edge\+Mo
 \hyperlink{namespaceedgmod_abd975beb42f73310619eb134f62d7712}{Edge\+Modifier} \hyperlink{namespaceedgmod_a912724097db2099cc7793a83e42673d7}{no\+Change}
 \begin{DoxyCompactList}\small\item\em Don\textquotesingle{}t apply any changes. \end{DoxyCompactList}\item 
 \hyperlink{namespaceedgmod_abd975beb42f73310619eb134f62d7712}{Edge\+Modifier} \hyperlink{namespaceedgmod_af31c90c50e8178bf4618a65e5252faff}{flip\+Even}
-\begin{DoxyCompactList}\small\item\em Even channel edge flip. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Even channel edge flip. \end{DoxyCompactList}\item 
+\hyperlink{namespaceedgmod_abd975beb42f73310619eb134f62d7712}{Edge\+Modifier} \hyperlink{namespaceedgmod_abedd27017e7b73a6aaf3aae39d324eb6}{flip\+Odd}
+\begin{DoxyCompactList}\small\item\em Odd channel edge flip. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Typedef Documentation}
@@ -76,6 +78,36 @@ Global function to set edge modifier.
 
 
 Even channel edge flip. 
+
+\mbox{\Hypertarget{namespaceedgmod_abedd27017e7b73a6aaf3aae39d324eb6}\label{namespaceedgmod_abedd27017e7b73a6aaf3aae39d324eb6}} 
+\index{edgmod@{edgmod}!flip\+Odd@{flip\+Odd}}
+\index{flip\+Odd@{flip\+Odd}!edgmod@{edgmod}}
+\subsubsection{\texorpdfstring{flip\+Odd}{flipOdd}}
+{\footnotesize\ttfamily \hyperlink{namespaceedgmod_abd975beb42f73310619eb134f62d7712}{edgmod\+::\+Edge\+Modifier} edgmod\+::flip\+Odd}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= [] (
+    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}& word
+) -> \textcolor{keywordtype}{void} \{
+    \textcolor{keyword}{const} \textcolor{keyword}{auto} dataType = \hyperlink{namespacebindec_a7a98adfd04c65f870f74a423bfd744fe}{bindec::getDataType}(word);
+    \hyperlink{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}{ASSERT}(4 == dataType || 5 == dataType);
+
+    
+    \textcolor{keyword}{const} \textcolor{keyword}{auto} channelID = \hyperlink{namespacebindec_af1997af0743251d010780a8f728fcd7e}{bindec::getChannelID}(word);
+    \textcolor{keywordflow}{if} (1 == channelID%2) \{
+        
+        \textcolor{keywordflow}{if} (dataType == 4) \{
+            word += 0x10000000;
+        \} \textcolor{keywordflow}{else} \{
+            word -= 0x10000000;
+        \}
+    \}
+\}
+\end{DoxyCode}
+
+
+Odd channel edge flip. 
 
 \mbox{\Hypertarget{namespaceedgmod_a912724097db2099cc7793a83e42673d7}\label{namespaceedgmod_a912724097db2099cc7793a83e42673d7}} 
 \index{edgmod@{edgmod}!no\+Change@{no\+Change}}

@@ -83,8 +83,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acf37952c5b420d4e903a512571678692"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_processor.html#acf37952c5b420d4e903a512571678692">~Processor</a> ()</td></tr>
 <tr class="memdesc:acf37952c5b420d4e903a512571678692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#acf37952c5b420d4e903a512571678692">More...</a><br /></td></tr>
 <tr class="separator:acf37952c5b420d4e903a512571678692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3862d616c58f790ab6d3e9725ce5b10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_processor.html#ad3862d616c58f790ab6d3e9725ce5b10">processFiles</a> (const std::string outputFile, const std::vector&lt; std::string &gt; fileNames)</td></tr>
-<tr class="separator:ad3862d616c58f790ab6d3e9725ce5b10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18f7d93604ac0b8c53aea579330538dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_processor.html#a18f7d93604ac0b8c53aea579330538dc">processFiles</a> (const std::string outputFile, const std::vector&lt; std::string &gt; &amp;fileNames)</td></tr>
+<tr class="memdesc:a18f7d93604ac0b8c53aea579330538dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the processing chain on a set of files.  <a href="#a18f7d93604ac0b8c53aea579330538dc">More...</a><br /></td></tr>
+<tr class="separator:a18f7d93604ac0b8c53aea579330538dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -316,8 +317,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad3862d616c58f790ab6d3e9725ce5b10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3862d616c58f790ab6d3e9725ce5b10">&#9670;&nbsp;</a></span>processFiles()</h2>
+<a id="a18f7d93604ac0b8c53aea579330538dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18f7d93604ac0b8c53aea579330538dc">&#9670;&nbsp;</a></span>processFiles()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,7 +332,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
           <td class="paramname"><em>fileNames</em>&#160;</td>
         </tr>
         <tr>
@@ -341,6 +342,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Runs the processing chain on a set of files. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outputFile</td><td>Name of the output file </td></tr>
+    <tr><td class="paramname">fileNames</td><td>List of file names to run over </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

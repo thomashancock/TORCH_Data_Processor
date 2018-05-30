@@ -16,8 +16,8 @@ Class which manages overall processing of data.
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 \hyperlink{class_processor_acf37952c5b420d4e903a512571678692}{$\sim$\+Processor} ()
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
-void \hyperlink{class_processor_ad3862d616c58f790ab6d3e9725ce5b10}{process\+Files} (const std\+::string output\+File, const std\+::vector$<$ std\+::string $>$ file\+Names)
-\end{DoxyCompactItemize}
+void \hyperlink{class_processor_a18f7d93604ac0b8c53aea579330538dc}{process\+Files} (const std\+::string output\+File, const std\+::vector$<$ std\+::string $>$ \&file\+Names)
+\begin{DoxyCompactList}\small\item\em Runs the processing chain on a set of files. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -138,12 +138,23 @@ Process word bundles into packets.
 {\em word\+Bundle\+Buffer} & Buffer to read from \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_processor_ad3862d616c58f790ab6d3e9725ce5b10}\label{class_processor_ad3862d616c58f790ab6d3e9725ce5b10}} 
+\mbox{\Hypertarget{class_processor_a18f7d93604ac0b8c53aea579330538dc}\label{class_processor_a18f7d93604ac0b8c53aea579330538dc}} 
 \index{Processor@{Processor}!process\+Files@{process\+Files}}
 \index{process\+Files@{process\+Files}!Processor@{Processor}}
 \subsubsection{\texorpdfstring{process\+Files()}{processFiles()}}
-{\footnotesize\ttfamily void Processor\+::process\+Files (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File,  }\item[{const std\+::vector$<$ std\+::string $>$}]{file\+Names }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Processor\+::process\+Files (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+File,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{file\+Names }\end{DoxyParamCaption})}
 
+
+
+Runs the processing chain on a set of files. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+File} & Name of the output file \\
+\hline
+{\em file\+Names} & List of file names to run over \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_processor_a3710adfb2311c70d9402e25a8615ace4}\label{class_processor_a3710adfb2311c70d9402e25a8615ace4}} 
 \index{Processor@{Processor}!run\+Low\+Level@{run\+Low\+Level}}
 \index{run\+Low\+Level@{run\+Low\+Level}!Processor@{Processor}}
