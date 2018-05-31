@@ -11,10 +11,17 @@ The ```Documentation``` directory contains full deoxygen documentation. It can b
 
 Please report any issues to Thomas Hancock (thomas.hancock@physics.ox.ac.uk).
 
+## Requirements to build the processor
+The Multiboard Data Processor (MDP) requires:
+
+* A working installation of CMake
+* A C++14 compliant compiler (e.g. gcc 4.9 or greater)
+* A working installation of ROOT 6
+
+Note: The program has been tested with root 6.08.04, but theoretically any version of ROOT 6 should work (if you have issues related to this, contact Thomas Hancock).
+
 ## Compiling the Processor
 The Multiboard Data Processor (MDP) is built using CMake.
-
-A working installation of ROOT is required to build the program. The program has been tested with root 6.08.04, but theoretically any version of ROOT 6 should work (if you have issues related to this, contact Thomas Hancock).
 
 To build the MDP, do:
 ```
