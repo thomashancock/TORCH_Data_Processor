@@ -61,7 +61,7 @@ in the build directory before rebuilding the program to ensure the tag is correc
 
 ## To-do
 
-This section gives a list of changes/features which are yet to be implemented, but are requested. The requester's initials should be put in brackets after the item
+This section gives a list of changes/features which are yet to be implemented, but are requested. The requester's initials should be put in brackets after the item.
 
 * Refactor Edge Sorting to be easily modifiable (THH)
 * If block/file is dumped, ensure current WordBundle is cleared (THH)
