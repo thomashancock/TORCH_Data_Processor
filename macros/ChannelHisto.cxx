@@ -1,5 +1,6 @@
 #include "TFile.h"
 #include "TTree.h"
+#include "TPad.h"
 
 #include <set>
 #include <string>
@@ -20,8 +21,10 @@ bool isTimeReference(
 }
 
 void ChannelHisto (
-	const std::string inputFile
+	const std::string inputFile,
+	const bool logY = false
 ) {
+
 	// Open file
 	auto* inFile = TFile::Open(inputFile.c_str());
 	TTree* inTree = nullptr;
@@ -69,11 +72,25 @@ void ChannelHisto (
 	}
 
 	// Make and save plot
-	timeRefHits->SetLineColor(kRed);
-	otherHits->SetLineColor(kBlue);
+	auto formatPlot = [] (
+		TH1D* plot,
+		const int lineColor
+	) -> void {
+		plot->SetLineColor(lineColor);
+		plot->GetXaxis()->SetTitle("Channel ID");
+		plot->GetYaxis()->SetTitle("Hit Count");
+	};
+
+	formatPlot(timeRefHits, kRed);
+	formatPlot(otherHits, kBlue);
 
 	TCanvas canvas("canvas","canvas",10,10,1780,1000);
-	if (timeRefHits->GetMaximum() > otherHits->GetMaximum()) {
+	if (true == logY) {
+		gPad->SetLogy();
+	}
+	if (timeRefHits->GetEntries() < 1) {
+		otherHits->Draw();
+	} else if (timeRefHits->GetMaximum() > otherHits->GetMaximum()) {
 		timeRefHits->Draw();
 		otherHits->Draw("same");
 	} else {
