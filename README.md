@@ -52,6 +52,18 @@ The program is configured via a xml config file. This file is specified with the
 
 The output file name can be specified ```-out``` command line argument. If not set, the output will be called ```Output.root```.
 
+## Running a quick test
+A script is provided which runs a quick test of the MDP in ```Serial``` mode.
+
+To run the test, do:
+```
+. run_test.sh
+```
+
+This runs the MDP on the data contained in ```./data/Test_Data``` using the config specified by ```Example_Config.xml```.
+
+The test data is deliberately not perfect. The resulting output should show several "Dumping events due to buffer bloat" warnings, and the Errors Summary should contain a large number of errors (of types "Bad Packet Dumped", "Dumped incomplete packet", "Word found out of sequence").
+
 ## Pulling new changes
 
 New versions of the MDP can be acquired via git. When pulling or fetching a new version of the processor, please ensure you do
@@ -70,7 +82,14 @@ in the build directory before rebuilding the program to ensure the tag is correc
 
 This section gives a list of changes/features which are yet to be implemented, but are requested. The requester's initials should be put in brackets after the item.
 
+* Add possibility of logging errors in ErrorSpy which don't required a Board ID and/or TDC ID (THH)
 * Refactor Edge Sorting to be easily modifiable (THH)
-* If block/file is dumped, ensure current WordBundle is cleared (THH)
 * Add "No Errors" to ErrorSpy summary if no errors are detected (THH)
 * Parallel Mode (THH)
+
+## Known Bugs
+
+This section gives a list of known bugs which require attention. The reporter's initials should be put in brackets after the item.
+
+* If block/file is dumped, ensure current WordBundle should be cleared (THH)
+* "Invalid Datatype" Error has TDC ID = 100 for all occurrences (THH)

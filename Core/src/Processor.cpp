@@ -264,7 +264,8 @@ void Processor::makePackets(
 					// If not, log an error
 					std::stringstream errorMessage;
 					errorMessage << "Invalid Datatype " << dataType;
-					ErrorSpy::getInstance().logError(errorMessage.str(),currPacket->getReadoutBoardID(),currPacket->getTDCID());
+					// TODO: Allow Error logged without requiring TDC ID
+					ErrorSpy::getInstance().logError(errorMessage.str(),bundle->getReadoutBoardID(),100);
 					// But do NOT skip rest of processing as it will determine if the word also appears out of sequence
 				}
 
