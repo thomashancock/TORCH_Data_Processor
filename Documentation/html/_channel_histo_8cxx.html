@@ -72,6 +72,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &quot;TFile.h&quot;</code><br />
 <code>#include &quot;TTree.h&quot;</code><br />
+<code>#include &quot;TPad.h&quot;</code><br />
 <code>#include &lt;set&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -86,8 +87,8 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:aea01419cfa6d3bc850d93c3569853f18"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_channel_histo_8cxx.html#aea01419cfa6d3bc850d93c3569853f18">isTimeReference</a> (const <a class="el" href="_channel_mappings_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a> channelID)</td></tr>
 <tr class="separator:aea01419cfa6d3bc850d93c3569853f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a850d5cc339a027442cc2f7da7fa0468c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_channel_histo_8cxx.html#a850d5cc339a027442cc2f7da7fa0468c">ChannelHisto</a> (const std::string inputFile)</td></tr>
-<tr class="separator:a850d5cc339a027442cc2f7da7fa0468c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad312e222f2136e4af54dc1d785e5b5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_channel_histo_8cxx.html#aad312e222f2136e4af54dc1d785e5b5c">ChannelHisto</a> (const std::string inputFile, const bool logY=false)</td></tr>
+<tr class="separator:aad312e222f2136e4af54dc1d785e5b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a69aa29b598b851b0640aa225a9e5d61d"></a>
@@ -105,8 +106,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a850d5cc339a027442cc2f7da7fa0468c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a850d5cc339a027442cc2f7da7fa0468c">&#9670;&nbsp;</a></span>ChannelHisto()</h2>
+<a id="aad312e222f2136e4af54dc1d785e5b5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad312e222f2136e4af54dc1d785e5b5c">&#9670;&nbsp;</a></span>ChannelHisto()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -115,8 +116,18 @@ Functions</h2></td></tr>
           <td class="memname">void ChannelHisto </td>
           <td>(</td>
           <td class="paramtype">const std::string&#160;</td>
-          <td class="paramname"><em>inputFile</em></td><td>)</td>
+          <td class="paramname"><em>inputFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>logY</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

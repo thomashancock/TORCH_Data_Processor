@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TORCH Multiboard Data Processor: TORCH Data Processor</title>
+<title>TORCH Multiboard Data Processor: TORCH Multiboard Data Processor</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -60,10 +60,52 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">TORCH Data <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a> </div>  </div>
+<div class="title">TORCH Multiboard Data <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a> </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h3>WARNING: This project is still under construction. A proper README will be provided once it is complete.</h3>
+<div class="textblock"><h2>Introduction</h2>
+<p>This program reads raw TORCH data and processes it into a ROOT file.</p>
+<p>Test data files are provided to aid in development of the program.</p>
+<p>For an overview of the program, see <a href="https://indico.cern.ch/event/731827/contributions/3026751/attachments/1660291/2659581/Multiboard_Data_Processor.pdf">slides from the Testbeam Meeting on 1st June 18</a>.</p>
+<p>The <code>Documentation</code> directory contains full deoxygen documentation. It can be viewed through <code>open Documentation/html/index.html</code>.</p>
+<p>Please report any issues to Thomas Hancock (<a href="#" onclick="location.href='mai'+'lto:'+'tho'+'ma'+'s.h'+'an'+'coc'+'k@'+'phy'+'si'+'cs.'+'ox'+'.ac'+'.u'+'k'; return false;">thoma<span style="display: none;">.nosp@m.</span>s.ha<span style="display: none;">.nosp@m.</span>ncock<span style="display: none;">.nosp@m.</span>@phy<span style="display: none;">.nosp@m.</span>sics.<span style="display: none;">.nosp@m.</span>ox.a<span style="display: none;">.nosp@m.</span>c.uk</a>).</p>
+<h2>Requirements to build the processor</h2>
+<p>The Multiboard Data <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a> (MDP) requires:</p>
+<ul>
+<li>A working installation of CMake</li>
+<li>A C++14 compliant compiler (e.g. gcc 4.9 or greater)</li>
+<li>A working installation of ROOT 6</li>
+</ul>
+<p>Note: The program has been tested with root 6.08.04, but theoretically any version of ROOT 6 should work (if you have issues related to this, contact Thomas Hancock).</p>
+<h2>Compiling the <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a></h2>
+<p>The Multiboard Data <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a> (MDP) is built using CMake.</p>
+<p>To build the MDP, do: </p><div class="fragment"><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake .. -DCMAKE_INSTALL_PREFIX=$(install_path) -DCMAKE_BUILD_TYPE=Release</div><div class="line">make</div><div class="line">make install</div></div><!-- fragment --><p>The MDP will be built in the <code>bin</code> directory of the set <code></code>.</p>
+<p>If developing the processor, the program can be build in debug mode by changing the CMake Build Type: </p><div class="fragment"><div class="line">-DCMAKE_BUILD_TYPE=Debug</div></div><!-- fragment --><h2>Running the Program</h2>
+<p>To run the MDP, simply call the program: </p><div class="fragment"><div class="line">./$(install_path)/bin/TORCH_Data_Processor</div></div><!-- fragment --><p> followed by the files you wish to process (e.g. <code>data/*.txt</code>)</p>
+<p>Data files must contain the string <code>Device___</code> in their name. This allows the MDP to properly synchronise data across multiple readouts. The string must be enclosed by underscores, but can contain any words on either side.</p>
+<p>The program is configured via a xml config file. This file is specified with the <code>-con</code> command line option. If not set, the program will search for <code>Config.xml</code>. An example configuration file is provided for you to modify (<code>Example_Config.xml</code>).</p>
+<p>The output file name can be specified <code>-out</code> command line argument. If not set, the output will be called <code>Output.root</code>.</p>
+<h2>Running a quick test</h2>
+<p>A script is provided which runs a quick test of the MDP in <code>Serial</code> mode.</p>
+<p>To run the test, do: </p><div class="fragment"><div class="line">. run_test.sh</div></div><!-- fragment --><p>This runs the MDP on the data contained in <code>./data/Test_Data</code> using the config specified by <code>Example_Config.xml</code>.</p>
+<p>The test data is deliberately not perfect. The resulting output should show several "Dumping events due to buffer bloat" warnings, and the Errors Summary should contain a large number of errors (of types "Bad Packet Dumped", "Dumped incomplete packet", "Word found out of sequence").</p>
+<h2>Pulling new changes</h2>
+<p>New versions of the MDP can be acquired via git. When pulling or fetching a new version of the processor, please ensure you do </p><div class="fragment"><div class="line">git fetch --tags</div></div><!-- fragment --><p> to make your local tags up to date with the GitLab tags. The version tag is stored in the output root file to ensure replicability of results, and having an incorrect local tag destroys this feature.</p>
+<p>In order to properly record the new tag, the MDP must be rebuilt from scratch. Please ensure you do </p><div class="fragment"><div class="line">make clean</div></div><!-- fragment --><p> in the build directory before rebuilding the program to ensure the tag is correctly propagated.</p>
+<h2>To-do</h2>
+<p>This section gives a list of changes/features which are yet to be implemented, but are requested. The requester's initials should be put in brackets after the item.</p>
+<ul>
+<li>Add possibility of logging errors in <a class="el" href="class_error_spy.html" title="Keeps track of errors detected during program execution. ">ErrorSpy</a> which don't required a Board ID and/or TDC ID (THH)</li>
+<li>Refactor <a class="el" href="class_edge.html" title="Container class for Edge information. ">Edge</a> Sorting to be easily modifiable (THH)</li>
+<li>Add "No Errors" to <a class="el" href="class_error_spy.html" title="Keeps track of errors detected during program execution. ">ErrorSpy</a> summary if no errors are detected (THH)</li>
+<li>Parallel Mode (THH)</li>
+</ul>
+<h2>Known Bugs</h2>
+<p>This section gives a list of known bugs which require attention. The reporter's initials should be put in brackets after the item.</p>
+<ul>
+<li>If block/file is dumped, ensure current <a class="el" href="class_word_bundle.html">WordBundle</a> should be cleared (THH)</li>
+<li>"Invalid Datatype" Error has TDC ID = 100 for all occurrences (THH) </li>
+</ul>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

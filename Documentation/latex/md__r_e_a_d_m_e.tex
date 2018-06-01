@@ -1,1 +1,110 @@
-\subsubsection*{W\+A\+R\+N\+I\+NG\+: This project is still under construction. A proper R\+E\+A\+D\+ME will be provided once it is complete.}
+\subsection*{Introduction}
+
+This program reads raw T\+O\+R\+CH data and processes it into a R\+O\+OT file.
+
+Test data files are provided to aid in development of the program.
+
+For an overview of the program, see \href{https://indico.cern.ch/event/731827/contributions/3026751/attachments/1660291/2659581/Multiboard_Data_Processor.pdf}{\tt slides from the Testbeam Meeting on 1st June 18}.
+
+The {\ttfamily Documentation} directory contains full deoxygen documentation. It can be viewed through {\ttfamily open Documentation/html/index.\+html}.
+
+Please report any issues to Thomas Hancock (\href{mailto:thomas.hancock@physics.ox.ac.uk}{\tt thomas.\+hancock@physics.\+ox.\+ac.\+uk}).
+
+\subsection*{Requirements to build the processor}
+
+The Multiboard Data \hyperlink{class_processor}{Processor} (M\+DP) requires\+:
+
+
+\begin{DoxyItemize}
+\item A working installation of C\+Make
+\item A C++14 compliant compiler (e.\+g. gcc 4.\+9 or greater)
+\item A working installation of R\+O\+OT 6
+\end{DoxyItemize}
+
+Note\+: The program has been tested with root 6.\+08.\+04, but theoretically any version of R\+O\+OT 6 should work (if you have issues related to this, contact Thomas Hancock).
+
+\subsection*{Compiling the \hyperlink{class_processor}{Processor}}
+
+The Multiboard Data \hyperlink{class_processor}{Processor} (M\+DP) is built using C\+Make.
+
+To build the M\+DP, do\+: 
+\begin{DoxyCode}
+mkdir build
+cd build
+cmake .. -DCMAKE\_INSTALL\_PREFIX=$(install\_path) -DCMAKE\_BUILD\_TYPE=Release
+make
+make install
+\end{DoxyCode}
+
+
+The M\+DP will be built in the {\ttfamily bin} directory of the set {\ttfamily }.
+
+If developing the processor, the program can be build in debug mode by changing the C\+Make Build Type\+: 
+\begin{DoxyCode}
+-DCMAKE\_BUILD\_TYPE=Debug
+\end{DoxyCode}
+
+
+\subsection*{Running the Program}
+
+To run the M\+DP, simply call the program\+: 
+\begin{DoxyCode}
+./$(install\_path)/bin/TORCH\_Data\_Processor
+\end{DoxyCode}
+ followed by the files you wish to process (e.\+g. {\ttfamily data/$\ast$.txt})
+
+Data files must contain the string {\ttfamily Device\+\_\+\+\_\+\+\_\+} in their name. This allows the M\+DP to properly synchronise data across multiple readouts. The string must be enclosed by underscores, but can contain any words on either side.
+
+The program is configured via a xml config file. This file is specified with the {\ttfamily -\/con} command line option. If not set, the program will search for {\ttfamily Config.\+xml}. An example configuration file is provided for you to modify ({\ttfamily Example\+\_\+\+Config.\+xml}).
+
+The output file name can be specified {\ttfamily -\/out} command line argument. If not set, the output will be called {\ttfamily Output.\+root}.
+
+\subsection*{Running a quick test}
+
+A script is provided which runs a quick test of the M\+DP in {\ttfamily Serial} mode.
+
+To run the test, do\+: 
+\begin{DoxyCode}
+. run\_test.sh
+\end{DoxyCode}
+
+
+This runs the M\+DP on the data contained in {\ttfamily ./data/\+Test\+\_\+\+Data} using the config specified by {\ttfamily Example\+\_\+\+Config.\+xml}.
+
+The test data is deliberately not perfect. The resulting output should show several \char`\"{}\+Dumping events due to buffer bloat\char`\"{} warnings, and the Errors Summary should contain a large number of errors (of types \char`\"{}\+Bad Packet Dumped\char`\"{}, \char`\"{}\+Dumped incomplete packet\char`\"{}, \char`\"{}\+Word found out of sequence\char`\"{}).
+
+\subsection*{Pulling new changes}
+
+New versions of the M\+DP can be acquired via git. When pulling or fetching a new version of the processor, please ensure you do 
+\begin{DoxyCode}
+git fetch --tags
+\end{DoxyCode}
+ to make your local tags up to date with the Git\+Lab tags. The version tag is stored in the output root file to ensure replicability of results, and having an incorrect local tag destroys this feature.
+
+In order to properly record the new tag, the M\+DP must be rebuilt from scratch. Please ensure you do 
+\begin{DoxyCode}
+make clean
+\end{DoxyCode}
+ in the build directory before rebuilding the program to ensure the tag is correctly propagated.
+
+\subsection*{To-\/do}
+
+This section gives a list of changes/features which are yet to be implemented, but are requested. The requester\textquotesingle{}s initials should be put in brackets after the item.
+
+
+\begin{DoxyItemize}
+\item Add possibility of logging errors in \hyperlink{class_error_spy}{Error\+Spy} which don\textquotesingle{}t required a Board ID and/or T\+DC ID (T\+HH)
+\item Refactor \hyperlink{class_edge}{Edge} Sorting to be easily modifiable (T\+HH)
+\item Add \char`\"{}\+No Errors\char`\"{} to \hyperlink{class_error_spy}{Error\+Spy} summary if no errors are detected (T\+HH)
+\item Parallel Mode (T\+HH)
+\end{DoxyItemize}
+
+\subsection*{Known Bugs}
+
+This section gives a list of known bugs which require attention. The reporter\textquotesingle{}s initials should be put in brackets after the item.
+
+
+\begin{DoxyItemize}
+\item If block/file is dumped, ensure current \hyperlink{class_word_bundle}{Word\+Bundle} should be cleared (T\+HH)
+\item \char`\"{}\+Invalid Datatype\char`\"{} Error has T\+DC ID = 100 for all occurrences (T\+HH) 
+\end{DoxyItemize}
