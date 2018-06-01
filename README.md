@@ -91,5 +91,5 @@ This section gives a list of changes/features which are yet to be implemented, b
 
 This section gives a list of known bugs which require attention. The reporter's initials should be put in brackets after the item.
 
-* If block/file is dumped, ensure current WordBundle should be cleared (THH)
+* If block/file is dumped, current WordBundle should be cleared (THH)
 * "Invalid Datatype" Error has TDC ID = 100 for all occurrences (THH)
