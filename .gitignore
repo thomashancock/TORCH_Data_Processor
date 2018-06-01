@@ -13,4 +13,8 @@ Notes.txt
 !Example_Config.xml
 
 Build/*
+build/*
 Install/*
+install/*
+Plots/*
+plots/*

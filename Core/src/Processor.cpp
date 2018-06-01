@@ -252,43 +252,79 @@ void Processor::makePackets(
 		auto bundle = wordBundleBuffer->popFront();
 		ASSERT(bundle != nullptr);
 
+		// Check that the bundle is complete
 		if (bundle->isComplete()) {
+			// If it is, remove words until it's empty
 			while (!bundle->empty()) {
 				const auto word = bundle->getNextWord();
+
+				// Check data type of word is one we expect
 				const auto dataType = bindec::getDataType(word);
+				if ((dataType > 5)||(dataType < 2)) {
+					// If not, log an error
+					std::stringstream errorMessage;
+					errorMessage << "Invalid Datatype " << dataType;
+					ErrorSpy::getInstance().logError(errorMessage.str(),currPacket->getReadoutBoardID(),currPacket->getTDCID());
+					// But do NOT skip rest of processing as it will determine if the word also appears out of sequence
+				}
+
+				// If data type is one which is expected, use it to construct packets
+				// First check for header, as this will trigger the creation of a new packet
 				if (2 == dataType) {
-					if (currPacket != nullptr && currPacket->isGood()) {
-						const auto index = currPacket->getTDCID();
-						try {
-							m_packetBuffers.at(index).push(std::move(currPacket));
-						} catch (std::exception& e) {
-							STD_ERR("Exception: " << e.what() << ". Index " << index << ". Please ensure TDC ID " << index << " is present in the arrangement section of the config file.");
-							// Packet cannot be moved, so destory it
-							currPacket.reset(nullptr);
-						}
-					} else {
-						// If packet is not good, delete it
+					// If a packet is already being constructed, it will be incomplete
+					if (nullptr != currPacket) {
+						// A complete packet should not reach this point
+						ASSERT(!currPacket->isComplete());
+						// Log that a packet was dumped
+						ErrorSpy::getInstance().logError("Dumped incomplete packet",bundle->getReadoutBoardID(),bindec::getTDCID(word));
+						// Delete the incomplete packet
 						currPacket.reset(nullptr);
 					}
+					// Make a new packet
+					// In order to make a new packet, no packet should currently be stored
 					ASSERT(nullptr == currPacket);
+					// Make a new packet
 					currPacket = std::make_unique<Packet>(bundle->getReadoutBoardID(),bundle->getROCValue(),word);
 					ASSERT(currPacket != nullptr);
+				// If the word is not a header word, check if a packet is currently in construction
 				} else if (currPacket != nullptr) {
+					// Check word data type and add appropriately
 					if (3 == dataType) {
 						ASSERT(currPacket != nullptr);
 						currPacket->addTrailer(word);
+
+						// A packet should be complete when a trailer is added
+						// Check the newly completed packet is good (consistent + complete)
+						if (currPacket->isGood()) {
+							// If it is, add it to the acket buffers
+							const auto index = currPacket->getTDCID();
+							try {
+								// Attempt to add the packet to the appropriate buffer
+								m_packetBuffers.at(index).push(std::move(currPacket));
+							} catch (std::exception& e) {
+								STD_ERR("Exception: " << e.what() << ". Index " << index << ". Please ensure TDC ID " << index << " is present in the arrangement section of the config file.");
+								// Packet cannot be moved, so destory it
+								currPacket.reset(nullptr);
+							}
+						} else {
+							// If packet is not good, delete it
+							ErrorSpy::getInstance().logError("Bad Packet Dumped",currPacket->getReadoutBoardID(),currPacket->getTDCID());
+							currPacket.reset(nullptr);
+						} /* if (currPacket->isGood()) */
+					// If data type indicates a data word, simply add it to current packet
 					} else if (4 == dataType || 5 == dataType) {
 						ASSERT(currPacket != nullptr);
 						currPacket->addDataline(word);
-					} else {
-						std::stringstream errorMessage;
-						errorMessage << "Invalid Datatype " << dataType;
-						ErrorSpy::getInstance().logError(errorMessage.str(),currPacket->getReadoutBoardID(),currPacket->getTDCID());
 					}
-				}
-			}
-		}
-	}
+				} else {
+					// If this point is reached, a word has been found while a packet is not being constructed
+					// This means it has appeared out of sequence (i.e. it is not between a header and a trailer)
+					// An error is logged, and the word is discarded
+					ErrorSpy::getInstance().logError("Word found out of sequence",bundle->getReadoutBoardID(),bindec::getTDCID(word));
+				} /* if (2 == dataType) */
+			} /* while (!bundle->empty()) */
+		} /* if (bundle->isComplete()) */
+	} /* while (!wordBundleBuffer->empty()) */
 }
 // -----------------------------------------------------------------------------
 //

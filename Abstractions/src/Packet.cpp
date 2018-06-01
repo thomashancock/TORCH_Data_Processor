@@ -75,7 +75,7 @@ bool Packet::isComplete() const {
 	// }
 
 	// return (complete*wordCountCheck);
-
+	// if (!complete) std::cout << "Incomplete packet " << m_tdcIDHeader << std::endl;
 	return complete;
 }
 // -----------------------------------------------------------------------------
@@ -83,16 +83,19 @@ bool Packet::isComplete() const {
 // -----------------------------------------------------------------------------
 bool Packet::isConsistent() const {
 	if (m_tdcIDHeader != m_tdcIDTrailer) {
+		// std::cout << "Mismatched Header & Trailer TDC ID " << m_tdcIDHeader << std::endl;
 		return false;
 	}
 
 	if (m_eventIDHeader != m_eventIDTrailer) {
+		// std::cout << "Mismatched Header & Trailer Event ID " << m_tdcIDHeader << std::endl;
 		return false;
 	}
 
 	if (m_leadingEdges.size() > 0) {
 		for (auto& edge : m_leadingEdges) {
 			if (edge.getTDCID() != m_tdcIDHeader) {
+				// std::cout << "Mismatched Edge TDC ID " << m_tdcIDHeader << std::endl;
 				return false;
 			}
 		}
@@ -101,6 +104,7 @@ bool Packet::isConsistent() const {
 	if (m_trailingEdges.size() > 0) {
 		for (auto& edge : m_trailingEdges) {
 			if (edge.getTDCID() != m_tdcIDHeader) {
+				// std::cout << "Mismatched Edge TDC ID " << m_tdcIDHeader << " " << edge.getTDCID() << std::endl;
 				return false;
 			}
 		}
