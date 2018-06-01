@@ -76,7 +76,7 @@ In order to properly record the new tag, the MDP must be rebuilt from scratch. P
 ```
 make clean
 ```
-in the build directory before rebuilding the program to ensure the tag is correctly propagated.
+in the build directory, then follow the steps in the "Compiling the Processor" section from the call to ```cmake``` onwards.
 
 ## To-do
 
