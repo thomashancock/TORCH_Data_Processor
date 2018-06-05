@@ -88,7 +88,7 @@ root 'macros/MakeChannelHisto.cxx("Output.root")' -b -q
 
 Currently two macros are provided:
 
-#### MakeChannelHisto
+* **MakeChannelHisto**
 
 Makes a histogram of the hits on each channel, separation out time reference channels according to the ```Std8x64Mapping``` Channel Mapping.
 
@@ -99,7 +99,7 @@ An additional argument can be provided to set the y axis scale to be logarithmic
 root 'macros/MakeChannelHisto.cxx("Output.root",1)' -b -q
 ```
 
-#### MakeHitmap
+* **MakeHitmap**
 
 Makes a hitmap of detected hits, assuming the  reference channels are laid out according to the ```Std8x64Mapping``` Channel Mapping.
 
