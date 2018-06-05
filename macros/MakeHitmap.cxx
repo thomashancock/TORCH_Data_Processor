@@ -20,29 +20,50 @@ coor getCoordinate(
 	return std::make_pair(col,row);
 }
 
-//! Makes a hitmap from the passed file
-void MakeHitmap(
-	const std::string inputFile
+//! Loads either the event or packet tree
+bool loadTree(
+	TFile* inFile,
+	TTree*& inTree,
+	bool& isEventTree
 ) {
-	// Open file
-	auto* inFile = TFile::Open(inputFile.c_str(),"READ");
-	TTree* inTree = nullptr;
-
-	bool isEventTree = false;
+	inTree = nullptr;
+	isEventTree = false;
 	inTree = (TTree*) inFile->Get("event_tree");
 	if (nullptr == inTree) {
 		inTree = (TTree*) inFile->Get("packet_tree");
 		if (nullptr == inTree) {
-			std::cout << "Error: Cannot access TTree" << std::endl;
-			return;
+			return false;
 		}
 	} else {
 		isEventTree = true;
 	}
+	return true;
+}
+
+//! Makes a hitmap from the passed file
+void MakeHitmap(
+	const std::string inputFile
+) {
+	// ---------
+	// Open file
+	// ---------
+	auto* inFile = TFile::Open(inputFile.c_str(),"READ");
+
+	// ----------------
+	// Load Input TTree
+	// ----------------
+	TTree* inTree = nullptr;
+	bool isEventTree = false;
+	if (!loadTree(inFile, inTree, isEventTree)) {
+		std::cout << "Error: Cannot access TTree" << std::endl;
+		return;
+	}
 	assert(nullptr != inTree);
 	std::cout << ((true == isEventTree) ? "Event" : "Packet") << " tree detected" << std::endl;
 
-	// Set branch addresses
+	// --------------------
+	// Set Branch Addresses
+	// --------------------
 	const std::string hitsBranchName = (false == isEventTree) ? "nLeadingEdges" : "nHits";
 	const std::string channelBranchName = (false == isEventTree) ? "leadingChannelID" : "channelID";
 	uint nHits;
@@ -50,10 +71,14 @@ void MakeHitmap(
 	inTree->GetBranch(hitsBranchName.c_str())->SetAddress(&nHits);
 	inTree->GetBranch(channelBranchName.c_str())->SetAddress(channelIDs);
 
-	// Setup hitmap
+	// ------------
+	// Setup Hitmap
+	// ------------
 	TH2D hitmap("Hitmap","Hitmap",8,0.5,8.5,64,0.5,64.5);
 
-	// Read hits from tree
+	// -------------------
+	// Read Hits from Tree
+	// -------------------
 	const auto nEntries = inTree->GetEntries();
 	std::cout << nEntries << std::endl;
 	for (auto i = 0; i < nEntries; i++) {
@@ -64,7 +89,9 @@ void MakeHitmap(
 		}
 	}
 
+	// -----------
 	// Save Hitmap
+	// -----------
 	TCanvas canvas("canvas","canvas");
 	hitmap.Draw("colz");
 	canvas.SaveAs("Hitmap.pdf");
