@@ -20,13 +20,14 @@ bool isTimeReference(
 	}
 }
 
+
+
 void ChannelHisto (
 	const std::string inputFile,
 	const bool logY = false
 ) {
-
 	// Open file
-	auto* inFile = TFile::Open(inputFile.c_str());
+	auto* inFile = TFile::Open(inputFile.c_str(),"READ");
 	TTree* inTree = nullptr;
 
 	bool isEventTree = false;
@@ -87,6 +88,9 @@ void ChannelHisto (
 	TCanvas canvas("canvas","canvas",10,10,1780,1000);
 	if (true == logY) {
 		gPad->SetLogy();
+		// Ensure axis range extends to 0
+		timeRefHits->SetAxisRange(0.7,timeRefHits->GetMaximum()*1.3,"Y");
+		otherHits->SetAxisRange(0.7,otherHits->GetMaximum()*1.3,"Y");
 	}
 	if (timeRefHits->GetEntries() < 1) {
 		otherHits->Draw();
