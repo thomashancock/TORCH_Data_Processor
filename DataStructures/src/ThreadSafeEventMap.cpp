@@ -142,24 +142,25 @@ std::vector< std::unique_ptr<Event> > ThreadSafeEventMap::dumpAll() {
 	ASSERT(m_map.size() == m_eventTracker.size());
 
 	const auto nInBuffer = m_eventTracker.size();
-	ASSERT(nInBuffer > 0);
-	for (auto i = 0; i < nInBuffer; i++) {
-		auto& entry = m_eventTracker.front();
+	if (0 != nInBuffer) {
+		for (auto i = 0; i < nInBuffer; i++) {
+			auto& entry = m_eventTracker.front();
 
-		// Add event pointed to by tracker entry to return vector
-		returnVec.push_back(std::move(entry->second));
-		ASSERT(nullptr == entry->second);
+			// Add event pointed to by tracker entry to return vector
+			returnVec.push_back(std::move(entry->second));
+			ASSERT(nullptr == entry->second);
 
-		// Mark event as dumped
-		returnVec.back()->setDumped();
+			// Mark event as dumped
+			returnVec.back()->setDumped();
 
-		// Erase the entry from the map and pop it from the tracker
-		m_map.erase(entry);
-		m_eventTracker.pop_front();
+			// Erase the entry from the map and pop it from the tracker
+			m_map.erase(entry);
+			m_eventTracker.pop_front();
+		}
+
+		ASSERT(m_map.size() == m_eventTracker.size());
+		ASSERT(0 == m_eventTracker.size());
 	}
-
-	ASSERT(m_map.size() == m_eventTracker.size());
-	ASSERT(0 == m_eventTracker.size());
 
 	// returnVec will be moved due to RVO
 	return returnVec;
