@@ -78,6 +78,33 @@ make clean
 ```
 in the build directory, then follow the steps in the "Compiling the Processor" section from the call to ```cmake``` onwards.
 
+## Macros
+ROOT macros for quickly processing the MDP output can be found in the ```macros``` directory. Each take the file to run over as input, and can be run on the output of both ```LowLevel``` and ```Serial``` mode.
+
+E.g.
+```
+root 'macros/MakeChannelHisto.cxx("Output.root")' -b -q
+```
+
+Currently two macros are provided:
+
+#### MakeChannelHisto
+
+Makes a histogram of the hits on each channel, separation out time reference channels according to the ```Std8x64Mapping``` Channel Mapping.
+
+The output will be called ```ChannelIDHistogram.pdf```.
+
+An additional argument can be provided to set the y axis scale to be logarithmic. In order to do this, add a 1 after the input file. E.g.
+```
+root 'macros/MakeChannelHisto.cxx("Output.root",1)' -b -q
+```
+
+#### MakeHitmap
+
+Makes a hitmap of detected hits, assuming the  reference channels are laid out according to the ```Std8x64Mapping``` Channel Mapping.
+
+The output will be called ```Hitmap.pdf```.
+
 ## To-do
 
 This section gives a list of changes/features which are yet to be implemented, but are requested. The requester's initials should be put in brackets after the item.
