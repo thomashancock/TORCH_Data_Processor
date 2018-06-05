@@ -76,7 +76,7 @@ In order to properly record the new tag, the MDP must be rebuilt from scratch. P
 ```
 make clean
 ```
-in the build directory before rebuilding the program to ensure the tag is correctly propagated.
+in the build directory, then follow the steps in the "Compiling the Processor" section from the call to ```cmake``` onwards.
 
 ## To-do
 
@@ -91,5 +91,5 @@ This section gives a list of changes/features which are yet to be implemented, b
 
 This section gives a list of known bugs which require attention. The reporter's initials should be put in brackets after the item.
 
-* If block/file is dumped, ensure current WordBundle should be cleared (THH)
+* If block/file is dumped, current WordBundle should be cleared (THH)
 * "Invalid Datatype" Error has TDC ID = 100 for all occurrences (THH)
