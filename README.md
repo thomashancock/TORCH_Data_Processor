@@ -3,9 +3,7 @@
 ## Introduction
 This program reads raw TORCH data and processes it into a ROOT file.
 
-Test data files are provided to aid in development of the program.
-
-For an overview of the program, see [slides from the Testbeam Meeting on 1st June 18](https://indico.cern.ch/event/731827/contributions/3026751/attachments/1660291/2659581/Multiboard_Data_Processor.pdf).
+For an overview, see [slides from the Testbeam Meeting on 1st June 18](https://indico.cern.ch/event/731827/contributions/3026751/attachments/1660291/2659581/Multiboard_Data_Processor.pdf).
 
 The ```Documentation``` directory contains full deoxygen documentation. It can be viewed through ```open Documentation/html/index.html```.
 
