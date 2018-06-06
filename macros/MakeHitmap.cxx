@@ -42,7 +42,8 @@ bool loadTree(
 
 //! Makes a hitmap from the passed file
 void MakeHitmap(
-	const std::string inputFile
+	const std::string inputFile,
+	const bool logZ = false
 ) {
 	// ---------
 	// Open file
@@ -93,6 +94,9 @@ void MakeHitmap(
 	// Save Hitmap
 	// -----------
 	TCanvas canvas("canvas","canvas");
+	if (true == logZ) {
+		gPad->SetLogz();
+	}
 	hitmap.Draw("colz");
 	canvas.SaveAs("Hitmap.pdf");
 }
