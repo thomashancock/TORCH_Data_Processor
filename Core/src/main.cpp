@@ -2,12 +2,28 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <fstream>
 
 // LOCAL
 #include "Debug.hpp"
 #include "Config.hpp"
 #include "Processor.hpp"
 
+void addFilesFromList(
+	const std::string listFile,
+	std::vector<std::string>& fileNames
+) {
+	std::cout << "Adding files from list file: " << listFile << std::endl;
+	std::ifstream input(listFile);
+	std::string line = "";
+	while (getline(input, line)) {
+		fileNames.push_back(line);
+	}
+	input.close();
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 void parseInputs(
 	const int argc,
 	char** argv,
@@ -29,6 +45,10 @@ void parseInputs(
 			if ("-out" == opStr) {
 				opIndex++;
 				outputFile = argv[opIndex];
+			}
+			if ("-list" == opStr) {
+				opIndex++;
+				addFilesFromList(argv[opIndex],fileNames);
 			}
 		} else {
 			const std::string inFileName = argv[opIndex];
@@ -57,10 +77,6 @@ int main(int argc, char** argv) {
 	auto config = std::make_unique<const Config>(configFile);
 
 	if (config->isConfigured()) {
-
-		// Sort files to ensure events come together
-		// TODO
-
 		// Perform Data Processing
 		STD_LOG("Processing Data");
 		Processor processor(std::move(config));
