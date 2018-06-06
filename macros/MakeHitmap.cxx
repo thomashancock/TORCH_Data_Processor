@@ -88,19 +88,18 @@ void MakeHitmap(
 	// ------------
 	// Setup Hitmap
 	// ------------
-	TH2D hitmap("Hitmap","Hitmap",8,0.5,8.5,64,0.5,64.5);
+	TH2D* hitmap = new TH2D("Hitmap","Hitmap",8,0.5,8.5,64,0.5,64.5);
 
 	// -------------------
 	// Read Hits from Tree
 	// -------------------
 	const auto nEntries = inTree->GetEntries();
-	std::cout << nEntries << std::endl;
 	for (auto i = 0; i < nEntries; i++) {
 		inTree->GetEntry(i);
 		for (auto iHit = 0; iHit < nHits; iHit++) {
 			if ((false == ignoreTimeReference)||(!isTimeReference(channelIDs[iHit]))) {
 				const auto coor = getCoordinate(channelIDs[iHit]);
-				hitmap.Fill(coor.first,coor.second);
+				hitmap->Fill(coor.first,coor.second);
 			}
 		}
 	}
@@ -112,6 +111,6 @@ void MakeHitmap(
 	if (true == logZ) {
 		gPad->SetLogz();
 	}
-	hitmap.Draw("colz");
+	hitmap->Draw("colz");
 	canvas.SaveAs("Hitmap.pdf");
 }
