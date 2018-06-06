@@ -63,13 +63,27 @@ $(function() {
 <div class="title">TORCH Multiboard Data <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a> </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Introduction</h2>
+<div class="textblock"><h2>Quick Reference</h2>
+<ol type="1">
+<li><a href="#Introduction">Introduction</a></li>
+<li><a href="#Requirements">Requirements</a></li>
+<li><a href="#Compiling">Compiling the Processor</a></li>
+<li><a href="#Running">Running the Processor</a><ol type="a">
+<li><a href="#RunQuickTest">Running a quick test</a></li>
+<li><a href="#RunLongRuns">Running over long data runs</a></li>
+</ol>
+</li>
+<li><a href="#Pulling">Pulling New Changes</a></li>
+<li><a href="#Macros">Macros</a></li>
+<li><a href="#ToDo">To-do</a></li>
+<li><a href="#KnownBugs">Known Bugs</a></li>
+</ol>
+<h2>Introduction <a class="anchor" id="Introduction"></a></h2>
 <p>This program reads raw TORCH data and processes it into a ROOT file.</p>
-<p>Test data files are provided to aid in development of the program.</p>
-<p>For an overview of the program, see <a href="https://indico.cern.ch/event/731827/contributions/3026751/attachments/1660291/2659581/Multiboard_Data_Processor.pdf">slides from the Testbeam Meeting on 1st June 18</a>.</p>
+<p>For an overview, see <a href="https://indico.cern.ch/event/731827/contributions/3026751/attachments/1660291/2659581/Multiboard_Data_Processor.pdf">slides from the Testbeam Meeting on 1st June 18</a>.</p>
 <p>The <code>Documentation</code> directory contains full deoxygen documentation. It can be viewed through <code>open Documentation/html/index.html</code>.</p>
 <p>Please report any issues to Thomas Hancock (<a href="#" onclick="location.href='mai'+'lto:'+'tho'+'ma'+'s.h'+'an'+'coc'+'k@'+'phy'+'si'+'cs.'+'ox'+'.ac'+'.u'+'k'; return false;">thoma<span style="display: none;">.nosp@m.</span>s.ha<span style="display: none;">.nosp@m.</span>ncock<span style="display: none;">.nosp@m.</span>@phy<span style="display: none;">.nosp@m.</span>sics.<span style="display: none;">.nosp@m.</span>ox.a<span style="display: none;">.nosp@m.</span>c.uk</a>).</p>
-<h2>Requirements to build the processor</h2>
+<h2>Requirements <a class="anchor" id="Requirements"></a></h2>
 <p>The Multiboard Data <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a> (MDP) requires:</p>
 <ul>
 <li>A working installation of CMake</li>
@@ -77,22 +91,38 @@ $(function() {
 <li>A working installation of ROOT 6</li>
 </ul>
 <p>Note: The program has been tested with root 6.08.04, but theoretically any version of ROOT 6 should work (if you have issues related to this, contact Thomas Hancock).</p>
-<h2>Compiling the <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a></h2>
+<h2>Compiling the <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a> <a class="anchor" id="Compiling"></a></h2>
 <p>The Multiboard Data <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a> (MDP) is built using CMake.</p>
 <p>To build the MDP, do: </p><div class="fragment"><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake .. -DCMAKE_INSTALL_PREFIX=$(install_path) -DCMAKE_BUILD_TYPE=Release</div><div class="line">make</div><div class="line">make install</div></div><!-- fragment --><p>The MDP will be built in the <code>bin</code> directory of the set <code></code>.</p>
-<p>If developing the processor, the program can be build in debug mode by changing the CMake Build Type: </p><div class="fragment"><div class="line">-DCMAKE_BUILD_TYPE=Debug</div></div><!-- fragment --><h2>Running the Program</h2>
+<p>If developing the processor, the program can be build in debug mode by changing the CMake Build Type: </p><div class="fragment"><div class="line">-DCMAKE_BUILD_TYPE=Debug</div></div><!-- fragment --><h2>Running the <a class="el" href="class_processor.html" title="Class which manages overall processing of data. ">Processor</a> <a class="anchor" id="Running"></a></h2>
 <p>To run the MDP, simply call the program: </p><div class="fragment"><div class="line">./$(install_path)/bin/TORCH_Data_Processor</div></div><!-- fragment --><p> followed by the files you wish to process (e.g. <code>data/*.txt</code>)</p>
 <p>Data files must contain the string <code>Device___</code> in their name. This allows the MDP to properly synchronise data across multiple readouts. The string must be enclosed by underscores, but can contain any words on either side.</p>
 <p>The program is configured via a xml config file. This file is specified with the <code>-con</code> command line option. If not set, the program will search for <code>Config.xml</code>. An example configuration file is provided for you to modify (<code>Example_Config.xml</code>).</p>
 <p>The output file name can be specified <code>-out</code> command line argument. If not set, the output will be called <code>Output.root</code>.</p>
-<h2>Running a quick test</h2>
+<h3>Running a quick test <a class="anchor" id="RunQuickTest"></a></h3>
 <p>A script is provided which runs a quick test of the MDP in <code>Serial</code> mode.</p>
 <p>To run the test, do: </p><div class="fragment"><div class="line">. run_test.sh</div></div><!-- fragment --><p>This runs the MDP on the data contained in <code>./data/Test_Data</code> using the config specified by <code>Example_Config.xml</code>.</p>
 <p>The test data is deliberately not perfect. The resulting output should show several "Dumping events due to buffer bloat" warnings, and the Errors Summary should contain a large number of errors (of types "Bad Packet Dumped", "Dumped incomplete packet", "Word found out of sequence").</p>
-<h2>Pulling new changes</h2>
+<h3>Running over long data runs <a class="anchor" id="RunLongRuns"></a></h3>
+<p>Attempting to run over large numbers of files (more than ~1000) may result in the following error: </p><div class="fragment"><div class="line">-bash: ./Install/bin/DataProcessor: Argument list too long</div></div><!-- fragment --><p>In this case, an alternative method for passing data files to the MDP is provided. In the <code>scripts</code> directory is a python script which, when passed one or more directories, will produce a newline separated list of files. E.g. </p><div class="fragment"><div class="line">python scripts/MakeFileList.py data/Test_Data/TimeRef_01_Device_?</div></div><!-- fragment --><p>The output is stored in <code>filelist.lst</code>: </p><div class="fragment"><div class="line">data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000000_20180523110722.txt</div><div class="line">data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000001_20180523110738.txt</div><div class="line">data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000002_20180523110753.txt</div><div class="line">data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000003_20180523110809.txt</div><div class="line">data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000004_20180523110823.txt</div><div class="line">...</div></div><!-- fragment --><p>File lists can be passed to the MDU using the <code>-list</code> option. E.g. </p><div class="fragment"><div class="line">./Install/bin/DataProcessor -con Config.xml -list filelist.lst</div></div><!-- fragment --><p>The MDU will run over all the files given in <code>filelist.lst</code> as if they were passed on the command line.</p>
+<h2>Pulling New Changes <a class="anchor" id="Pulling"></a></h2>
 <p>New versions of the MDP can be acquired via git. When pulling or fetching a new version of the processor, please ensure you do </p><div class="fragment"><div class="line">git fetch --tags</div></div><!-- fragment --><p> to make your local tags up to date with the GitLab tags. The version tag is stored in the output root file to ensure replicability of results, and having an incorrect local tag destroys this feature.</p>
-<p>In order to properly record the new tag, the MDP must be rebuilt from scratch. Please ensure you do </p><div class="fragment"><div class="line">make clean</div></div><!-- fragment --><p> in the build directory before rebuilding the program to ensure the tag is correctly propagated.</p>
-<h2>To-do</h2>
+<p>In order to properly record the new tag, the MDP must be rebuilt from scratch. Please ensure you do </p><div class="fragment"><div class="line">make clean</div></div><!-- fragment --><p> in the build directory, then follow the steps in the "Compiling the Processor" section from the call to <code>cmake</code> onwards.</p>
+<h2>Macros <a class="anchor" id="Macros"></a></h2>
+<p>ROOT macros for quickly processing the MDP output can be found in the <code>macros</code> directory. Each take the file to run over as input, and can be run on the output of both <code>LowLevel</code> and <code>Serial</code> mode.</p>
+<p>E.g. </p><div class="fragment"><div class="line">root &#39;macros/MakeChannelHisto.cxx(&quot;Output.root&quot;)&#39; -b -q</div></div><!-- fragment --><p>Currently two macros are provided:</p>
+<ul>
+<li><b>MakeChannelHisto</b></li>
+</ul>
+<p>Makes a histogram of the hits on each channel, separation out time reference channels according to the <code>Std8x64Mapping</code> Channel Mapping.</p>
+<p>The output will be called <code>ChannelIDHistogram.pdf</code>.</p>
+<p>An additional argument can be provided to set the y axis scale to be logarithmic. In order to do this, add a 1 after the input file. E.g. </p><div class="fragment"><div class="line">root &#39;macros/MakeChannelHisto.cxx(&quot;Output.root&quot;,1)&#39; -b -q</div></div><!-- fragment --><ul>
+<li><b>MakeHitmap</b></li>
+</ul>
+<p>Makes a hitmap of detected hits, assuming the reference channels are laid out according to the <code>Std8x64Mapping</code> Channel Mapping.</p>
+<p>The output will be called <code>Hitmap.pdf</code>.</p>
+<p>Like <code>MakeChannelHisto</code>, additional optional arguments can be passed. The first extra argument will set the z axis to a logarithmic scale if set to <code>1</code>, and the second will exclude the time reference channels. E.g. </p><div class="fragment"><div class="line">root &#39;macros/MakeHitmap.cxx(&quot;Output.root&quot;,1,1)&#39; -b -q</div></div><!-- fragment --><p> will create a hitmap with a logarithmic z axis and no time references included.</p>
+<h2>To-do <a class="anchor" id="ToDo"></a></h2>
 <p>This section gives a list of changes/features which are yet to be implemented, but are requested. The requester's initials should be put in brackets after the item.</p>
 <ul>
 <li>Add possibility of logging errors in <a class="el" href="class_error_spy.html" title="Keeps track of errors detected during program execution. ">ErrorSpy</a> which don't required a Board ID and/or TDC ID (THH)</li>
@@ -100,10 +130,10 @@ $(function() {
 <li>Add "No Errors" to <a class="el" href="class_error_spy.html" title="Keeps track of errors detected during program execution. ">ErrorSpy</a> summary if no errors are detected (THH)</li>
 <li>Parallel Mode (THH)</li>
 </ul>
-<h2>Known Bugs</h2>
+<h2>Known Bugs <a class="anchor" id="KnownBugs"></a></h2>
 <p>This section gives a list of known bugs which require attention. The reporter's initials should be put in brackets after the item.</p>
 <ul>
-<li>If block/file is dumped, ensure current <a class="el" href="class_word_bundle.html">WordBundle</a> should be cleared (THH)</li>
+<li>If block/file is dumped, current <a class="el" href="class_word_bundle.html">WordBundle</a> should be cleared (THH)</li>
 <li>"Invalid Datatype" Error has TDC ID = 100 for all occurrences (THH) </li>
 </ul>
 </div></div><!-- contents -->

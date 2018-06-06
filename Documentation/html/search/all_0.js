@@ -4,6 +4,7 @@ var searchData=
   ['addcount',['addCount',['../class_error_counter.html#a6ef83e5c7eccd70772881294a8dc714b',1,'ErrorCounter']]],
   ['adddataline',['addDataline',['../class_packet.html#a5a3c458b3587775aba89a8e09c214155',1,'Packet']]],
   ['addfile',['addFile',['../class_file_reader.html#a3404694daef538fdd001a3e2ae898fb8',1,'FileReader']]],
+  ['addfilesfromlist',['addFilesFromList',['../main_8cpp.html#a684da146d5b3c9a73b26f36c06abf06c',1,'main.cpp']]],
   ['addheader',['addHeader',['../class_packet.html#a7f710ea08bf8d264beb1361f19cc3afb',1,'Packet']]],
   ['addpacket',['addPacket',['../class_event.html#a08c4689086126f702d3b14be99461c98',1,'Event::addPacket()'],['../class_thread_safe_event_map.html#aafd485696f0a50da8afa864f04f0aa07',1,'ThreadSafeEventMap::addPacket()']]],
   ['addtrailer',['addTrailer',['../class_packet.html#a13eccb2f6b6d527549839579920e5105',1,'Packet']]],

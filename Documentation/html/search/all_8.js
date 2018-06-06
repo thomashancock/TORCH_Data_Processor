@@ -11,5 +11,5 @@ var searchData=
   ['isconsistent',['isConsistent',['../class_packet.html#a8d9e544f6f56389fa13bb01b2d37ca58',1,'Packet']]],
   ['isgood',['isGood',['../class_packet.html#ae70511a50e1f186b8a3369ee6ab8589c',1,'Packet']]],
   ['isndatabytesvalid',['isNDataBytesValid',['../class_file_reader.html#ac3938817d6fd8b2d90ac479e323bdc03',1,'FileReader']]],
-  ['istimereference',['isTimeReference',['../_channel_histo_8cxx.html#aea01419cfa6d3bc850d93c3569853f18',1,'ChannelHisto.cxx']]]
+  ['istimereference',['isTimeReference',['../_make_channel_histo_8cxx.html#aea01419cfa6d3bc850d93c3569853f18',1,'isTimeReference(const uint channelID):&#160;MakeChannelHisto.cxx'],['../_make_hitmap_8cxx.html#aea01419cfa6d3bc850d93c3569853f18',1,'isTimeReference(const uint channelID):&#160;MakeHitmap.cxx']]]
 ];

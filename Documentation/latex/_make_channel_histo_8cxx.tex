@@ -1,0 +1,61 @@
+\hypertarget{_make_channel_histo_8cxx}{}\section{macros/\+Make\+Channel\+Histo.cxx File Reference}
+\label{_make_channel_histo_8cxx}\index{macros/\+Make\+Channel\+Histo.\+cxx@{macros/\+Make\+Channel\+Histo.\+cxx}}
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include \char`\"{}T\+File.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}T\+Tree.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}T\+Pad.\+h\char`\"{}}\newline
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{_make_channel_histo_8cxx_a69aa29b598b851b0640aa225a9e5d61d}{uint} = unsigned int
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{_make_channel_histo_8cxx_aea01419cfa6d3bc850d93c3569853f18}{is\+Time\+Reference} (const \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channel\+ID)
+\begin{DoxyCompactList}\small\item\em Returns if a channel is a time reference channel. \end{DoxyCompactList}\item 
+bool \hyperlink{_make_channel_histo_8cxx_a1d82f4e459997b2d4c0116303c2ca0b9}{load\+Tree} (T\+File $\ast$in\+File, T\+Tree $\ast$\&in\+Tree, bool \&is\+Event\+Tree)
+\begin{DoxyCompactList}\small\item\em Loads either the event or packet tree. \end{DoxyCompactList}\item 
+void \hyperlink{_make_channel_histo_8cxx_ab5251511ab668136685ba2c423ca7829}{Make\+Channel\+Histo} (const std\+::string input\+File, const bool logY=false)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{_make_channel_histo_8cxx_a69aa29b598b851b0640aa225a9e5d61d}\label{_make_channel_histo_8cxx_a69aa29b598b851b0640aa225a9e5d61d}} 
+\index{Make\+Channel\+Histo.\+cxx@{Make\+Channel\+Histo.\+cxx}!uint@{uint}}
+\index{uint@{uint}!Make\+Channel\+Histo.\+cxx@{Make\+Channel\+Histo.\+cxx}}
+\subsubsection{\texorpdfstring{uint}{uint}}
+{\footnotesize\ttfamily using \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} =  unsigned int}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_make_channel_histo_8cxx_aea01419cfa6d3bc850d93c3569853f18}\label{_make_channel_histo_8cxx_aea01419cfa6d3bc850d93c3569853f18}} 
+\index{Make\+Channel\+Histo.\+cxx@{Make\+Channel\+Histo.\+cxx}!is\+Time\+Reference@{is\+Time\+Reference}}
+\index{is\+Time\+Reference@{is\+Time\+Reference}!Make\+Channel\+Histo.\+cxx@{Make\+Channel\+Histo.\+cxx}}
+\subsubsection{\texorpdfstring{is\+Time\+Reference()}{isTimeReference()}}
+{\footnotesize\ttfamily bool is\+Time\+Reference (\begin{DoxyParamCaption}\item[{const \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}}]{channel\+ID }\end{DoxyParamCaption})}
+
+
+
+Returns if a channel is a time reference channel. 
+
+\mbox{\Hypertarget{_make_channel_histo_8cxx_a1d82f4e459997b2d4c0116303c2ca0b9}\label{_make_channel_histo_8cxx_a1d82f4e459997b2d4c0116303c2ca0b9}} 
+\index{Make\+Channel\+Histo.\+cxx@{Make\+Channel\+Histo.\+cxx}!load\+Tree@{load\+Tree}}
+\index{load\+Tree@{load\+Tree}!Make\+Channel\+Histo.\+cxx@{Make\+Channel\+Histo.\+cxx}}
+\subsubsection{\texorpdfstring{load\+Tree()}{loadTree()}}
+{\footnotesize\ttfamily bool load\+Tree (\begin{DoxyParamCaption}\item[{T\+File $\ast$}]{in\+File,  }\item[{T\+Tree $\ast$\&}]{in\+Tree,  }\item[{bool \&}]{is\+Event\+Tree }\end{DoxyParamCaption})}
+
+
+
+Loads either the event or packet tree. 
+
+\mbox{\Hypertarget{_make_channel_histo_8cxx_ab5251511ab668136685ba2c423ca7829}\label{_make_channel_histo_8cxx_ab5251511ab668136685ba2c423ca7829}} 
+\index{Make\+Channel\+Histo.\+cxx@{Make\+Channel\+Histo.\+cxx}!Make\+Channel\+Histo@{Make\+Channel\+Histo}}
+\index{Make\+Channel\+Histo@{Make\+Channel\+Histo}!Make\+Channel\+Histo.\+cxx@{Make\+Channel\+Histo.\+cxx}}
+\subsubsection{\texorpdfstring{Make\+Channel\+Histo()}{MakeChannelHisto()}}
+{\footnotesize\ttfamily void Make\+Channel\+Histo (\begin{DoxyParamCaption}\item[{const std\+::string}]{input\+File,  }\item[{const bool}]{logY = {\ttfamily false} }\end{DoxyParamCaption})}
+

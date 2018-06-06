@@ -3,6 +3,7 @@ var searchData=
   ['getbunchid',['getBunchID',['../class_packet.html#a3965d1b3a0e88e2af7cd1bd5ca97e009',1,'Packet::getBunchID()'],['../namespacebindec.html#ad029aeb7b485d578e5f3ce91a9cf85f6',1,'bindec::getBunchID()']]],
   ['getchannelid',['getChannelID',['../class_edge.html#a5420f88056570dc33c697c99a211634c',1,'Edge::getChannelID()'],['../class_packet.html#a8a767973ff4b30b417716bbb071ccf33',1,'Packet::getChannelID()'],['../namespacebindec.html#af1997af0743251d010780a8f728fcd7e',1,'bindec::getChannelID()']]],
   ['getchannelmappingkey',['getChannelMappingKey',['../class_config.html#af674521a99614ecbd0cb8885b257663b',1,'Config']]],
+  ['getcoordinate',['getCoordinate',['../_make_hitmap_8cxx.html#a833fe74c1d6a7922d5371ab0d3787aae',1,'MakeHitmap.cxx']]],
   ['getcount',['getCount',['../class_error_counter.html#affc256e518dc91811a48fd5ba42de8cd',1,'ErrorCounter']]],
   ['getdatatype',['getDataType',['../namespacebindec.html#a7a98adfd04c65f870f74a423bfd744fe',1,'bindec']]],
   ['getedge',['getEdge',['../class_packet.html#a457fdd6c0e5cdb161a77550203504e6d',1,'Packet']]],

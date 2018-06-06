@@ -1,16 +1,34 @@
-\subsection*{Introduction}
+\subsection*{Quick Reference}
+
+
+\begin{DoxyEnumerate}
+\item \href{#Introduction}{\tt Introduction}
+\item \href{#Requirements}{\tt Requirements}
+\item \href{#Compiling}{\tt Compiling the Processor}
+\item \href{#Running}{\tt Running the Processor}
+\begin{DoxyEnumerate}
+\item \href{#RunQuickTest}{\tt Running a quick test}
+\item \href{#RunLongRuns}{\tt Running over long data runs}
+\end{DoxyEnumerate}
+\item \href{#Pulling}{\tt Pulling New Changes}
+\item \href{#Macros}{\tt Macros}
+\item \href{#ToDo}{\tt To-\/do}
+\item \href{#KnownBugs}{\tt Known Bugs}
+\end{DoxyEnumerate}
+
+\subsection*{Introduction \label{_Introduction}%
+}
 
 This program reads raw T\+O\+R\+CH data and processes it into a R\+O\+OT file.
 
-Test data files are provided to aid in development of the program.
-
-For an overview of the program, see \href{https://indico.cern.ch/event/731827/contributions/3026751/attachments/1660291/2659581/Multiboard_Data_Processor.pdf}{\tt slides from the Testbeam Meeting on 1st June 18}.
+For an overview, see \href{https://indico.cern.ch/event/731827/contributions/3026751/attachments/1660291/2659581/Multiboard_Data_Processor.pdf}{\tt slides from the Testbeam Meeting on 1st June 18}.
 
 The {\ttfamily Documentation} directory contains full deoxygen documentation. It can be viewed through {\ttfamily open Documentation/html/index.\+html}.
 
 Please report any issues to Thomas Hancock (\href{mailto:thomas.hancock@physics.ox.ac.uk}{\tt thomas.\+hancock@physics.\+ox.\+ac.\+uk}).
 
-\subsection*{Requirements to build the processor}
+\subsection*{Requirements \label{_Requirements}%
+}
 
 The Multiboard Data \hyperlink{class_processor}{Processor} (M\+DP) requires\+:
 
@@ -23,7 +41,8 @@ The Multiboard Data \hyperlink{class_processor}{Processor} (M\+DP) requires\+:
 
 Note\+: The program has been tested with root 6.\+08.\+04, but theoretically any version of R\+O\+OT 6 should work (if you have issues related to this, contact Thomas Hancock).
 
-\subsection*{Compiling the \hyperlink{class_processor}{Processor}}
+\subsection*{Compiling the \hyperlink{class_processor}{Processor} \label{_Compiling}%
+}
 
 The Multiboard Data \hyperlink{class_processor}{Processor} (M\+DP) is built using C\+Make.
 
@@ -45,7 +64,8 @@ If developing the processor, the program can be build in debug mode by changing 
 \end{DoxyCode}
 
 
-\subsection*{Running the Program}
+\subsection*{Running the \hyperlink{class_processor}{Processor} \label{_Running}%
+}
 
 To run the M\+DP, simply call the program\+: 
 \begin{DoxyCode}
@@ -59,7 +79,8 @@ The program is configured via a xml config file. This file is specified with the
 
 The output file name can be specified {\ttfamily -\/out} command line argument. If not set, the output will be called {\ttfamily Output.\+root}.
 
-\subsection*{Running a quick test}
+\subsubsection*{Running a quick test \label{_RunQuickTest}%
+}
 
 A script is provided which runs a quick test of the M\+DP in {\ttfamily Serial} mode.
 
@@ -73,7 +94,42 @@ This runs the M\+DP on the data contained in {\ttfamily ./data/\+Test\+\_\+\+Dat
 
 The test data is deliberately not perfect. The resulting output should show several \char`\"{}\+Dumping events due to buffer bloat\char`\"{} warnings, and the Errors Summary should contain a large number of errors (of types \char`\"{}\+Bad Packet Dumped\char`\"{}, \char`\"{}\+Dumped incomplete packet\char`\"{}, \char`\"{}\+Word found out of sequence\char`\"{}).
 
-\subsection*{Pulling new changes}
+\subsubsection*{Running over long data runs \label{_RunLongRuns}%
+}
+
+Attempting to run over large numbers of files (more than $\sim$1000) may result in the following error\+: 
+\begin{DoxyCode}
+-bash: ./Install/bin/DataProcessor: Argument list too long
+\end{DoxyCode}
+
+
+In this case, an alternative method for passing data files to the M\+DP is provided. In the {\ttfamily scripts} directory is a python script which, when passed one or more directories, will produce a newline separated list of files. E.\+g. 
+\begin{DoxyCode}
+python scripts/MakeFileList.py data/Test\_Data/TimeRef\_01\_Device\_?
+\end{DoxyCode}
+
+
+The output is stored in {\ttfamily filelist.\+lst}\+: 
+\begin{DoxyCode}
+data/Test\_Data/TimeRef\_01\_Device\_0/TimeRef\_01\_Device\_0\_000000\_20180523110722.txt
+data/Test\_Data/TimeRef\_01\_Device\_0/TimeRef\_01\_Device\_0\_000001\_20180523110738.txt
+data/Test\_Data/TimeRef\_01\_Device\_0/TimeRef\_01\_Device\_0\_000002\_20180523110753.txt
+data/Test\_Data/TimeRef\_01\_Device\_0/TimeRef\_01\_Device\_0\_000003\_20180523110809.txt
+data/Test\_Data/TimeRef\_01\_Device\_0/TimeRef\_01\_Device\_0\_000004\_20180523110823.txt
+...
+\end{DoxyCode}
+
+
+File lists can be passed to the M\+DU using the {\ttfamily -\/list} option. E.\+g. 
+\begin{DoxyCode}
+./Install/bin/DataProcessor -con Config.xml -list filelist.lst
+\end{DoxyCode}
+
+
+The M\+DU will run over all the files given in {\ttfamily filelist.\+lst} as if they were passed on the command line.
+
+\subsection*{Pulling New Changes \label{_Pulling}%
+}
 
 New versions of the M\+DP can be acquired via git. When pulling or fetching a new version of the processor, please ensure you do 
 \begin{DoxyCode}
@@ -85,9 +141,53 @@ In order to properly record the new tag, the M\+DP must be rebuilt from scratch.
 \begin{DoxyCode}
 make clean
 \end{DoxyCode}
- in the build directory before rebuilding the program to ensure the tag is correctly propagated.
+ in the build directory, then follow the steps in the \char`\"{}\+Compiling the Processor\char`\"{} section from the call to {\ttfamily cmake} onwards.
 
-\subsection*{To-\/do}
+\subsection*{Macros \label{_Macros}%
+}
+
+R\+O\+OT macros for quickly processing the M\+DP output can be found in the {\ttfamily macros} directory. Each take the file to run over as input, and can be run on the output of both {\ttfamily Low\+Level} and {\ttfamily Serial} mode.
+
+E.\+g. 
+\begin{DoxyCode}
+root 'macros/MakeChannelHisto.cxx("Output.root")' -b -q
+\end{DoxyCode}
+
+
+Currently two macros are provided\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries Make\+Channel\+Histo}
+\end{DoxyItemize}
+
+Makes a histogram of the hits on each channel, separation out time reference channels according to the {\ttfamily Std8x64\+Mapping} Channel Mapping.
+
+The output will be called {\ttfamily Channel\+I\+D\+Histogram.\+pdf}.
+
+An additional argument can be provided to set the y axis scale to be logarithmic. In order to do this, add a 1 after the input file. E.\+g. 
+\begin{DoxyCode}
+root 'macros/MakeChannelHisto.cxx("Output.root",1)' -b -q
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries Make\+Hitmap}
+\end{DoxyItemize}
+
+Makes a hitmap of detected hits, assuming the reference channels are laid out according to the {\ttfamily Std8x64\+Mapping} Channel Mapping.
+
+The output will be called {\ttfamily Hitmap.\+pdf}.
+
+Like {\ttfamily Make\+Channel\+Histo}, additional optional arguments can be passed. The first extra argument will set the z axis to a logarithmic scale if set to {\ttfamily 1}, and the second will exclude the time reference channels. E.\+g. 
+\begin{DoxyCode}
+root 'macros/MakeHitmap.cxx("Output.root",1,1)' -b -q
+\end{DoxyCode}
+ will create a hitmap with a logarithmic z axis and no time references included.
+
+\subsection*{To-\/do \label{_ToDo}%
+}
 
 This section gives a list of changes/features which are yet to be implemented, but are requested. The requester\textquotesingle{}s initials should be put in brackets after the item.
 
@@ -99,12 +199,13 @@ This section gives a list of changes/features which are yet to be implemented, b
 \item Parallel Mode (T\+HH)
 \end{DoxyItemize}
 
-\subsection*{Known Bugs}
+\subsection*{Known Bugs \label{_KnownBugs}%
+}
 
 This section gives a list of known bugs which require attention. The reporter\textquotesingle{}s initials should be put in brackets after the item.
 
 
 \begin{DoxyItemize}
-\item If block/file is dumped, ensure current \hyperlink{class_word_bundle}{Word\+Bundle} should be cleared (T\+HH)
+\item If block/file is dumped, current \hyperlink{class_word_bundle}{Word\+Bundle} should be cleared (T\+HH)
 \item \char`\"{}\+Invalid Datatype\char`\"{} Error has T\+DC ID = 100 for all occurrences (T\+HH) 
 \end{DoxyItemize}
