@@ -62,6 +62,35 @@ This runs the MDP on the data contained in ```./data/Test_Data``` using the conf
 
 The test data is deliberately not perfect. The resulting output should show several "Dumping events due to buffer bloat" warnings, and the Errors Summary should contain a large number of errors (of types "Bad Packet Dumped", "Dumped incomplete packet", "Word found out of sequence").
 
+## Running over long data runs
+
+Attempting to run over large numbers of files (more than ~1000) may result in the following error:
+```
+-bash: ./Install/bin/DataProcessor: Argument list too long
+```
+
+In this case, an alternative method for passing data files to the MDP is provided. In the ```scripts``` directory is a python script which, when passed one or more directories, will produce a newline separated list of files. E.g.
+```
+python scripts/MakeFileList.py data/Test_Data/TimeRef_01_Device_?
+```
+
+The output is stored in ```filelist.lst```:
+```
+data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000000_20180523110722.txt
+data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000001_20180523110738.txt
+data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000002_20180523110753.txt
+data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000003_20180523110809.txt
+data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000004_20180523110823.txt
+...
+```
+
+File lists can be passed to the MDU using the ```-list``` option. E.g.
+```
+./Install/bin/DataProcessor -con Config.xml -list filelist.lst
+```
+
+The MDU will run over all the files given in ```filelist.lst``` as if they were passed on the command line.
+
 ## Pulling new changes
 
 New versions of the MDP can be acquired via git. When pulling or fetching a new version of the processor, please ensure you do
@@ -102,6 +131,12 @@ root 'macros/MakeChannelHisto.cxx("Output.root",1)' -b -q
 Makes a hitmap of detected hits, assuming the  reference channels are laid out according to the ```Std8x64Mapping``` Channel Mapping.
 
 The output will be called ```Hitmap.pdf```.
+
+Like ```MakeChannelHisto```, additional optional arguments can be passed. The first extra argument will set the z axis to a logarithmic scale if set to ```1```, and the second will exclude the time reference channels. E.g.
+```
+root 'macros/MakeHitmap.cxx("Output.root",1,1)' -b -q
+```
+will create a hitmap with a logarithmic z axis and no time references included.
 
 ## To-do
 
