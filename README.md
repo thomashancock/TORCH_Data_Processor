@@ -1,6 +1,18 @@
 # TORCH Multiboard Data Processor
 
-## Introduction
+## Quick Reference
+1. [Introduction](#Introduction)
+2. [Requirements](#Requirements)
+3. [Compiling the Processor](#Compiling)
+4. [Running the Processor](#Running)
+    1. [Running a quick test](#RunQuickTest)
+    2. [Running over long data runs](#RunLongRuns)
+5. [Pulling New Changes](#Pulling)
+6. [Macros](#Macros)
+7. [To-do](#ToDo)
+8. [Known Bugs](#KnownBugs)
+
+## Introduction <a name="Introduction"></a>
 This program reads raw TORCH data and processes it into a ROOT file.
 
 For an overview, see [slides from the Testbeam Meeting on 1st June 18](https://indico.cern.ch/event/731827/contributions/3026751/attachments/1660291/2659581/Multiboard_Data_Processor.pdf).
@@ -9,7 +21,7 @@ The ```Documentation``` directory contains full deoxygen documentation. It can b
 
 Please report any issues to Thomas Hancock (thomas.hancock@physics.ox.ac.uk).
 
-## Requirements to build the processor
+## Requirements <a name="Requirements"></a>
 The Multiboard Data Processor (MDP) requires:
 
 * A working installation of CMake
@@ -18,7 +30,7 @@ The Multiboard Data Processor (MDP) requires:
 
 Note: The program has been tested with root 6.08.04, but theoretically any version of ROOT 6 should work (if you have issues related to this, contact Thomas Hancock).
 
-## Compiling the Processor
+## Compiling the Processor <a name="Compiling"></a>
 The Multiboard Data Processor (MDP) is built using CMake.
 
 To build the MDP, do:
@@ -37,7 +49,7 @@ If developing the processor, the program can be build in debug mode by changing 
 -DCMAKE_BUILD_TYPE=Debug
 ```
 
-## Running the Program
+## Running the Processor <a name="Running"></a>
 To run the MDP, simply call the program:
 ```
 ./$(install_path)/bin/TORCH_Data_Processor
@@ -50,7 +62,7 @@ The program is configured via a xml config file. This file is specified with the
 
 The output file name can be specified ```-out``` command line argument. If not set, the output will be called ```Output.root```.
 
-## Running a quick test
+### Running a quick test <a name="RunQuickTest"></a>
 A script is provided which runs a quick test of the MDP in ```Serial``` mode.
 
 To run the test, do:
@@ -62,8 +74,7 @@ This runs the MDP on the data contained in ```./data/Test_Data``` using the conf
 
 The test data is deliberately not perfect. The resulting output should show several "Dumping events due to buffer bloat" warnings, and the Errors Summary should contain a large number of errors (of types "Bad Packet Dumped", "Dumped incomplete packet", "Word found out of sequence").
 
-## Running over long data runs
-
+### Running over long data runs <a name="RunLongRuns"></a>
 Attempting to run over large numbers of files (more than ~1000) may result in the following error:
 ```
 -bash: ./Install/bin/DataProcessor: Argument list too long
@@ -91,7 +102,7 @@ File lists can be passed to the MDU using the ```-list``` option. E.g.
 
 The MDU will run over all the files given in ```filelist.lst``` as if they were passed on the command line.
 
-## Pulling new changes
+## Pulling New Changes  <a name="Pulling"></a>
 
 New versions of the MDP can be acquired via git. When pulling or fetching a new version of the processor, please ensure you do
 ```
@@ -105,7 +116,7 @@ make clean
 ```
 in the build directory, then follow the steps in the "Compiling the Processor" section from the call to ```cmake``` onwards.
 
-## Macros
+## Macros <a name="Macros"></a>
 ROOT macros for quickly processing the MDP output can be found in the ```macros``` directory. Each take the file to run over as input, and can be run on the output of both ```LowLevel``` and ```Serial``` mode.
 
 E.g.
@@ -138,7 +149,7 @@ root 'macros/MakeHitmap.cxx("Output.root",1,1)' -b -q
 ```
 will create a hitmap with a logarithmic z axis and no time references included.
 
-## To-do
+## To-do <a name="ToDo"></a>
 
 This section gives a list of changes/features which are yet to be implemented, but are requested. The requester's initials should be put in brackets after the item.
 
@@ -147,7 +158,7 @@ This section gives a list of changes/features which are yet to be implemented, b
 * Add "No Errors" to ErrorSpy summary if no errors are detected (THH)
 * Parallel Mode (THH)
 
-## Known Bugs
+## Known Bugs <a name="KnownBugs"></a>
 
 This section gives a list of known bugs which require attention. The reporter's initials should be put in brackets after the item.
 
