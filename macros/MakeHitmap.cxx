@@ -20,6 +20,18 @@ coor getCoordinate(
 	return std::make_pair(col,row);
 }
 
+//! Returns if a channel is a time reference channel
+bool isTimeReference(
+	const uint channelID
+) {
+	const static std::set<uint> channelIDs { 31, 63, 159, 191, 287, 319, 415, 447 };
+	if (channelIDs.end() == channelIDs.find(channelID)) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
 //! Loads either the event or packet tree
 bool loadTree(
 	TFile* inFile,
@@ -43,7 +55,8 @@ bool loadTree(
 //! Makes a hitmap from the passed file
 void MakeHitmap(
 	const std::string inputFile,
-	const bool logZ = false
+	const bool logZ = false,
+	const bool ignoreTimeReference = false
 ) {
 	// ---------
 	// Open file
@@ -85,8 +98,10 @@ void MakeHitmap(
 	for (auto i = 0; i < nEntries; i++) {
 		inTree->GetEntry(i);
 		for (auto iHit = 0; iHit < nHits; iHit++) {
-			const auto coor = getCoordinate(channelIDs[iHit]);
-			hitmap.Fill(coor.first,coor.second);
+			if ((false == ignoreTimeReference)||(!isTimeReference(channelIDs[iHit]))) {
+				const auto coor = getCoordinate(channelIDs[iHit]);
+				hitmap.Fill(coor.first,coor.second);
+			}
 		}
 	}
 
