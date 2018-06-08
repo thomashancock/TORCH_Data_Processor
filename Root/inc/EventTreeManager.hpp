@@ -32,6 +32,8 @@ private:
 	const unsigned int m_nTDCs; //!< The maximum number of TDCs
 	constexpr static unsigned int s_hitsMax = 500; //!< Array size for hit branches
 
+	const std::set<unsigned int> m_edgeMatchingExclusions; //!< Set to store edge matching exclusions
+
 	// Set branch variables
 	Bool_t b_isComplete = false; //!< Branch Variable: Is event complete?
 	Bool_t b_wasDumped = false; //!< Branch Variable: Was the event dumped?

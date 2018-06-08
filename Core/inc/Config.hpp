@@ -4,6 +4,7 @@
 // STD
 #include <string>
 #include <list>
+#include <set>
 
 // ROOT
 #include "TXMLEngine.h"
@@ -33,6 +34,9 @@ public:
 
 	//! Return the edge modifier
 	const std::string getEdgeModifierKey() const { return m_edgeModifier; }
+
+	//! Returns a set of channels to exclude from edge matching
+	const std::set<unsigned int> getEdgeMatchingExclusions() const { return m_edgeMatchingExclusions; }
 
 	//! Returns the list of stored readout board Ids
 	const std::list<unsigned int> getReadoutBoardList() const { return m_boardList; }
@@ -72,6 +76,8 @@ private:
 
 	std::string m_channelMapping = "Std8x64Mapping"; //!< Stores the channel mapping
 	std::string m_edgeModifier = "FlipEven"; //!< Stores the edge modifier
+
+	std::set<unsigned int> m_edgeMatchingExclusions; //! Stores channels to exclude from edge matching
 
 	std::list<unsigned int> m_boardList; //!< Stores the available TDCs
 	std::list<unsigned int> m_tdcList; //!< Stores the available TDCs

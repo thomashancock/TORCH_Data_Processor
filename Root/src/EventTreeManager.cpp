@@ -16,7 +16,8 @@ EventTreeManager::EventTreeManager(
 	const std::string outfileName,
 	const unsigned int nTDCs
 ) :
-	RootManager(std::move(config),outfileName,"event_tree"),
+	RootManager(config,outfileName,"event_tree"),
+	m_edgeMatchingExclusions(config->getEdgeMatchingExclusions()),
 	m_nTDCs(nTDCs)
 {
 	STD_LOG("EventTreeManager Constructor Called");
@@ -130,25 +131,46 @@ void EventTreeManager::add(
 			std::sort(leadingTimes.begin(),leadingTimes.end());
 			std::sort(trailingTimes.begin(),trailingTimes.end());
 
-			// Get size of smallest vector
-			const unsigned int nPairs = (leadingTimes.size() > trailingTimes.size()) ? trailingTimes.size() : leadingTimes.size();
+			if (m_edgeMatchingExclusions.end() != m_edgeMatchingExclusions.find(channelID)) {
+				// If channel ID is excluded from edge matching, only write leading edges
+				for (auto& edgeTime : leadingTimes) {
+					ASSERT(b_nHits < s_hitsMax);
+					ASSERT(nullptr != b_channelID);
+					b_channelID[b_nHits] = channelID;
+					ASSERT(nullptr != b_leadingTime);
+					b_leadingTime[b_nHits] = edgeTime;
+					ASSERT(nullptr != b_trailingTime);
+					b_trailingTime[b_nHits] = 0;
+					ASSERT(nullptr != b_leadingTimeFine);
+					b_leadingTimeFine[b_nHits] = edgeTime%256;
+					ASSERT(nullptr != b_trailingTimeFine);
+					b_trailingTimeFine[b_nHits] = 0;
+					ASSERT(nullptr != b_width);
+					b_width[b_nHits] = 0;
+					b_nHits++;
+				}
+			} else {
+				// Else find pairs of edges and only write matching pairs
+				// Get size of smallest vector
+				const unsigned int nPairs = (leadingTimes.size() > trailingTimes.size()) ? trailingTimes.size() : leadingTimes.size();
 
-			// Write times until one vector is exhausted
-			for (unsigned int iPair = 0; iPair < nPairs; iPair++) {
-				ASSERT(b_nHits < s_hitsMax);
-				ASSERT(nullptr != b_channelID);
-				b_channelID[b_nHits] = channelID;
-				ASSERT(nullptr != b_leadingTime);
-				b_leadingTime[b_nHits] = leadingTimes.at(iPair);
-				ASSERT(nullptr != b_trailingTime);
-				b_trailingTime[b_nHits] = trailingTimes.at(iPair);
-				ASSERT(nullptr != b_leadingTimeFine);
-				b_leadingTimeFine[b_nHits] = leadingTimes.at(iPair)%256;
-				ASSERT(nullptr != b_trailingTimeFine);
-				b_trailingTimeFine[b_nHits] = trailingTimes.at(iPair)%256;
-				ASSERT(nullptr != b_width);
-				b_width[b_nHits] = static_cast<int>(trailingTimes.at(iPair)) - static_cast<int>(leadingTimes.at(iPair));
-				b_nHits++;
+				// Write times until one vector is exhausted
+				for (unsigned int iPair = 0; iPair < nPairs; iPair++) {
+					ASSERT(b_nHits < s_hitsMax);
+					ASSERT(nullptr != b_channelID);
+					b_channelID[b_nHits] = channelID;
+					ASSERT(nullptr != b_leadingTime);
+					b_leadingTime[b_nHits] = leadingTimes.at(iPair);
+					ASSERT(nullptr != b_trailingTime);
+					b_trailingTime[b_nHits] = trailingTimes.at(iPair);
+					ASSERT(nullptr != b_leadingTimeFine);
+					b_leadingTimeFine[b_nHits] = leadingTimes.at(iPair)%256;
+					ASSERT(nullptr != b_trailingTimeFine);
+					b_trailingTimeFine[b_nHits] = trailingTimes.at(iPair)%256;
+					ASSERT(nullptr != b_width);
+					b_width[b_nHits] = static_cast<int>(trailingTimes.at(iPair)) - static_cast<int>(leadingTimes.at(iPair));
+					b_nHits++;
+				}
 			}
 		}
 	}

@@ -13,6 +13,8 @@ Config::Config(
 ) {
 	STD_LOG("Config(): Reading Config");
 
+	ASSERT(m_edgeMatchingExclusions.empty());
+	ASSERT(m_boardList.empty());
 	ASSERT(m_tdcList.empty());
 
 	parseConfigFile(configFile);
@@ -33,6 +35,15 @@ void Config::print() const {
 
 	// Print Edge Modifier
 	std::cout << "\tEdge Modifier: " << m_edgeModifier << std::endl;
+
+	// Print excluded edge matching channels
+	if (!m_edgeMatchingExclusions.empty()) {
+		std::cout << "\tWill skip edge matching on channels: ";
+		for (auto& entry : m_edgeMatchingExclusions) {
+			std::cout << entry << " ";
+		}
+		std::cout << std::endl;
+	}
 
 	// Print Readout Board IDs
 	std::cout << "\tReadout Board IDs: ";
@@ -140,6 +151,11 @@ void Config::processOption(
 	// Get Edge Modifier
 	if (("edgeModifier" == nodeName)&&("modifier" == attribute)) {
 		m_edgeModifier = value;
+	}
+
+	// Add exclusion to set
+	if (("disableEdgeMatching" == nodeName)&&("channelID" == attribute)) {
+		m_edgeMatchingExclusions.insert(std::stoi(value));
 	}
 
 	// Lambda for adding to lists
