@@ -266,7 +266,7 @@ void Processor::makePackets(
 					errorMessage << "Invalid Datatype " << dataType;
 					// TODO: Allow Error logged without requiring TDC ID
 					ErrorSpy::getInstance().logError(errorMessage.str(),bundle->getReadoutBoardID(),100);
-					// But do NOT skip rest of processing as it will determine if the word also appears out of sequence
+					continue;
 				}
 
 				// If data type is one which is expected, use it to construct packets
