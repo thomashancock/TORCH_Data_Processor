@@ -32,14 +32,18 @@ edgmod::EdgeModifier edgmod::flipEven = [] (
 	const auto dataType = bindec::getDataType(word);
 	ASSERT(4 == dataType || 5 == dataType);
 
-	// If channel is even
 	const auto channelID = bindec::getChannelID(word);
-	if (0 == channelID%2) {
-		// Flip polarity
-		if (dataType == 4) {
-			word += 0x10000000;
-		} else {
-			word -= 0x10000000;
+	// Exclude time reference channels
+	if ((1 != bindec::getTDCID(word)%2)||(0 != channelID)) {
+		// If not a timre reference channel
+		// If channel is even
+		if (0 == channelID%2) {
+			// Flip polarity
+			if (dataType == 4) {
+				word += 0x10000000;
+			} else {
+				word -= 0x10000000;
+			}
 		}
 	}
 };
@@ -52,14 +56,18 @@ edgmod::EdgeModifier edgmod::flipOdd = [] (
 	const auto dataType = bindec::getDataType(word);
 	ASSERT(4 == dataType || 5 == dataType);
 
-	// If channel is even
 	const auto channelID = bindec::getChannelID(word);
-	if (1 == channelID%2) {
-		// Flip polarity
-		if (dataType == 4) {
-			word += 0x10000000;
-		} else {
-			word -= 0x10000000;
+	// Exclude time reference channels
+	if ((1 != bindec::getTDCID(word)%2)||(0 != channelID)) {
+		// If not a timre reference channel
+		// If channel is odd
+		if (1 == channelID%2) {
+			// Flip polarity
+			if (dataType == 4) {
+				word += 0x10000000;
+			} else {
+				word -= 0x10000000;
+			}
 		}
 	}
 };
