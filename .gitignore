@@ -7,6 +7,8 @@ TORCH_Data_Processor
 Notes.txt
 *.root
 *.txt
+!CMakeLists.txt
+
 *.pdf
 *.lst
 *.xml
