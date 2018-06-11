@@ -1,5 +1,8 @@
 #include "Config.hpp"
 
+// STD
+#include <algorithm>
+
 // LOCAL
 #include "Debug.hpp"
 

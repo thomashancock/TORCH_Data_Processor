@@ -1,5 +1,8 @@
 #include "EventTreeManager.hpp"
 
+// STD
+#include <algorithm>
+
 // LOCAL
 #include "Debug.hpp"
 
