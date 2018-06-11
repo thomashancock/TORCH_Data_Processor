@@ -20,8 +20,8 @@ EventTreeManager::EventTreeManager(
 	const unsigned int nTDCs
 ) :
 	RootManager(config,outfileName,"event_tree"),
-	m_edgeMatchingExclusions(config->getEdgeMatchingExclusions()),
-	m_nTDCs(nTDCs)
+	m_nTDCs(nTDCs),
+	m_edgeMatchingExclusions(config->getEdgeMatchingExclusions())
 {
 	STD_LOG("EventTreeManager Constructor Called");
 

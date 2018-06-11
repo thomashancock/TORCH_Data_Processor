@@ -43,7 +43,7 @@ FileReader::FileReader(
 		m_fileLengths.emplace(std::make_pair(boardID, 0));
 
 		// Add a workspace to the bundle workspace map
-		bundleWorkspace newWorkspace {nullptr};
+		bundleWorkspace newWorkspace {{ nullptr }};
 		m_bundleWorkspaces.insert(std::make_pair(boardID, std::move(newWorkspace)));
 	}
 

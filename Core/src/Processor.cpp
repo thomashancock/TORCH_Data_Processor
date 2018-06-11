@@ -152,7 +152,8 @@ void Processor::runLowLevel(
 		// Pass packets to output manager
 		for (auto& entry : m_packetBuffers) {
 			while(!entry.second.empty()) {
-				manager->add(std::move(entry.second.popFront()));
+				// manager->add(std::move(entry.second.popFront()));
+				manager->add(entry.second.popFront());
 			}
 		}
 	}
@@ -346,7 +347,7 @@ void Processor::makeEvents() {
 				bufferIndexes.erase(it++);
 			} else {
 				// Extract front packet, add to event buffer
-				m_eventBuffer.addPacket(std::move(m_packetBuffers.at(*it).popFront()));
+				m_eventBuffer.addPacket(m_packetBuffers.at(*it).popFront());
 			}
 		}
 	}
