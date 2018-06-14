@@ -47,10 +47,12 @@ Processor::Processor(
 	ASSERT(nullptr != m_fileReader);
 
 	// After FileReader initialization, should be two pointers refering to the bundle buffers
+	#ifdef LOCAL_DEBUG
 	for (const auto& ptr : m_wordBundleBuffers) {
 		ASSERT(nullptr != ptr);
 		ASSERT(2 == ptr.use_count());
 	}
+	#endif /* LOCAL_DEBUG */
 
 	// Initialise Packet Buffers
 	initializePacketBuffers(m_config->getTDCList());

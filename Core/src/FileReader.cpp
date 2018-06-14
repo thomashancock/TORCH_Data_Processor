@@ -21,9 +21,11 @@ FileReader::FileReader(
 	m_wordBundleBuffers(std::move(wordBundleBuffers))
 {
 	// Validate inputs
+	#ifdef LOCAL_DEBUG
 	for (auto& bufferPtr : m_wordBundleBuffers) {
 		ASSERT(nullptr != bufferPtr);
 	}
+	#endif /* LOCAL_DEBUG */
 	ASSERT(m_inputFiles.empty());
 	ASSERT(m_inputStreams.empty());
 	ASSERT(readoutBoardList.size() > 0);

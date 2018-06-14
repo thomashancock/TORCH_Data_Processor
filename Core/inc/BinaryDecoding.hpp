@@ -109,8 +109,7 @@ inline void printROCWord(
 inline void printEdgeWord(
 	const uint word
 ) {
-	const auto dataType = getDataType(word);
-	ASSERT(4 == dataType || 5 == dataType);
+	ASSERT(4 == getDataType(word) || 5 == getDataType(word));
 	std::cout << "EDGE:    "
 		<< " TDC: " << getTDCID(word) << "\t"
 		<< " Chl: " << getChannelID(word) << "  \t" // Spaces needed for alignment
