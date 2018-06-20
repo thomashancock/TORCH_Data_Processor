@@ -30,7 +30,7 @@ private:
 
 private:
 	const unsigned int m_nTDCs; //!< The maximum number of TDCs
-	constexpr static unsigned int s_hitsMax = 500; //!< Array size for hit branches
+	constexpr static unsigned int s_hitsMax = 600; //!< Array size for hit branches
 
 	const std::set<unsigned int> m_edgeMatchingExclusions; //!< Set to store edge matching exclusions
 
