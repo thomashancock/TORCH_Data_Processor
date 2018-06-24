@@ -149,6 +149,11 @@ root 'macros/MakeHitmap.cxx("Output.root",1,1)' -b -q
 ```
 will create a hitmap with a logarithmic z axis and no time references included.
 
+To manually specify the output file name, pass the desired name as the second argument (i.e. after the input file name). The remaining optional arguments follow as previosuly detailed. E.g.
+```
+root 'macros/MakeHitmap.cxx("Output.root","CustomOutputName.pdf",1,1)' -b -q
+```
+
 ## To-do <a name="ToDo"></a>
 
 This section gives a list of changes/features which are yet to be implemented, but are requested. The requester's initials should be put in brackets after the item.
