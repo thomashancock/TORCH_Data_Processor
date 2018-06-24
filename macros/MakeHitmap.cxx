@@ -55,6 +55,7 @@ bool loadTree(
 //! Makes a hitmap from the passed file
 void MakeHitmap(
 	const std::string inputFile,
+	const std::string outputFile,
 	const bool logZ = false,
 	const bool ignoreTimeReference = false
 ) {
@@ -112,5 +113,14 @@ void MakeHitmap(
 		gPad->SetLogz();
 	}
 	hitmap->Draw("colz");
-	canvas.SaveAs("Hitmap.pdf");
+	canvas.SaveAs(outputFile.c_str());
+}
+
+//! Overload to have default output filename
+void MakeHitmap(
+	const std::string inputFile,
+	const bool logZ = false,
+	const bool ignoreTimeReference = false
+) {
+	MakeHitmap(inputFile,"Hitmap.pdf",logZ,ignoreTimeReference);
 }
