@@ -218,6 +218,8 @@ void Processor::runParallel(
 	}
 	STD_LOG("NCores Detected: " << maxTasks + 1);
 
+	outputFile.c_str(); // Prevents compiler warning from incomplete function
+
 	// INCOMPLETE
 	// std::unique_ptr<EventTreeManager> manager =
 	// 	std::make_unique<EventTreeManager>(outputFile.c_str(),m_tdcIDs.size());

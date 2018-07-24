@@ -105,7 +105,7 @@ std::vector< std::unique_ptr<Event> > ThreadSafeEventMap::dumpHalf() {
 	const auto nToDump = static_cast<unsigned int>(m_eventTracker.size()/2.0);
 	ASSERT(nToDump > 0);
 
-	for (auto i = 0; i < nToDump; i++) {
+	for (unsigned int i = 0; i < nToDump; i++) {
 		auto& entry = m_eventTracker.front();
 
 		// Add event pointed to by tracker entry to return vector
@@ -143,7 +143,7 @@ std::vector< std::unique_ptr<Event> > ThreadSafeEventMap::dumpAll() {
 
 	const auto nInBuffer = m_eventTracker.size();
 	if (0 != nInBuffer) {
-		for (auto i = 0; i < nInBuffer; i++) {
+		for (unsigned int i = 0; i < nInBuffer; i++) {
 			auto& entry = m_eventTracker.front();
 
 			// Add event pointed to by tracker entry to return vector

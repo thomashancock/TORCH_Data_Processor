@@ -23,8 +23,8 @@ void chlmap::setChannelMapping(
 //
 // -----------------------------------------------------------------------------
 chlmap::ChannelMapping chlmap::noMapping = [] (
-	uint readoutBoardID,
-	uint tdcID,
+	uint ,
+	uint ,
 	uint channelID
 ) {
 	return channelID;
@@ -33,7 +33,7 @@ chlmap::ChannelMapping chlmap::noMapping = [] (
 //
 // -----------------------------------------------------------------------------
 chlmap::ChannelMapping chlmap::std8x64Mapping = [] (
-	uint readoutBoardID,
+	uint ,
 	uint tdcID,
 	uint channelID
 ) {

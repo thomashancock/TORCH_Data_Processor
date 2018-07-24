@@ -21,7 +21,7 @@ void edgmod::setEdgeModifier(
 //
 // -----------------------------------------------------------------------------
 edgmod::EdgeModifier edgmod::noChange = [] (
-	unsigned int& word
+	unsigned int&
 ) -> void { };
 // -----------------------------------------------------------------------------
 //

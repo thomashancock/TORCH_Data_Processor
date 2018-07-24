@@ -102,7 +102,7 @@ void FileReader::runProcessingLoops(
 	}
 
 	// Run n processing loops
-	for (auto i = 0; i < nLoops; i++) {
+	for (unsigned int i = 0; i < nLoops; i++) {
 		this->runProcessingLoop();
 	}
 
@@ -188,7 +188,7 @@ void FileReader::runProcessingLoop() {
 
 				ASSERT(workspace.size() == block.size());
 
-				for (int i = 0; i < workspace.size(); i++) {
+				for (unsigned int i = 0; i < workspace.size(); i++) {
 					// Reference assignment to ease readbility
 					const auto& word = block[i];
 

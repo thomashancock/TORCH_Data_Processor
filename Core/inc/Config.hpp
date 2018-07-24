@@ -27,7 +27,7 @@ public:
 	bool isConfigured() const { return m_configRead; }
 
 	//! Returns the run mode
-	const RunMode getRunMode() const { return m_mode; }
+	RunMode getRunMode() const { return m_mode; }
 
 	//! Return the channel mapping
 	const std::string getChannelMappingKey() const { return m_channelMapping; }
