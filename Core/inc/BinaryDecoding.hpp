@@ -168,6 +168,6 @@ inline void printWord(
 	}
 }
 
-}; // namespace bindec
+} // namespace bindec
 
 #endif /* BINARYDECODING_H */

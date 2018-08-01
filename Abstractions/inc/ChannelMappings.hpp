@@ -24,6 +24,6 @@ extern ChannelMapping std8x64Mapping; //!< 0 - 511 Channel Mapping for 8x64 MCP
 extern ChannelMapping slotInversion8x64Mapping; //!< 0 - 511 Channel Mapping for 8x64 MCP
 extern ChannelMapping std4x64Mapping; //!< 0 - 255 4x64 Channel Mapping
 
-};
+}
 
 #endif /* CHANNELMAPPINGS_H */

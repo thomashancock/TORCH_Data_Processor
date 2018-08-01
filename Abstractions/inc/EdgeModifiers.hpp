@@ -23,6 +23,6 @@ extern EdgeModifier noChange; //!< Don't apply any changes
 extern EdgeModifier flipEven; //!< Even channel edge flip
 extern EdgeModifier flipOdd; //!< Odd channel edge flip
 
-};
+}
 
 #endif /* EDGEMODIFIERS_H */
