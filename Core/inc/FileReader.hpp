@@ -137,15 +137,13 @@ void FileReader::stageNextFile(
 unsigned int FileReader::readHeaderLine(
 	std::unique_ptr<std::ifstream>& inputData
 ) {
-	// Read 4 bytes of data
-	inputData->get();
-	inputData->get();
-	char byte3 = inputData->get();
-	char byte4 = inputData->get();
-
-	// Reconstruct bytes into appropriate variables
-	// bytes implicitly converted to int to combine into unsigned integer
-	return (256 * byte3) + byte4;
+	// Read in header word
+	// Discard first two bytes (mult = 0)
+	unsigned int output = 0;
+	for (auto& mult : { 0, 0, 0x00000100, 0x00000001 } ) {
+		output += mult * inputData->get();
+	}
+	return output;
 }
 // -----------------------------------------------------------------------------
 //
@@ -164,7 +162,7 @@ bool FileReader::isNDataBytesValid(
 	}
 
 	if (0 != nDataBytes % 4) {
-		STD_ERR("Length of data packet is not dividible by 4. File: " << filePath << ". Skipping rest of file.");
+		STD_ERR("Length of data packet (" << nDataBytes << ") is not dividible by 4. File: " << filePath << ". Skipping rest of file.");
 		streamPtr.reset();
 		return false;
 	}
