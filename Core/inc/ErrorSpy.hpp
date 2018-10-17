@@ -32,12 +32,23 @@ public:
 	//! Returns a reference to the ErrorSpy
 	static ErrorSpy& getInstance();
 
-	//! Logs an error
+	//! Logs an error with associated Board and TDC IDs
 	void logError(
 		const std::string message, //!< Message summarising the error
 		const unsigned int readoutBoardID, //!< Readout Board ID where the error occured
 		const unsigned int tdcID //!< TDC id where the error occured
 	);
+
+	//! Logs an error with an associated Board ID
+	// void logError(
+	// 	const std::string message, //!< Message summarising the error
+	// 	const unsigned int readoutBoardID //!< Readout Board ID where the error occured
+	// );
+
+	//! Logs an error without an associated board and TDC id
+	// void logError(
+	// 	const std::string message //!< Message summarising the error
+	// );
 
 	//! Prints a summary of logged error messages
 	void print() const;
@@ -52,7 +63,8 @@ private:
 private:
 	mutable std::mutex m_mut; //!< Mutex for thread safety
 
-	std::unordered_map<std::string, ErrorCounter> m_errorMap; //!< Map to store error messages
+	std::unordered_map<std::string, ErrorCounter<2> > m_errorMap; //!< Map to store error messages
+	// std::unordered_map<std::string, unsigned int> m_errorMapGeneric; //!< Map to store error messages without a board and TDC ID
 };
 
 #endif /* ERRORSPY_H */

@@ -7,7 +7,7 @@ set(SOURCE_FILES ${SOURCE_FILES}
 	Core/src/FileReader.cpp
 	Core/src/InputFile.cpp
 	Core/src/ErrorSpy.cpp
-	Core/src/ErrorCounter.cpp
+	# Core/src/ErrorCounter.cpp
 )
 
 include_directories( Core/inc )

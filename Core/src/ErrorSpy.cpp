@@ -36,7 +36,7 @@ void ErrorSpy::logError(
 	auto found = m_errorMap.find(message);
 	if (m_errorMap.end() == found) {
 		// If message is not in map, add it
-		ErrorCounter counter;
+		ErrorCounter<2> counter("BoardID", "TDC");
 		counter.addCount(readoutBoardID, tdcID);
 		m_errorMap.insert(std::make_pair(message,std::move(counter)));
 	} else {

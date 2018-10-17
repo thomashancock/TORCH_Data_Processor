@@ -3,26 +3,28 @@
 
 // STD
 #include <map>
-#include <utility>
+#include <array>
+#include <iostream>
+// #include <utility>
+
+// LOCAL
+#include "Debug.hpp"
 
 //! Used by ErrorSpy to track which readout board/tdc combinations errors have occured on
+template <int N>
 class ErrorCounter {
-	using uintPair = std::pair<unsigned int, unsigned int>;
 public:
 	//! Constructor
-	ErrorCounter();
-
-	//! Incrememnts the count for the readout board/tdc combination
-	inline void addCount(
-		const unsigned int readoutBoardID, //!< The Readout Board ID
-		const unsigned int tdcID //!< The TDC ID
+	template <typename... Args>
+	ErrorCounter(
+		Args... args
 	);
 
-	//! Returns the count for the readout board/tdc combination
-	inline unsigned int getCount(
-		const unsigned int readoutBoardID, //!< The Readout Board ID
-		const unsigned int tdcID //!< The TDC ID
-	) const;
+	//! Incrememnts the count for the readout board/tdc combination
+	template <typename... Args>
+	inline void addCount(
+		Args... args
+	);
 
 	//! Prints the counts stored
 	void print() const;
@@ -32,13 +34,14 @@ private:
 	/*!
 		Returns auto to facilitate easy modifiaction of map key type
 	 */
-	inline auto makeKey(
-		const unsigned int readoutBoardID,
-		const unsigned int tdcID
+	template <typename... Args>
+	inline std::array<unsigned int, N> makeKey(
+		Args... args
 	) const;
 
 private:
-	std::map<uintPair, unsigned int> m_counts; //!< Map to store counts in
+	const std::array<std::string, N> m_labels;
+	std::map< std::array<unsigned int, N> , unsigned int > m_counts; //!< Map to store counts in
 };
 
 #endif /* ERRORCOUNTER_H */
@@ -48,21 +51,35 @@ private:
 // Inlines:
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-inline auto ErrorCounter::makeKey(
-	const unsigned int readoutBoardID,
-	const unsigned int tdcID
+template <int N>
+template <typename... Args>
+ErrorCounter<N>::ErrorCounter(
+	Args... args
+) :
+	m_labels {{ std::forward<Args>(args)... }}
+{
+	ASSERT(N == m_labels.size());
+};
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+template <int N>
+template <typename... Args>
+inline std::array<unsigned int, N> ErrorCounter<N>::makeKey(
+	Args... args
 ) const {
-	// Key is currently std::pair, but can be changed
-	return std::make_pair(readoutBoardID,tdcID);
+	std::array<unsigned int, N> tmp {{ std::forward<Args>(args)... }};
+	return tmp;
 }
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-inline void ErrorCounter::addCount(
-	const unsigned int readoutBoardID,
-	const unsigned int tdcID
+template <int N>
+template <typename... Args>
+inline void ErrorCounter<N>::addCount(
+	Args... args
 ) {
-	const auto key = makeKey(readoutBoardID,tdcID);
+	const auto key = makeKey(std::forward<Args>(args)...);
 
 	auto found = m_counts.find(key);
 	if (m_counts.end() == found) {
@@ -74,16 +91,13 @@ inline void ErrorCounter::addCount(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-inline unsigned int ErrorCounter::getCount(
-	const unsigned int readoutBoardID,
-	const unsigned int tdcID
-) const {
-	const auto key = makeKey(readoutBoardID,tdcID);
-
-	const auto found = m_counts.find(key);
-	if (m_counts.end() == found) {
-		return 0;
-	} else {
-		return found->second;
+template <int N>
+void ErrorCounter<N>::print() const {
+	for (const auto& entry : m_counts) {
+		std::cout << "\t";
+		for (unsigned int i = 0; i < m_labels.size(); i++) {
+			std::cout << m_labels[i] << ": " << entry.first[i] << ", ";
+		}
+		std::cout << " (x " << entry.second << ")" << std::endl;
 	}
 }
