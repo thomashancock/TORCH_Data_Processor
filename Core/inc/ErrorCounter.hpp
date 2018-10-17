@@ -11,7 +11,7 @@
 #include "Debug.hpp"
 
 //! Used by ErrorSpy to track which readout board/tdc combinations errors have occured on
-template <int N>
+template <unsigned int N>
 class ErrorCounter {
 public:
 	//! Constructor
@@ -51,7 +51,7 @@ private:
 // Inlines:
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-template <int N>
+template <unsigned int N>
 template <typename... Args>
 ErrorCounter<N>::ErrorCounter(
 	Args... args
@@ -63,7 +63,7 @@ ErrorCounter<N>::ErrorCounter(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-template <int N>
+template <unsigned int N>
 template <typename... Args>
 inline std::array<unsigned int, N> ErrorCounter<N>::makeKey(
 	Args... args
@@ -74,7 +74,7 @@ inline std::array<unsigned int, N> ErrorCounter<N>::makeKey(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-template <int N>
+template <unsigned int N>
 template <typename... Args>
 inline void ErrorCounter<N>::addCount(
 	Args... args
@@ -91,12 +91,15 @@ inline void ErrorCounter<N>::addCount(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-template <int N>
+template <unsigned int N>
 void ErrorCounter<N>::print() const {
 	for (const auto& entry : m_counts) {
 		std::cout << "\t";
 		for (unsigned int i = 0; i < m_labels.size(); i++) {
-			std::cout << m_labels[i] << ": " << entry.first[i] << ", ";
+			std::cout << m_labels[i] << ": " << entry.first[i];
+			if (i < m_labels.size() - 1) {
+				std::cout << ", ";
+			}
 		}
 		std::cout << " (x " << entry.second << ")" << std::endl;
 	}
