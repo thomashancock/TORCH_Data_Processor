@@ -92,15 +92,31 @@ inline uint getWordCount(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+//! Prints a word nicely formatted in hexadecimal
+inline void printWordHexPretty(
+	const uint word
+) {
+	std::cout
+		<< "(0x"
+		<< std::hex
+		<< std::setfill('0')
+		<< std::setw(8)
+		<< word
+		<< std::dec
+		<< ")";
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 //! Prints a ROC word in human-readable format (for data type 15)
 inline void printROCWord(
 	const uint word
 ) {
 	ASSERT(15 == getDataType(word));
 	std::cout << "ROC:     "
-		<< getROCValue(word)
-		<< " (0x" << std::hex << word << std::dec << ")"
-		<< std::endl;
+		<< getROCValue(word) << " ";
+		printWordHexPretty(word);
+		std::cout << std::endl;
 }
 // -----------------------------------------------------------------------------
 //
@@ -113,9 +129,9 @@ inline void printEdgeWord(
 	std::cout << "EDGE:    "
 		<< " TDC: " << getTDCID(word) << "\t"
 		<< " Chl: " << getChannelID(word) << "  \t" // Spaces needed for alignment
-		<< " Time: " << getTimestamp(word) << "\t"
-		<< " (0x" << std::hex << word << std::dec << ")"
-		<< std::endl;
+		<< " Time: " << getTimestamp(word) << "\t ";
+		printWordHexPretty(word);
+		std::cout << std::endl;
 }
 // -----------------------------------------------------------------------------
 //
@@ -128,9 +144,9 @@ inline void printHeaderWord(
 	std::cout << "HEADER:  "
 		<< " TDC: " << getTDCID(word) << "\t"
 		<< " Evt: " << getEventID(word) << "\t"
-		<< " Bch: " << getBunchID(word) << "\t"
-		<< " (0x" << std::hex << word << std::dec << ")"
-		<< std::endl;
+		<< " Bch: " << getBunchID(word) << "\t ";
+		printWordHexPretty(word);
+		std::cout << std::endl;
 }
 // -----------------------------------------------------------------------------
 //
@@ -143,9 +159,9 @@ inline void printTrailerWord(
 	std::cout << "TRAILER: "
 		<< " TDC: " << getTDCID(word) << "\t"
 		<< " Evt: " << getEventID(word) << "\t"
-		<< " WdC: " << getWordCount(word) << "    \t" // Spaces needed for alignment
-		<< " (0x" << std::hex << word << std::dec << ")"
-		<< std::endl;
+		<< " WdC: " << getWordCount(word) << "    \t "; // Spaces needed for alignment
+		printWordHexPretty(word);
+		std::cout << std::endl;
 }
 // -----------------------------------------------------------------------------
 //
@@ -164,7 +180,9 @@ inline void printWord(
 	} else if ((4 == dataType) || (5 == dataType)) {
 		printEdgeWord(word);
 	} else {
-		std::cout << "UNKNOWN: (0x" << std::hex << word << std::dec << ")" << std::endl;
+		std::cout << "UNKNOWN: ";
+		printWordHexPretty(word);
+		std::cout << std::endl;
 	}
 }
 
