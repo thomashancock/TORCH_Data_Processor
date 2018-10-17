@@ -40,15 +40,15 @@ public:
 	);
 
 	//! Logs an error with an associated Board ID
-	// void logError(
-	// 	const std::string message, //!< Message summarising the error
-	// 	const unsigned int readoutBoardID //!< Readout Board ID where the error occured
-	// );
+	void logError(
+		const std::string message, //!< Message summarising the error
+		const unsigned int readoutBoardID //!< Readout Board ID where the error occured
+	);
 
 	//! Logs an error without an associated board and TDC id
-	// void logError(
-	// 	const std::string message //!< Message summarising the error
-	// );
+	void logError(
+		const std::string message //!< Message summarising the error
+	);
 
 	//! Prints a summary of logged error messages
 	void print() const;
@@ -64,7 +64,8 @@ private:
 	mutable std::mutex m_mut; //!< Mutex for thread safety
 
 	std::unordered_map<std::string, ErrorCounter<2> > m_errorMap; //!< Map to store error messages
-	// std::unordered_map<std::string, unsigned int> m_errorMapGeneric; //!< Map to store error messages without a board and TDC ID
+	std::unordered_map<std::string, ErrorCounter<1> > m_errorMapReadouts; //!< Map to store error messages for just a single board
+	std::unordered_map<std::string, ErrorCounter<0> > m_errorMapGeneral; //!< Map to store error messages without a board and TDC ID
 };
 
 #endif /* ERRORSPY_H */

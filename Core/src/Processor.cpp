@@ -269,8 +269,7 @@ void Processor::makePackets(
 					// If not, log an error
 					std::stringstream errorMessage;
 					errorMessage << "Invalid Datatype " << dataType;
-					// TODO: Allow Error logged without requiring TDC ID
-					ErrorSpy::getInstance().logError(errorMessage.str(),bundle->getReadoutBoardID(),100);
+					ErrorSpy::getInstance().logError(errorMessage.str(), bundle->getReadoutBoardID());
 					continue;
 				}
 

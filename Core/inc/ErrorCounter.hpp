@@ -5,7 +5,6 @@
 #include <map>
 #include <array>
 #include <iostream>
-// #include <utility>
 
 // LOCAL
 #include "Debug.hpp"
@@ -43,6 +42,28 @@ private:
 	const std::array<std::string, N> m_labels;
 	std::map< std::array<unsigned int, N> , unsigned int > m_counts; //!< Map to store counts in
 };
+
+// Class specialisation for N = 0
+template <>
+class ErrorCounter<0> {
+public:
+	//! Constructor
+	ErrorCounter() { };
+
+	//! Incrememnts the count for the readout board/tdc combination
+	inline void addCount() { m_count++; };
+
+	//! Prints the counts stored
+	void print() const {
+		std::cout << " (x " << m_count << ")" << std::endl;
+	};
+
+private:
+
+private:
+	unsigned int m_count = 0;
+};
+
 
 #endif /* ERRORCOUNTER_H */
 
