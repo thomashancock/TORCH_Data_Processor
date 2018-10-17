@@ -55,7 +55,7 @@ public:
 
 	//! Prints the counts stored
 	void print() const {
-		std::cout << " (x " << m_count << ")" << std::endl;
+		std::cout << "\t (x " << m_count << ")" << std::endl;
 	};
 
 private:
