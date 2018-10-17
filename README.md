@@ -95,12 +95,12 @@ data/Test_Data/TimeRef_01_Device_0/TimeRef_01_Device_0_000004_20180523110823.txt
 ...
 ```
 
-File lists can be passed to the MDU using the ```-list``` option. E.g.
+File lists can be passed to the MDP using the ```-list``` option. E.g.
 ```
 ./Install/bin/DataProcessor -con Config.xml -list filelist.lst
 ```
 
-The MDU will run over all the files given in ```filelist.lst``` as if they were passed on the command line.
+The MDP will run over all the files given in ```filelist.lst``` as if they were passed on the command line.
 
 ## Pulling New Changes  <a name="Pulling"></a>
 
