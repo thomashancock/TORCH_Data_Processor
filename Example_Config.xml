@@ -18,7 +18,7 @@
 
   <!-- Option to disable edge matching on select channels
        Intended for time referene channels.
-       Only the leading time will be written. 
+       Only the leading time will be written.
        Trailing time and width will be set to 0.
        Only applies to "Serial" mode.
   -->
@@ -38,7 +38,7 @@
   -->
   <edgeModifier modifier="FlipEven"/>
 
-  <!-- Description of electronics arangement -->
+  <!-- Description of electronics arrangement -->
   <arrangement>
     <board id="0">
       <slot name="D" tdcID1="0" tdcID2="1"/>

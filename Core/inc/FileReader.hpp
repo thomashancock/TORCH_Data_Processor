@@ -140,7 +140,7 @@ unsigned int FileReader::readHeaderLine(
 	// Read in header word
 	// Discard first two bytes (mult = 0)
 	unsigned int output = 0;
-	for (auto& mult : { 0, 0, 0x00000100, 0x00000001 } ) {
+	for (const auto& mult : { 0, 0, 0x00000100, 0x00000001 } ) {
 		output += mult * inputData->get();
 	}
 	return output;
@@ -174,6 +174,7 @@ bool FileReader::isNDataBytesValid(
 		for (unsigned int i = 0; i < nDataBytes; i++) {
 			streamPtr->get();
 		}
+		return false;
 	}
 
 	return true;
@@ -195,8 +196,8 @@ std::array<unsigned int,4> FileReader::readDataBlock(
 	// Declare array to store block
 	std::array<unsigned int, 4> block = {{ 0 }};
 
-	// mult is used to offset eact byte to construct a 32 bit word
-	for (auto& mult : { 0x01000000, 0x00010000, 0x00000100, 0x00000001 } ) {
+	// mult is used to offset each byte to construct a 32 bit word
+	for (const auto& mult : { 0x01000000, 0x00010000, 0x00000100, 0x00000001 } ) {
 		// Iterate in reverse order to give D = 3, C = 2, B = 1, A = 0
 		for (int i = 3; i >= 0; i--) {
 			block[i] += mult * inputData->get();
