@@ -159,7 +159,6 @@ root 'macros/MakeHitmap.cxx("Output.root","CustomOutputName.pdf",1,1)' -b -q
 This section gives a list of changes/features which are yet to be implemented, but are requested. The requester's initials should be put in brackets after the item.
 
 * Refactor Edge Sorting to be easily modifiable (THH)
-* Add "No Errors" to ErrorSpy summary if no errors are detected (THH)
 * Parallel Mode (THH)
 
 ## Known Bugs <a name="KnownBugs"></a>

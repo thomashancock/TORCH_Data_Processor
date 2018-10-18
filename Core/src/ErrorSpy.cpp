@@ -95,9 +95,13 @@ void ErrorSpy::print() const {
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	std::cout << "=== Errors Summary ===" << std::endl;
-	printMap(m_error2D);
-	printMap(m_error1D);
-	printMap(m_error0D);
+	if (m_error2D.empty() && m_error1D.empty() && m_error0D.empty()) {
+		std::cout << "  No Errors Detected" << std::endl;
+	} else {
+		printMap(m_error2D);
+		printMap(m_error1D);
+		printMap(m_error0D);
+	}
 }
 
 // -----------------------------------------------------------------------------
