@@ -35,7 +35,7 @@ public:
 		Type checking will ensure Args is a set of unsigned ints.
 	 */
 	template <typename... Args>
-	inline void addCount(
+	void addCount(
 		Args... args //!< Parameter pack for board/tdc ID combination
 	);
 
@@ -50,7 +50,7 @@ private:
 		Returns auto to facilitate easy modifiaction of map key type.
 	 */
 	template <typename... Args>
-	inline auto makeKey(
+	auto makeKey(
 		Args... args //!< Parameter pack for board/tdc ID combination
 	) const;
 
@@ -70,7 +70,7 @@ public:
 	ErrorCounter() { };
 
 	//! Incrememnts the count
-	inline void addCount() { m_count++; };
+	void addCount() { m_count++; };
 
 	//! Prints the stored count
 	void print() const {
@@ -80,9 +80,6 @@ public:
 private:
 	unsigned int m_count = 0; //!< Stores the count
 };
-
-
-#endif /* ERRORCOUNTER_H */
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -95,15 +92,13 @@ ErrorCounter<N>::ErrorCounter(
 	Args... args
 ) :
 	m_labels {{ std::forward<Args>(args)... }}
-{
-	ASSERT(N == m_labels.size());
-};
+{ };
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 template <unsigned int N>
 template <typename... Args>
-inline auto ErrorCounter<N>::makeKey(
+auto ErrorCounter<N>::makeKey(
 	Args... args
 ) const {
 	std::array<unsigned int, N> tmp {{ std::forward<Args>(args)... }};
@@ -114,7 +109,7 @@ inline auto ErrorCounter<N>::makeKey(
 // -----------------------------------------------------------------------------
 template <unsigned int N>
 template <typename... Args>
-inline void ErrorCounter<N>::addCount(
+void ErrorCounter<N>::addCount(
 	Args... args
 ) {
 	const auto key = makeKey(std::forward<Args>(args)...);
@@ -142,3 +137,5 @@ void ErrorCounter<N>::print() const {
 		std::cout << " (x " << entry.second << ")" << std::endl;
 	}
 }
+
+#endif /* ERRORCOUNTER_H */

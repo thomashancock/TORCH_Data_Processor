@@ -60,12 +60,32 @@ private:
 	*/
 	ErrorSpy();
 
+	template<typename T>
+	void printMap(
+		T& map
+	) const;
+
 private:
 	mutable std::mutex m_mut; //!< Mutex for thread safety
 
-	std::unordered_map<std::string, ErrorCounter<2> > m_errorMap; //!< Map to store error messages
-	std::unordered_map<std::string, ErrorCounter<1> > m_errorMapReadouts; //!< Map to store error messages for just a single board
-	std::unordered_map<std::string, ErrorCounter<0> > m_errorMapGeneral; //!< Map to store error messages without a board and TDC ID
+	std::unordered_map<std::string, ErrorCounter<2> > m_error2D; //!< Map to store error messages
+	std::unordered_map<std::string, ErrorCounter<1> > m_error1D; //!< Map to store error messages for just a single board
+	std::unordered_map<std::string, ErrorCounter<0> > m_error0D; //!< Map to store error messages without a board and TDC ID
 };
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Template and Inline functions:
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+template<typename T>
+void ErrorSpy::printMap(
+	T& map
+) const {
+	for (const auto& entry : map) {
+		std::cout << "Error: " << entry.first << std::endl;
+		entry.second.print();
+	}
+}
 
 #endif /* ERRORSPY_H */

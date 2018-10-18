@@ -33,12 +33,12 @@ void ErrorSpy::logError(
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Check if message in already in map
-	auto found = m_errorMap.find(message);
-	if (m_errorMap.end() == found) {
+	auto found = m_error2D.find(message);
+	if (m_error2D.end() == found) {
 		// If message is not in map, add it
 		ErrorCounter<2> counter("BoardID", "TDC");
 		counter.addCount(readoutBoardID, tdcID);
-		m_errorMap.insert(std::make_pair(message,std::move(counter)));
+		m_error2D.insert(std::make_pair(message,std::move(counter)));
 	} else {
 		// Increment counter for given message
 		found->second.addCount(readoutBoardID, tdcID);
@@ -55,12 +55,12 @@ void ErrorSpy::logError(
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Check if message in already in map
-	auto found = m_errorMapReadouts.find(message);
-	if (m_errorMapReadouts.end() == found) {
+	auto found = m_error1D.find(message);
+	if (m_error1D.end() == found) {
 		// If message is not in map, add it
 		ErrorCounter<1> counter("BoardID");
 		counter.addCount(readoutBoardID);
-		m_errorMapReadouts.insert(std::make_pair(message,std::move(counter)));
+		m_error1D.insert(std::make_pair(message,std::move(counter)));
 	} else {
 		// Increment counter for given message
 		found->second.addCount(readoutBoardID);
@@ -76,12 +76,12 @@ void ErrorSpy::logError(
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Check if message in already in map
-	auto found = m_errorMapGeneral.find(message);
-	if (m_errorMapGeneral.end() == found) {
+	auto found = m_error0D.find(message);
+	if (m_error0D.end() == found) {
 		// If message is not in map, add it
 		ErrorCounter<0> counter;
 		counter.addCount();
-		m_errorMapGeneral.insert(std::make_pair(message,std::move(counter)));
+		m_error0D.insert(std::make_pair(message,std::move(counter)));
 	} else {
 		// Increment counter for given message
 		found->second.addCount();
@@ -95,18 +95,21 @@ void ErrorSpy::print() const {
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	std::cout << "=== Errors Summary ===" << std::endl;
-	for (const auto& entry : m_errorMap) {
-		std::cout << "Error: " << entry.first << std::endl;
-		entry.second.print();
-	}
-	for (const auto& entry : m_errorMapReadouts) {
-		std::cout << "Error: " << entry.first << std::endl;
-		entry.second.print();
-	}
-	for (const auto& entry : m_errorMapGeneral) {
-		std::cout << "Error: " << entry.first << std::endl;
-		entry.second.print();
-	}
+	printMap(m_error2D);
+	printMap(m_error1D);
+	printMap(m_error0D);
+	// for (const auto& entry : m_error2D) {
+	// 	std::cout << "Error: " << entry.first << std::endl;
+	// 	entry.second.print();
+	// }
+	// for (const auto& entry : m_error1D) {
+	// 	std::cout << "Error: " << entry.first << std::endl;
+	// 	entry.second.print();
+	// }
+	// for (const auto& entry : m_error0D) {
+	// 	std::cout << "Error: " << entry.first << std::endl;
+	// 	entry.second.print();
+	// }
 }
 
 
