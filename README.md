@@ -158,7 +158,6 @@ root 'macros/MakeHitmap.cxx("Output.root","CustomOutputName.pdf",1,1)' -b -q
 
 This section gives a list of changes/features which are yet to be implemented, but are requested. The requester's initials should be put in brackets after the item.
 
-* Add possibility of logging errors in ErrorSpy which don't required a Board ID and/or TDC ID (THH)
 * Refactor Edge Sorting to be easily modifiable (THH)
 * Add "No Errors" to ErrorSpy summary if no errors are detected (THH)
 * Parallel Mode (THH)
@@ -168,4 +167,3 @@ This section gives a list of changes/features which are yet to be implemented, b
 This section gives a list of known bugs which require attention. The reporter's initials should be put in brackets after the item.
 
 * If block/file is dumped, current WordBundle should be cleared (THH)
-* "Invalid Datatype" Error has TDC ID = 100 for all occurrences (THH)

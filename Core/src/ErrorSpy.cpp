@@ -98,20 +98,7 @@ void ErrorSpy::print() const {
 	printMap(m_error2D);
 	printMap(m_error1D);
 	printMap(m_error0D);
-	// for (const auto& entry : m_error2D) {
-	// 	std::cout << "Error: " << entry.first << std::endl;
-	// 	entry.second.print();
-	// }
-	// for (const auto& entry : m_error1D) {
-	// 	std::cout << "Error: " << entry.first << std::endl;
-	// 	entry.second.print();
-	// }
-	// for (const auto& entry : m_error0D) {
-	// 	std::cout << "Error: " << entry.first << std::endl;
-	// 	entry.second.print();
-	// }
 }
-
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
