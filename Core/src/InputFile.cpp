@@ -4,6 +4,9 @@
 #include <iostream>
 #include <sstream>
 
+// LOCAL
+#include "Debug.hpp"
+
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Public:
@@ -22,23 +25,26 @@ InputFile::InputFile(
 	std::string segment;
 	unsigned int count = 0;
 	while(std::getline(reader,segment,'_')) {
-		if ("Device" == segment) {
-			// Finding Device in string triggers read (i.e. count = 1)
-			count++;
-		} else if (1 == count) {
+		STD_LOG(count << ": " << segment);
+		if ("Chain" == segment) {
+			// Finding Chain in string triggers read (i.e. count = 1)
+			count = 1;
+		} else if (2 == count) {
+			// If count == 1, the readout board ID is next
+			m_chainID = std::stoi(segment);
+		} else if (4 == count) {
 			// If count == 1, the readout board ID is next
 			m_deviceID = std::stoi(segment);
-			count++;
-		} else if (2 == count) {
+		} else if (5 == count) {
 			// If count == 2, the file number is next
 			m_fileNumber = std::stoi(segment);
-			count++;
-		} else if (3 == count) {
+		} else if (6 == count) {
 			// If count == 2, the file number is next
 			m_timestamp = std::stoll(segment);
 			m_informationComplete = true;
 			break;
 		}
+		if (count > 0) count++;
 	}
 }
 // -----------------------------------------------------------------------------
@@ -46,6 +52,7 @@ InputFile::InputFile(
 // -----------------------------------------------------------------------------
 void InputFile::print() const {
 	std::cout << "Path: " << m_filePath << std::endl;
+	std::cout << "ChainID: " << m_chainID << std::endl;
 	std::cout << "DeviceID: " << m_deviceID << std::endl;
 	std::cout << "FileNumber:     " << m_fileNumber << std::endl;
 	std::cout << "Timestamp:      " << m_timestamp << std::endl;
