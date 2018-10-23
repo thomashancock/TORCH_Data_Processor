@@ -6,9 +6,9 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 WordBundle::WordBundle(
-	const unsigned int readoutBoardID
+	const BoardIdentifier boardID
 ) :
-	m_readoutBoardID(readoutBoardID)
+	m_boardID(std::move(boardID))
 {
 	ASSERT(m_words.empty());
 }

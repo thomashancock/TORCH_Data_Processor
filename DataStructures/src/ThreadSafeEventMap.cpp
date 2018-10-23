@@ -9,9 +9,9 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 ThreadSafeEventMap::ThreadSafeEventMap(
-	const std::list<unsigned int> tdcIDs
+	const std::list<ReadoutIdentifier> readoutIDs
 ) :
-	m_tdcIDs(tdcIDs)
+	m_readoutIDs(std::move(readoutIDs))
 {
 	STD_LOG("ThreadSafeEventMap Constructor Called");
 }
@@ -30,7 +30,7 @@ void ThreadSafeEventMap::addPacket(
 
 	if (found == m_map.end()) {
 		// If not found, create new event
-		m_map.insert(std::make_pair(eventID, std::make_unique<Event>(m_tdcIDs)));
+		m_map.insert(std::make_pair(eventID, std::make_unique<Event>(m_readoutIDs)));
 		m_eventTracker.push_back(m_map.find(eventID)); // Add event to tracker
 
 		// Add packet to newly created event

@@ -31,7 +31,7 @@ void PacketTreeManager::add(
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Write basic information
-	b_tdcID = packet->getTDCID();
+	b_tdcID = packet->getReadoutID().getTDCID();
 	b_eventID = packet->getEventID();
 	b_bunchID = packet->getBunchID();
 	b_wordCount = packet->getWordCount();

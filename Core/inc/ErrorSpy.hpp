@@ -8,6 +8,8 @@
 
 // LOCAL
 #include "ErrorCounter.hpp"
+#include "BoardIdentifier.hpp"
+#include "ReadoutIdentifier.hpp"
 
 //! Keeps track of errors detected during program execution
 /*!
@@ -35,14 +37,13 @@ public:
 	//! Logs an error with associated Board and TDC IDs
 	void logError(
 		const std::string message, //!< Message summarising the error
-		const unsigned int readoutBoardID, //!< Readout Board ID where the error occured
-		const unsigned int tdcID //!< TDC id where the error occured
+		const ReadoutIdentifier& readoutID //!< Readout Board ID where the error occured
 	);
 
 	//! Logs an error with an associated Board ID
 	void logError(
 		const std::string message, //!< Message summarising the error
-		const unsigned int readoutBoardID //!< Readout Board ID where the error occured
+		const BoardIdentifier& boardID //!< Readout Board ID where the error occured
 	);
 
 	//! Logs an error without an associated board and TDC id
@@ -68,8 +69,8 @@ private:
 private:
 	mutable std::mutex m_mut; //!< Mutex for thread safety
 
-	std::unordered_map<std::string, ErrorCounter<2> > m_error2D; //!< Map to store error messages
-	std::unordered_map<std::string, ErrorCounter<1> > m_error1D; //!< Map to store error messages for just a single board
+	std::unordered_map<std::string, ErrorCounter<3> > m_error3D; //!< Map to store error messages
+	std::unordered_map<std::string, ErrorCounter<2> > m_error2D; //!< Map to store error messages for just a single board
 	std::unordered_map<std::string, ErrorCounter<0> > m_error0D; //!< Map to store error messages without a board and TDC ID
 };
 

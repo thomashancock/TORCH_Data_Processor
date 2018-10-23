@@ -1,8 +1,5 @@
 #include "ErrorSpy.hpp"
 
-// LOCAL
-#include "Debug.hpp"
-
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Statics:
@@ -26,8 +23,29 @@ ErrorSpy::~ErrorSpy() {
 // -----------------------------------------------------------------------------
 void ErrorSpy::logError(
 	const std::string message,
-	const unsigned int readoutBoardID,
-	const unsigned int tdcID
+	const ReadoutIdentifier& readoutID
+) {
+	// Lock Mutex
+	std::lock_guard<std::mutex> lk(m_mut);
+
+	// Check if message in already in map
+	auto found = m_error3D.find(message);
+	if (m_error3D.end() == found) {
+		// If message is not in map, add it
+		ErrorCounter<3> counter("ChainID", "DeviceID", "TDC");
+		counter.addCount(readoutID.getChainID(), readoutID.getDeviceID(), readoutID.getTDCID());
+		m_error3D.insert(std::make_pair(message,std::move(counter)));
+	} else {
+		// Increment counter for given message
+		found->second.addCount(readoutID.getChainID(), readoutID.getDeviceID(), readoutID.getTDCID());
+	}
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void ErrorSpy::logError(
+	const std::string message,
+	const BoardIdentifier& boardID
 ) {
 	// Lock Mutex
 	std::lock_guard<std::mutex> lk(m_mut);
@@ -36,34 +54,12 @@ void ErrorSpy::logError(
 	auto found = m_error2D.find(message);
 	if (m_error2D.end() == found) {
 		// If message is not in map, add it
-		ErrorCounter<2> counter("BoardID", "TDC");
-		counter.addCount(readoutBoardID, tdcID);
+		ErrorCounter<2> counter("BoardID");
+		counter.addCount(boardID.getChainID(), boardID.getDeviceID());
 		m_error2D.insert(std::make_pair(message,std::move(counter)));
 	} else {
 		// Increment counter for given message
-		found->second.addCount(readoutBoardID, tdcID);
-	}
-}
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-void ErrorSpy::logError(
-	const std::string message,
-	const unsigned int readoutBoardID
-) {
-	// Lock Mutex
-	std::lock_guard<std::mutex> lk(m_mut);
-
-	// Check if message in already in map
-	auto found = m_error1D.find(message);
-	if (m_error1D.end() == found) {
-		// If message is not in map, add it
-		ErrorCounter<1> counter("BoardID");
-		counter.addCount(readoutBoardID);
-		m_error1D.insert(std::make_pair(message,std::move(counter)));
-	} else {
-		// Increment counter for given message
-		found->second.addCount(readoutBoardID);
+		found->second.addCount(boardID.getChainID(), boardID.getDeviceID());
 	}
 }
 // -----------------------------------------------------------------------------
@@ -95,11 +91,11 @@ void ErrorSpy::print() const {
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	std::cout << "=== Errors Summary ===" << std::endl;
-	if (m_error2D.empty() && m_error1D.empty() && m_error0D.empty()) {
+	if (m_error3D.empty() && m_error2D.empty() && m_error0D.empty()) {
 		std::cout << "  No Errors Detected" << std::endl;
 	} else {
+		printMap(m_error3D);
 		printMap(m_error2D);
-		printMap(m_error1D);
 		printMap(m_error0D);
 	}
 }

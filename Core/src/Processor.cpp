@@ -23,7 +23,7 @@ Processor::Processor(
 	std::unique_ptr<const Config> config
 ) :
 	m_config(std::move(config)),
-	m_eventBuffer(m_config->getTDCList())
+	m_eventBuffer(m_config->getReadoutList())
 {
 	// Technically redundant assertion
 	// m_eventBuffer initialization will cause seg fault if m_config == nullptr
@@ -43,7 +43,7 @@ Processor::Processor(
 	}
 
 	// Initialise file reader
-	m_fileReader = std::make_unique<FileReader>(m_config->getReadoutBoardList(),m_wordBundleBuffers);
+	m_fileReader = std::make_unique<FileReader>(m_config->getReadoutList(), m_wordBundleBuffers);
 	ASSERT(nullptr != m_fileReader);
 
 	// After FileReader initialization, should be two pointers refering to the bundle buffers
@@ -118,7 +118,7 @@ void Processor::runQuickCheck() {
 				bundleCount += 1;
 				auto bundle = buffer->popFront();
 				std::cout << "New Bundle = "
-				<< "Board: " << bundle->getReadoutBoardID() << " "
+				<< "Board: " << bundle->getBoardID() << " "
 				<< "ROC: " << bundle->getROCValue() << std::endl;
 				while (!bundle->empty()) {
 					bindec::printWord(bundle->getNextWord());
@@ -269,7 +269,7 @@ void Processor::makePackets(
 					// If not, log an error
 					std::stringstream errorMessage;
 					errorMessage << "Invalid Datatype " << dataType;
-					ErrorSpy::getInstance().logError(errorMessage.str(), bundle->getReadoutBoardID());
+					ErrorSpy::getInstance().logError(errorMessage.str(), bundle->getBoardID());
 					continue;
 				}
 
@@ -281,7 +281,7 @@ void Processor::makePackets(
 						// A complete packet should not reach this point
 						ASSERT(!currPacket->isComplete());
 						// Log that a packet was dumped
-						ErrorSpy::getInstance().logError("Dumped incomplete packet",bundle->getReadoutBoardID(),bindec::getTDCID(word));
+						ErrorSpy::getInstance().logError("Dumped incomplete packet",ReadoutIdentifier(bundle->getBoardID(),bindec::getTDCID(word)));
 						// Delete the incomplete packet
 						currPacket.reset(nullptr);
 					}
@@ -289,7 +289,7 @@ void Processor::makePackets(
 					// In order to make a new packet, no packet should currently be stored
 					ASSERT(nullptr == currPacket);
 					// Make a new packet
-					currPacket = std::make_unique<Packet>(bundle->getReadoutBoardID(),bundle->getROCValue(),word);
+					currPacket = std::make_unique<Packet>(bundle->getBoardID(),bundle->getROCValue(),word);
 					ASSERT(currPacket != nullptr);
 				// If the word is not a header word, check if a packet is currently in construction
 				} else if (currPacket != nullptr) {
@@ -302,7 +302,7 @@ void Processor::makePackets(
 						// Check the newly completed packet is good (consistent + complete)
 						if (currPacket->isGood()) {
 							// If it is, add it to the acket buffers
-							const auto index = currPacket->getTDCID();
+							const auto index = currPacket->getReadoutID().getTDCID();
 							try {
 								// Attempt to add the packet to the appropriate buffer
 								m_packetBuffers.at(index).push(std::move(currPacket));
@@ -313,7 +313,7 @@ void Processor::makePackets(
 							}
 						} else {
 							// If packet is not good, delete it
-							ErrorSpy::getInstance().logError("Bad Packet Dumped",currPacket->getReadoutBoardID(),currPacket->getTDCID());
+							ErrorSpy::getInstance().logError("Bad Packet Dumped",currPacket->getReadoutID());
 							currPacket.reset(nullptr);
 						} /* if (currPacket->isGood()) */
 					// If data type indicates a data word, simply add it to current packet
@@ -325,7 +325,7 @@ void Processor::makePackets(
 					// If this point is reached, a word has been found while a packet is not being constructed
 					// This means it has appeared out of sequence (i.e. it is not between a header and a trailer)
 					// An error is logged, and the word is discarded
-					ErrorSpy::getInstance().logError("Word found out of sequence",bundle->getReadoutBoardID(),bindec::getTDCID(word));
+					ErrorSpy::getInstance().logError("Word found out of sequence",bundle->getBoardID());
 				} /* if (2 == dataType) */
 			} /* while (!bundle->empty()) */
 		} /* if (bundle->isComplete()) */

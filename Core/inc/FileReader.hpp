@@ -16,6 +16,8 @@
 #include "WordBundle.hpp"
 #include "ThreadSafeQueue.hpp"
 #include "InputFile.hpp"
+#include "ReadoutIdentifier.hpp"
+#include "BoardIdentifier.hpp"
 
 //! Read files and outputs word bundles
 class FileReader {
@@ -25,7 +27,7 @@ class FileReader {
 public:
 	//! Constructor
 	FileReader(
-		const std::list<unsigned int>& readoutBoardList, //!< List of readout boards present
+		const std::list<ReadoutIdentifier>& readoutList, //!< List of readout boards present
 		std::array< std::shared_ptr<bundleBuffer>, 4> //!< Shared Pointer to WordBundle buffers
 	);
 
@@ -50,7 +52,7 @@ private:
 
 	//! Stages a new file
 	inline void stageNextFile(
-		const unsigned int readoutBoardID //!< Readout Board ID to stage for
+		const BoardIdentifier& boardID //!< Readout Board ID to stage for
 	);
 
 	//! Reads a single data block from each file
@@ -63,7 +65,7 @@ private:
 
 	//! Checks if a number of bytes is valid, and takes action if not
 	inline bool isNDataBytesValid(
-		const unsigned int boardID,
+		const BoardIdentifier& boardID,
 		std::unique_ptr<std::ifstream>& inputData, //!< Stream nDataBytes was read from
 		const unsigned int nDataBytes
 	);
@@ -74,17 +76,18 @@ private:
 	);
 
 private:
-	std::map< unsigned int, std::list<InputFile> > m_inputFiles; //!< Input file storage
-	std::map< unsigned int, std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
+	std::map< BoardIdentifier, std::list<InputFile> > m_inputFiles; //!< Input file storage
+	std::map< BoardIdentifier, std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
 
 	unsigned int m_rateCounter = 0;
 	unsigned int m_counterMax = 0;
-	std::unordered_map< unsigned int, unsigned int > m_relativeRates;
+	std::map< BoardIdentifier, unsigned int > m_relativeRates;
 
-	std::unordered_map< unsigned int, unsigned int > m_fileLengths; //!< Map to store file lengths
-	std::unordered_map< unsigned int, bundleWorkspace > m_bundleWorkspaces; //!< Map of pointers used to create WordBundles
+	std::map< BoardIdentifier, unsigned int > m_fileLengths; //!< Map to store file lengths
+	std::map< BoardIdentifier, bundleWorkspace > m_bundleWorkspaces; //!< Map of pointers used to create WordBundles
 
 	std::array< std::shared_ptr<bundleBuffer>, 4> m_wordBundleBuffers; //!< Pointers to shared WordBundle buffers
+	unsigned int nextBundleBufferIndex = 0;
 
 	const std::set<unsigned int> fillerWords = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 }; //! Set containing filler words (move to config?)
 };
@@ -108,12 +111,12 @@ bool FileReader::haveFilesExpired() const {
 //
 // -----------------------------------------------------------------------------
 void FileReader::stageNextFile(
-	const unsigned int readoutBoardID
+	const BoardIdentifier& boardID
 ) {
-	if (!m_inputFiles[readoutBoardID].empty()) {
-		auto& streamPtr = m_inputStreams[readoutBoardID];
+	if (!m_inputFiles[boardID].empty()) {
+		auto& streamPtr = m_inputStreams[boardID];
 		ASSERT(nullptr == streamPtr);
-		const auto& filePath = m_inputFiles[readoutBoardID].front().getFilePath();
+		const auto& filePath = m_inputFiles[boardID].front().getFilePath();
 		streamPtr = std::make_unique<std::ifstream>(filePath, std::ios::in | std::ios::binary);
 		ASSERT(nullptr != streamPtr);
 
@@ -126,7 +129,7 @@ void FileReader::stageNextFile(
 		} else {
 			// If file is valid, record file length
 			streamPtr->seekg(0, std::ios::end);
-			m_fileLengths[readoutBoardID] = streamPtr->tellg();
+			m_fileLengths[boardID] = streamPtr->tellg();
 			streamPtr->seekg(0);
 		}
 	}
@@ -149,7 +152,7 @@ unsigned int FileReader::readHeaderLine(
 //
 // -----------------------------------------------------------------------------
 bool FileReader::isNDataBytesValid(
-	const unsigned int boardID,
+	const BoardIdentifier& boardID,
 	std::unique_ptr<std::ifstream>& streamPtr,
 	const unsigned int nDataBytes
 ) {

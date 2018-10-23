@@ -27,7 +27,7 @@ InputFile::InputFile(
 			count++;
 		} else if (1 == count) {
 			// If count == 1, the readout board ID is next
-			m_readoutBoardID = std::stoi(segment);
+			m_deviceID = std::stoi(segment);
 			count++;
 		} else if (2 == count) {
 			// If count == 2, the file number is next
@@ -46,7 +46,7 @@ InputFile::InputFile(
 // -----------------------------------------------------------------------------
 void InputFile::print() const {
 	std::cout << "Path: " << m_filePath << std::endl;
-	std::cout << "ReadoutBoardID: " << m_readoutBoardID << std::endl;
+	std::cout << "DeviceID: " << m_deviceID << std::endl;
 	std::cout << "FileNumber:     " << m_fileNumber << std::endl;
 	std::cout << "Timestamp:      " << m_timestamp << std::endl;
 }
@@ -72,7 +72,7 @@ bool InputFile::operator> (
 bool InputFile::operator== (
 	const InputFile& other
 ) const {
-	if ((m_fileNumber == other.getFileNumber())&&(m_readoutBoardID == other.getReadoutBoardID())) {
+	if ((m_fileNumber == other.getFileNumber())&&(this->getBoardID() == other.getBoardID())) {
 		return true;
 	} else {
 		return false;

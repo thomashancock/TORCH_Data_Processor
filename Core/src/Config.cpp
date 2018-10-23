@@ -17,13 +17,13 @@ Config::Config(
 	STD_LOG("Config(): Reading Config");
 
 	ASSERT(m_edgeMatchingExclusions.empty());
-	ASSERT(m_boardList.empty());
-	ASSERT(m_tdcList.empty());
+	ASSERT(m_readoutList.empty());
+	// ASSERT(m_tdcList.empty());
 
 	parseConfigFile(configFile);
 
 	// Sort TDC ID list
-	m_tdcList.sort();
+	m_readoutList.sort();
 }
 // -----------------------------------------------------------------------------
 //
@@ -48,19 +48,19 @@ void Config::print() const {
 		std::cout << std::endl;
 	}
 
-	// Print Readout Board IDs
-	std::cout << "\tReadout Board IDs: ";
-	for (const auto& id : m_boardList) {
-		std::cout << id << " ";
+	// Print Readout IDs
+	std::cout << "\tReadout IDs: ";
+	for (const auto& id : m_readoutList) {
+		std::cout << id.str() << std::endl;
 	}
-	std::cout << std::endl;
+	// std::cout << std::endl;
 
-	// Print TDC IDs
-	std::cout << "\tTDC IDs: ";
-	for (const auto& id : m_tdcList) {
-		std::cout << id << " ";
-	}
-	std::cout << std::endl;
+	// // Print TDC IDs
+	// std::cout << "\tTDC IDs: ";
+	// for (const auto& id : m_tdcList) {
+	// 	std::cout << id << " ";
+	// }
+	// std::cout << std::endl;
 }
 
 // -----------------------------------------------------------------------------
@@ -158,31 +158,52 @@ void Config::processOption(
 
 	// Add exclusion to set
 	if (("disableEdgeMatching" == nodeName)&&("channelID" == attribute)) {
-		m_edgeMatchingExclusions.insert(std::stoi(value));
+		m_edgeMatchingExclusions.insert(stoui(value));
 	}
 
-	// Lambda for adding to lists
-	auto addToList = [&nodeName] (
-		std::list<unsigned int>& list,
-		const std::string value
-	) -> void {
-		const auto id = static_cast<unsigned int>(std::stoi(value));
-		const auto found = std::find(list.begin(), list.end(), id);
-		if (found == list.end()) {
-			list.push_back(id);
-		} else {
-			WARNING("Node: " << nodeName << ", value " << id << " is a duplicate");
-		}
-	};
+	// Extract Readout IDs
+	static unsigned int chainID = 0;
+	static unsigned int deviceID = 0;
 
-	// Extract Readout Board IDs
-	if (("board" == nodeName)&&("id" == attribute)) {
-		addToList(m_boardList,value);
+	static bool chainSet = false;
+	static bool deviceSet = false;
+
+	if (("chain" == nodeName)&&("id" == attribute)) {
+		chainID = stoui(value);
+		chainSet = true;
+	}
+
+	if (("device" == nodeName)&&("id" == attribute)) {
+		deviceID = stoui(value);
+		deviceSet = true;
+		if (!chainSet) {
+			WARNING("Device ID set before Chain ID. Check order in config file.");
+		}
 	}
 
 	// Extract TDC IDs
 	if ("tdcID1" == attribute || "tdcID2" == attribute) {
-		addToList(m_tdcList,value);
+		if (!chainSet) {
+			WARNING("TDC ID set before Chain ID. Check order in config file.");
+		}
+		if (!deviceSet) {
+			WARNING("Device ID set before Chain ID. Check order in config file.");
+		}
+
+		const auto tdcid = stoui(value);
+		const auto identifier = ReadoutIdentifier(chainID, deviceID, tdcid);
+
+		const auto found = std::find(m_readoutList.begin(), m_readoutList.end(), identifier);
+		if (found == m_readoutList.end()) {
+			m_readoutList.push_back(identifier);
+		} else {
+			WARNING(identifier.str() << " is a duplicate");
+		}
+
+		// Record list of unique TDC IDs (used for buffer creation)
+		if (std::find(m_tdcList.begin(), m_tdcList.end(), tdcid) == m_tdcList.end()) {
+			m_tdcList.push_back(tdcid);
+		}
 	}
 }
 // -----------------------------------------------------------------------------

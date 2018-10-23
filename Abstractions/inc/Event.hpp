@@ -1,12 +1,15 @@
 #ifndef EVENT_H
 #define EVENT_H
 
+// STD
 #include <list>
 #include <memory>
 #include <map>
 
+// LOCAL
 #include "Debug.hpp"
 #include "Packet.hpp"
+#include "ReadoutIdentifier.hpp"
 
 //! Container class for Packets
 /*!
@@ -21,7 +24,7 @@ public:
 		TDC ID list will be used to check whether packets have been stored all TDCs.
 	*/
 	Event(
-		const std::list<unsigned int>& tdcIDs
+		const std::list<ReadoutIdentifier>& readoutIDs
 	);
 
 	//! Attempts to add a packet to the Event object
@@ -53,7 +56,7 @@ private:
 
 	bool m_wasDumped = false; //!< Was event dumped without waiting for a complete event?
 
-	std::map< unsigned int, std::unique_ptr<Packet> > m_packetMap; //!< Map to store Packets by TDC ID
+	std::map< ReadoutIdentifier, std::unique_ptr<Packet> > m_packetMap; //!< Map to store Packets by TDC ID
 };
 
 // -----------------------------------------------------------------------------

@@ -9,6 +9,8 @@
 // LOCAL
 #include "Debug.hpp"
 #include "Edge.hpp"
+#include "BoardIdentifier.hpp"
+#include "ReadoutIdentifier.hpp"
 
 //! Stores all the information relevant to a single packet of data
 /*!
@@ -18,7 +20,7 @@ class Packet {
 public:
 	//! Constructor
 	Packet(
-		const unsigned int readoutBoardID, //!< Readout board ID
+		const BoardIdentifier& boardID, //!< Readout board ID
 		const unsigned int rocValue, //!< ROC value which triggered the packet's creation
 		const unsigned int headerWord //!< Header word for packet
 	);
@@ -34,7 +36,7 @@ public:
 	);
 
 	//! Quick check for if the packet is complete and consistent
-	bool isGood() const { return isComplete()*isConsistent(); };
+	auto isGood() const { return isComplete()*isConsistent(); };
 
 	//! Checks the packet contains both header and trailer information
 	bool isComplete() const;
@@ -56,22 +58,22 @@ public:
 	);
 
 	//! Returns the stored TDC ID
-	unsigned int getTDCID() const { return m_tdcIDHeader; }
+	// unsigned int getTDCID() const { return m_tdcIDHeader; }
 	//! Returns the stored event ID
-	unsigned int getEventID() const { return m_eventIDHeader; }
+	auto getEventID() const { return m_eventIDHeader; }
 	//! Returns the stored bunch ID
-	unsigned int getBunchID() const { return m_bunchID; }
+	auto getBunchID() const { return m_bunchID; }
 	//! Returns the stored word count
-	unsigned int getWordCount() const { return m_wordCount; }
+	auto getWordCount() const { return m_wordCount; }
 	//! Returns the stored ROC value
-	unsigned int getROCValue() const { return m_rocValue; }
+	auto getROCValue() const { return m_rocValue; }
 	//! Returns the stored ROC value
-	unsigned int getReadoutBoardID() const { return m_readoutBoardID; }
+	auto getReadoutID() const { return ReadoutIdentifier(m_boardID, m_tdcIDHeader); }
 
 	//! Returns the number of stored leading edges
-	unsigned int getNLeadingEdges() const { return m_leadingEdges.size(); }
+	auto getNLeadingEdges() const { return m_leadingEdges.size(); }
 	//! Returns the number of stored trailing edges
-	unsigned int getNTrailingEdges() const { return m_trailingEdges.size(); }
+	auto getNTrailingEdges() const { return m_trailingEdges.size(); }
 
 	//! Returns the channel ID of the egde requested
 	Edge getEdge(
@@ -117,7 +119,7 @@ private:
 	) const;
 
 private:
-	const unsigned int m_readoutBoardID; //!< Packet's Readout Board ID
+	const BoardIdentifier m_boardID; //!< Packet's Readout Board ID
 	const unsigned int m_rocValue; //!< ROC value which triggered the packet's creation
 
 	// Header Info

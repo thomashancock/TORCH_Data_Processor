@@ -18,7 +18,7 @@ class ThreadSafeEventMap {
 public:
 	//! Constructor
 	ThreadSafeEventMap(
-		const std::list<unsigned int> tdcIDs
+		const std::list<ReadoutIdentifier> readoutIDs
 	);
 
 	// Delete copy and move constructors and assignment operators
@@ -48,7 +48,7 @@ public:
 	std::vector< std::unique_ptr<Event> > dumpAll();
 
 private:
-	const std::list<unsigned int> m_tdcIDs;
+	const std::list<ReadoutIdentifier> m_readoutIDs;
 
 	mutable std::mutex m_mut; //!< Mutex used for thread safety
 

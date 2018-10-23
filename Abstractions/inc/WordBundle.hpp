@@ -7,22 +7,23 @@
 // LOCAL
 #include "Debug.hpp"
 #include "BinaryDecoding.hpp"
+#include "BoardIdentifier.hpp"
 
 class WordBundle {
 public:
 	//! Constructor
 	WordBundle(
-		const unsigned int readoutBoardID
+		const BoardIdentifier readoutBoardID
 	);
 
 	//! Returns readout board number
-	unsigned int getReadoutBoardID() const { return m_readoutBoardID; }
+	auto getBoardID() const { return m_boardID; }
 
 	//! Check if Bundle is complete
-	bool isComplete() const { return m_rocValueStored; }
+	auto isComplete() const { return m_rocValueStored; }
 
 	//! Is bundle empty
-	bool empty() const { return m_words.empty(); }
+	auto empty() const { return m_words.empty(); }
 
 	//! Adds a word to the bundle
 	void addWord(
@@ -41,7 +42,7 @@ public:
 	);
 
 private:
-	const unsigned int m_readoutBoardID;
+	const BoardIdentifier m_boardID;
 
 	bool m_rocValueStored = false;
 

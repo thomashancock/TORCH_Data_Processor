@@ -10,7 +10,9 @@
 #include "TXMLEngine.h"
 
 // LOCAL
+#include "Debug.hpp"
 #include "ModesEnum.hpp"
+#include "ReadoutIdentifier.hpp"
 
 //! Class which manages programs configuration
 /*!
@@ -30,19 +32,19 @@ public:
 	RunMode getRunMode() const { return m_mode; }
 
 	//! Return the channel mapping
-	const std::string getChannelMappingKey() const { return m_channelMapping; }
+	auto getChannelMappingKey() const { return m_channelMapping; }
 
 	//! Return the edge modifier
-	const std::string getEdgeModifierKey() const { return m_edgeModifier; }
+	auto getEdgeModifierKey() const { return m_edgeModifier; }
 
 	//! Returns a set of channels to exclude from edge matching
-	const std::set<unsigned int> getEdgeMatchingExclusions() const { return m_edgeMatchingExclusions; }
+	auto getEdgeMatchingExclusions() const { return m_edgeMatchingExclusions; }
 
 	//! Returns the list of stored readout board Ids
-	const std::list<unsigned int> getReadoutBoardList() const { return m_boardList; }
+	auto getReadoutList() const { return m_readoutList; }
 
 	//! Returns the list of stored TDC Ids
-	const std::list<unsigned int> getTDCList() const { return m_tdcList; }
+	auto getTDCList() const { return m_tdcList; }
 
 	//! Prints details of the stored configuration
 	void print() const;
@@ -69,6 +71,10 @@ private:
 	//! Returns the mode of operation as a string
 	std::string getModeAsString() const;
 
+	inline unsigned int stoui(
+		const std::string value
+	) const;
+
 private:
 	bool m_configRead = false; //!< Has config been read succesfully?
 
@@ -79,8 +85,28 @@ private:
 
 	std::set<unsigned int> m_edgeMatchingExclusions; //! Stores channels to exclude from edge matching
 
-	std::list<unsigned int> m_boardList; //!< Stores the available TDCs
+	std::list<ReadoutIdentifier> m_readoutList;
 	std::list<unsigned int> m_tdcList; //!< Stores the available TDCs
+
+	// std::list<unsigned int> m_readoutList; //!< Stores the available TDCs
+	// std::list<unsigned int> m_deviceList; //!< Stores the available TDCs
 };
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Inlines:
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+inline unsigned int Config::stoui(
+	const std::string value
+) const {
+	int tmp = 0;
+	try {
+		tmp = std::stoi(value);
+	} catch (std::exception& e) {
+		STD_ERR("Exception: " << e.what() << ". String was: " << value);
+	}
+	return static_cast<unsigned int>(tmp);
+}
 
 #endif /* CONFIG_H */

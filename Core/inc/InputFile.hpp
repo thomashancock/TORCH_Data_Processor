@@ -4,6 +4,9 @@
 // STD
 #include <string>
 
+// LOCAL
+#include "BoardIdentifier.hpp"
+
 //! Stores information about a specific input file
 class InputFile {
 public:
@@ -19,7 +22,7 @@ public:
 	auto getFilePath() const { return m_filePath; }
 
 	//! Getter for readout board ID
-	auto getReadoutBoardID() const { return m_readoutBoardID; }
+	auto getBoardID() const { return BoardIdentifier(0, m_deviceID); }
 
 	//! Getter for file number
 	auto getFileNumber() const { return m_fileNumber; }
@@ -46,7 +49,7 @@ private:
 	bool m_informationComplete = false; //!< Records whether all information was able to be extracted from the file path
 
 	const std::string m_filePath; //!< Path of the file
-	unsigned int m_readoutBoardID = 0; //!< Readout board ID of the file
+	unsigned int m_deviceID = 0; //!< Readout board ID of the file
 	unsigned int m_fileNumber = 0; //!< File number of the file
 	unsigned long long m_timestamp = 0; //!< Timestamp of the file
 };

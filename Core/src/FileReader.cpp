@@ -15,7 +15,7 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 FileReader::FileReader(
-	const std::list<unsigned int>& readoutBoardList,
+	const std::list<ReadoutIdentifier>& readoutList,
 	std::array< std::shared_ptr<bundleBuffer>, 4> wordBundleBuffers
 ) :
 	m_wordBundleBuffers(std::move(wordBundleBuffers))
@@ -28,12 +28,19 @@ FileReader::FileReader(
 	#endif /* LOCAL_DEBUG */
 	ASSERT(m_inputFiles.empty());
 	ASSERT(m_inputStreams.empty());
-	ASSERT(readoutBoardList.size() > 0);
+	ASSERT(readoutList.size() > 0);
 
 	// TODO: Check all readoutBoardIDs are unique
+	std::list<BoardIdentifier> boardList;
+	for (const auto& entry : readoutList) {
+		const auto boardID = entry.getBoardID();
+		if (std::find(boardList.begin(), boardList.end(), boardID) == boardList.end()) {
+			boardList.push_back(boardID);
+		}
+	}
 
 	// Initialise maps
-	for (const auto& boardID : readoutBoardList) {
+	for (const auto& boardID : boardList) {
 		// Create a space to store files corresponding to the readout board ID
 		m_inputFiles.insert(std::make_pair(boardID, std::list<InputFile>() ));
 
@@ -50,10 +57,10 @@ FileReader::FileReader(
 	}
 
 	// Check map sizes are correct
-	ASSERT(m_inputFiles.size() == readoutBoardList.size());
-	ASSERT(m_inputStreams.size() == readoutBoardList.size());
-	ASSERT(m_fileLengths.size() == readoutBoardList.size());
-	ASSERT(m_bundleWorkspaces.size() == readoutBoardList.size());
+	ASSERT(m_inputFiles.size() == boardList.size());
+	ASSERT(m_inputStreams.size() == boardList.size());
+	ASSERT(m_fileLengths.size() == boardList.size());
+	ASSERT(m_bundleWorkspaces.size() == boardList.size());
 }
 // -----------------------------------------------------------------------------
 //
@@ -123,11 +130,11 @@ void FileReader::addFile(
 
 	if (inputFile.isComplete()) {
 		// Add the input file to the map of input files
-		auto found = m_inputFiles.find(inputFile.getReadoutBoardID());
+		auto found = m_inputFiles.find(inputFile.getBoardID());
 		if (m_inputFiles.end() != found) {
 			found->second.push_back(std::move(inputFile));
 		} else {
-			STD_ERR("File " << inputFile.getFilePath() << " has invalid ReadoutBoardID: " << inputFile.getReadoutBoardID());
+			STD_ERR("File " << inputFile.getFilePath() << " has invalid BoardID: " << inputFile.getBoardID());
 		}
 	} else {
 		STD_ERR("Unable to derive sufficient information from file path: " << filePath);
@@ -202,8 +209,14 @@ void FileReader::runProcessingLoop() {
 								workspace[i]->setRocValue(bindec::getROCValue(word));
 
 								// Add bundle to buffer
-								ASSERT(i < m_wordBundleBuffers.size());
-								m_wordBundleBuffers[boardID]->push(std::move(workspace[i]));
+								ASSERT(nextBundleBufferIndex < m_wordBundleBuffers.size());
+								m_wordBundleBuffers[nextBundleBufferIndex++]->push(std::move(workspace[i]));
+
+								// Cycle through buffers to spread data evenly between them
+								if (nextBundleBufferIndex > 3) {
+									nextBundleBufferIndex = 0;
+								}
+
 								// Ensure move was succesful
 								ASSERT(workspace[i] == nullptr);
 							} else {

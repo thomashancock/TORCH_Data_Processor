@@ -51,11 +51,11 @@ std::function<void(uint&)> Packet::m_edgeModifier = [] (uint&) {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 Packet::Packet(
-	const unsigned int readoutBoardID,
+	const BoardIdentifier& boardID,
 	const unsigned int rocValue,
 	const unsigned int headerWord
 ) :
-	m_readoutBoardID(readoutBoardID),
+	m_boardID(boardID),
 	m_rocValue(rocValue)
 {
 	this->addHeader(headerWord);
@@ -129,9 +129,9 @@ void Packet::addTrailer(
 		// Log Error
 		const auto wordTDCID = bindec::getTDCID(word);
 		if (wordTDCID == m_tdcIDTrailer) {
-			ErrorSpy::getInstance().logError("Duplicate Packet Trailer Found",m_readoutBoardID,m_tdcIDTrailer);
+			ErrorSpy::getInstance().logError("Duplicate Packet Trailer Found",ReadoutIdentifier(m_boardID, m_tdcIDTrailer));
 		} else {
-			ErrorSpy::getInstance().logError("Erroneous Trailer Found",m_readoutBoardID,wordTDCID);
+			ErrorSpy::getInstance().logError("Erroneous Trailer Found",ReadoutIdentifier(m_boardID, wordTDCID));
 		}
 	}
 }
@@ -151,7 +151,7 @@ void Packet::addDataline(
 
 	// Apply Channel Mapping
 	unsigned int channelID = bindec::getChannelID(word);
-	channelID = m_channelMapper(m_readoutBoardID, tdcID, channelID);
+	channelID = m_channelMapper(m_boardID.getDeviceID(), tdcID, channelID);
 
 	const unsigned int timestamp = bindec::getTimestamp(word);
 

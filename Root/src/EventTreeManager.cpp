@@ -60,7 +60,7 @@ void EventTreeManager::add(
 		// Fill tree branches from packet
 		ASSERT(b_nTDCs < m_nTDCs);
 		ASSERT(nullptr != b_tdcID);
-		b_tdcID[b_nTDCs] = packet->getTDCID();
+		b_tdcID[b_nTDCs] = packet->getReadoutID().getTDCID();
 		ASSERT(nullptr != b_eventID);
 		b_eventID[b_nTDCs] = eventID;
 		ASSERT(nullptr != b_bunchID);

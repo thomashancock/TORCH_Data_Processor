@@ -12,12 +12,12 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 Event::Event(
-	const std::list<unsigned int>& tdcIDs
+	const std::list<ReadoutIdentifier>& readoutIDs
 ) {
-	ASSERT(tdcIDs.size() > 0);
+	ASSERT(readoutIDs.size() > 0);
 
 	// Create slot per TDC id in the packet map
-	for (const auto& id : tdcIDs) {
+	for (const auto& id : readoutIDs) {
 		m_packetMap.insert(std::make_pair(id,nullptr));
 	}
 }
@@ -39,11 +39,11 @@ void Event::addPacket(
 	}
 
 	// Attempt to add packet to event
-	auto found = m_packetMap.find(packet->getTDCID());
+	auto found = m_packetMap.find(packet->getReadoutID());
 	if (found == m_packetMap.end()) {
-		STD_ERR("Event found with unrequested TDC ID");
+		STD_ERR("Event found with unrequested Readout ID: " << packet->getReadoutID());
 	} else if (found->second != nullptr) {
-		ErrorSpy::getInstance().logError("Duplicate Packet Found",packet->getReadoutBoardID(),found->first);
+		ErrorSpy::getInstance().logError("Duplicate Packet Found",packet->getReadoutID());
 	} else {
 		found->second = std::move(packet);
 		ASSERT(packet == nullptr);
@@ -81,7 +81,7 @@ void Event::print() const {
 	std::cout << "\tPackets: ";
 	for (const auto& entry : m_packetMap) {
 		if (nullptr != entry.second) {
-			std::cout << entry.second->getTDCID() << " ";
+			std::cout << entry.second->getReadoutID() << " ";
 		}
 	}
 	std::cout << std::endl;
