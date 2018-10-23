@@ -1,18 +1,19 @@
-obj/*
-data/*/*
-!/data/Test_Data/*
 TORCH_Data_Processor
+
 *.sh
-!run_test.sh
-Notes.txt
 *.root
 *.txt
-!CMakeLists.txt
-
 *.pdf
 *.lst
 *.xml
+*.dat
+
+!run_test.sh
+!CMakeLists.txt
 !Example_Config.xml
+
+data/*/*
+!/data/Test_Data/*
 
 Build/*
 build/*
@@ -24,4 +25,3 @@ Outputs/*
 outputs/*
 Filelists/*
 filelists/*
-
