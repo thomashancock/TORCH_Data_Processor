@@ -2,41 +2,31 @@
 #define READOUTIDENTIFIER_H
 
 // STD
+#include <iostream>
 #include <string>
-#include <array>
 
 // LOCAL
 #include "BoardIdentifier.hpp"
 
 //! Class used to uniquely idenfity combinations of readout informtion
 /*!
+	Readouts are uniquely identified by a combination of Chain ID, Device ID and TDC ID.
 
+	ReadoutIdentifier stores a combination of these pieces of information and allows comparison to check whether they are the same.
 */
-class ReadoutIdentifier : public BoardIdentifier {
+class ReadoutIdentifier {
 public:
+	//! Constructor from Board ID
 	ReadoutIdentifier(
-		const BoardIdentifier& boardID,
-		const unsigned int tdcID
+		const BoardIdentifier& boardID, //!< Board ID of the readout
+		const unsigned int tdcID //!< TDC ID of the readout
 	);
 
-	ReadoutIdentifier(
-		const unsigned int chainID,
-		const unsigned int deviceID,
-		const unsigned int tdcID
-	);
-
-	//! Getter for Chain ID
-	auto getChainID() const { return m_chainID; }
-	//! Getter for Board ID
-	auto getDeviceID() const { return m_deviceID; }
 	//! Getter for TDC ID
 	auto getTDCID() const { return m_tdcID; }
 
 	//! Getter for combined Chain + Device combination
-	auto getBoardID() const { return BoardIdentifier(m_chainID, m_deviceID); }
-
-	//! Returns a python-style string with details of the identifier
-	std::string str() const;
+	auto getBoardID() const { return m_boardID; }
 
 	//! Operator overload for <
 	friend bool operator< (
@@ -56,8 +46,15 @@ public:
 		const ReadoutIdentifier& rhs //!< LHS ReadoutIdentifier to be compared to
 	);
 
+	//! Overload << operator
+	friend std::ostream& operator<<(
+		std::ostream& os, //!< Output stream
+		const ReadoutIdentifier& identifier //!< ReadoutIdentifier to be output
+	);
+
 private:
-	const unsigned int m_tdcID;
+	const BoardIdentifier m_boardID; //!< Board Identifier
+	const unsigned int m_tdcID; //!< Additional TDC information
 };
 
 #endif /* READOUTIDENTIFIER_H */

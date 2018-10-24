@@ -117,9 +117,8 @@ void Processor::runQuickCheck() {
 			while(!buffer->empty()) {
 				bundleCount += 1;
 				auto bundle = buffer->popFront();
-				std::cout << "New Bundle = "
-				<< "Board: " << bundle->getBoardID() << " "
-				<< "ROC: " << bundle->getROCValue() << std::endl;
+				std::cout << "New Bundle = " << bundle->getBoardID()
+				          << " ROC: " << bundle->getROCValue() << std::endl;
 				while (!bundle->empty()) {
 					bindec::printWord(bundle->getNextWord());
 				}

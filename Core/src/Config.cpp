@@ -5,6 +5,7 @@
 
 // LOCAL
 #include "Debug.hpp"
+#include "BoardIdentifier.hpp"
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -49,18 +50,10 @@ void Config::print() const {
 	}
 
 	// Print Readout IDs
-	std::cout << "\tReadout IDs: ";
+	std::cout << "\tReadout IDs:" << std::endl;
 	for (const auto& id : m_readoutList) {
-		std::cout << id.str() << std::endl;
+		std::cout << "\t\t" << id << std::endl;
 	}
-	// std::cout << std::endl;
-
-	// // Print TDC IDs
-	// std::cout << "\tTDC IDs: ";
-	// for (const auto& id : m_tdcList) {
-	// 	std::cout << id << " ";
-	// }
-	// std::cout << std::endl;
 }
 
 // -----------------------------------------------------------------------------
@@ -191,13 +184,13 @@ void Config::processOption(
 		}
 
 		const auto tdcid = stoui(value);
-		const auto identifier = ReadoutIdentifier(chainID, deviceID, tdcid);
+		const auto identifier = ReadoutIdentifier(BoardIdentifier(chainID, deviceID), tdcid);
 
 		const auto found = std::find(m_readoutList.begin(), m_readoutList.end(), identifier);
 		if (found == m_readoutList.end()) {
 			m_readoutList.push_back(identifier);
 		} else {
-			WARNING(identifier.str() << " is a duplicate");
+			WARNING(identifier << " is a duplicate");
 		}
 
 		// Record list of unique TDC IDs (used for buffer creation)

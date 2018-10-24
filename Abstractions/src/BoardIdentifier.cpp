@@ -19,16 +19,6 @@ BoardIdentifier::BoardIdentifier(
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-// std::string BoardIdentifier::str() const {
-// 	std::stringstream str;
-// 	str << "IDentifier<ChainID: " << m_chainID << ", "
-// 	    << "DeviceID: " << m_deviceID << ", "
-// 	    << "TDCID: " << m_tdcID << ">";
-// 	return str.str();
-// }
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
 bool operator< (
 	const BoardIdentifier& lhs,
 	const BoardIdentifier& rhs
@@ -63,7 +53,7 @@ std::ostream& operator<<(
 	std::ostream& os,
 	const BoardIdentifier& identifier
 ) {
-	os << "BoardIdentifier<ChainID: " << identifier.m_chainID << ", "
+	os << "Board<ChainID: " << identifier.m_chainID << ", "
 	   << "DeviceID: " << identifier.m_deviceID << ">";
 	return os;
 }

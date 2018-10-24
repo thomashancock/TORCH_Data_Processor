@@ -4,31 +4,25 @@
 // STD
 #include <iostream>
 #include <string>
-#include <array>
 
 //! Class used to uniquely idenfity combinations of board informtion
 /*!
+	Boards are uniquely identified by a combination of Chain ID and Device ID.
 
+	BoardIdentifier stores a combination of these pieces of information and allows comparison to check whether they are the same.
 */
 class BoardIdentifier {
 public:
 	BoardIdentifier(
-		const unsigned int chainID,
-		const unsigned int deviceID
+		const unsigned int chainID, //!< Chain ID of the board
+		const unsigned int deviceID //!< Device ID of the board
 	);
 
 	//! Getter for Chain ID
 	auto getChainID() const { return m_chainID; }
+
 	//! Getter for Board ID
 	auto getDeviceID() const { return m_deviceID; }
-	// //! Getter for TDC ID
-	// auto getTDCID() const { return m_tdcID; }
-	//
-	// //! Getter for combined Chain + Device combination
-	// auto getBoardID() const { return std::array<unsigned int, 2> {{ m_chainID, m_deviceID }}; }
-
-	//! Returns a python-style string with details of the identifier
-	// std::string str() const;
 
 	//! Operator overload for <
 	friend bool operator< (

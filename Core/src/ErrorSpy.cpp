@@ -33,11 +33,19 @@ void ErrorSpy::logError(
 	if (m_error3D.end() == found) {
 		// If message is not in map, add it
 		ErrorCounter<3> counter("ChainID", "DeviceID", "TDC");
-		counter.addCount(readoutID.getChainID(), readoutID.getDeviceID(), readoutID.getTDCID());
+		counter.addCount(
+			readoutID.getBoardID().getChainID(),
+			readoutID.getBoardID().getDeviceID(),
+			readoutID.getTDCID()
+		);
 		m_error3D.insert(std::make_pair(message,std::move(counter)));
 	} else {
 		// Increment counter for given message
-		found->second.addCount(readoutID.getChainID(), readoutID.getDeviceID(), readoutID.getTDCID());
+		found->second.addCount(
+			readoutID.getBoardID().getChainID(),
+			readoutID.getBoardID().getDeviceID(),
+			readoutID.getTDCID()
+		);
 	}
 }
 // -----------------------------------------------------------------------------
@@ -54,12 +62,18 @@ void ErrorSpy::logError(
 	auto found = m_error2D.find(message);
 	if (m_error2D.end() == found) {
 		// If message is not in map, add it
-		ErrorCounter<2> counter("BoardID");
-		counter.addCount(boardID.getChainID(), boardID.getDeviceID());
+		ErrorCounter<2> counter("ChainID", "DeviceID");
+		counter.addCount(
+			boardID.getChainID(),
+			boardID.getDeviceID()
+		);
 		m_error2D.insert(std::make_pair(message,std::move(counter)));
 	} else {
 		// Increment counter for given message
-		found->second.addCount(boardID.getChainID(), boardID.getDeviceID());
+		found->second.addCount(
+			boardID.getChainID(),
+			boardID.getDeviceID()
+		);
 	}
 }
 // -----------------------------------------------------------------------------
