@@ -16,12 +16,12 @@ InputFile::InputFile(
 	const std::string filePath
 ) :
 	m_filePath(filePath)
-	// m_filePath(std::move(filePath))
 {
 	// Extract file name from full path
 	const auto filename = m_filePath.substr(m_filePath.rfind('/') + 1);
+	const auto rawname = filename.substr(0, filename.find_last_of("."));
 
-	std::stringstream reader(filename);
+	std::stringstream reader(rawname);
 	std::string segment;
 	unsigned int count = 0;
 	while(std::getline(reader,segment,'_')) {
@@ -52,10 +52,10 @@ InputFile::InputFile(
 // -----------------------------------------------------------------------------
 void InputFile::print() const {
 	std::cout << "Path: " << m_filePath << std::endl;
-	std::cout << "ChainID: " << m_chainID << std::endl;
-	std::cout << "DeviceID: " << m_deviceID << std::endl;
-	std::cout << "FileNumber:     " << m_fileNumber << std::endl;
-	std::cout << "Timestamp:      " << m_timestamp << std::endl;
+	std::cout << "ChainID:    " << m_chainID << std::endl;
+	std::cout << "DeviceID:   " << m_deviceID << std::endl;
+	std::cout << "FileNumber: " << m_fileNumber << std::endl;
+	std::cout << "Timestamp:  " << m_timestamp << std::endl;
 }
 // -----------------------------------------------------------------------------
 //
