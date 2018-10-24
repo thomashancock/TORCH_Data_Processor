@@ -47,7 +47,9 @@
         <slot name="B" tdcID1="2" tdcID2="3"/>
         <slot name="A" tdcID1="6" tdcID2="7"/>
       </device>
-      <device id="1">
+    </chain>
+    <chain id="1">
+      <device id="0">
         <slot name="D" tdcID1="8" tdcID2="9"/>
         <slot name="C" tdcID1="12" tdcID2="13"/>
         <slot name="B" tdcID1="10" tdcID2="11"/>

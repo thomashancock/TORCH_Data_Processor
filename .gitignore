@@ -12,8 +12,9 @@ TORCH_Data_Processor
 !CMakeLists.txt
 !Example_Config.xml
 
-data/*/*
-!/data/Test_Data/*
+data/*
+!/data/Test_Data
+!/data/Test_Data/*/*.dat
 
 Build/*
 build/*
