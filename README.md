@@ -72,7 +72,17 @@ To run the test, do:
 
 This runs the MDP on the data contained in ```./data/Test_Data``` using the config specified by ```Example_Config.xml```.
 
-The test data is deliberately not perfect. The resulting output should show several "Dumping events due to buffer bloat" warnings, and the Errors Summary should contain a large number of errors (of types "Bad Packet Dumped", "Dumped incomplete packet", "Word found out of sequence").
+The test data is deliberately not perfect. The resulting output should show the following error summary:
+```
+=== Errors Summary ===
+Error: Invalid Datatype 6
+        ChainID: 0, DeviceID: 0 (x 11)
+Error: Invalid Datatype 7
+        ChainID: 0, DeviceID: 0 (x 11)
+Error: Invalid Datatype 14
+        ChainID: 0, DeviceID: 0 (x 45)
+        ChainID: 1, DeviceID: 0 (x 177)
+```
 
 ### Running over long data runs <a name="RunLongRuns"></a>
 Attempting to run over large numbers of files (more than ~1000) may result in the following error:
