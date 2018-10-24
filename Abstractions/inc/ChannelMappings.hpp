@@ -6,11 +6,13 @@
 
 // LOCAL
 #include "Packet.hpp"
+#include "BoardIdentifier.hpp"
 
 namespace chlmap {
 
 // Useful Alias
-using ChannelMapping = std::function<unsigned int(unsigned int, unsigned int, unsigned int)>;
+using uint = unsigned int;
+using ChannelMapping = std::function<uint(const BoardIdentifier&, const uint, const uint)>;
 
 //! Global function to set channel mapping
 void setChannelMapping(

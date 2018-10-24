@@ -13,7 +13,7 @@ using uint = unsigned int;
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 void Packet::setChannelMapping(
-	std::function<uint(uint, uint, uint)> mappingFunction
+	std::function<uint(const BoardIdentifier&, const uint, const uint)> mappingFunction
 ) {
 	m_channelMapper = mappingFunction;
 }
@@ -29,10 +29,10 @@ void Packet::setEdgeModifier(
 //
 // -----------------------------------------------------------------------------
 // Default initialisation is to return channel ID
-std::function<uint(uint, uint, uint)> Packet::m_channelMapper = [] (
-	uint ,
-	uint ,
-	uint channelID
+std::function<uint(const BoardIdentifier&, const uint, const uint)> Packet::m_channelMapper = [] (
+	const BoardIdentifier& ,
+	const uint ,
+	const uint channelID
 ) {
 	ASSERT(false); // This function should never be called
 	return channelID;
@@ -151,7 +151,7 @@ void Packet::addDataline(
 
 	// Apply Channel Mapping
 	unsigned int channelID = bindec::getChannelID(word);
-	channelID = m_channelMapper(m_boardID.getDeviceID(), tdcID, channelID);
+	channelID = m_channelMapper(m_boardID, tdcID, channelID);
 
 	const unsigned int timestamp = bindec::getTimestamp(word);
 

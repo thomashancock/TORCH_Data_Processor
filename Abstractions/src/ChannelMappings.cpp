@@ -1,8 +1,5 @@
 #include "ChannelMappings.hpp"
 
-// Useful Alias
-using uint = unsigned int;
-
 void chlmap::setChannelMapping(
 	const std::string key
 ) {
@@ -23,9 +20,9 @@ void chlmap::setChannelMapping(
 //
 // -----------------------------------------------------------------------------
 chlmap::ChannelMapping chlmap::noMapping = [] (
-	uint ,
-	uint ,
-	uint channelID
+	const BoardIdentifier& ,
+	const uint ,
+	const uint channelID
 ) {
 	return channelID;
 };
@@ -33,9 +30,9 @@ chlmap::ChannelMapping chlmap::noMapping = [] (
 //
 // -----------------------------------------------------------------------------
 chlmap::ChannelMapping chlmap::std8x64Mapping = [] (
-	uint ,
-	uint tdcID,
-	uint channelID
+	const BoardIdentifier& ,
+	const uint tdcID,
+	const uint channelID
 ) {
 	uint localID = (tdcID%4)*16 + 128 * static_cast<int>(tdcID / 4.0);
 	if (0 == channelID%2) {
@@ -49,43 +46,44 @@ chlmap::ChannelMapping chlmap::std8x64Mapping = [] (
 //
 // -----------------------------------------------------------------------------
 chlmap::ChannelMapping chlmap::slotInversion8x64Mapping = [] (
-	uint readoutBoardID,
-	uint tdcID,
-	uint channelID
+	const BoardIdentifier& identifier,
+	const uint tdcID,
+	const uint channelID
 ) {
 	// Swap localTDCID to account for inversion
-	uint localTDCID = (0 == tdcID%2) ? tdcID + 1 : tdcID - 1;
+	const auto localTDCID = (0 == tdcID%2) ? tdcID + 1 : tdcID - 1;
 
 	// Calculate channel ID using standard mapping
-	return std8x64Mapping(readoutBoardID,localTDCID,channelID);
+	return std8x64Mapping(identifier, localTDCID, channelID);
 };
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 chlmap::ChannelMapping chlmap::std4x64Mapping = [] (
-	uint readoutBoardID,
-	uint tdcID,
-	uint channelID
+	const BoardIdentifier& identifier,
+	const uint tdcID,
+	const uint channelID
 ) {
 	// Encode TDC ID in channel ID
 	// Note 11 is += 0 so is not included
+	auto localID = channelID;
 	if (8 == tdcID) {
-		channelID += 160;
+		localID += 160;
 	} else if (9 == tdcID) {
-		channelID += 128;
+		localID += 128;
 	} else if (10 == tdcID) {
-		channelID += 32;
+		localID += 32;
 	} else if (12 == tdcID) {
-		channelID += 96;
+		localID += 96;
 	} else if (13 == tdcID) {
-		channelID += 64;
+		localID += 64;
 	} else if (14 == tdcID) {
-		channelID += 224;
+		localID += 224;
 	} else if (15 == tdcID) {
-		channelID += 192;
+		localID += 192;
 	}
 
-	channelID += 256 * readoutBoardID;
+	localID += 256 * identifier.getDeviceID();
 
-	return channelID;
+	return localID;
 };

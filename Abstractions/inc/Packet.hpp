@@ -9,8 +9,8 @@
 // LOCAL
 #include "Debug.hpp"
 #include "Edge.hpp"
-#include "BoardIdentifier.hpp"
 #include "ReadoutIdentifier.hpp"
+#include "BoardIdentifier.hpp"
 
 //! Stores all the information relevant to a single packet of data
 /*!
@@ -27,12 +27,12 @@ public:
 
 	//! Static function to set global channel mapping
 	static void setChannelMapping(
-		std::function<uint(uint, uint, uint)> mappingFunction
+		std::function<unsigned int(const BoardIdentifier&, const unsigned int, const unsigned int)> mappingFunction
 	);
 
 	//! Static function to set global channel mapping
 	static void setEdgeModifier(
-		std::function<void(uint&)> modifierFunction
+		std::function<void(unsigned int&)> modifierFunction
 	);
 
 	//! Quick check for if the packet is complete and consistent
@@ -101,7 +101,7 @@ public:
 
 private:
 	//! Channel Mapping Function
-	static std::function<unsigned int(unsigned int, unsigned int, unsigned int)> m_channelMapper;
+	static std::function<unsigned int(const BoardIdentifier&, const unsigned int, const unsigned int)> m_channelMapper;
 
 	//! Edge polarity correction function
 	static std::function<void(unsigned int&)> m_edgeModifier;
