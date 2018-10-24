@@ -28,7 +28,7 @@ The Multiboard Data Processor (MDP) requires:
 * A C++14 compliant compiler (e.g. gcc 4.9 or greater)
 * A working installation of ROOT 6
 
-Note: The program has been tested with root 6.08.04, but theoretically any version of ROOT 6 should work (if you have issues related to this, contact Thomas Hancock).
+Note: The program has been tested with root 6.08.04, but any version of ROOT 6 should work (if you have issues related to this, contact Thomas Hancock).
 
 ## Compiling the Processor <a name="Compiling"></a>
 The Multiboard Data Processor (MDP) is built using CMake.
@@ -56,7 +56,7 @@ To run the MDP, simply call the program:
 ```
 followed by the files you wish to process (e.g. ```data/*.txt```)
 
-Data files must contain the string ```Device_$(BoardID)_$(FileNo)_$(Time)``` in their name. This allows the MDP to properly synchronise data across multiple readouts. The string must be enclosed by underscores, but can contain any words on either side.
+Data files must contain the string ```_Chain_$(ChainID)_Device_$(DeviceID)_$(FileNo)_$(Time)``` in their name. This allows the MDP to properly synchronise data across multiple readouts. The string can be surrounded by words on either side, but any words which follow must be separated from the string by an underscore.
 
 The program is configured via a xml config file. This file is specified with the ```-con``` command line option. If not set, the program will search for ```Config.xml```. An example configuration file is provided for you to modify (```Example_Config.xml```).
 
