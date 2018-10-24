@@ -3,6 +3,7 @@
 
 // STD
 #include <string>
+#include <iostream>
 
 // LOCAL
 #include "BoardIdentifier.hpp"
@@ -27,9 +28,6 @@ public:
 	//! Getter for file number
 	auto getFileNumber() const { return m_fileNumber; }
 
-	//! Prints information about the file
-	void print() const;
-
 	//! Operator overload for <
 	bool operator< (
 		const InputFile& other //!< InputFile to be compared to
@@ -44,6 +42,12 @@ public:
 	bool operator==(
 		const InputFile& other //!< InputFile to be compared to
 	) const;
+
+	//! Overload << operator
+	friend std::ostream& operator<<(
+		std::ostream& os, //!< Output stream
+		const InputFile& inputFile //!< BoardIdentifier to be output
+	);
 
 private:
 	bool m_informationComplete = false; //!< Records whether all information was able to be extracted from the file path

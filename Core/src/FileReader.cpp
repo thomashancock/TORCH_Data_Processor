@@ -129,7 +129,6 @@ void FileReader::addFile(
 	InputFile inputFile(filePath);
 
 	if (inputFile.isComplete()) {
-		inputFile.print();
 		// Add the input file to the map of input files
 		auto found = m_inputFiles.find(inputFile.getBoardID());
 		if (m_inputFiles.end() != found) {
