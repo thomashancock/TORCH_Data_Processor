@@ -63,14 +63,18 @@ Global function to set edge modifier.
     \textcolor{keyword}{const} \textcolor{keyword}{auto} dataType = \hyperlink{namespacebindec_a7a98adfd04c65f870f74a423bfd744fe}{bindec::getDataType}(word);
     \hyperlink{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}{ASSERT}(4 == dataType || 5 == dataType);
 
-    
     \textcolor{keyword}{const} \textcolor{keyword}{auto} channelID = \hyperlink{namespacebindec_af1997af0743251d010780a8f728fcd7e}{bindec::getChannelID}(word);
-    \textcolor{keywordflow}{if} (0 == channelID%2) \{
+    
+    \textcolor{keywordflow}{if} ((1 != \hyperlink{namespacebindec_a05afce2b4e8802eeb8b452bc1ec6de8b}{bindec::getTDCID}(word)%2)||(0 != channelID)) \{
         
-        \textcolor{keywordflow}{if} (dataType == 4) \{
-            word += 0x10000000;
-        \} \textcolor{keywordflow}{else} \{
-            word -= 0x10000000;
+        
+        \textcolor{keywordflow}{if} (0 == channelID%2) \{
+            
+            \textcolor{keywordflow}{if} (dataType == 4) \{
+                word += 0x10000000;
+            \} \textcolor{keywordflow}{else} \{
+                word -= 0x10000000;
+            \}
         \}
     \}
 \}
@@ -93,14 +97,18 @@ Even channel edge flip.
     \textcolor{keyword}{const} \textcolor{keyword}{auto} dataType = \hyperlink{namespacebindec_a7a98adfd04c65f870f74a423bfd744fe}{bindec::getDataType}(word);
     \hyperlink{_debug_8hpp_aca68c0d4ac8df0838e209fb5300f7be3}{ASSERT}(4 == dataType || 5 == dataType);
 
-    
     \textcolor{keyword}{const} \textcolor{keyword}{auto} channelID = \hyperlink{namespacebindec_af1997af0743251d010780a8f728fcd7e}{bindec::getChannelID}(word);
-    \textcolor{keywordflow}{if} (1 == channelID%2) \{
+    
+    \textcolor{keywordflow}{if} ((1 != \hyperlink{namespacebindec_a05afce2b4e8802eeb8b452bc1ec6de8b}{bindec::getTDCID}(word)%2)||(0 != channelID)) \{
         
-        \textcolor{keywordflow}{if} (dataType == 4) \{
-            word += 0x10000000;
-        \} \textcolor{keywordflow}{else} \{
-            word -= 0x10000000;
+        
+        \textcolor{keywordflow}{if} (1 == channelID%2) \{
+            
+            \textcolor{keywordflow}{if} (dataType == 4) \{
+                word += 0x10000000;
+            \} \textcolor{keywordflow}{else} \{
+                word -= 0x10000000;
+            \}
         \}
     \}
 \}
@@ -118,7 +126,7 @@ Odd channel edge flip.
 {\bfseries Initial value\+:}
 \begin{DoxyCode}
 = [] (
-    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}& word
+    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}&
 ) -> \textcolor{keywordtype}{void} \{ \}
 \end{DoxyCode}
 

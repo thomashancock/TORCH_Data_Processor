@@ -1,0 +1,188 @@
+\hypertarget{class_readout_identifier}{}\section{Readout\+Identifier Class Reference}
+\label{class_readout_identifier}\index{Readout\+Identifier@{Readout\+Identifier}}
+
+
+Class used to uniquely idenfity combinations of readout informtion.  
+
+
+
+
+{\ttfamily \#include $<$Readout\+Identifier.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_readout_identifier_a6dbfa3a186abade180d962aa22c81e71}{Readout\+Identifier} (const \hyperlink{class_board_identifier}{Board\+Identifier} \&board\+ID, const unsigned int tdc\+ID)
+\begin{DoxyCompactList}\small\item\em Constructor from Board ID. \end{DoxyCompactList}\item 
+auto \hyperlink{class_readout_identifier_a17ec929ed43ac36bf7913ba2ad316f2f}{get\+T\+D\+C\+ID} () const
+\begin{DoxyCompactList}\small\item\em Getter for T\+DC ID. \end{DoxyCompactList}\item 
+auto \hyperlink{class_readout_identifier_ad5a9727c8ed4bd02883f6d68d0fadac8}{get\+Board\+ID} () const
+\begin{DoxyCompactList}\small\item\em Getter for combined Chain + Device combination. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{class_board_identifier}{Board\+Identifier} \hyperlink{class_readout_identifier_ae866229661d1f335f0ef20e382020070}{m\+\_\+board\+ID}
+\begin{DoxyCompactList}\small\item\em Board Identifier. \end{DoxyCompactList}\item 
+const unsigned int \hyperlink{class_readout_identifier_a51c3175e53d5178fe8bba193c04052c4}{m\+\_\+tdc\+ID}
+\begin{DoxyCompactList}\small\item\em Additional T\+DC information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_readout_identifier_aa0d096b09bfc6a21f2c29ec777e101f8}{operator$<$} (const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&lhs, const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&rhs)
+\begin{DoxyCompactList}\small\item\em Operator overload for $<$. \end{DoxyCompactList}\item 
+bool \hyperlink{class_readout_identifier_a8738ea1dc34492f456b68bb02aec8966}{operator$>$} (const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&lhs, const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&rhs)
+\begin{DoxyCompactList}\small\item\em Operator overload for $>$ \end{DoxyCompactList}\item 
+bool \hyperlink{class_readout_identifier_a91bb6963f51c84fd2d8bcf104fc0b226}{operator==} (const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&lhs, const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&rhs)
+\begin{DoxyCompactList}\small\item\em Equality operator overload. \end{DoxyCompactList}\item 
+std\+::ostream \& \hyperlink{class_readout_identifier_a62474a342fbe3d79da5b8a869d95e72e}{operator$<$$<$} (std\+::ostream \&os, const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&identifier)
+\begin{DoxyCompactList}\small\item\em Overload $<$$<$ operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class used to uniquely idenfity combinations of readout informtion. 
+
+Readouts are uniquely identified by a combination of Chain ID, Device ID and T\+DC ID.
+
+\hyperlink{class_readout_identifier}{Readout\+Identifier} stores a combination of these pieces of information and allows comparison to check whether they are the same. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_readout_identifier_a6dbfa3a186abade180d962aa22c81e71}\label{class_readout_identifier_a6dbfa3a186abade180d962aa22c81e71}} 
+\index{Readout\+Identifier@{Readout\+Identifier}!Readout\+Identifier@{Readout\+Identifier}}
+\index{Readout\+Identifier@{Readout\+Identifier}!Readout\+Identifier@{Readout\+Identifier}}
+\subsubsection{\texorpdfstring{Readout\+Identifier()}{ReadoutIdentifier()}}
+{\footnotesize\ttfamily Readout\+Identifier\+::\+Readout\+Identifier (\begin{DoxyParamCaption}\item[{const \hyperlink{class_board_identifier}{Board\+Identifier} \&}]{board\+ID,  }\item[{const unsigned int}]{tdc\+ID }\end{DoxyParamCaption})}
+
+
+
+Constructor from Board ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board\+ID} & Board ID of the readout \\
+\hline
+{\em tdc\+ID} & T\+DC ID of the readout \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_readout_identifier_ad5a9727c8ed4bd02883f6d68d0fadac8}\label{class_readout_identifier_ad5a9727c8ed4bd02883f6d68d0fadac8}} 
+\index{Readout\+Identifier@{Readout\+Identifier}!get\+Board\+ID@{get\+Board\+ID}}
+\index{get\+Board\+ID@{get\+Board\+ID}!Readout\+Identifier@{Readout\+Identifier}}
+\subsubsection{\texorpdfstring{get\+Board\+I\+D()}{getBoardID()}}
+{\footnotesize\ttfamily auto Readout\+Identifier\+::get\+Board\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for combined Chain + Device combination. 
+
+\mbox{\Hypertarget{class_readout_identifier_a17ec929ed43ac36bf7913ba2ad316f2f}\label{class_readout_identifier_a17ec929ed43ac36bf7913ba2ad316f2f}} 
+\index{Readout\+Identifier@{Readout\+Identifier}!get\+T\+D\+C\+ID@{get\+T\+D\+C\+ID}}
+\index{get\+T\+D\+C\+ID@{get\+T\+D\+C\+ID}!Readout\+Identifier@{Readout\+Identifier}}
+\subsubsection{\texorpdfstring{get\+T\+D\+C\+I\+D()}{getTDCID()}}
+{\footnotesize\ttfamily auto Readout\+Identifier\+::get\+T\+D\+C\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for T\+DC ID. 
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_readout_identifier_aa0d096b09bfc6a21f2c29ec777e101f8}\label{class_readout_identifier_aa0d096b09bfc6a21f2c29ec777e101f8}} 
+\index{Readout\+Identifier@{Readout\+Identifier}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Readout\+Identifier@{Readout\+Identifier}}
+\subsubsection{\texorpdfstring{operator$<$}{operator<}}
+{\footnotesize\ttfamily bool operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&}]{lhs,  }\item[{const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Operator overload for $<$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & R\+HS \hyperlink{class_readout_identifier}{Readout\+Identifier} to be compared to \\
+\hline
+{\em rhs} & L\+HS \hyperlink{class_readout_identifier}{Readout\+Identifier} to be compared to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_readout_identifier_a62474a342fbe3d79da5b8a869d95e72e}\label{class_readout_identifier_a62474a342fbe3d79da5b8a869d95e72e}} 
+\index{Readout\+Identifier@{Readout\+Identifier}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Readout\+Identifier@{Readout\+Identifier}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&}]{identifier }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overload $<$$<$ operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Output stream \\
+\hline
+{\em identifier} & \hyperlink{class_readout_identifier}{Readout\+Identifier} to be output \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_readout_identifier_a91bb6963f51c84fd2d8bcf104fc0b226}\label{class_readout_identifier_a91bb6963f51c84fd2d8bcf104fc0b226}} 
+\index{Readout\+Identifier@{Readout\+Identifier}!operator==@{operator==}}
+\index{operator==@{operator==}!Readout\+Identifier@{Readout\+Identifier}}
+\subsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily bool operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&}]{lhs,  }\item[{const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Equality operator overload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & R\+HS \hyperlink{class_readout_identifier}{Readout\+Identifier} to be compared to \\
+\hline
+{\em rhs} & L\+HS \hyperlink{class_readout_identifier}{Readout\+Identifier} to be compared to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_readout_identifier_a8738ea1dc34492f456b68bb02aec8966}\label{class_readout_identifier_a8738ea1dc34492f456b68bb02aec8966}} 
+\index{Readout\+Identifier@{Readout\+Identifier}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Readout\+Identifier@{Readout\+Identifier}}
+\subsubsection{\texorpdfstring{operator$>$}{operator>}}
+{\footnotesize\ttfamily bool operator$>$ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&}]{lhs,  }\item[{const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Operator overload for $>$ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & R\+HS \hyperlink{class_readout_identifier}{Readout\+Identifier} to be compared to \\
+\hline
+{\em rhs} & L\+HS \hyperlink{class_readout_identifier}{Readout\+Identifier} to be compared to \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_readout_identifier_ae866229661d1f335f0ef20e382020070}\label{class_readout_identifier_ae866229661d1f335f0ef20e382020070}} 
+\index{Readout\+Identifier@{Readout\+Identifier}!m\+\_\+board\+ID@{m\+\_\+board\+ID}}
+\index{m\+\_\+board\+ID@{m\+\_\+board\+ID}!Readout\+Identifier@{Readout\+Identifier}}
+\subsubsection{\texorpdfstring{m\+\_\+board\+ID}{m\_boardID}}
+{\footnotesize\ttfamily const \hyperlink{class_board_identifier}{Board\+Identifier} Readout\+Identifier\+::m\+\_\+board\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Board Identifier. 
+
+\mbox{\Hypertarget{class_readout_identifier_a51c3175e53d5178fe8bba193c04052c4}\label{class_readout_identifier_a51c3175e53d5178fe8bba193c04052c4}} 
+\index{Readout\+Identifier@{Readout\+Identifier}!m\+\_\+tdc\+ID@{m\+\_\+tdc\+ID}}
+\index{m\+\_\+tdc\+ID@{m\+\_\+tdc\+ID}!Readout\+Identifier@{Readout\+Identifier}}
+\subsubsection{\texorpdfstring{m\+\_\+tdc\+ID}{m\_tdcID}}
+{\footnotesize\ttfamily const unsigned int Readout\+Identifier\+::m\+\_\+tdc\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Additional T\+DC information. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Abstractions/inc/\hyperlink{_readout_identifier_8hpp}{Readout\+Identifier.\+hpp}\item 
+Abstractions/src/\hyperlink{_readout_identifier_8cpp}{Readout\+Identifier.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,176 @@
+\hypertarget{class_board_identifier}{}\section{Board\+Identifier Class Reference}
+\label{class_board_identifier}\index{Board\+Identifier@{Board\+Identifier}}
+
+
+Class used to uniquely idenfity combinations of board informtion.  
+
+
+
+
+{\ttfamily \#include $<$Board\+Identifier.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_board_identifier_abfdd1f7aada13dbe08113942b8c033a1}{Board\+Identifier} (const unsigned int chain\+ID, const unsigned int device\+ID)
+\item 
+auto \hyperlink{class_board_identifier_ad909f0c1eb9f80ec177ea8526c94d011}{get\+Chain\+ID} () const
+\begin{DoxyCompactList}\small\item\em Getter for Chain ID. \end{DoxyCompactList}\item 
+auto \hyperlink{class_board_identifier_a8f3d818c08107a42fe9305607be38a3b}{get\+Device\+ID} () const
+\begin{DoxyCompactList}\small\item\em Getter for Board ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \hyperlink{class_board_identifier_a53a9a7c31a0316eed7932615b04293ff}{m\+\_\+chain\+ID}
+\item 
+const unsigned int \hyperlink{class_board_identifier_ad7798603dc56380e884d075ba81495e1}{m\+\_\+device\+ID}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_board_identifier_a952ba26774a854af0abe8f188ddda22b}{operator$<$} (const \hyperlink{class_board_identifier}{Board\+Identifier} \&lhs, const \hyperlink{class_board_identifier}{Board\+Identifier} \&rhs)
+\begin{DoxyCompactList}\small\item\em Operator overload for $<$. \end{DoxyCompactList}\item 
+bool \hyperlink{class_board_identifier_a8be3f9aae87b9813d881a3c97c943d0d}{operator$>$} (const \hyperlink{class_board_identifier}{Board\+Identifier} \&lhs, const \hyperlink{class_board_identifier}{Board\+Identifier} \&rhs)
+\begin{DoxyCompactList}\small\item\em Operator overload for $>$ \end{DoxyCompactList}\item 
+bool \hyperlink{class_board_identifier_a7e5f6b9a11fbed47acc7aeafab856eed}{operator==} (const \hyperlink{class_board_identifier}{Board\+Identifier} \&lhs, const \hyperlink{class_board_identifier}{Board\+Identifier} \&rhs)
+\begin{DoxyCompactList}\small\item\em Equality operator overload. \end{DoxyCompactList}\item 
+std\+::ostream \& \hyperlink{class_board_identifier_a7c82c259188e9ed8c552911db5c4f454}{operator$<$$<$} (std\+::ostream \&os, const \hyperlink{class_board_identifier}{Board\+Identifier} \&identifier)
+\begin{DoxyCompactList}\small\item\em Overload $<$$<$ operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class used to uniquely idenfity combinations of board informtion. 
+
+Boards are uniquely identified by a combination of Chain ID and Device ID.
+
+\hyperlink{class_board_identifier}{Board\+Identifier} stores a combination of these pieces of information and allows comparison to check whether they are the same. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_board_identifier_abfdd1f7aada13dbe08113942b8c033a1}\label{class_board_identifier_abfdd1f7aada13dbe08113942b8c033a1}} 
+\index{Board\+Identifier@{Board\+Identifier}!Board\+Identifier@{Board\+Identifier}}
+\index{Board\+Identifier@{Board\+Identifier}!Board\+Identifier@{Board\+Identifier}}
+\subsubsection{\texorpdfstring{Board\+Identifier()}{BoardIdentifier()}}
+{\footnotesize\ttfamily Board\+Identifier\+::\+Board\+Identifier (\begin{DoxyParamCaption}\item[{const unsigned int}]{chain\+ID,  }\item[{const unsigned int}]{device\+ID }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em chain\+ID} & Chain ID of the board \\
+\hline
+{\em device\+ID} & Device ID of the board \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_board_identifier_ad909f0c1eb9f80ec177ea8526c94d011}\label{class_board_identifier_ad909f0c1eb9f80ec177ea8526c94d011}} 
+\index{Board\+Identifier@{Board\+Identifier}!get\+Chain\+ID@{get\+Chain\+ID}}
+\index{get\+Chain\+ID@{get\+Chain\+ID}!Board\+Identifier@{Board\+Identifier}}
+\subsubsection{\texorpdfstring{get\+Chain\+I\+D()}{getChainID()}}
+{\footnotesize\ttfamily auto Board\+Identifier\+::get\+Chain\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for Chain ID. 
+
+\mbox{\Hypertarget{class_board_identifier_a8f3d818c08107a42fe9305607be38a3b}\label{class_board_identifier_a8f3d818c08107a42fe9305607be38a3b}} 
+\index{Board\+Identifier@{Board\+Identifier}!get\+Device\+ID@{get\+Device\+ID}}
+\index{get\+Device\+ID@{get\+Device\+ID}!Board\+Identifier@{Board\+Identifier}}
+\subsubsection{\texorpdfstring{get\+Device\+I\+D()}{getDeviceID()}}
+{\footnotesize\ttfamily auto Board\+Identifier\+::get\+Device\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter for Board ID. 
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_board_identifier_a952ba26774a854af0abe8f188ddda22b}\label{class_board_identifier_a952ba26774a854af0abe8f188ddda22b}} 
+\index{Board\+Identifier@{Board\+Identifier}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Board\+Identifier@{Board\+Identifier}}
+\subsubsection{\texorpdfstring{operator$<$}{operator<}}
+{\footnotesize\ttfamily bool operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_board_identifier}{Board\+Identifier} \&}]{lhs,  }\item[{const \hyperlink{class_board_identifier}{Board\+Identifier} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Operator overload for $<$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & R\+HS \hyperlink{class_board_identifier}{Board\+Identifier} to be compared to \\
+\hline
+{\em rhs} & L\+HS \hyperlink{class_board_identifier}{Board\+Identifier} to be compared to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_board_identifier_a7c82c259188e9ed8c552911db5c4f454}\label{class_board_identifier_a7c82c259188e9ed8c552911db5c4f454}} 
+\index{Board\+Identifier@{Board\+Identifier}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Board\+Identifier@{Board\+Identifier}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \hyperlink{class_board_identifier}{Board\+Identifier} \&}]{identifier }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overload $<$$<$ operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Output stream \\
+\hline
+{\em identifier} & \hyperlink{class_board_identifier}{Board\+Identifier} to be output \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_board_identifier_a7e5f6b9a11fbed47acc7aeafab856eed}\label{class_board_identifier_a7e5f6b9a11fbed47acc7aeafab856eed}} 
+\index{Board\+Identifier@{Board\+Identifier}!operator==@{operator==}}
+\index{operator==@{operator==}!Board\+Identifier@{Board\+Identifier}}
+\subsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily bool operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{class_board_identifier}{Board\+Identifier} \&}]{lhs,  }\item[{const \hyperlink{class_board_identifier}{Board\+Identifier} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Equality operator overload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & R\+HS \hyperlink{class_board_identifier}{Board\+Identifier} to be compared to \\
+\hline
+{\em rhs} & L\+HS \hyperlink{class_board_identifier}{Board\+Identifier} to be compared to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_board_identifier_a8be3f9aae87b9813d881a3c97c943d0d}\label{class_board_identifier_a8be3f9aae87b9813d881a3c97c943d0d}} 
+\index{Board\+Identifier@{Board\+Identifier}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Board\+Identifier@{Board\+Identifier}}
+\subsubsection{\texorpdfstring{operator$>$}{operator>}}
+{\footnotesize\ttfamily bool operator$>$ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_board_identifier}{Board\+Identifier} \&}]{lhs,  }\item[{const \hyperlink{class_board_identifier}{Board\+Identifier} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Operator overload for $>$ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & R\+HS \hyperlink{class_board_identifier}{Board\+Identifier} to be compared to \\
+\hline
+{\em rhs} & L\+HS \hyperlink{class_board_identifier}{Board\+Identifier} to be compared to \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_board_identifier_a53a9a7c31a0316eed7932615b04293ff}\label{class_board_identifier_a53a9a7c31a0316eed7932615b04293ff}} 
+\index{Board\+Identifier@{Board\+Identifier}!m\+\_\+chain\+ID@{m\+\_\+chain\+ID}}
+\index{m\+\_\+chain\+ID@{m\+\_\+chain\+ID}!Board\+Identifier@{Board\+Identifier}}
+\subsubsection{\texorpdfstring{m\+\_\+chain\+ID}{m\_chainID}}
+{\footnotesize\ttfamily const unsigned int Board\+Identifier\+::m\+\_\+chain\+ID\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_board_identifier_ad7798603dc56380e884d075ba81495e1}\label{class_board_identifier_ad7798603dc56380e884d075ba81495e1}} 
+\index{Board\+Identifier@{Board\+Identifier}!m\+\_\+device\+ID@{m\+\_\+device\+ID}}
+\index{m\+\_\+device\+ID@{m\+\_\+device\+ID}!Board\+Identifier@{Board\+Identifier}}
+\subsubsection{\texorpdfstring{m\+\_\+device\+ID}{m\_deviceID}}
+{\footnotesize\ttfamily const unsigned int Board\+Identifier\+::m\+\_\+device\+ID\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Abstractions/inc/\hyperlink{_board_identifier_8hpp}{Board\+Identifier.\+hpp}\item 
+Abstractions/src/\hyperlink{_board_identifier_8cpp}{Board\+Identifier.\+cpp}\end{DoxyCompactItemize}

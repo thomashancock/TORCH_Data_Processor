@@ -12,7 +12,7 @@ Container class for Packets.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_event_a6e0319cd5e7b0e8b232e3c829c2ad00c}{Event} (const std\+::list$<$ unsigned int $>$ \&tdc\+I\+Ds)
+\hyperlink{class_event_a8c190b8279bb1a30b0f42a793f5342d2}{Event} (const std\+::list$<$ \hyperlink{class_readout_identifier}{Readout\+Identifier} $>$ \&readout\+I\+Ds)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 void \hyperlink{class_event_a08c4689086126f702d3b14be99461c98}{add\+Packet} (std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ packet)
 \begin{DoxyCompactList}\small\item\em Attempts to add a packet to the \hyperlink{class_event}{Event} object. \end{DoxyCompactList}\item 
@@ -37,7 +37,7 @@ bool \hyperlink{class_event_a3b435b2fe840647c01ae0ee838b66a54}{m\+\_\+is\+Event\
 \begin{DoxyCompactList}\small\item\em bool to tell whether \hyperlink{class_event}{Event} ID has been set by the first stored \hyperlink{class_packet}{Packet} \end{DoxyCompactList}\item 
 bool \hyperlink{class_event_adf297e8a9a7f7e7496dbb2e1ea61c893}{m\+\_\+was\+Dumped} = false
 \begin{DoxyCompactList}\small\item\em Was event dumped without waiting for a complete event? \end{DoxyCompactList}\item 
-std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ $>$ \hyperlink{class_event_a6aabddb7af6189a884d8eacd582bc10f}{m\+\_\+packet\+Map}
+std\+::map$<$ \hyperlink{class_readout_identifier}{Readout\+Identifier}, std\+::unique\+\_\+ptr$<$ \hyperlink{class_packet}{Packet} $>$ $>$ \hyperlink{class_event_a0ae595a22c44ddc6003ac31ee17f6f86}{m\+\_\+packet\+Map}
 \begin{DoxyCompactList}\small\item\em Map to store Packets by T\+DC ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -52,11 +52,11 @@ This class is used to store Packets determined to correspond to the same event.
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_event_a6e0319cd5e7b0e8b232e3c829c2ad00c}\label{class_event_a6e0319cd5e7b0e8b232e3c829c2ad00c}} 
+\mbox{\Hypertarget{class_event_a8c190b8279bb1a30b0f42a793f5342d2}\label{class_event_a8c190b8279bb1a30b0f42a793f5342d2}} 
 \index{Event@{Event}!Event@{Event}}
 \index{Event@{Event}!Event@{Event}}
 \subsubsection{\texorpdfstring{Event()}{Event()}}
-{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{const std\+::list$<$ unsigned int $>$ \&}]{tdc\+I\+Ds }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{const std\+::list$<$ \hyperlink{class_readout_identifier}{Readout\+Identifier} $>$ \&}]{readout\+I\+Ds }\end{DoxyParamCaption})}
 
 
 
@@ -163,11 +163,11 @@ Returns whether the event was dumped.
 
 bool to tell whether \hyperlink{class_event}{Event} ID has been set by the first stored \hyperlink{class_packet}{Packet} 
 
-\mbox{\Hypertarget{class_event_a6aabddb7af6189a884d8eacd582bc10f}\label{class_event_a6aabddb7af6189a884d8eacd582bc10f}} 
+\mbox{\Hypertarget{class_event_a0ae595a22c44ddc6003ac31ee17f6f86}\label{class_event_a0ae595a22c44ddc6003ac31ee17f6f86}} 
 \index{Event@{Event}!m\+\_\+packet\+Map@{m\+\_\+packet\+Map}}
 \index{m\+\_\+packet\+Map@{m\+\_\+packet\+Map}!Event@{Event}}
 \subsubsection{\texorpdfstring{m\+\_\+packet\+Map}{m\_packetMap}}
-{\footnotesize\ttfamily std\+::map$<$ unsigned int, std\+::unique\+\_\+ptr$<$\hyperlink{class_packet}{Packet}$>$ $>$ Event\+::m\+\_\+packet\+Map\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::map$<$ \hyperlink{class_readout_identifier}{Readout\+Identifier}, std\+::unique\+\_\+ptr$<$\hyperlink{class_packet}{Packet}$>$ $>$ Event\+::m\+\_\+packet\+Map\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

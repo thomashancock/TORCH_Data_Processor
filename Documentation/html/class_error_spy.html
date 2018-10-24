@@ -88,9 +88,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a07d843cb06eb0a6bfd47734b6c31e289"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a48d70388ccb40d03357ce9f93158c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_error_spy.html">ErrorSpy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a1a48d70388ccb40d03357ce9f93158c9">operator=</a> (<a class="el" href="class_error_spy.html">ErrorSpy</a> &amp;&amp;other)=delete</td></tr>
 <tr class="separator:a1a48d70388ccb40d03357ce9f93158c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5177c4dac196484a1a0ccaa231c033d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a5177c4dac196484a1a0ccaa231c033d8">logError</a> (const std::string message, const unsigned int readoutBoardID, const unsigned int tdcID)</td></tr>
-<tr class="memdesc:a5177c4dac196484a1a0ccaa231c033d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs an error.  <a href="#a5177c4dac196484a1a0ccaa231c033d8">More...</a><br /></td></tr>
-<tr class="separator:a5177c4dac196484a1a0ccaa231c033d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af415d2e53a4465983a98ee14f653a0fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#af415d2e53a4465983a98ee14f653a0fa">logError</a> (const std::string message, const <a class="el" href="class_readout_identifier.html">ReadoutIdentifier</a> &amp;readoutID)</td></tr>
+<tr class="memdesc:af415d2e53a4465983a98ee14f653a0fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs an error with associated Board and TDC IDs.  <a href="#af415d2e53a4465983a98ee14f653a0fa">More...</a><br /></td></tr>
+<tr class="separator:af415d2e53a4465983a98ee14f653a0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64883d689d048728db1193b8b60211b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a64883d689d048728db1193b8b60211b4">logError</a> (const std::string message, const <a class="el" href="class_board_identifier.html">BoardIdentifier</a> &amp;boardID)</td></tr>
+<tr class="memdesc:a64883d689d048728db1193b8b60211b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs an error with an associated Board ID.  <a href="#a64883d689d048728db1193b8b60211b4">More...</a><br /></td></tr>
+<tr class="separator:a64883d689d048728db1193b8b60211b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bde4e271c13b6e31c657c4417127588"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a6bde4e271c13b6e31c657c4417127588">logError</a> (const std::string message)</td></tr>
+<tr class="memdesc:a6bde4e271c13b6e31c657c4417127588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs an error without an associated board and TDC id.  <a href="#a6bde4e271c13b6e31c657c4417127588">More...</a><br /></td></tr>
+<tr class="separator:a6bde4e271c13b6e31c657c4417127588"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85e971684266e774c896ee681850614a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a85e971684266e774c896ee681850614a">print</a> () const</td></tr>
 <tr class="memdesc:a85e971684266e774c896ee681850614a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a summary of logged error messages.  <a href="#a85e971684266e774c896ee681850614a">More...</a><br /></td></tr>
 <tr class="separator:a85e971684266e774c896ee681850614a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,15 +112,24 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a8d07ccabb00ac3925d94d77e7092bc99"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a8d07ccabb00ac3925d94d77e7092bc99">ErrorSpy</a> ()</td></tr>
 <tr class="memdesc:a8d07ccabb00ac3925d94d77e7092bc99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Private Constructor.  <a href="#a8d07ccabb00ac3925d94d77e7092bc99">More...</a><br /></td></tr>
 <tr class="separator:a8d07ccabb00ac3925d94d77e7092bc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc5352997d5b107ac0662e7e087260a2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:abc5352997d5b107ac0662e7e087260a2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_error_spy.html#abc5352997d5b107ac0662e7e087260a2">printMap</a> (T &amp;map) const</td></tr>
+<tr class="separator:abc5352997d5b107ac0662e7e087260a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ae7d03be7562c1eb3ed4de48e33d89070"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#ae7d03be7562c1eb3ed4de48e33d89070">m_mut</a></td></tr>
 <tr class="memdesc:ae7d03be7562c1eb3ed4de48e33d89070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for thread safety.  <a href="#ae7d03be7562c1eb3ed4de48e33d89070">More...</a><br /></td></tr>
 <tr class="separator:ae7d03be7562c1eb3ed4de48e33d89070"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45fbb29e265512112996f3e94b5bff7a"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="class_error_counter.html">ErrorCounter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a45fbb29e265512112996f3e94b5bff7a">m_errorMap</a></td></tr>
-<tr class="memdesc:a45fbb29e265512112996f3e94b5bff7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store error messages.  <a href="#a45fbb29e265512112996f3e94b5bff7a">More...</a><br /></td></tr>
-<tr class="separator:a45fbb29e265512112996f3e94b5bff7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7de57cb54056410117531acd071ee38"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt; 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#af7de57cb54056410117531acd071ee38">m_error3D</a></td></tr>
+<tr class="memdesc:af7de57cb54056410117531acd071ee38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store error messages.  <a href="#af7de57cb54056410117531acd071ee38">More...</a><br /></td></tr>
+<tr class="separator:af7de57cb54056410117531acd071ee38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a666798820a5fc5a4e35f6e325a59053e"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt; 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a666798820a5fc5a4e35f6e325a59053e">m_error2D</a></td></tr>
+<tr class="memdesc:a666798820a5fc5a4e35f6e325a59053e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store error messages for just a single board.  <a href="#a666798820a5fc5a4e35f6e325a59053e">More...</a><br /></td></tr>
+<tr class="separator:a666798820a5fc5a4e35f6e325a59053e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79ef6f818633163c9d553e681a0244dd"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt; 0 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_spy.html#a79ef6f818633163c9d553e681a0244dd">m_error0D</a></td></tr>
+<tr class="memdesc:a79ef6f818633163c9d553e681a0244dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store error messages without a board and TDC ID.  <a href="#a79ef6f818633163c9d553e681a0244dd">More...</a><br /></td></tr>
+<tr class="separator:a79ef6f818633163c9d553e681a0244dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Keeps track of errors detected during program execution. </p>
@@ -248,8 +263,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5177c4dac196484a1a0ccaa231c033d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5177c4dac196484a1a0ccaa231c033d8">&#9670;&nbsp;</a></span>logError()</h2>
+<a id="af415d2e53a4465983a98ee14f653a0fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af415d2e53a4465983a98ee14f653a0fa">&#9670;&nbsp;</a></span>logError() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,14 +278,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>readoutBoardID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>tdcID</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_readout_identifier.html">ReadoutIdentifier</a> &amp;&#160;</td>
+          <td class="paramname"><em>readoutID</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -280,12 +289,74 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Logs an error. </p>
+<p>Logs an error with associated Board and TDC IDs. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>Message summarising the error </td></tr>
-    <tr><td class="paramname">readoutBoardID</td><td>Readout Board ID where the error occured </td></tr>
-    <tr><td class="paramname">tdcID</td><td>TDC id where the error occured </td></tr>
+    <tr><td class="paramname">readoutID</td><td>Readout Board ID where the error occured </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a64883d689d048728db1193b8b60211b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64883d689d048728db1193b8b60211b4">&#9670;&nbsp;</a></span>logError() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ErrorSpy::logError </td>
+          <td>(</td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_board_identifier.html">BoardIdentifier</a> &amp;&#160;</td>
+          <td class="paramname"><em>boardID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Logs an error with an associated Board ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Message summarising the error </td></tr>
+    <tr><td class="paramname">boardID</td><td>Readout Board ID where the error occured </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6bde4e271c13b6e31c657c4417127588"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bde4e271c13b6e31c657c4417127588">&#9670;&nbsp;</a></span>logError() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ErrorSpy::logError </td>
+          <td>(</td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Logs an error without an associated board and TDC id. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Message summarising the error </td></tr>
   </table>
   </dd>
 </dl>
@@ -363,9 +434,37 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="abc5352997d5b107ac0662e7e087260a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc5352997d5b107ac0662e7e087260a2">&#9670;&nbsp;</a></span>printMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ErrorSpy::printMap </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a45fbb29e265512112996f3e94b5bff7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45fbb29e265512112996f3e94b5bff7a">&#9670;&nbsp;</a></span>m_errorMap</h2>
+<a id="a79ef6f818633163c9d553e681a0244dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79ef6f818633163c9d553e681a0244dd">&#9670;&nbsp;</a></span>m_error0D</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -374,7 +473,55 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;std::string, <a class="el" href="class_error_counter.html">ErrorCounter</a>&gt; ErrorSpy::m_errorMap</td>
+          <td class="memname">std::unordered_map&lt;std::string, <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt;0&gt; &gt; ErrorSpy::m_error0D</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Map to store error messages without a board and TDC ID. </p>
+
+</div>
+</div>
+<a id="a666798820a5fc5a4e35f6e325a59053e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a666798820a5fc5a4e35f6e325a59053e">&#9670;&nbsp;</a></span>m_error2D</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt;2&gt; &gt; ErrorSpy::m_error2D</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Map to store error messages for just a single board. </p>
+
+</div>
+</div>
+<a id="af7de57cb54056410117531acd071ee38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7de57cb54056410117531acd071ee38">&#9670;&nbsp;</a></span>m_error3D</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt;3&gt; &gt; ErrorSpy::m_error3D</td>
         </tr>
       </table>
   </td>

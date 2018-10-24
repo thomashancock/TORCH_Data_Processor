@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inputfile',['InputFile',['../class_input_file.html',1,'']]]
+  ['filereader',['FileReader',['../class_file_reader.html',1,'']]]
 ];

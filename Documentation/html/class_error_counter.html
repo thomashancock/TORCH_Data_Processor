@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TORCH Multiboard Data Processor: ErrorCounter Class Reference</title>
+<title>TORCH Multiboard Data Processor: ErrorCounter&lt; N &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,66 +61,139 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_error_counter-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ErrorCounter Class Reference</div>  </div>
+<div class="title">ErrorCounter&lt; N &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Used by <a class="el" href="class_error_spy.html" title="Keeps track of errors detected during program execution. ">ErrorSpy</a> to track which readout board/tdc combinations errors have occured on.  
+<p>Used by <a class="el" href="class_error_spy.html" title="Keeps track of errors detected during program execution. ">ErrorSpy</a> to track which readout combinations of board/tdc ids that errors have occured on.  
  <a href="class_error_counter.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_error_counter_8hpp_source.html">ErrorCounter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a95facfc3369d4cf69b255519c579912e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_counter.html#a95facfc3369d4cf69b255519c579912e">ErrorCounter</a> ()</td></tr>
-<tr class="memdesc:a95facfc3369d4cf69b255519c579912e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a95facfc3369d4cf69b255519c579912e">More...</a><br /></td></tr>
-<tr class="separator:a95facfc3369d4cf69b255519c579912e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ef83e5c7eccd70772881294a8dc714b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_counter.html#a6ef83e5c7eccd70772881294a8dc714b">addCount</a> (const unsigned int readoutBoardID, const unsigned int tdcID)</td></tr>
-<tr class="memdesc:a6ef83e5c7eccd70772881294a8dc714b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incrememnts the count for the readout board/tdc combination.  <a href="#a6ef83e5c7eccd70772881294a8dc714b">More...</a><br /></td></tr>
-<tr class="separator:a6ef83e5c7eccd70772881294a8dc714b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affc256e518dc91811a48fd5ba42de8cd"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_counter.html#affc256e518dc91811a48fd5ba42de8cd">getCount</a> (const unsigned int readoutBoardID, const unsigned int tdcID) const</td></tr>
-<tr class="memdesc:affc256e518dc91811a48fd5ba42de8cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the count for the readout board/tdc combination.  <a href="#affc256e518dc91811a48fd5ba42de8cd">More...</a><br /></td></tr>
-<tr class="separator:affc256e518dc91811a48fd5ba42de8cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12b0eba237f5de0c56d5365bb84fa025"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_counter.html#a12b0eba237f5de0c56d5365bb84fa025">print</a> () const</td></tr>
-<tr class="memdesc:a12b0eba237f5de0c56d5365bb84fa025"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the counts stored.  <a href="#a12b0eba237f5de0c56d5365bb84fa025">More...</a><br /></td></tr>
-<tr class="separator:a12b0eba237f5de0c56d5365bb84fa025"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
-Private Types</h2></td></tr>
-<tr class="memitem:aa50fc471c675ff8d626b982d1d90c7b4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_counter.html#aa50fc471c675ff8d626b982d1d90c7b4">uintPair</a> = std::pair&lt; unsigned int, unsigned int &gt;</td></tr>
-<tr class="separator:aa50fc471c675ff8d626b982d1d90c7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25c2e6afc0732afae9dcdbd1a6a7d84f"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a25c2e6afc0732afae9dcdbd1a6a7d84f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_error_counter.html#a25c2e6afc0732afae9dcdbd1a6a7d84f">ErrorCounter</a> (Args... args)</td></tr>
+<tr class="memdesc:a25c2e6afc0732afae9dcdbd1a6a7d84f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a25c2e6afc0732afae9dcdbd1a6a7d84f">More...</a><br /></td></tr>
+<tr class="separator:a25c2e6afc0732afae9dcdbd1a6a7d84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d2fdf410a8860c744f0f9806ec8ce1d"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a6d2fdf410a8860c744f0f9806ec8ce1d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_error_counter.html#a6d2fdf410a8860c744f0f9806ec8ce1d">addCount</a> (Args... args)</td></tr>
+<tr class="memdesc:a6d2fdf410a8860c744f0f9806ec8ce1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incrememnts the count for the specific combination of arguments given.  <a href="#a6d2fdf410a8860c744f0f9806ec8ce1d">More...</a><br /></td></tr>
+<tr class="separator:a6d2fdf410a8860c744f0f9806ec8ce1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdfe6078e6536b0af4860e84d0cb113c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_counter.html#abdfe6078e6536b0af4860e84d0cb113c">print</a> () const</td></tr>
+<tr class="memdesc:abdfe6078e6536b0af4860e84d0cb113c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the counts stored.  <a href="#abdfe6078e6536b0af4860e84d0cb113c">More...</a><br /></td></tr>
+<tr class="separator:abdfe6078e6536b0af4860e84d0cb113c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:aa54fb5fe5884956ba9d8ca8b44f74fcb"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_counter.html#aa54fb5fe5884956ba9d8ca8b44f74fcb">makeKey</a> (const unsigned int readoutBoardID, const unsigned int tdcID) const</td></tr>
-<tr class="memdesc:aa54fb5fe5884956ba9d8ca8b44f74fcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a map key for the given readout board/tdc combination.  <a href="#aa54fb5fe5884956ba9d8ca8b44f74fcb">More...</a><br /></td></tr>
-<tr class="separator:aa54fb5fe5884956ba9d8ca8b44f74fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace87ff9ca25693815b683f7e28349e95"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:ace87ff9ca25693815b683f7e28349e95"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_error_counter.html#ace87ff9ca25693815b683f7e28349e95">makeKey</a> (Args... args) const</td></tr>
+<tr class="memdesc:ace87ff9ca25693815b683f7e28349e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a map key for the given readout board/tdc combination.  <a href="#ace87ff9ca25693815b683f7e28349e95">More...</a><br /></td></tr>
+<tr class="separator:ace87ff9ca25693815b683f7e28349e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a66d01d8e49111d2f433b56bf922c418e"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_error_counter.html#aa50fc471c675ff8d626b982d1d90c7b4">uintPair</a>, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_counter.html#a66d01d8e49111d2f433b56bf922c418e">m_counts</a></td></tr>
-<tr class="memdesc:a66d01d8e49111d2f433b56bf922c418e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store counts in.  <a href="#a66d01d8e49111d2f433b56bf922c418e">More...</a><br /></td></tr>
-<tr class="separator:a66d01d8e49111d2f433b56bf922c418e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2f34a61c4c38ece96df182dd4b5c5ca"><td class="memItemLeft" align="right" valign="top">const std::array&lt; std::string, N &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_counter.html#ac2f34a61c4c38ece96df182dd4b5c5ca">m_labels</a></td></tr>
+<tr class="separator:ac2f34a61c4c38ece96df182dd4b5c5ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5903c289a98aa3fd0ac8294a83fa711"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::array&lt; unsigned int, N &gt;, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_error_counter.html#ac5903c289a98aa3fd0ac8294a83fa711">m_counts</a></td></tr>
+<tr class="memdesc:ac5903c289a98aa3fd0ac8294a83fa711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store counts in.  <a href="#ac5903c289a98aa3fd0ac8294a83fa711">More...</a><br /></td></tr>
+<tr class="separator:ac5903c289a98aa3fd0ac8294a83fa711"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Used by <a class="el" href="class_error_spy.html" title="Keeps track of errors detected during program execution. ">ErrorSpy</a> to track which readout board/tdc combinations errors have occured on. </p>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="aa50fc471c675ff8d626b982d1d90c7b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa50fc471c675ff8d626b982d1d90c7b4">&#9670;&nbsp;</a></span>uintPair</h2>
+<div class="textblock"><h3>template&lt;unsigned int N&gt;<br />
+class ErrorCounter&lt; N &gt;</h3>
+
+<p>Used by <a class="el" href="class_error_spy.html" title="Keeps track of errors detected during program execution. ">ErrorSpy</a> to track which readout combinations of board/tdc ids that errors have occured on. </p>
+<p>Template class.</p>
+<p>Template parameter N is the dimensionality of the ErrorCounts to be stored i.e. For errors specific to a board/tdc id combination, N = 2. For generic errors, N = 0.</p>
+<p>N is given as a parameter to facilitate easier modifications to the <a class="el" href="class_error_spy.html" title="Keeps track of errors detected during program execution. ">ErrorSpy</a> in the future. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a25c2e6afc0732afae9dcdbd1a6a7d84f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25c2e6afc0732afae9dcdbd1a6a7d84f">&#9670;&nbsp;</a></span>ErrorCounter()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned int N&gt; </div>
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_error_counter.html">ErrorCounter</a>&lt; N &gt;::<a class="el" href="class_error_counter.html">ErrorCounter</a> </td>
+          <td>(</td>
+          <td class="paramtype">Args...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<p>Type checking will ensure Args is a set of std::strings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>Parameter pack for headings of each dimension (usually "BoardID" or "TDC") </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6d2fdf410a8860c744f0f9806ec8ce1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d2fdf410a8860c744f0f9806ec8ce1d">&#9670;&nbsp;</a></span>addCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned int N&gt; </div>
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt; N &gt;::addCount </td>
+          <td>(</td>
+          <td class="paramtype">Args...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Incrememnts the count for the specific combination of arguments given. </p>
+<p>Type checking will ensure Args is a set of unsigned ints. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>Parameter pack for board/tdc ID combination </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ace87ff9ca25693815b683f7e28349e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace87ff9ca25693815b683f7e28349e95">&#9670;&nbsp;</a></span>makeKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned int N&gt; </div>
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_error_counter.html#aa50fc471c675ff8d626b982d1d90c7b4">ErrorCounter::uintPair</a> =  std::pair&lt;unsigned int, unsigned int&gt;</td>
+          <td class="memname">auto <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt; N &gt;::makeKey </td>
+          <td>(</td>
+          <td class="paramtype">Args...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -130,166 +203,28 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a95facfc3369d4cf69b255519c579912e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95facfc3369d4cf69b255519c579912e">&#9670;&nbsp;</a></span>ErrorCounter()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">ErrorCounter::ErrorCounter </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Constructor. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6ef83e5c7eccd70772881294a8dc714b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ef83e5c7eccd70772881294a8dc714b">&#9670;&nbsp;</a></span>addCount()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ErrorCounter::addCount </td>
-          <td>(</td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>readoutBoardID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>tdcID</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Incrememnts the count for the readout board/tdc combination. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">readoutBoardID</td><td>The Readout Board ID </td></tr>
-    <tr><td class="paramname">tdcID</td><td>The TDC ID </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="affc256e518dc91811a48fd5ba42de8cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affc256e518dc91811a48fd5ba42de8cd">&#9670;&nbsp;</a></span>getCount()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int ErrorCounter::getCount </td>
-          <td>(</td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>readoutBoardID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>tdcID</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the count for the readout board/tdc combination. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">readoutBoardID</td><td>The Readout Board ID </td></tr>
-    <tr><td class="paramname">tdcID</td><td>The TDC ID </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="aa54fb5fe5884956ba9d8ca8b44f74fcb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa54fb5fe5884956ba9d8ca8b44f74fcb">&#9670;&nbsp;</a></span>makeKey()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto ErrorCounter::makeKey </td>
-          <td>(</td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>readoutBoardID</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>tdcID</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 <p>Returns a map key for the given readout board/tdc combination. </p>
-<p>Returns auto to facilitate easy modifiaction of map key type </p>
+<p>Type checking will ensure Args is a set of unsigned ints.</p>
+<p>Returns auto to facilitate easy modifiaction of map key type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>Parameter pack for board/tdc ID combination </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a12b0eba237f5de0c56d5365bb84fa025"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12b0eba237f5de0c56d5365bb84fa025">&#9670;&nbsp;</a></span>print()</h2>
+<a id="abdfe6078e6536b0af4860e84d0cb113c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdfe6078e6536b0af4860e84d0cb113c">&#9670;&nbsp;</a></span>print()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned int N&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void ErrorCounter::print </td>
+          <td class="memname">void <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt; N &gt;::print </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -302,17 +237,19 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a66d01d8e49111d2f433b56bf922c418e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66d01d8e49111d2f433b56bf922c418e">&#9670;&nbsp;</a></span>m_counts</h2>
+<a id="ac5903c289a98aa3fd0ac8294a83fa711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5903c289a98aa3fd0ac8294a83fa711">&#9670;&nbsp;</a></span>m_counts</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned int N&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;<a class="el" href="class_error_counter.html#aa50fc471c675ff8d626b982d1d90c7b4">uintPair</a>, unsigned int&gt; ErrorCounter::m_counts</td>
+          <td class="memname">std::map&lt; std::array&lt;unsigned int, N&gt; , unsigned int &gt; <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt; N &gt;::m_counts</td>
         </tr>
       </table>
   </td>
@@ -326,9 +263,32 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a id="ac2f34a61c4c38ece96df182dd4b5c5ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f34a61c4c38ece96df182dd4b5c5ca">&#9670;&nbsp;</a></span>m_labels</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned int N&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::array&lt;std::string, N&gt; <a class="el" href="class_error_counter.html">ErrorCounter</a>&lt; N &gt;::m_labels</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>Core/inc/<a class="el" href="_error_counter_8hpp_source.html">ErrorCounter.hpp</a></li>
-<li>Core/src/<a class="el" href="_error_counter_8cpp.html">ErrorCounter.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

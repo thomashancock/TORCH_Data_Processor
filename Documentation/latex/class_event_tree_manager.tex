@@ -32,6 +32,8 @@ void \hyperlink{class_event_tree_manager_a11cbe0078aeb3d0fe320bbeec335babc}{set\
 \item 
 const unsigned int \hyperlink{class_event_tree_manager_a87c672aa1531b362b15eddf11cab00c8}{m\+\_\+n\+T\+D\+Cs}
 \begin{DoxyCompactList}\small\item\em The maximum number of T\+D\+Cs. \end{DoxyCompactList}\item 
+const std\+::set$<$ unsigned int $>$ \hyperlink{class_event_tree_manager_aea70f1feef081fb124517ba8efc4087b}{m\+\_\+edge\+Matching\+Exclusions}
+\begin{DoxyCompactList}\small\item\em Set to store edge matching exclusions. \end{DoxyCompactList}\item 
 Bool\+\_\+t \hyperlink{class_event_tree_manager_a6e9b9bd6363f95fce295b19cb544ea83}{b\+\_\+is\+Complete} = false
 \begin{DoxyCompactList}\small\item\em Branch Variable\+: Is event complete? \end{DoxyCompactList}\item 
 Bool\+\_\+t \hyperlink{class_event_tree_manager_ab99e54a6c2d4c59bb073038649b3ae4f}{b\+\_\+was\+Dumped} = false
@@ -75,7 +77,7 @@ Int\+\_\+t $\ast$ \hyperlink{class_event_tree_manager_aa65fec5d7e3a3b3983730033a
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static constexpr unsigned int \hyperlink{class_event_tree_manager_aab35ad52374d52149bde894c8af7a8c5}{s\+\_\+hits\+Max} = 500
+static constexpr unsigned int \hyperlink{class_event_tree_manager_aab35ad52374d52149bde894c8af7a8c5}{s\+\_\+hits\+Max} = 600
 \begin{DoxyCompactList}\small\item\em Array size for hit branches. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
@@ -333,6 +335,16 @@ Branch Variable \mbox{[}n\+Hits\mbox{]}\+: Width of signal.
 
 Branch Variable \mbox{[}n\+T\+D\+Cs\mbox{]}\+: Word count for each T\+DC. 
 
+\mbox{\Hypertarget{class_event_tree_manager_aea70f1feef081fb124517ba8efc4087b}\label{class_event_tree_manager_aea70f1feef081fb124517ba8efc4087b}} 
+\index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!m\+\_\+edge\+Matching\+Exclusions@{m\+\_\+edge\+Matching\+Exclusions}}
+\index{m\+\_\+edge\+Matching\+Exclusions@{m\+\_\+edge\+Matching\+Exclusions}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+edge\+Matching\+Exclusions}{m\_edgeMatchingExclusions}}
+{\footnotesize\ttfamily const std\+::set$<$unsigned int$>$ Event\+Tree\+Manager\+::m\+\_\+edge\+Matching\+Exclusions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Set to store edge matching exclusions. 
+
 \mbox{\Hypertarget{class_event_tree_manager_a87c672aa1531b362b15eddf11cab00c8}\label{class_event_tree_manager_a87c672aa1531b362b15eddf11cab00c8}} 
 \index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!m\+\_\+n\+T\+D\+Cs@{m\+\_\+n\+T\+D\+Cs}}
 \index{m\+\_\+n\+T\+D\+Cs@{m\+\_\+n\+T\+D\+Cs}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
@@ -347,7 +359,7 @@ The maximum number of T\+D\+Cs.
 \index{Event\+Tree\+Manager@{Event\+Tree\+Manager}!s\+\_\+hits\+Max@{s\+\_\+hits\+Max}}
 \index{s\+\_\+hits\+Max@{s\+\_\+hits\+Max}!Event\+Tree\+Manager@{Event\+Tree\+Manager}}
 \subsubsection{\texorpdfstring{s\+\_\+hits\+Max}{s\_hitsMax}}
-{\footnotesize\ttfamily constexpr unsigned int Event\+Tree\+Manager\+::s\+\_\+hits\+Max = 500\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+{\footnotesize\ttfamily constexpr unsigned int Event\+Tree\+Manager\+::s\+\_\+hits\+Max = 600\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
 
 

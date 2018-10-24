@@ -120,13 +120,13 @@ data/Test\_Data/TimeRef\_01\_Device\_0/TimeRef\_01\_Device\_0\_000004\_201805231
 \end{DoxyCode}
 
 
-File lists can be passed to the M\+DU using the {\ttfamily -\/list} option. E.\+g. 
+File lists can be passed to the M\+DP using the {\ttfamily -\/list} option. E.\+g. 
 \begin{DoxyCode}
 ./Install/bin/DataProcessor -con Config.xml -list filelist.lst
 \end{DoxyCode}
 
 
-The M\+DU will run over all the files given in {\ttfamily filelist.\+lst} as if they were passed on the command line.
+The M\+DP will run over all the files given in {\ttfamily filelist.\+lst} as if they were passed on the command line.
 
 \subsection*{Pulling New Changes \label{_Pulling}%
 }
@@ -186,6 +186,12 @@ root 'macros/MakeHitmap.cxx("Output.root",1,1)' -b -q
 \end{DoxyCode}
  will create a hitmap with a logarithmic z axis and no time references included.
 
+To manually specify the output file name, pass the desired name as the second argument (i.\+e. after the input file name). The remaining optional arguments follow as previosuly detailed. E.\+g. 
+\begin{DoxyCode}
+root 'macros/MakeHitmap.cxx("Output.root","CustomOutputName.pdf",1,1)' -b -q
+\end{DoxyCode}
+
+
 \subsection*{To-\/do \label{_ToDo}%
 }
 
@@ -193,9 +199,7 @@ This section gives a list of changes/features which are yet to be implemented, b
 
 
 \begin{DoxyItemize}
-\item Add possibility of logging errors in \hyperlink{class_error_spy}{Error\+Spy} which don\textquotesingle{}t required a Board ID and/or T\+DC ID (T\+HH)
 \item Refactor \hyperlink{class_edge}{Edge} Sorting to be easily modifiable (T\+HH)
-\item Add \char`\"{}\+No Errors\char`\"{} to \hyperlink{class_error_spy}{Error\+Spy} summary if no errors are detected (T\+HH)
 \item Parallel Mode (T\+HH)
 \end{DoxyItemize}
 
@@ -206,6 +210,5 @@ This section gives a list of known bugs which require attention. The reporter\te
 
 
 \begin{DoxyItemize}
-\item If block/file is dumped, current \hyperlink{class_word_bundle}{Word\+Bundle} should be cleared (T\+HH)
-\item \char`\"{}\+Invalid Datatype\char`\"{} Error has T\+DC ID = 100 for all occurrences (T\+HH) 
+\item If block/file is dumped, current \hyperlink{class_word_bundle}{Word\+Bundle} should be cleared (T\+HH) 
 \end{DoxyItemize}

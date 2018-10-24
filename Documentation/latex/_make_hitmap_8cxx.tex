@@ -9,19 +9,21 @@
 \item 
 using \hyperlink{_make_hitmap_8cxx_a69aa29b598b851b0640aa225a9e5d61d}{uint} = unsigned int
 \item 
-using \hyperlink{_make_hitmap_8cxx_a5bdb334a44617dab1748e5633306feff}{coor} = std\+::pair$<$ \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} $>$
+using \hyperlink{_make_hitmap_8cxx_a5bdb334a44617dab1748e5633306feff}{coor} = std\+::pair$<$ \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} $>$
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{_make_hitmap_8cxx_a5bdb334a44617dab1748e5633306feff}{coor} \hyperlink{_make_hitmap_8cxx_a833fe74c1d6a7922d5371ab0d3787aae}{get\+Coordinate} (const \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channel\+ID)
+\hyperlink{_make_hitmap_8cxx_a5bdb334a44617dab1748e5633306feff}{coor} \hyperlink{_make_hitmap_8cxx_a833fe74c1d6a7922d5371ab0d3787aae}{get\+Coordinate} (const \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channel\+ID)
 \begin{DoxyCompactList}\small\item\em Returns the xy coordinate for a given channel. \end{DoxyCompactList}\item 
-bool \hyperlink{_make_hitmap_8cxx_aea01419cfa6d3bc850d93c3569853f18}{is\+Time\+Reference} (const \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channel\+ID)
+bool \hyperlink{_make_hitmap_8cxx_aea01419cfa6d3bc850d93c3569853f18}{is\+Time\+Reference} (const \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channel\+ID)
 \begin{DoxyCompactList}\small\item\em Returns if a channel is a time reference channel. \end{DoxyCompactList}\item 
 bool \hyperlink{_make_hitmap_8cxx_a1d82f4e459997b2d4c0116303c2ca0b9}{load\+Tree} (T\+File $\ast$in\+File, T\+Tree $\ast$\&in\+Tree, bool \&is\+Event\+Tree)
 \begin{DoxyCompactList}\small\item\em Loads either the event or packet tree. \end{DoxyCompactList}\item 
+void \hyperlink{_make_hitmap_8cxx_ab87f43b15b1a72809bc2396de5d9a598}{Make\+Hitmap} (const std\+::string input\+File, const std\+::string output\+File, const bool logZ=false, const bool ignore\+Time\+Reference=false)
+\begin{DoxyCompactList}\small\item\em Makes a hitmap from the passed file. \end{DoxyCompactList}\item 
 void \hyperlink{_make_hitmap_8cxx_a2cbe6aae53d50876e600ac393a14dc71}{Make\+Hitmap} (const std\+::string input\+File, const bool logZ=false, const bool ignore\+Time\+Reference=false)
-\begin{DoxyCompactList}\small\item\em Makes a hitmap from the passed file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Overload to have default output filename. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Typedef Documentation}
@@ -29,13 +31,13 @@ void \hyperlink{_make_hitmap_8cxx_a2cbe6aae53d50876e600ac393a14dc71}{Make\+Hitma
 \index{Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}!coor@{coor}}
 \index{coor@{coor}!Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}}
 \subsubsection{\texorpdfstring{coor}{coor}}
-{\footnotesize\ttfamily using \hyperlink{_make_hitmap_8cxx_a5bdb334a44617dab1748e5633306feff}{coor} =  std\+::pair$<$\hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}$>$}
+{\footnotesize\ttfamily using \hyperlink{_make_hitmap_8cxx_a5bdb334a44617dab1748e5633306feff}{coor} =  std\+::pair$<$\hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}$>$}
 
 \mbox{\Hypertarget{_make_hitmap_8cxx_a69aa29b598b851b0640aa225a9e5d61d}\label{_make_hitmap_8cxx_a69aa29b598b851b0640aa225a9e5d61d}} 
 \index{Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}!uint@{uint}}
 \index{uint@{uint}!Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}}
 \subsubsection{\texorpdfstring{uint}{uint}}
-{\footnotesize\ttfamily using \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} =  unsigned int}
+{\footnotesize\ttfamily using \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} =  unsigned int}
 
 
 
@@ -44,7 +46,7 @@ void \hyperlink{_make_hitmap_8cxx_a2cbe6aae53d50876e600ac393a14dc71}{Make\+Hitma
 \index{Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}!get\+Coordinate@{get\+Coordinate}}
 \index{get\+Coordinate@{get\+Coordinate}!Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}}
 \subsubsection{\texorpdfstring{get\+Coordinate()}{getCoordinate()}}
-{\footnotesize\ttfamily \hyperlink{_make_hitmap_8cxx_a5bdb334a44617dab1748e5633306feff}{coor} get\+Coordinate (\begin{DoxyParamCaption}\item[{const \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}}]{channel\+ID }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{_make_hitmap_8cxx_a5bdb334a44617dab1748e5633306feff}{coor} get\+Coordinate (\begin{DoxyParamCaption}\item[{const \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}}]{channel\+ID }\end{DoxyParamCaption})}
 
 
 
@@ -54,7 +56,7 @@ Returns the xy coordinate for a given channel.
 \index{Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}!is\+Time\+Reference@{is\+Time\+Reference}}
 \index{is\+Time\+Reference@{is\+Time\+Reference}!Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}}
 \subsubsection{\texorpdfstring{is\+Time\+Reference()}{isTimeReference()}}
-{\footnotesize\ttfamily bool is\+Time\+Reference (\begin{DoxyParamCaption}\item[{const \hyperlink{_channel_mappings_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}}]{channel\+ID }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool is\+Time\+Reference (\begin{DoxyParamCaption}\item[{const \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}}]{channel\+ID }\end{DoxyParamCaption})}
 
 
 
@@ -70,13 +72,23 @@ Returns if a channel is a time reference channel.
 
 Loads either the event or packet tree. 
 
-\mbox{\Hypertarget{_make_hitmap_8cxx_a2cbe6aae53d50876e600ac393a14dc71}\label{_make_hitmap_8cxx_a2cbe6aae53d50876e600ac393a14dc71}} 
+\mbox{\Hypertarget{_make_hitmap_8cxx_ab87f43b15b1a72809bc2396de5d9a598}\label{_make_hitmap_8cxx_ab87f43b15b1a72809bc2396de5d9a598}} 
 \index{Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}!Make\+Hitmap@{Make\+Hitmap}}
 \index{Make\+Hitmap@{Make\+Hitmap}!Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}}
-\subsubsection{\texorpdfstring{Make\+Hitmap()}{MakeHitmap()}}
-{\footnotesize\ttfamily void Make\+Hitmap (\begin{DoxyParamCaption}\item[{const std\+::string}]{input\+File,  }\item[{const bool}]{logZ = {\ttfamily false},  }\item[{const bool}]{ignore\+Time\+Reference = {\ttfamily false} }\end{DoxyParamCaption})}
+\subsubsection{\texorpdfstring{Make\+Hitmap()}{MakeHitmap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Make\+Hitmap (\begin{DoxyParamCaption}\item[{const std\+::string}]{input\+File,  }\item[{const std\+::string}]{output\+File,  }\item[{const bool}]{logZ = {\ttfamily false},  }\item[{const bool}]{ignore\+Time\+Reference = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
 Makes a hitmap from the passed file. 
+
+\mbox{\Hypertarget{_make_hitmap_8cxx_a2cbe6aae53d50876e600ac393a14dc71}\label{_make_hitmap_8cxx_a2cbe6aae53d50876e600ac393a14dc71}} 
+\index{Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}!Make\+Hitmap@{Make\+Hitmap}}
+\index{Make\+Hitmap@{Make\+Hitmap}!Make\+Hitmap.\+cxx@{Make\+Hitmap.\+cxx}}
+\subsubsection{\texorpdfstring{Make\+Hitmap()}{MakeHitmap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Make\+Hitmap (\begin{DoxyParamCaption}\item[{const std\+::string}]{input\+File,  }\item[{const bool}]{logZ = {\ttfamily false},  }\item[{const bool}]{ignore\+Time\+Reference = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Overload to have default output filename. 
 

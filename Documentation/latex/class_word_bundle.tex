@@ -7,13 +7,13 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_word_bundle_a56afa743b30e4b20775b7ecad180c465}{Word\+Bundle} (const unsigned int readout\+Board\+ID)
+\hyperlink{class_word_bundle_a7c01d89d6ce8c10d23c1134661f2c44a}{Word\+Bundle} (const \hyperlink{class_board_identifier}{Board\+Identifier} readout\+Board\+ID)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-unsigned int \hyperlink{class_word_bundle_a595de21d0dabc8b99a8d28053c0370fc}{get\+Readout\+Board\+ID} () const
+auto \hyperlink{class_word_bundle_afa38c6a44582d1113b9d492bb72dc9ef}{get\+Board\+ID} () const
 \begin{DoxyCompactList}\small\item\em Returns readout board number. \end{DoxyCompactList}\item 
-bool \hyperlink{class_word_bundle_a0a817b8d4266b5c2418743bf46ef5dee}{is\+Complete} () const
+auto \hyperlink{class_word_bundle_a3afd16d04f92eec06e08a6ec59028ae9}{is\+Complete} () const
 \begin{DoxyCompactList}\small\item\em Check if Bundle is complete. \end{DoxyCompactList}\item 
-bool \hyperlink{class_word_bundle_a18bcb8912a877fa9e60cd8ec707e75a3}{empty} () const
+auto \hyperlink{class_word_bundle_ab46858414d852c8d4079c4f611f4c96c}{empty} () const
 \begin{DoxyCompactList}\small\item\em Is bundle empty. \end{DoxyCompactList}\item 
 void \hyperlink{class_word_bundle_a167d2b6b4f504e4347191a8e5bb47e5e}{add\+Word} (const unsigned int word)
 \begin{DoxyCompactList}\small\item\em Adds a word to the bundle. \end{DoxyCompactList}\item 
@@ -26,7 +26,7 @@ void \hyperlink{class_word_bundle_a15e13fdd7380c72be2f42013560d62c3}{set\+Roc\+V
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-const unsigned int \hyperlink{class_word_bundle_a75e4429454ea028f2fbfa2f144330215}{m\+\_\+readout\+Board\+ID}
+const \hyperlink{class_board_identifier}{Board\+Identifier} \hyperlink{class_word_bundle_a77d34b8fe38566bc2b3144675aa53c77}{m\+\_\+board\+ID}
 \item 
 bool \hyperlink{class_word_bundle_a7605157c872054d7ab42b590fac97ca7}{m\+\_\+roc\+Value\+Stored} = false
 \item 
@@ -37,11 +37,11 @@ unsigned int \hyperlink{class_word_bundle_a2510a567b83584e8b53395168d53c401}{m\+
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_word_bundle_a56afa743b30e4b20775b7ecad180c465}\label{class_word_bundle_a56afa743b30e4b20775b7ecad180c465}} 
+\mbox{\Hypertarget{class_word_bundle_a7c01d89d6ce8c10d23c1134661f2c44a}\label{class_word_bundle_a7c01d89d6ce8c10d23c1134661f2c44a}} 
 \index{Word\+Bundle@{Word\+Bundle}!Word\+Bundle@{Word\+Bundle}}
 \index{Word\+Bundle@{Word\+Bundle}!Word\+Bundle@{Word\+Bundle}}
 \subsubsection{\texorpdfstring{Word\+Bundle()}{WordBundle()}}
-{\footnotesize\ttfamily Word\+Bundle\+::\+Word\+Bundle (\begin{DoxyParamCaption}\item[{const unsigned int}]{readout\+Board\+ID }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Word\+Bundle\+::\+Word\+Bundle (\begin{DoxyParamCaption}\item[{const \hyperlink{class_board_identifier}{Board\+Identifier}}]{readout\+Board\+ID }\end{DoxyParamCaption})}
 
 
 
@@ -60,15 +60,25 @@ Constructor.
 
 Adds a word to the bundle. 
 
-\mbox{\Hypertarget{class_word_bundle_a18bcb8912a877fa9e60cd8ec707e75a3}\label{class_word_bundle_a18bcb8912a877fa9e60cd8ec707e75a3}} 
+\mbox{\Hypertarget{class_word_bundle_ab46858414d852c8d4079c4f611f4c96c}\label{class_word_bundle_ab46858414d852c8d4079c4f611f4c96c}} 
 \index{Word\+Bundle@{Word\+Bundle}!empty@{empty}}
 \index{empty@{empty}!Word\+Bundle@{Word\+Bundle}}
 \subsubsection{\texorpdfstring{empty()}{empty()}}
-{\footnotesize\ttfamily bool Word\+Bundle\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily auto Word\+Bundle\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Is bundle empty. 
+
+\mbox{\Hypertarget{class_word_bundle_afa38c6a44582d1113b9d492bb72dc9ef}\label{class_word_bundle_afa38c6a44582d1113b9d492bb72dc9ef}} 
+\index{Word\+Bundle@{Word\+Bundle}!get\+Board\+ID@{get\+Board\+ID}}
+\index{get\+Board\+ID@{get\+Board\+ID}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{get\+Board\+I\+D()}{getBoardID()}}
+{\footnotesize\ttfamily auto Word\+Bundle\+::get\+Board\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns readout board number. 
 
 \mbox{\Hypertarget{class_word_bundle_a950e328fdf8b00e59b2d68da5182763f}\label{class_word_bundle_a950e328fdf8b00e59b2d68da5182763f}} 
 \index{Word\+Bundle@{Word\+Bundle}!get\+Next\+Word@{get\+Next\+Word}}
@@ -80,16 +90,6 @@ Is bundle empty.
 
 Returns the next word in the bundle. 
 
-\mbox{\Hypertarget{class_word_bundle_a595de21d0dabc8b99a8d28053c0370fc}\label{class_word_bundle_a595de21d0dabc8b99a8d28053c0370fc}} 
-\index{Word\+Bundle@{Word\+Bundle}!get\+Readout\+Board\+ID@{get\+Readout\+Board\+ID}}
-\index{get\+Readout\+Board\+ID@{get\+Readout\+Board\+ID}!Word\+Bundle@{Word\+Bundle}}
-\subsubsection{\texorpdfstring{get\+Readout\+Board\+I\+D()}{getReadoutBoardID()}}
-{\footnotesize\ttfamily unsigned int Word\+Bundle\+::get\+Readout\+Board\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Returns readout board number. 
-
 \mbox{\Hypertarget{class_word_bundle_ad2c91f230ac93d19900eba6b2c64d0e9}\label{class_word_bundle_ad2c91f230ac93d19900eba6b2c64d0e9}} 
 \index{Word\+Bundle@{Word\+Bundle}!get\+R\+O\+C\+Value@{get\+R\+O\+C\+Value}}
 \index{get\+R\+O\+C\+Value@{get\+R\+O\+C\+Value}!Word\+Bundle@{Word\+Bundle}}
@@ -100,11 +100,11 @@ Returns readout board number.
 
 Returns the stored R\+OC value. 
 
-\mbox{\Hypertarget{class_word_bundle_a0a817b8d4266b5c2418743bf46ef5dee}\label{class_word_bundle_a0a817b8d4266b5c2418743bf46ef5dee}} 
+\mbox{\Hypertarget{class_word_bundle_a3afd16d04f92eec06e08a6ec59028ae9}\label{class_word_bundle_a3afd16d04f92eec06e08a6ec59028ae9}} 
 \index{Word\+Bundle@{Word\+Bundle}!is\+Complete@{is\+Complete}}
 \index{is\+Complete@{is\+Complete}!Word\+Bundle@{Word\+Bundle}}
 \subsubsection{\texorpdfstring{is\+Complete()}{isComplete()}}
-{\footnotesize\ttfamily bool Word\+Bundle\+::is\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily auto Word\+Bundle\+::is\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -123,11 +123,11 @@ Sets the R\+OC Value.
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{class_word_bundle_a75e4429454ea028f2fbfa2f144330215}\label{class_word_bundle_a75e4429454ea028f2fbfa2f144330215}} 
-\index{Word\+Bundle@{Word\+Bundle}!m\+\_\+readout\+Board\+ID@{m\+\_\+readout\+Board\+ID}}
-\index{m\+\_\+readout\+Board\+ID@{m\+\_\+readout\+Board\+ID}!Word\+Bundle@{Word\+Bundle}}
-\subsubsection{\texorpdfstring{m\+\_\+readout\+Board\+ID}{m\_readoutBoardID}}
-{\footnotesize\ttfamily const unsigned int Word\+Bundle\+::m\+\_\+readout\+Board\+ID\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_word_bundle_a77d34b8fe38566bc2b3144675aa53c77}\label{class_word_bundle_a77d34b8fe38566bc2b3144675aa53c77}} 
+\index{Word\+Bundle@{Word\+Bundle}!m\+\_\+board\+ID@{m\+\_\+board\+ID}}
+\index{m\+\_\+board\+ID@{m\+\_\+board\+ID}!Word\+Bundle@{Word\+Bundle}}
+\subsubsection{\texorpdfstring{m\+\_\+board\+ID}{m\_boardID}}
+{\footnotesize\ttfamily const \hyperlink{class_board_identifier}{Board\+Identifier} Word\+Bundle\+::m\+\_\+board\+ID\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_word_bundle_a2510a567b83584e8b53395168d53c401}\label{class_word_bundle_a2510a567b83584e8b53395168d53c401}} 
 \index{Word\+Bundle@{Word\+Bundle}!m\+\_\+roc\+Value@{m\+\_\+roc\+Value}}

@@ -62,6 +62,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_input_file-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">InputFile Class Reference</div>  </div>
@@ -84,15 +85,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e3685bddcae984f458e7fc6a20e7a44"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#a2e3685bddcae984f458e7fc6a20e7a44">getFilePath</a> () const</td></tr>
 <tr class="memdesc:a2e3685bddcae984f458e7fc6a20e7a44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for file path.  <a href="#a2e3685bddcae984f458e7fc6a20e7a44">More...</a><br /></td></tr>
 <tr class="separator:a2e3685bddcae984f458e7fc6a20e7a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96c696bb882f54671ad897501440fd17"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#a96c696bb882f54671ad897501440fd17">getReadoutBoardID</a> () const</td></tr>
-<tr class="memdesc:a96c696bb882f54671ad897501440fd17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for readout board ID.  <a href="#a96c696bb882f54671ad897501440fd17">More...</a><br /></td></tr>
-<tr class="separator:a96c696bb882f54671ad897501440fd17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a340d5150a1c03a07496d0a67580f5c70"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#a340d5150a1c03a07496d0a67580f5c70">getBoardID</a> () const</td></tr>
+<tr class="memdesc:a340d5150a1c03a07496d0a67580f5c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for readout board ID.  <a href="#a340d5150a1c03a07496d0a67580f5c70">More...</a><br /></td></tr>
+<tr class="separator:a340d5150a1c03a07496d0a67580f5c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a1a9c0d87f77e580e03da608b1b5291"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#a1a1a9c0d87f77e580e03da608b1b5291">getFileNumber</a> () const</td></tr>
 <tr class="memdesc:a1a1a9c0d87f77e580e03da608b1b5291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for file number.  <a href="#a1a1a9c0d87f77e580e03da608b1b5291">More...</a><br /></td></tr>
 <tr class="separator:a1a1a9c0d87f77e580e03da608b1b5291"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a27c978d7aebf861360c642ddb47ef5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#a7a27c978d7aebf861360c642ddb47ef5">print</a> () const</td></tr>
-<tr class="memdesc:a7a27c978d7aebf861360c642ddb47ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints information about the file.  <a href="#a7a27c978d7aebf861360c642ddb47ef5">More...</a><br /></td></tr>
-<tr class="separator:a7a27c978d7aebf861360c642ddb47ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c7c438538b8b183454632c27a55f701"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#a8c7c438538b8b183454632c27a55f701">operator&lt;</a> (const <a class="el" href="class_input_file.html">InputFile</a> &amp;other) const</td></tr>
 <tr class="memdesc:a8c7c438538b8b183454632c27a55f701"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator overload for &lt;.  <a href="#a8c7c438538b8b183454632c27a55f701">More...</a><br /></td></tr>
 <tr class="separator:a8c7c438538b8b183454632c27a55f701"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,15 +109,24 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ae3a763e9997cebb9f50aef29499d53c2"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#ae3a763e9997cebb9f50aef29499d53c2">m_filePath</a></td></tr>
 <tr class="memdesc:ae3a763e9997cebb9f50aef29499d53c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path of the file.  <a href="#ae3a763e9997cebb9f50aef29499d53c2">More...</a><br /></td></tr>
 <tr class="separator:ae3a763e9997cebb9f50aef29499d53c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15431dd487c5ac563745856544c9261d"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#a15431dd487c5ac563745856544c9261d">m_readoutBoardID</a> = 0</td></tr>
-<tr class="memdesc:a15431dd487c5ac563745856544c9261d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Readout board ID of the file.  <a href="#a15431dd487c5ac563745856544c9261d">More...</a><br /></td></tr>
-<tr class="separator:a15431dd487c5ac563745856544c9261d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba6d32b68bc6aff8d4b710ce2028418"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#afba6d32b68bc6aff8d4b710ce2028418">m_chainID</a> = 0</td></tr>
+<tr class="memdesc:afba6d32b68bc6aff8d4b710ce2028418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Readout board ID of the file.  <a href="#afba6d32b68bc6aff8d4b710ce2028418">More...</a><br /></td></tr>
+<tr class="separator:afba6d32b68bc6aff8d4b710ce2028418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf2f05fc5d9719c536f7dca6f3233a6"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#aecf2f05fc5d9719c536f7dca6f3233a6">m_deviceID</a> = 0</td></tr>
+<tr class="memdesc:aecf2f05fc5d9719c536f7dca6f3233a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Readout board ID of the file.  <a href="#aecf2f05fc5d9719c536f7dca6f3233a6">More...</a><br /></td></tr>
+<tr class="separator:aecf2f05fc5d9719c536f7dca6f3233a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5c90eb7ded9297cc12248935968ee87"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#af5c90eb7ded9297cc12248935968ee87">m_fileNumber</a> = 0</td></tr>
 <tr class="memdesc:af5c90eb7ded9297cc12248935968ee87"><td class="mdescLeft">&#160;</td><td class="mdescRight">File number of the file.  <a href="#af5c90eb7ded9297cc12248935968ee87">More...</a><br /></td></tr>
 <tr class="separator:af5c90eb7ded9297cc12248935968ee87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a900aea752727f969fa00a8b2727dd4e8"><td class="memItemLeft" align="right" valign="top">unsigned long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#a900aea752727f969fa00a8b2727dd4e8">m_timestamp</a> = 0</td></tr>
 <tr class="memdesc:a900aea752727f969fa00a8b2727dd4e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timestamp of the file.  <a href="#a900aea752727f969fa00a8b2727dd4e8">More...</a><br /></td></tr>
 <tr class="separator:a900aea752727f969fa00a8b2727dd4e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:aa20dd58dfa63d62aafd9c17c40285381"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_file.html#aa20dd58dfa63d62aafd9c17c40285381">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="class_input_file.html">InputFile</a> &amp;inputFile)</td></tr>
+<tr class="memdesc:aa20dd58dfa63d62aafd9c17c40285381"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload &lt;&lt; operator.  <a href="#aa20dd58dfa63d62aafd9c17c40285381">More...</a><br /></td></tr>
+<tr class="separator:aa20dd58dfa63d62aafd9c17c40285381"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stores information about a specific input file. </p>
@@ -151,6 +158,33 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a340d5150a1c03a07496d0a67580f5c70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a340d5150a1c03a07496d0a67580f5c70">&#9670;&nbsp;</a></span>getBoardID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto InputFile::getBoardID </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Getter for readout board ID. </p>
+
+</div>
+</div>
 <a id="a1a1a9c0d87f77e580e03da608b1b5291"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a1a9c0d87f77e580e03da608b1b5291">&#9670;&nbsp;</a></span>getFileNumber()</h2>
 
@@ -202,33 +236,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Getter for file path. </p>
-
-</div>
-</div>
-<a id="a96c696bb882f54671ad897501440fd17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96c696bb882f54671ad897501440fd17">&#9670;&nbsp;</a></span>getReadoutBoardID()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto InputFile::getReadoutBoardID </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Getter for readout board ID. </p>
 
 </div>
 </div>
@@ -337,26 +344,101 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7a27c978d7aebf861360c642ddb47ef5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a27c978d7aebf861360c642ddb47ef5">&#9670;&nbsp;</a></span>print()</h2>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="aa20dd58dfa63d62aafd9c17c40285381"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa20dd58dfa63d62aafd9c17c40285381">&#9670;&nbsp;</a></span>operator<<</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void InputFile::print </td>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_input_file.html">InputFile</a> &amp;&#160;</td>
+          <td class="paramname"><em>inputFile</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Prints information about the file. </p>
+<p>Overload &lt;&lt; operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>Output stream </td></tr>
+    <tr><td class="paramname">inputFile</td><td><a class="el" href="class_board_identifier.html" title="Class used to uniquely idenfity combinations of board informtion. ">BoardIdentifier</a> to be output </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="afba6d32b68bc6aff8d4b710ce2028418"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afba6d32b68bc6aff8d4b710ce2028418">&#9670;&nbsp;</a></span>m_chainID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int InputFile::m_chainID = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Readout board ID of the file. </p>
+
+</div>
+</div>
+<a id="aecf2f05fc5d9719c536f7dca6f3233a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecf2f05fc5d9719c536f7dca6f3233a6">&#9670;&nbsp;</a></span>m_deviceID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int InputFile::m_deviceID = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Readout board ID of the file. </p>
+
+</div>
+</div>
 <a id="af5c90eb7ded9297cc12248935968ee87"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af5c90eb7ded9297cc12248935968ee87">&#9670;&nbsp;</a></span>m_fileNumber</h2>
 
@@ -426,30 +508,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Records whether all information was able to be extracted from the file path. </p>
-
-</div>
-</div>
-<a id="a15431dd487c5ac563745856544c9261d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15431dd487c5ac563745856544c9261d">&#9670;&nbsp;</a></span>m_readoutBoardID</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int InputFile::m_readoutBoardID = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Readout board ID of the file. </p>
 
 </div>
 </div>

@@ -6,6 +6,10 @@
 #include <mutex>
 #include <memory>
 
+//! A queue with threadsafe access
+/*!
+
+*/
 template <class T>
 class ThreadSafeQueue {
 public:

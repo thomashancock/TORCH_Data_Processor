@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['config',['Config',['../class_config.html#af8b0e9dc72b16b73ebb32d177fb93e1b',1,'Config']]]
+  ['boardidentifier',['BoardIdentifier',['../class_board_identifier.html#abfdd1f7aada13dbe08113942b8c033a1',1,'BoardIdentifier']]]
 ];

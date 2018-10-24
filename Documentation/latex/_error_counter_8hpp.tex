@@ -1,9 +1,13 @@
 \hypertarget{_error_counter_8hpp}{}\section{Core/inc/\+Error\+Counter.hpp File Reference}
 \label{_error_counter_8hpp}\index{Core/inc/\+Error\+Counter.\+hpp@{Core/inc/\+Error\+Counter.\+hpp}}
 {\ttfamily \#include $<$map$>$}\newline
-{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}Debug.\+hpp\char`\"{}}\newline
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{class_error_counter}{Error\+Counter}
-\begin{DoxyCompactList}\small\item\em Used by \hyperlink{class_error_spy}{Error\+Spy} to track which readout board/tdc combinations errors have occured on. \end{DoxyCompactList}\end{DoxyCompactItemize}
+class \hyperlink{class_error_counter}{Error\+Counter$<$ N $>$}
+\begin{DoxyCompactList}\small\item\em Used by \hyperlink{class_error_spy}{Error\+Spy} to track which readout combinations of board/tdc ids that errors have occured on. \end{DoxyCompactList}\item 
+class \hyperlink{class_error_counter_3_010_01_4}{Error\+Counter$<$ 0 $>$}
+\begin{DoxyCompactList}\small\item\em Class specialisation of \hyperlink{class_error_counter}{Error\+Counter} for N = 0. \end{DoxyCompactList}\end{DoxyCompactItemize}

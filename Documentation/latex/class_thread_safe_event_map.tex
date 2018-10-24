@@ -7,7 +7,7 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_thread_safe_event_map_ace03ee2a6017dfee50a61c68626d2345}{Thread\+Safe\+Event\+Map} (const std\+::list$<$ unsigned int $>$ tdc\+I\+Ds)
+\hyperlink{class_thread_safe_event_map_a766a347019971b1697e7e223290364b4}{Thread\+Safe\+Event\+Map} (const std\+::list$<$ \hyperlink{class_readout_identifier}{Readout\+Identifier} $>$ readout\+I\+Ds)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 \hyperlink{class_thread_safe_event_map_a523d5bf6c632e3803e721ef3fd94e318}{Thread\+Safe\+Event\+Map} (const \hyperlink{class_thread_safe_event_map}{Thread\+Safe\+Event\+Map} \&other)=delete
 \item 
@@ -37,7 +37,7 @@ using \hyperlink{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}{
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-const std\+::list$<$ unsigned int $>$ \hyperlink{class_thread_safe_event_map_ad079392d8a51bb1cc7835c52489fa6ca}{m\+\_\+tdc\+I\+Ds}
+const std\+::list$<$ \hyperlink{class_readout_identifier}{Readout\+Identifier} $>$ \hyperlink{class_thread_safe_event_map_a1b1ff8e56effaac464b1c9dbfb44320c}{m\+\_\+readout\+I\+Ds}
 \item 
 std\+::mutex \hyperlink{class_thread_safe_event_map_ada4e8c2f2195df86503e73674ff30935}{m\+\_\+mut}
 \begin{DoxyCompactList}\small\item\em Mutex used for thread safety. \end{DoxyCompactList}\item 
@@ -57,11 +57,11 @@ std\+::list$<$ event\+Map\+::iterator $>$ \hyperlink{class_thread_safe_event_map
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_thread_safe_event_map_ace03ee2a6017dfee50a61c68626d2345}\label{class_thread_safe_event_map_ace03ee2a6017dfee50a61c68626d2345}} 
+\mbox{\Hypertarget{class_thread_safe_event_map_a766a347019971b1697e7e223290364b4}\label{class_thread_safe_event_map_a766a347019971b1697e7e223290364b4}} 
 \index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
 \index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
 \subsubsection{\texorpdfstring{Thread\+Safe\+Event\+Map()}{ThreadSafeEventMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily Thread\+Safe\+Event\+Map\+::\+Thread\+Safe\+Event\+Map (\begin{DoxyParamCaption}\item[{const std\+::list$<$ unsigned int $>$}]{tdc\+I\+Ds }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Thread\+Safe\+Event\+Map\+::\+Thread\+Safe\+Event\+Map (\begin{DoxyParamCaption}\item[{const std\+::list$<$ \hyperlink{class_readout_identifier}{Readout\+Identifier} $>$}]{readout\+I\+Ds }\end{DoxyParamCaption})}
 
 
 
@@ -179,11 +179,11 @@ Returns events up to the next complete event.
 
 Mutex used for thread safety. 
 
-\mbox{\Hypertarget{class_thread_safe_event_map_ad079392d8a51bb1cc7835c52489fa6ca}\label{class_thread_safe_event_map_ad079392d8a51bb1cc7835c52489fa6ca}} 
-\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!m\+\_\+tdc\+I\+Ds@{m\+\_\+tdc\+I\+Ds}}
-\index{m\+\_\+tdc\+I\+Ds@{m\+\_\+tdc\+I\+Ds}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
-\subsubsection{\texorpdfstring{m\+\_\+tdc\+I\+Ds}{m\_tdcIDs}}
-{\footnotesize\ttfamily const std\+::list$<$unsigned int$>$ Thread\+Safe\+Event\+Map\+::m\+\_\+tdc\+I\+Ds\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_thread_safe_event_map_a1b1ff8e56effaac464b1c9dbfb44320c}\label{class_thread_safe_event_map_a1b1ff8e56effaac464b1c9dbfb44320c}} 
+\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!m\+\_\+readout\+I\+Ds@{m\+\_\+readout\+I\+Ds}}
+\index{m\+\_\+readout\+I\+Ds@{m\+\_\+readout\+I\+Ds}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
+\subsubsection{\texorpdfstring{m\+\_\+readout\+I\+Ds}{m\_readoutIDs}}
+{\footnotesize\ttfamily const std\+::list$<$\hyperlink{class_readout_identifier}{Readout\+Identifier}$>$ Thread\+Safe\+Event\+Map\+::m\+\_\+readout\+I\+Ds\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

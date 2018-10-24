@@ -2,6 +2,7 @@
 \label{_channel_mappings_8hpp}\index{Abstractions/inc/\+Channel\+Mappings.\+hpp@{Abstractions/inc/\+Channel\+Mappings.\+hpp}}
 {\ttfamily \#include $<$functional$>$}\newline
 {\ttfamily \#include \char`\"{}Packet.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Board\+Identifier.\+hpp\char`\"{}}\newline
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -10,7 +11,9 @@
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \hyperlink{namespacechlmap_aeed247fbd4770834005177ddb2712668}{chlmap\+::\+Channel\+Mapping} = std\+::function$<$ unsigned int(unsigned int, unsigned int, unsigned int)$>$
+using \hyperlink{namespacechlmap_a51093e4e5b1ccf24696e04d671728200}{chlmap\+::uint} = unsigned int
+\item 
+using \hyperlink{namespacechlmap_a5bb86fec567a6f1a0646881a9284bb01}{chlmap\+::\+Channel\+Mapping} = std\+::function$<$ \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}(const \hyperlink{class_board_identifier}{Board\+Identifier} \&, const \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint}, const \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint})$>$
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}

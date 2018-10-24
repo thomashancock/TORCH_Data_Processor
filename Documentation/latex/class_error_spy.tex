@@ -22,8 +22,12 @@ Keeps track of errors detected during program execution.
 \item 
 \hyperlink{class_error_spy}{Error\+Spy} \& \hyperlink{class_error_spy_a1a48d70388ccb40d03357ce9f93158c9}{operator=} (\hyperlink{class_error_spy}{Error\+Spy} \&\&other)=delete
 \item 
-void \hyperlink{class_error_spy_a5177c4dac196484a1a0ccaa231c033d8}{log\+Error} (const std\+::string message, const unsigned int readout\+Board\+ID, const unsigned int tdc\+ID)
-\begin{DoxyCompactList}\small\item\em Logs an error. \end{DoxyCompactList}\item 
+void \hyperlink{class_error_spy_af415d2e53a4465983a98ee14f653a0fa}{log\+Error} (const std\+::string message, const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&readout\+ID)
+\begin{DoxyCompactList}\small\item\em Logs an error with associated Board and T\+DC I\+Ds. \end{DoxyCompactList}\item 
+void \hyperlink{class_error_spy_a64883d689d048728db1193b8b60211b4}{log\+Error} (const std\+::string message, const \hyperlink{class_board_identifier}{Board\+Identifier} \&board\+ID)
+\begin{DoxyCompactList}\small\item\em Logs an error with an associated Board ID. \end{DoxyCompactList}\item 
+void \hyperlink{class_error_spy_a6bde4e271c13b6e31c657c4417127588}{log\+Error} (const std\+::string message)
+\begin{DoxyCompactList}\small\item\em Logs an error without an associated board and T\+DC id. \end{DoxyCompactList}\item 
 void \hyperlink{class_error_spy_a85e971684266e774c896ee681850614a}{print} () const
 \begin{DoxyCompactList}\small\item\em Prints a summary of logged error messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
@@ -35,14 +39,20 @@ static \hyperlink{class_error_spy}{Error\+Spy} \& \hyperlink{class_error_spy_a15
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_error_spy_a8d07ccabb00ac3925d94d77e7092bc99}{Error\+Spy} ()
-\begin{DoxyCompactList}\small\item\em Private Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Private Constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{class_error_spy_abc5352997d5b107ac0662e7e087260a2}{print\+Map} (T \&map) const
+\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::mutex \hyperlink{class_error_spy_ae7d03be7562c1eb3ed4de48e33d89070}{m\+\_\+mut}
 \begin{DoxyCompactList}\small\item\em Mutex for thread safety. \end{DoxyCompactList}\item 
-std\+::unordered\+\_\+map$<$ std\+::string, \hyperlink{class_error_counter}{Error\+Counter} $>$ \hyperlink{class_error_spy_a45fbb29e265512112996f3e94b5bff7a}{m\+\_\+error\+Map}
-\begin{DoxyCompactList}\small\item\em Map to store error messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+std\+::unordered\+\_\+map$<$ std\+::string, \hyperlink{class_error_counter}{Error\+Counter}$<$ 3 $>$ $>$ \hyperlink{class_error_spy_af7de57cb54056410117531acd071ee38}{m\+\_\+error3D}
+\begin{DoxyCompactList}\small\item\em Map to store error messages. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \hyperlink{class_error_counter}{Error\+Counter}$<$ 2 $>$ $>$ \hyperlink{class_error_spy_a666798820a5fc5a4e35f6e325a59053e}{m\+\_\+error2D}
+\begin{DoxyCompactList}\small\item\em Map to store error messages for just a single board. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \hyperlink{class_error_counter}{Error\+Counter}$<$ 0 $>$ $>$ \hyperlink{class_error_spy_a79ef6f818633163c9d553e681a0244dd}{m\+\_\+error0D}
+\begin{DoxyCompactList}\small\item\em Map to store error messages without a board and T\+DC ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -100,23 +110,53 @@ Private Constructor.
 
 Returns a reference to the \hyperlink{class_error_spy}{Error\+Spy}. 
 
-\mbox{\Hypertarget{class_error_spy_a5177c4dac196484a1a0ccaa231c033d8}\label{class_error_spy_a5177c4dac196484a1a0ccaa231c033d8}} 
+\mbox{\Hypertarget{class_error_spy_af415d2e53a4465983a98ee14f653a0fa}\label{class_error_spy_af415d2e53a4465983a98ee14f653a0fa}} 
 \index{Error\+Spy@{Error\+Spy}!log\+Error@{log\+Error}}
 \index{log\+Error@{log\+Error}!Error\+Spy@{Error\+Spy}}
-\subsubsection{\texorpdfstring{log\+Error()}{logError()}}
-{\footnotesize\ttfamily void Error\+Spy\+::log\+Error (\begin{DoxyParamCaption}\item[{const std\+::string}]{message,  }\item[{const unsigned int}]{readout\+Board\+ID,  }\item[{const unsigned int}]{tdc\+ID }\end{DoxyParamCaption})}
+\subsubsection{\texorpdfstring{log\+Error()}{logError()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Error\+Spy\+::log\+Error (\begin{DoxyParamCaption}\item[{const std\+::string}]{message,  }\item[{const \hyperlink{class_readout_identifier}{Readout\+Identifier} \&}]{readout\+ID }\end{DoxyParamCaption})}
 
 
 
-Logs an error. 
+Logs an error with associated Board and T\+DC I\+Ds. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em message} & Message summarising the error \\
 \hline
-{\em readout\+Board\+ID} & Readout Board ID where the error occured \\
+{\em readout\+ID} & Readout Board ID where the error occured \\
 \hline
-{\em tdc\+ID} & T\+DC id where the error occured \\
+\end{DoxyParams}
+\mbox{\Hypertarget{class_error_spy_a64883d689d048728db1193b8b60211b4}\label{class_error_spy_a64883d689d048728db1193b8b60211b4}} 
+\index{Error\+Spy@{Error\+Spy}!log\+Error@{log\+Error}}
+\index{log\+Error@{log\+Error}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{log\+Error()}{logError()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Error\+Spy\+::log\+Error (\begin{DoxyParamCaption}\item[{const std\+::string}]{message,  }\item[{const \hyperlink{class_board_identifier}{Board\+Identifier} \&}]{board\+ID }\end{DoxyParamCaption})}
+
+
+
+Logs an error with an associated Board ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Message summarising the error \\
+\hline
+{\em board\+ID} & Readout Board ID where the error occured \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_error_spy_a6bde4e271c13b6e31c657c4417127588}\label{class_error_spy_a6bde4e271c13b6e31c657c4417127588}} 
+\index{Error\+Spy@{Error\+Spy}!log\+Error@{log\+Error}}
+\index{log\+Error@{log\+Error}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{log\+Error()}{logError()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Error\+Spy\+::log\+Error (\begin{DoxyParamCaption}\item[{const std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+Logs an error without an associated board and T\+DC id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Message summarising the error \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_error_spy_a1ee5e050efa950d40f48245550cb5aad}\label{class_error_spy_a1ee5e050efa950d40f48245550cb5aad}} 
@@ -141,14 +181,41 @@ Logs an error.
 
 Prints a summary of logged error messages. 
 
+\mbox{\Hypertarget{class_error_spy_abc5352997d5b107ac0662e7e087260a2}\label{class_error_spy_abc5352997d5b107ac0662e7e087260a2}} 
+\index{Error\+Spy@{Error\+Spy}!print\+Map@{print\+Map}}
+\index{print\+Map@{print\+Map}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{print\+Map()}{printMap()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Error\+Spy\+::print\+Map (\begin{DoxyParamCaption}\item[{T \&}]{map }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{class_error_spy_a45fbb29e265512112996f3e94b5bff7a}\label{class_error_spy_a45fbb29e265512112996f3e94b5bff7a}} 
-\index{Error\+Spy@{Error\+Spy}!m\+\_\+error\+Map@{m\+\_\+error\+Map}}
-\index{m\+\_\+error\+Map@{m\+\_\+error\+Map}!Error\+Spy@{Error\+Spy}}
-\subsubsection{\texorpdfstring{m\+\_\+error\+Map}{m\_errorMap}}
-{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \hyperlink{class_error_counter}{Error\+Counter}$>$ Error\+Spy\+::m\+\_\+error\+Map\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_error_spy_a79ef6f818633163c9d553e681a0244dd}\label{class_error_spy_a79ef6f818633163c9d553e681a0244dd}} 
+\index{Error\+Spy@{Error\+Spy}!m\+\_\+error0D@{m\+\_\+error0D}}
+\index{m\+\_\+error0D@{m\+\_\+error0D}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{m\+\_\+error0D}{m\_error0D}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \hyperlink{class_error_counter}{Error\+Counter}$<$0$>$ $>$ Error\+Spy\+::m\+\_\+error0D\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map to store error messages without a board and T\+DC ID. 
+
+\mbox{\Hypertarget{class_error_spy_a666798820a5fc5a4e35f6e325a59053e}\label{class_error_spy_a666798820a5fc5a4e35f6e325a59053e}} 
+\index{Error\+Spy@{Error\+Spy}!m\+\_\+error2D@{m\+\_\+error2D}}
+\index{m\+\_\+error2D@{m\+\_\+error2D}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{m\+\_\+error2D}{m\_error2D}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \hyperlink{class_error_counter}{Error\+Counter}$<$2$>$ $>$ Error\+Spy\+::m\+\_\+error2D\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map to store error messages for just a single board. 
+
+\mbox{\Hypertarget{class_error_spy_af7de57cb54056410117531acd071ee38}\label{class_error_spy_af7de57cb54056410117531acd071ee38}} 
+\index{Error\+Spy@{Error\+Spy}!m\+\_\+error3D@{m\+\_\+error3D}}
+\index{m\+\_\+error3D@{m\+\_\+error3D}!Error\+Spy@{Error\+Spy}}
+\subsubsection{\texorpdfstring{m\+\_\+error3D}{m\_error3D}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \hyperlink{class_error_counter}{Error\+Counter}$<$3$>$ $>$ Error\+Spy\+::m\+\_\+error3D\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

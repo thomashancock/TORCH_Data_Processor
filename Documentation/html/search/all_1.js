@@ -28,6 +28,9 @@ var searchData=
   ['b_5fwordcount',['b_wordCount',['../class_event_tree_manager.html#a7151f5beadcec7080e1b95f12e52a40a',1,'EventTreeManager::b_wordCount()'],['../class_packet_tree_manager.html#ad7d8e0343e3e5f949dc20e591b2e6b2b',1,'PacketTreeManager::b_wordCount()']]],
   ['binarydecoding_2ehpp',['BinaryDecoding.hpp',['../_binary_decoding_8hpp.html',1,'']]],
   ['bindec',['bindec',['../namespacebindec.html',1,'']]],
+  ['boardidentifier',['BoardIdentifier',['../class_board_identifier.html',1,'BoardIdentifier'],['../class_board_identifier.html#abfdd1f7aada13dbe08113942b8c033a1',1,'BoardIdentifier::BoardIdentifier()']]],
+  ['boardidentifier_2ecpp',['BoardIdentifier.cpp',['../_board_identifier_8cpp.html',1,'']]],
+  ['boardidentifier_2ehpp',['BoardIdentifier.hpp',['../_board_identifier_8hpp.html',1,'']]],
   ['bundlebuffer',['bundleBuffer',['../class_file_reader.html#ac755c1e271610c2c12a7fc5b55cc048b',1,'FileReader::bundleBuffer()'],['../class_processor.html#a531b4c5f7c0d810fc6e9e1dd3d115725',1,'Processor::bundleBuffer()']]],
   ['bundleworkspace',['bundleWorkspace',['../class_file_reader.html#a7fb625dc45cee3256d37cc19c65cad86',1,'FileReader']]]
 ];

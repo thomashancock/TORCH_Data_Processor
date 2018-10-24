@@ -1,7 +1,7 @@
 var searchData=
 [
   ['add',['add',['../class_event_tree_manager.html#acabb2f6c8dd0e08375b4cf8bf2c148fd',1,'EventTreeManager::add()'],['../class_packet_tree_manager.html#a855e71512fe6365c11f312584afff70a',1,'PacketTreeManager::add()'],['../class_root_manager.html#a2f05eb45d5eaee1f9f12e299395652fb',1,'RootManager::add()']]],
-  ['addcount',['addCount',['../class_error_counter.html#a6ef83e5c7eccd70772881294a8dc714b',1,'ErrorCounter']]],
+  ['addcount',['addCount',['../class_error_counter.html#a6d2fdf410a8860c744f0f9806ec8ce1d',1,'ErrorCounter::addCount()'],['../class_error_counter_3_010_01_4.html#a163b6f85e0c41d1af2317787d8a256c2',1,'ErrorCounter&lt; 0 &gt;::addCount()']]],
   ['adddataline',['addDataline',['../class_packet.html#a5a3c458b3587775aba89a8e09c214155',1,'Packet']]],
   ['addfile',['addFile',['../class_file_reader.html#a3404694daef538fdd001a3e2ae898fb8',1,'FileReader']]],
   ['addfilesfromlist',['addFilesFromList',['../main_8cpp.html#a684da146d5b3c9a73b26f36c06abf06c',1,'main.cpp']]],

@@ -1,11 +1,14 @@
 var searchData=
 [
-  ['setchannelmapping',['setChannelMapping',['../class_packet.html#aab292dda74224f53a94d005f49a1c3a8',1,'Packet::setChannelMapping()'],['../namespacechlmap.html#a945bd413e64427712373da77277dd443',1,'chlmap::setChannelMapping()']]],
-  ['setdumped',['setDumped',['../class_event.html#ae0c56d36ba53360683e0917e4caac6ed',1,'Event']]],
-  ['setedgemodifier',['setEdgeModifier',['../class_packet.html#a2316cd4582e675d52de8c302c192d46f',1,'Packet::setEdgeModifier()'],['../namespaceedgmod.html#abf9bf9a87d7a5e31d233545b0e8a3c36',1,'edgmod::setEdgeModifier()']]],
-  ['setrocvalue',['setRocValue',['../class_word_bundle.html#a15e13fdd7380c72be2f42013560d62c3',1,'WordBundle']]],
-  ['setuparrbranch',['setupArrBranch',['../class_root_manager.html#aa1eaed1aa026059b8d00e729161c6a43',1,'RootManager']]],
-  ['setupbranches',['setUpBranches',['../class_event_tree_manager.html#a11cbe0078aeb3d0fe320bbeec335babc',1,'EventTreeManager::setUpBranches()'],['../class_packet_tree_manager.html#a3e2aa24c5acd8a87b15cfff2d011f30b',1,'PacketTreeManager::setUpBranches()']]],
-  ['stagefiles',['stageFiles',['../class_file_reader.html#a5d487d37857d537ace41c31d6594ef3a',1,'FileReader']]],
-  ['stagenextfile',['stageNextFile',['../class_file_reader.html#a381cceb460883f24a8113333ae1bf5bb',1,'FileReader']]]
+  ['readdatablock',['readDataBlock',['../class_file_reader.html#ac578b683eba751027766a2c30f03a28b',1,'FileReader']]],
+  ['readheaderline',['readHeaderLine',['../class_file_reader.html#a94181d78b29ebacf2a4b3b3cd03a6750',1,'FileReader']]],
+  ['readoutidentifier',['ReadoutIdentifier',['../class_readout_identifier.html#a6dbfa3a186abade180d962aa22c81e71',1,'ReadoutIdentifier']]],
+  ['removepackets',['removePackets',['../class_event.html#a4a7c0f87ea9fd8526451d6eddc3a592e',1,'Event']]],
+  ['rootmanager',['RootManager',['../class_root_manager.html#a90ff78b3122c0b3fad62bc927778dda9',1,'RootManager']]],
+  ['runlowlevel',['runLowLevel',['../class_processor.html#a3710adfb2311c70d9402e25a8615ace4',1,'Processor']]],
+  ['runparallel',['runParallel',['../class_processor.html#a32965f4a6587e9bf54eeeb11de43a4ad',1,'Processor']]],
+  ['runprocessingloop',['runProcessingLoop',['../class_file_reader.html#a98606ec7d315f1ed6f90c531df0d09f9',1,'FileReader']]],
+  ['runprocessingloops',['runProcessingLoops',['../class_file_reader.html#a478ed77f1b8f76e15cb2faa8964a26e6',1,'FileReader']]],
+  ['runquickcheck',['runQuickCheck',['../class_processor.html#aa04640b32910d2daae25306f35ddcad8',1,'Processor']]],
+  ['runserial',['runSerial',['../class_processor.html#adf50ef4f51094892e979ebd7cd15af04',1,'Processor']]]
 ];

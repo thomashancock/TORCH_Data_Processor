@@ -1,8 +1,8 @@
-\hypertarget{class_error_counter}{}\section{Error\+Counter Class Reference}
-\label{class_error_counter}\index{Error\+Counter@{Error\+Counter}}
+\hypertarget{class_error_counter}{}\section{Error\+Counter$<$ N $>$ Class Template Reference}
+\label{class_error_counter}\index{Error\+Counter$<$ N $>$@{Error\+Counter$<$ N $>$}}
 
 
-Used by \hyperlink{class_error_spy}{Error\+Spy} to track which readout board/tdc combinations errors have occured on.  
+Used by \hyperlink{class_error_spy}{Error\+Spy} to track which readout combinations of board/tdc ids that errors have occured on.  
 
 
 
@@ -12,106 +12,101 @@ Used by \hyperlink{class_error_spy}{Error\+Spy} to track which readout board/tdc
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_error_counter_a95facfc3369d4cf69b255519c579912e}{Error\+Counter} ()
+{\footnotesize template$<$typename... Args$>$ }\\\hyperlink{class_error_counter_a25c2e6afc0732afae9dcdbd1a6a7d84f}{Error\+Counter} (Args... args)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-void \hyperlink{class_error_counter_a6ef83e5c7eccd70772881294a8dc714b}{add\+Count} (const unsigned int readout\+Board\+ID, const unsigned int tdc\+ID)
-\begin{DoxyCompactList}\small\item\em Incrememnts the count for the readout board/tdc combination. \end{DoxyCompactList}\item 
-unsigned int \hyperlink{class_error_counter_affc256e518dc91811a48fd5ba42de8cd}{get\+Count} (const unsigned int readout\+Board\+ID, const unsigned int tdc\+ID) const
-\begin{DoxyCompactList}\small\item\em Returns the count for the readout board/tdc combination. \end{DoxyCompactList}\item 
-void \hyperlink{class_error_counter_a12b0eba237f5de0c56d5365bb84fa025}{print} () const
+{\footnotesize template$<$typename... Args$>$ }\\void \hyperlink{class_error_counter_a6d2fdf410a8860c744f0f9806ec8ce1d}{add\+Count} (Args... args)
+\begin{DoxyCompactList}\small\item\em Incrememnts the count for the specific combination of arguments given. \end{DoxyCompactList}\item 
+void \hyperlink{class_error_counter_abdfe6078e6536b0af4860e84d0cb113c}{print} () const
 \begin{DoxyCompactList}\small\item\em Prints the counts stored. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Private Types}
-\begin{DoxyCompactItemize}
-\item 
-using \hyperlink{class_error_counter_aa50fc471c675ff8d626b982d1d90c7b4}{uint\+Pair} = std\+::pair$<$ unsigned int, unsigned int $>$
-\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-auto \hyperlink{class_error_counter_aa54fb5fe5884956ba9d8ca8b44f74fcb}{make\+Key} (const unsigned int readout\+Board\+ID, const unsigned int tdc\+ID) const
+{\footnotesize template$<$typename... Args$>$ }\\auto \hyperlink{class_error_counter_ace87ff9ca25693815b683f7e28349e95}{make\+Key} (Args... args) const
 \begin{DoxyCompactList}\small\item\em Returns a map key for the given readout board/tdc combination. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::map$<$ \hyperlink{class_error_counter_aa50fc471c675ff8d626b982d1d90c7b4}{uint\+Pair}, unsigned int $>$ \hyperlink{class_error_counter_a66d01d8e49111d2f433b56bf922c418e}{m\+\_\+counts}
+const std\+::array$<$ std\+::string, N $>$ \hyperlink{class_error_counter_ac2f34a61c4c38ece96df182dd4b5c5ca}{m\+\_\+labels}
+\item 
+std\+::map$<$ std\+::array$<$ unsigned int, N $>$, unsigned int $>$ \hyperlink{class_error_counter_ac5903c289a98aa3fd0ac8294a83fa711}{m\+\_\+counts}
 \begin{DoxyCompactList}\small\item\em Map to store counts in. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Used by \hyperlink{class_error_spy}{Error\+Spy} to track which readout board/tdc combinations errors have occured on. 
+\subsubsection*{template$<$unsigned int N$>$\newline
+class Error\+Counter$<$ N $>$}
 
-\subsection{Member Typedef Documentation}
-\mbox{\Hypertarget{class_error_counter_aa50fc471c675ff8d626b982d1d90c7b4}\label{class_error_counter_aa50fc471c675ff8d626b982d1d90c7b4}} 
-\index{Error\+Counter@{Error\+Counter}!uint\+Pair@{uint\+Pair}}
-\index{uint\+Pair@{uint\+Pair}!Error\+Counter@{Error\+Counter}}
-\subsubsection{\texorpdfstring{uint\+Pair}{uintPair}}
-{\footnotesize\ttfamily using \hyperlink{class_error_counter_aa50fc471c675ff8d626b982d1d90c7b4}{Error\+Counter\+::uint\+Pair} =  std\+::pair$<$unsigned int, unsigned int$>$\hspace{0.3cm}{\ttfamily [private]}}
+Used by \hyperlink{class_error_spy}{Error\+Spy} to track which readout combinations of board/tdc ids that errors have occured on. 
 
+Template class.
 
+Template parameter N is the dimensionality of the Error\+Counts to be stored i.\+e. For errors specific to a board/tdc id combination, N = 2. For generic errors, N = 0.
+
+N is given as a parameter to facilitate easier modifications to the \hyperlink{class_error_spy}{Error\+Spy} in the future. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_error_counter_a95facfc3369d4cf69b255519c579912e}\label{class_error_counter_a95facfc3369d4cf69b255519c579912e}} 
+\mbox{\Hypertarget{class_error_counter_a25c2e6afc0732afae9dcdbd1a6a7d84f}\label{class_error_counter_a25c2e6afc0732afae9dcdbd1a6a7d84f}} 
 \index{Error\+Counter@{Error\+Counter}!Error\+Counter@{Error\+Counter}}
 \index{Error\+Counter@{Error\+Counter}!Error\+Counter@{Error\+Counter}}
 \subsubsection{\texorpdfstring{Error\+Counter()}{ErrorCounter()}}
-{\footnotesize\ttfamily Error\+Counter\+::\+Error\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily template$<$unsigned int N$>$ \\
+template$<$typename... Args$>$ \\
+\hyperlink{class_error_counter}{Error\+Counter}$<$ N $>$\+::\hyperlink{class_error_counter}{Error\+Counter} (\begin{DoxyParamCaption}\item[{Args...}]{args }\end{DoxyParamCaption})}
 
 
 
 Constructor. 
 
+Type checking will ensure Args is a set of std\+::strings. 
+\begin{DoxyParams}{Parameters}
+{\em args} & Parameter pack for headings of each dimension (usually \char`\"{}\+Board\+I\+D\char`\"{} or \char`\"{}\+T\+D\+C\char`\"{}) \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_error_counter_a6ef83e5c7eccd70772881294a8dc714b}\label{class_error_counter_a6ef83e5c7eccd70772881294a8dc714b}} 
+\mbox{\Hypertarget{class_error_counter_a6d2fdf410a8860c744f0f9806ec8ce1d}\label{class_error_counter_a6d2fdf410a8860c744f0f9806ec8ce1d}} 
 \index{Error\+Counter@{Error\+Counter}!add\+Count@{add\+Count}}
 \index{add\+Count@{add\+Count}!Error\+Counter@{Error\+Counter}}
 \subsubsection{\texorpdfstring{add\+Count()}{addCount()}}
-{\footnotesize\ttfamily void Error\+Counter\+::add\+Count (\begin{DoxyParamCaption}\item[{const unsigned int}]{readout\+Board\+ID,  }\item[{const unsigned int}]{tdc\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$unsigned int N$>$ \\
+template$<$typename... Args$>$ \\
+void \hyperlink{class_error_counter}{Error\+Counter}$<$ N $>$\+::add\+Count (\begin{DoxyParamCaption}\item[{Args...}]{args }\end{DoxyParamCaption})}
 
 
 
-Incrememnts the count for the readout board/tdc combination. 
+Incrememnts the count for the specific combination of arguments given. 
 
-
+Type checking will ensure Args is a set of unsigned ints. 
 \begin{DoxyParams}{Parameters}
-{\em readout\+Board\+ID} & The Readout Board ID \\
-\hline
-{\em tdc\+ID} & The T\+DC ID \\
+{\em args} & Parameter pack for board/tdc ID combination \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_error_counter_affc256e518dc91811a48fd5ba42de8cd}\label{class_error_counter_affc256e518dc91811a48fd5ba42de8cd}} 
-\index{Error\+Counter@{Error\+Counter}!get\+Count@{get\+Count}}
-\index{get\+Count@{get\+Count}!Error\+Counter@{Error\+Counter}}
-\subsubsection{\texorpdfstring{get\+Count()}{getCount()}}
-{\footnotesize\ttfamily unsigned int Error\+Counter\+::get\+Count (\begin{DoxyParamCaption}\item[{const unsigned int}]{readout\+Board\+ID,  }\item[{const unsigned int}]{tdc\+ID }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Returns the count for the readout board/tdc combination. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em readout\+Board\+ID} & The Readout Board ID \\
-\hline
-{\em tdc\+ID} & The T\+DC ID \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{class_error_counter_aa54fb5fe5884956ba9d8ca8b44f74fcb}\label{class_error_counter_aa54fb5fe5884956ba9d8ca8b44f74fcb}} 
+\mbox{\Hypertarget{class_error_counter_ace87ff9ca25693815b683f7e28349e95}\label{class_error_counter_ace87ff9ca25693815b683f7e28349e95}} 
 \index{Error\+Counter@{Error\+Counter}!make\+Key@{make\+Key}}
 \index{make\+Key@{make\+Key}!Error\+Counter@{Error\+Counter}}
 \subsubsection{\texorpdfstring{make\+Key()}{makeKey()}}
-{\footnotesize\ttfamily auto Error\+Counter\+::make\+Key (\begin{DoxyParamCaption}\item[{const unsigned int}]{readout\+Board\+ID,  }\item[{const unsigned int}]{tdc\+ID }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+{\footnotesize\ttfamily template$<$unsigned int N$>$ \\
+template$<$typename... Args$>$ \\
+auto \hyperlink{class_error_counter}{Error\+Counter}$<$ N $>$\+::make\+Key (\begin{DoxyParamCaption}\item[{Args...}]{args }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
 Returns a map key for the given readout board/tdc combination. 
 
-Returns auto to facilitate easy modifiaction of map key type \mbox{\Hypertarget{class_error_counter_a12b0eba237f5de0c56d5365bb84fa025}\label{class_error_counter_a12b0eba237f5de0c56d5365bb84fa025}} 
+Type checking will ensure Args is a set of unsigned ints.
+
+Returns auto to facilitate easy modifiaction of map key type. 
+\begin{DoxyParams}{Parameters}
+{\em args} & Parameter pack for board/tdc ID combination \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_error_counter_abdfe6078e6536b0af4860e84d0cb113c}\label{class_error_counter_abdfe6078e6536b0af4860e84d0cb113c}} 
 \index{Error\+Counter@{Error\+Counter}!print@{print}}
 \index{print@{print}!Error\+Counter@{Error\+Counter}}
 \subsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily void Error\+Counter\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily template$<$unsigned int N$>$ \\
+void \hyperlink{class_error_counter}{Error\+Counter}$<$ N $>$\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -120,19 +115,26 @@ Prints the counts stored.
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{class_error_counter_a66d01d8e49111d2f433b56bf922c418e}\label{class_error_counter_a66d01d8e49111d2f433b56bf922c418e}} 
+\mbox{\Hypertarget{class_error_counter_ac5903c289a98aa3fd0ac8294a83fa711}\label{class_error_counter_ac5903c289a98aa3fd0ac8294a83fa711}} 
 \index{Error\+Counter@{Error\+Counter}!m\+\_\+counts@{m\+\_\+counts}}
 \index{m\+\_\+counts@{m\+\_\+counts}!Error\+Counter@{Error\+Counter}}
 \subsubsection{\texorpdfstring{m\+\_\+counts}{m\_counts}}
-{\footnotesize\ttfamily std\+::map$<$\hyperlink{class_error_counter_aa50fc471c675ff8d626b982d1d90c7b4}{uint\+Pair}, unsigned int$>$ Error\+Counter\+::m\+\_\+counts\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily template$<$unsigned int N$>$ \\
+std\+::map$<$ std\+::array$<$unsigned int, N$>$ , unsigned int $>$ \hyperlink{class_error_counter}{Error\+Counter}$<$ N $>$\+::m\+\_\+counts\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
 Map to store counts in. 
 
+\mbox{\Hypertarget{class_error_counter_ac2f34a61c4c38ece96df182dd4b5c5ca}\label{class_error_counter_ac2f34a61c4c38ece96df182dd4b5c5ca}} 
+\index{Error\+Counter@{Error\+Counter}!m\+\_\+labels@{m\+\_\+labels}}
+\index{m\+\_\+labels@{m\+\_\+labels}!Error\+Counter@{Error\+Counter}}
+\subsubsection{\texorpdfstring{m\+\_\+labels}{m\_labels}}
+{\footnotesize\ttfamily template$<$unsigned int N$>$ \\
+const std\+::array$<$std\+::string, N$>$ \hyperlink{class_error_counter}{Error\+Counter}$<$ N $>$\+::m\+\_\+labels\hspace{0.3cm}{\ttfamily [private]}}
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Core/inc/\hyperlink{_error_counter_8hpp}{Error\+Counter.\+hpp}\item 
-Core/src/\hyperlink{_error_counter_8cpp}{Error\+Counter.\+cpp}\end{DoxyCompactItemize}
+Core/inc/\hyperlink{_error_counter_8hpp}{Error\+Counter.\+hpp}\end{DoxyCompactItemize}

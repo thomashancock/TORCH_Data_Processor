@@ -12,13 +12,21 @@
 // LOCAL
 #include "Event.hpp"
 
+//! Creates and stores events
+/*!
+	Creates events based on added packets.
+
+	Events are stored in a map based on their eventID to facilitate quick adding of packets.
+
+	Insertion order is recorded so that incomplete events can be read out once a later complete event is found.
+*/
 class ThreadSafeEventMap {
 	using eventMap = std::unordered_map< unsigned int, std::unique_ptr<Event> >;
 
 public:
 	//! Constructor
 	ThreadSafeEventMap(
-		const std::list<ReadoutIdentifier> readoutIDs
+		const std::list<ReadoutIdentifier> readoutIDs //!< List of readout IDs present in the config
 	);
 
 	// Delete copy and move constructors and assignment operators
@@ -29,7 +37,7 @@ public:
 
 	//! Add a packet to the events
 	void addPacket(
-		std::unique_ptr<Packet> packet
+		std::unique_ptr<Packet> packet //!< Packet to be added
 	);
 
 	//! Is a complete event stored?
@@ -48,13 +56,13 @@ public:
 	std::vector< std::unique_ptr<Event> > dumpAll();
 
 private:
-	const std::list<ReadoutIdentifier> m_readoutIDs;
+	const std::list<ReadoutIdentifier> m_readoutIDs; //!< List of Readout IDs used to check when events are complete
 
 	mutable std::mutex m_mut; //!< Mutex used for thread safety
 
-	eventMap m_map;
+	eventMap m_map; //!< Map to store events. Key is eventID.
 
-	std::list<eventMap::iterator> m_eventTracker;
+	std::list<eventMap::iterator> m_eventTracker; //!< List of entries in map used to store insertion order
 };
 
 // -----------------------------------------------------------------------------

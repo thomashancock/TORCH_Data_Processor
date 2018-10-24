@@ -77,9 +77,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3be44012f3dc81ad7943b1012b64e52d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a3be44012f3dc81ad7943b1012b64e52d">FileReader</a> (const std::list&lt; unsigned int &gt; &amp;readoutBoardList, std::array&lt; std::shared_ptr&lt; <a class="el" href="class_file_reader.html#ac755c1e271610c2c12a7fc5b55cc048b">bundleBuffer</a> &gt;, 4 &gt;)</td></tr>
-<tr class="memdesc:a3be44012f3dc81ad7943b1012b64e52d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a3be44012f3dc81ad7943b1012b64e52d">More...</a><br /></td></tr>
-<tr class="separator:a3be44012f3dc81ad7943b1012b64e52d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae28a071d5fcba5b845ea3382a5cb2cfe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ae28a071d5fcba5b845ea3382a5cb2cfe">FileReader</a> (const std::list&lt; <a class="el" href="class_readout_identifier.html">ReadoutIdentifier</a> &gt; &amp;readoutList, std::array&lt; std::shared_ptr&lt; <a class="el" href="class_file_reader.html#ac755c1e271610c2c12a7fc5b55cc048b">bundleBuffer</a> &gt;, 4 &gt;)</td></tr>
+<tr class="memdesc:ae28a071d5fcba5b845ea3382a5cb2cfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ae28a071d5fcba5b845ea3382a5cb2cfe">More...</a><br /></td></tr>
+<tr class="separator:ae28a071d5fcba5b845ea3382a5cb2cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d487d37857d537ace41c31d6594ef3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a5d487d37857d537ace41c31d6594ef3a">stageFiles</a> (const std::vector&lt; std::string &gt; &amp;files)</td></tr>
 <tr class="memdesc:a5d487d37857d537ace41c31d6594ef3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stages files to be read out together.  <a href="#a5d487d37857d537ace41c31d6594ef3a">More...</a><br /></td></tr>
 <tr class="separator:a5d487d37857d537ace41c31d6594ef3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,45 +102,47 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a3404694daef538fdd001a3e2ae898fb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a3404694daef538fdd001a3e2ae898fb8">addFile</a> (const std::string &amp;filePath)</td></tr>
 <tr class="memdesc:a3404694daef538fdd001a3e2ae898fb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a file to be read out.  <a href="#a3404694daef538fdd001a3e2ae898fb8">More...</a><br /></td></tr>
 <tr class="separator:a3404694daef538fdd001a3e2ae898fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a381cceb460883f24a8113333ae1bf5bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a381cceb460883f24a8113333ae1bf5bb">stageNextFile</a> (const unsigned int readoutBoardID)</td></tr>
-<tr class="memdesc:a381cceb460883f24a8113333ae1bf5bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stages a new file.  <a href="#a381cceb460883f24a8113333ae1bf5bb">More...</a><br /></td></tr>
-<tr class="separator:a381cceb460883f24a8113333ae1bf5bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4d5d927c5d9ceb26bba7ec1f6c60737"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ad4d5d927c5d9ceb26bba7ec1f6c60737">stageNextFile</a> (const <a class="el" href="class_board_identifier.html">BoardIdentifier</a> &amp;boardID)</td></tr>
+<tr class="memdesc:ad4d5d927c5d9ceb26bba7ec1f6c60737"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stages a new file.  <a href="#ad4d5d927c5d9ceb26bba7ec1f6c60737">More...</a><br /></td></tr>
+<tr class="separator:ad4d5d927c5d9ceb26bba7ec1f6c60737"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98606ec7d315f1ed6f90c531df0d09f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a98606ec7d315f1ed6f90c531df0d09f9">runProcessingLoop</a> ()</td></tr>
 <tr class="memdesc:a98606ec7d315f1ed6f90c531df0d09f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a single data block from each file.  <a href="#a98606ec7d315f1ed6f90c531df0d09f9">More...</a><br /></td></tr>
 <tr class="separator:a98606ec7d315f1ed6f90c531df0d09f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94181d78b29ebacf2a4b3b3cd03a6750"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a94181d78b29ebacf2a4b3b3cd03a6750">readHeaderLine</a> (std::unique_ptr&lt; std::ifstream &gt; &amp;inputData)</td></tr>
 <tr class="memdesc:a94181d78b29ebacf2a4b3b3cd03a6750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a header line from the passed stream.  <a href="#a94181d78b29ebacf2a4b3b3cd03a6750">More...</a><br /></td></tr>
 <tr class="separator:a94181d78b29ebacf2a4b3b3cd03a6750"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3938817d6fd8b2d90ac479e323bdc03"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ac3938817d6fd8b2d90ac479e323bdc03">isNDataBytesValid</a> (const unsigned int boardID, std::unique_ptr&lt; std::ifstream &gt; &amp;inputData, const unsigned int nDataBytes)</td></tr>
-<tr class="memdesc:ac3938817d6fd8b2d90ac479e323bdc03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a number of bytes is valid, and takes action if not.  <a href="#ac3938817d6fd8b2d90ac479e323bdc03">More...</a><br /></td></tr>
-<tr class="separator:ac3938817d6fd8b2d90ac479e323bdc03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0a796cb06ebe3e486795dea8da0f6bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ae0a796cb06ebe3e486795dea8da0f6bc">isNDataBytesValid</a> (const <a class="el" href="class_board_identifier.html">BoardIdentifier</a> &amp;boardID, std::unique_ptr&lt; std::ifstream &gt; &amp;inputData, const unsigned int nDataBytes)</td></tr>
+<tr class="memdesc:ae0a796cb06ebe3e486795dea8da0f6bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a number of bytes is valid, and takes action if not.  <a href="#ae0a796cb06ebe3e486795dea8da0f6bc">More...</a><br /></td></tr>
+<tr class="separator:ae0a796cb06ebe3e486795dea8da0f6bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac578b683eba751027766a2c30f03a28b"><td class="memItemLeft" align="right" valign="top">std::array&lt; unsigned int, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ac578b683eba751027766a2c30f03a28b">readDataBlock</a> (std::unique_ptr&lt; std::ifstream &gt; &amp;inputData)</td></tr>
 <tr class="memdesc:ac578b683eba751027766a2c30f03a28b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a data block line from the passed stream.  <a href="#ac578b683eba751027766a2c30f03a28b">More...</a><br /></td></tr>
 <tr class="separator:ac578b683eba751027766a2c30f03a28b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a8b144dccc96fcc95e43a96a300341855"><td class="memItemLeft" align="right" valign="top">std::map&lt; unsigned int, std::list&lt; <a class="el" href="class_input_file.html">InputFile</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a8b144dccc96fcc95e43a96a300341855">m_inputFiles</a></td></tr>
-<tr class="memdesc:a8b144dccc96fcc95e43a96a300341855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input file storage.  <a href="#a8b144dccc96fcc95e43a96a300341855">More...</a><br /></td></tr>
-<tr class="separator:a8b144dccc96fcc95e43a96a300341855"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7ac8567ed5b1fa022a8f98099e23f43"><td class="memItemLeft" align="right" valign="top">std::map&lt; unsigned int, std::unique_ptr&lt; std::ifstream &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#af7ac8567ed5b1fa022a8f98099e23f43">m_inputStreams</a></td></tr>
-<tr class="memdesc:af7ac8567ed5b1fa022a8f98099e23f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of input streams.  <a href="#af7ac8567ed5b1fa022a8f98099e23f43">More...</a><br /></td></tr>
-<tr class="separator:af7ac8567ed5b1fa022a8f98099e23f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b30d4ef75ca8de90c7271bc39ae320b"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, std::list&lt; <a class="el" href="class_input_file.html">InputFile</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a1b30d4ef75ca8de90c7271bc39ae320b">m_inputFiles</a></td></tr>
+<tr class="memdesc:a1b30d4ef75ca8de90c7271bc39ae320b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input file storage.  <a href="#a1b30d4ef75ca8de90c7271bc39ae320b">More...</a><br /></td></tr>
+<tr class="separator:a1b30d4ef75ca8de90c7271bc39ae320b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad24e41220e68e1857fdef7df35c1d2da"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, std::unique_ptr&lt; std::ifstream &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ad24e41220e68e1857fdef7df35c1d2da">m_inputStreams</a></td></tr>
+<tr class="memdesc:ad24e41220e68e1857fdef7df35c1d2da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of input streams.  <a href="#ad24e41220e68e1857fdef7df35c1d2da">More...</a><br /></td></tr>
+<tr class="separator:ad24e41220e68e1857fdef7df35c1d2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e6b51dae972af878f7751f2b6a54d75"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a2e6b51dae972af878f7751f2b6a54d75">m_rateCounter</a> = 0</td></tr>
 <tr class="separator:a2e6b51dae972af878f7751f2b6a54d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e3ce1501c6bd018d818aab3bfa18cdb"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a7e3ce1501c6bd018d818aab3bfa18cdb">m_counterMax</a> = 0</td></tr>
 <tr class="separator:a7e3ce1501c6bd018d818aab3bfa18cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab47bb74c4b6d3e038501cc93ec669d33"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; unsigned int, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ab47bb74c4b6d3e038501cc93ec669d33">m_relativeRates</a></td></tr>
-<tr class="separator:ab47bb74c4b6d3e038501cc93ec669d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d560dd766f6866a1c11cc44e059c246"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; unsigned int, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a2d560dd766f6866a1c11cc44e059c246">m_fileLengths</a></td></tr>
-<tr class="memdesc:a2d560dd766f6866a1c11cc44e059c246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store file lengths.  <a href="#a2d560dd766f6866a1c11cc44e059c246">More...</a><br /></td></tr>
-<tr class="separator:a2d560dd766f6866a1c11cc44e059c246"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa04e6f9a40c9186cae2c89352e75d69c"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; unsigned int, <a class="el" href="class_file_reader.html#a7fb625dc45cee3256d37cc19c65cad86">bundleWorkspace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#aa04e6f9a40c9186cae2c89352e75d69c">m_bundleWorkspaces</a></td></tr>
-<tr class="memdesc:aa04e6f9a40c9186cae2c89352e75d69c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of pointers used to create WordBundles.  <a href="#aa04e6f9a40c9186cae2c89352e75d69c">More...</a><br /></td></tr>
-<tr class="separator:aa04e6f9a40c9186cae2c89352e75d69c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab00c6ff706d8cee9ee064f9cc3258d08"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ab00c6ff706d8cee9ee064f9cc3258d08">m_relativeRates</a></td></tr>
+<tr class="separator:ab00c6ff706d8cee9ee064f9cc3258d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a983147c8929ee236bfde512c98e7e90d"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a983147c8929ee236bfde512c98e7e90d">m_fileLengths</a></td></tr>
+<tr class="memdesc:a983147c8929ee236bfde512c98e7e90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store file lengths.  <a href="#a983147c8929ee236bfde512c98e7e90d">More...</a><br /></td></tr>
+<tr class="separator:a983147c8929ee236bfde512c98e7e90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9ec812e6d9fbd7014cf0b4fc69557f9"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, <a class="el" href="class_file_reader.html#a7fb625dc45cee3256d37cc19c65cad86">bundleWorkspace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ac9ec812e6d9fbd7014cf0b4fc69557f9">m_bundleWorkspaces</a></td></tr>
+<tr class="memdesc:ac9ec812e6d9fbd7014cf0b4fc69557f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of pointers used to create WordBundles.  <a href="#ac9ec812e6d9fbd7014cf0b4fc69557f9">More...</a><br /></td></tr>
+<tr class="separator:ac9ec812e6d9fbd7014cf0b4fc69557f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a038d1362d7e0458b3450ab8584eab688"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::shared_ptr&lt; <a class="el" href="class_file_reader.html#ac755c1e271610c2c12a7fc5b55cc048b">bundleBuffer</a> &gt;, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a038d1362d7e0458b3450ab8584eab688">m_wordBundleBuffers</a></td></tr>
 <tr class="memdesc:a038d1362d7e0458b3450ab8584eab688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointers to shared <a class="el" href="class_word_bundle.html">WordBundle</a> buffers.  <a href="#a038d1362d7e0458b3450ab8584eab688">More...</a><br /></td></tr>
 <tr class="separator:a038d1362d7e0458b3450ab8584eab688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44215632cb0ae7ee51991eb3213d03bf"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a44215632cb0ae7ee51991eb3213d03bf">nextBundleBufferIndex</a> = 0</td></tr>
+<tr class="separator:a44215632cb0ae7ee51991eb3213d03bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a0bb5e7cb117f6a415f005665893509"><td class="memItemLeft" align="right" valign="top">const std::set&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a7a0bb5e7cb117f6a415f005665893509">fillerWords</a> = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 }</td></tr>
 <tr class="separator:a7a0bb5e7cb117f6a415f005665893509"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -192,8 +194,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3be44012f3dc81ad7943b1012b64e52d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3be44012f3dc81ad7943b1012b64e52d">&#9670;&nbsp;</a></span>FileReader()</h2>
+<a id="ae28a071d5fcba5b845ea3382a5cb2cfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae28a071d5fcba5b845ea3382a5cb2cfe">&#9670;&nbsp;</a></span>FileReader()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -201,8 +203,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">FileReader::FileReader </td>
           <td>(</td>
-          <td class="paramtype">const std::list&lt; unsigned int &gt; &amp;&#160;</td>
-          <td class="paramname"><em>readoutBoardList</em>, </td>
+          <td class="paramtype">const std::list&lt; <a class="el" href="class_readout_identifier.html">ReadoutIdentifier</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>readoutList</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -221,7 +223,7 @@ Private Attributes</h2></td></tr>
 <p>Constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">readoutBoardList</td><td>List of readout boards present </td></tr>
+    <tr><td class="paramname">readoutList</td><td>List of readout boards present </td></tr>
     <tr><td class="paramname">wordBundleBuffers</td><td>Shared Pointer to <a class="el" href="class_word_bundle.html">WordBundle</a> buffers </td></tr>
   </table>
   </dd>
@@ -291,8 +293,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac3938817d6fd8b2d90ac479e323bdc03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3938817d6fd8b2d90ac479e323bdc03">&#9670;&nbsp;</a></span>isNDataBytesValid()</h2>
+<a id="ae0a796cb06ebe3e486795dea8da0f6bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0a796cb06ebe3e486795dea8da0f6bc">&#9670;&nbsp;</a></span>isNDataBytesValid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -303,7 +305,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool FileReader::isNDataBytesValid </td>
           <td>(</td>
-          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_board_identifier.html">BoardIdentifier</a> &amp;&#160;</td>
           <td class="paramname"><em>boardID</em>, </td>
         </tr>
         <tr>
@@ -476,8 +478,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a381cceb460883f24a8113333ae1bf5bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a381cceb460883f24a8113333ae1bf5bb">&#9670;&nbsp;</a></span>stageNextFile()</h2>
+<a id="ad4d5d927c5d9ceb26bba7ec1f6c60737"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4d5d927c5d9ceb26bba7ec1f6c60737">&#9670;&nbsp;</a></span>stageNextFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -488,8 +490,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void FileReader::stageNextFile </td>
           <td>(</td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>readoutBoardID</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="class_board_identifier.html">BoardIdentifier</a> &amp;&#160;</td>
+          <td class="paramname"><em>boardID</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -503,7 +505,7 @@ Private Attributes</h2></td></tr>
 <p>Stages a new file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">readoutBoardID</td><td>Readout Board ID to stage for </td></tr>
+    <tr><td class="paramname">boardID</td><td>Readout Board ID to stage for </td></tr>
   </table>
   </dd>
 </dl>
@@ -533,8 +535,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa04e6f9a40c9186cae2c89352e75d69c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa04e6f9a40c9186cae2c89352e75d69c">&#9670;&nbsp;</a></span>m_bundleWorkspaces</h2>
+<a id="ac9ec812e6d9fbd7014cf0b4fc69557f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9ec812e6d9fbd7014cf0b4fc69557f9">&#9670;&nbsp;</a></span>m_bundleWorkspaces</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -543,7 +545,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt; unsigned int, <a class="el" href="class_file_reader.html#a7fb625dc45cee3256d37cc19c65cad86">bundleWorkspace</a> &gt; FileReader::m_bundleWorkspaces</td>
+          <td class="memname">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, <a class="el" href="class_file_reader.html#a7fb625dc45cee3256d37cc19c65cad86">bundleWorkspace</a> &gt; FileReader::m_bundleWorkspaces</td>
         </tr>
       </table>
   </td>
@@ -579,8 +581,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2d560dd766f6866a1c11cc44e059c246"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d560dd766f6866a1c11cc44e059c246">&#9670;&nbsp;</a></span>m_fileLengths</h2>
+<a id="a983147c8929ee236bfde512c98e7e90d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a983147c8929ee236bfde512c98e7e90d">&#9670;&nbsp;</a></span>m_fileLengths</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -589,7 +591,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt; unsigned int, unsigned int &gt; FileReader::m_fileLengths</td>
+          <td class="memname">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, unsigned int &gt; FileReader::m_fileLengths</td>
         </tr>
       </table>
   </td>
@@ -603,8 +605,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8b144dccc96fcc95e43a96a300341855"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b144dccc96fcc95e43a96a300341855">&#9670;&nbsp;</a></span>m_inputFiles</h2>
+<a id="a1b30d4ef75ca8de90c7271bc39ae320b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b30d4ef75ca8de90c7271bc39ae320b">&#9670;&nbsp;</a></span>m_inputFiles</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -613,7 +615,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt; unsigned int, std::list&lt;<a class="el" href="class_input_file.html">InputFile</a>&gt; &gt; FileReader::m_inputFiles</td>
+          <td class="memname">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, std::list&lt;<a class="el" href="class_input_file.html">InputFile</a>&gt; &gt; FileReader::m_inputFiles</td>
         </tr>
       </table>
   </td>
@@ -627,8 +629,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af7ac8567ed5b1fa022a8f98099e23f43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7ac8567ed5b1fa022a8f98099e23f43">&#9670;&nbsp;</a></span>m_inputStreams</h2>
+<a id="ad24e41220e68e1857fdef7df35c1d2da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad24e41220e68e1857fdef7df35c1d2da">&#9670;&nbsp;</a></span>m_inputStreams</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -637,7 +639,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt; unsigned int, std::unique_ptr&lt; std::ifstream &gt; &gt; FileReader::m_inputStreams</td>
+          <td class="memname">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, std::unique_ptr&lt; std::ifstream &gt; &gt; FileReader::m_inputStreams</td>
         </tr>
       </table>
   </td>
@@ -673,8 +675,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab47bb74c4b6d3e038501cc93ec669d33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab47bb74c4b6d3e038501cc93ec669d33">&#9670;&nbsp;</a></span>m_relativeRates</h2>
+<a id="ab00c6ff706d8cee9ee064f9cc3258d08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab00c6ff706d8cee9ee064f9cc3258d08">&#9670;&nbsp;</a></span>m_relativeRates</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -683,7 +685,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt; unsigned int, unsigned int &gt; FileReader::m_relativeRates</td>
+          <td class="memname">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, unsigned int &gt; FileReader::m_relativeRates</td>
         </tr>
       </table>
   </td>
@@ -716,6 +718,28 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pointers to shared <a class="el" href="class_word_bundle.html">WordBundle</a> buffers. </p>
+
+</div>
+</div>
+<a id="a44215632cb0ae7ee51991eb3213d03bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44215632cb0ae7ee51991eb3213d03bf">&#9670;&nbsp;</a></span>nextBundleBufferIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int FileReader::nextBundleBufferIndex = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
