@@ -5,6 +5,7 @@ var searchData=
   ['edgemodifiers_2ecpp',['EdgeModifiers.cpp',['../_edge_modifiers_8cpp.html',1,'']]],
   ['edgemodifiers_2ehpp',['EdgeModifiers.hpp',['../_edge_modifiers_8hpp.html',1,'']]],
   ['errorcounter_2ehpp',['ErrorCounter.hpp',['../_error_counter_8hpp.html',1,'']]],
+  ['errorcounter_2einl',['ErrorCounter.inl',['../_error_counter_8inl.html',1,'']]],
   ['errorspy_2ecpp',['ErrorSpy.cpp',['../_error_spy_8cpp.html',1,'']]],
   ['errorspy_2ehpp',['ErrorSpy.hpp',['../_error_spy_8hpp.html',1,'']]],
   ['event_2ecpp',['Event.cpp',['../_event_8cpp.html',1,'']]],

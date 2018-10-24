@@ -10,9 +10,9 @@
 
 //! Class used to uniquely idenfity combinations of readout informtion
 /*!
-	Readouts are uniquely identified by a combination of Chain ID, Device ID and TDC ID.
+	Twins information about a Board with a specific TDC ID, uniquely idenfitying a TDC in the electronics.
 
-	ReadoutIdentifier stores a combination of these pieces of information and allows comparison to check whether they are the same.
+	Access to board information is provided exclusively through the BoardIdentifier class to prevent modifications to ReadoutIdentifier being required should the board identification system change.
 */
 class ReadoutIdentifier {
 public:

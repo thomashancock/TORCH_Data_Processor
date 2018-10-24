@@ -69,6 +69,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Creates and stores events.  
+ <a href="class_thread_safe_event_map.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_thread_safe_event_map_8hpp_source.html">ThreadSafeEventMap.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -111,16 +114,24 @@ Private Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a1b1ff8e56effaac464b1c9dbfb44320c"><td class="memItemLeft" align="right" valign="top">const std::list&lt; <a class="el" href="class_readout_identifier.html">ReadoutIdentifier</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_safe_event_map.html#a1b1ff8e56effaac464b1c9dbfb44320c">m_readoutIDs</a></td></tr>
+<tr class="memdesc:a1b1ff8e56effaac464b1c9dbfb44320c"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of Readout IDs used to check when events are complete.  <a href="#a1b1ff8e56effaac464b1c9dbfb44320c">More...</a><br /></td></tr>
 <tr class="separator:a1b1ff8e56effaac464b1c9dbfb44320c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada4e8c2f2195df86503e73674ff30935"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_safe_event_map.html#ada4e8c2f2195df86503e73674ff30935">m_mut</a></td></tr>
 <tr class="memdesc:ada4e8c2f2195df86503e73674ff30935"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex used for thread safety.  <a href="#ada4e8c2f2195df86503e73674ff30935">More...</a><br /></td></tr>
 <tr class="separator:ada4e8c2f2195df86503e73674ff30935"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15d9d8928ff7dc51fa48a1829575b47e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_thread_safe_event_map.html#a069c80cec7636a015d8a69574157d8d2">eventMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_safe_event_map.html#a15d9d8928ff7dc51fa48a1829575b47e">m_map</a></td></tr>
+<tr class="memdesc:a15d9d8928ff7dc51fa48a1829575b47e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store events. Key is eventID.  <a href="#a15d9d8928ff7dc51fa48a1829575b47e">More...</a><br /></td></tr>
 <tr class="separator:a15d9d8928ff7dc51fa48a1829575b47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfd8bf29e9ff254df217bd2b9e32f50c"><td class="memItemLeft" align="right" valign="top">std::list&lt; eventMap::iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_thread_safe_event_map.html#abfd8bf29e9ff254df217bd2b9e32f50c">m_eventTracker</a></td></tr>
+<tr class="memdesc:abfd8bf29e9ff254df217bd2b9e32f50c"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of entries in map used to store insertion order.  <a href="#abfd8bf29e9ff254df217bd2b9e32f50c">More...</a><br /></td></tr>
 <tr class="separator:abfd8bf29e9ff254df217bd2b9e32f50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Creates and stores events. </p>
+<p>Creates events based on added packets.</p>
+<p>Events are stored in a map based on their eventID to facilitate quick adding of packets.</p>
+<p>Insertion order is recorded so that incomplete events can be read out once a later complete event is found. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a069c80cec7636a015d8a69574157d8d2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a069c80cec7636a015d8a69574157d8d2">&#9670;&nbsp;</a></span>eventMap</h2>
 
@@ -161,6 +172,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readoutIDs</td><td>List of readout IDs present in the config </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -234,6 +251,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add a packet to the events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">packet</td><td><a class="el" href="class_packet.html" title="Stores all the information relevant to a single packet of data. ">Packet</a> to be added </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -421,6 +444,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>List of entries in map used to store insertion order. </p>
+
 </div>
 </div>
 <a id="a15d9d8928ff7dc51fa48a1829575b47e"></a>
@@ -442,6 +467,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Map to store events. Key is eventID. </p>
 
 </div>
 </div>
@@ -488,6 +515,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>List of Readout IDs used to check when events are complete. </p>
 
 </div>
 </div>

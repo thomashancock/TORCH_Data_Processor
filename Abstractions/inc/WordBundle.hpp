@@ -9,11 +9,12 @@
 #include "BinaryDecoding.hpp"
 #include "BoardIdentifier.hpp"
 
+//! Stores a collection of data words along with their associated ROC value.
 class WordBundle {
 public:
 	//! Constructor
 	WordBundle(
-		const BoardIdentifier readoutBoardID
+		const BoardIdentifier boardID
 	);
 
 	//! Returns readout board number

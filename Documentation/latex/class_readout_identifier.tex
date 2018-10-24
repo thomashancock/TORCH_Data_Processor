@@ -41,9 +41,9 @@ std\+::ostream \& \hyperlink{class_readout_identifier_a62474a342fbe3d79da5b8a869
 \subsection{Detailed Description}
 Class used to uniquely idenfity combinations of readout informtion. 
 
-Readouts are uniquely identified by a combination of Chain ID, Device ID and T\+DC ID.
+Twins information about a Board with a specific T\+DC ID, uniquely idenfitying a T\+DC in the electronics.
 
-\hyperlink{class_readout_identifier}{Readout\+Identifier} stores a combination of these pieces of information and allows comparison to check whether they are the same. 
+Access to board information is provided exclusively through the \hyperlink{class_board_identifier}{Board\+Identifier} class to prevent modifications to \hyperlink{class_readout_identifier}{Readout\+Identifier} being required should the board identification system change. 
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_readout_identifier_a6dbfa3a186abade180d962aa22c81e71}\label{class_readout_identifier_a6dbfa3a186abade180d962aa22c81e71}} 

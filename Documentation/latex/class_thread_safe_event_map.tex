@@ -2,6 +2,11 @@
 \label{class_thread_safe_event_map}\index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
 
 
+Creates and stores events.  
+
+
+
+
 {\ttfamily \#include $<$Thread\+Safe\+Event\+Map.\+hpp$>$}
 
 \subsection*{Public Member Functions}
@@ -38,14 +43,23 @@ using \hyperlink{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}{
 \begin{DoxyCompactItemize}
 \item 
 const std\+::list$<$ \hyperlink{class_readout_identifier}{Readout\+Identifier} $>$ \hyperlink{class_thread_safe_event_map_a1b1ff8e56effaac464b1c9dbfb44320c}{m\+\_\+readout\+I\+Ds}
-\item 
+\begin{DoxyCompactList}\small\item\em List of Readout I\+Ds used to check when events are complete. \end{DoxyCompactList}\item 
 std\+::mutex \hyperlink{class_thread_safe_event_map_ada4e8c2f2195df86503e73674ff30935}{m\+\_\+mut}
 \begin{DoxyCompactList}\small\item\em Mutex used for thread safety. \end{DoxyCompactList}\item 
 \hyperlink{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}{event\+Map} \hyperlink{class_thread_safe_event_map_a15d9d8928ff7dc51fa48a1829575b47e}{m\+\_\+map}
-\item 
+\begin{DoxyCompactList}\small\item\em Map to store events. Key is event\+ID. \end{DoxyCompactList}\item 
 std\+::list$<$ event\+Map\+::iterator $>$ \hyperlink{class_thread_safe_event_map_abfd8bf29e9ff254df217bd2b9e32f50c}{m\+\_\+event\+Tracker}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em List of entries in map used to store insertion order. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Creates and stores events. 
+
+Creates events based on added packets.
+
+Events are stored in a map based on their event\+ID to facilitate quick adding of packets.
+
+Insertion order is recorded so that incomplete events can be read out once a later complete event is found. 
 
 \subsection{Member Typedef Documentation}
 \mbox{\Hypertarget{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}\label{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}} 
@@ -67,6 +81,11 @@ std\+::list$<$ event\+Map\+::iterator $>$ \hyperlink{class_thread_safe_event_map
 
 Constructor. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em readout\+I\+Ds} & List of readout I\+Ds present in the config \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_thread_safe_event_map_a523d5bf6c632e3803e721ef3fd94e318}\label{class_thread_safe_event_map_a523d5bf6c632e3803e721ef3fd94e318}} 
 \index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
 \index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
@@ -92,6 +111,11 @@ Constructor.
 
 Add a packet to the events. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & \hyperlink{class_packet}{Packet} to be added \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_thread_safe_event_map_af65f8dbd177f3db92d227b86839c275d}\label{class_thread_safe_event_map_af65f8dbd177f3db92d227b86839c275d}} 
 \index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!dump\+All@{dump\+All}}
 \index{dump\+All@{dump\+All}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
@@ -163,11 +187,19 @@ Returns events up to the next complete event.
 \subsubsection{\texorpdfstring{m\+\_\+event\+Tracker}{m\_eventTracker}}
 {\footnotesize\ttfamily std\+::list$<$event\+Map\+::iterator$>$ Thread\+Safe\+Event\+Map\+::m\+\_\+event\+Tracker\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+List of entries in map used to store insertion order. 
+
 \mbox{\Hypertarget{class_thread_safe_event_map_a15d9d8928ff7dc51fa48a1829575b47e}\label{class_thread_safe_event_map_a15d9d8928ff7dc51fa48a1829575b47e}} 
 \index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!m\+\_\+map@{m\+\_\+map}}
 \index{m\+\_\+map@{m\+\_\+map}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
 \subsubsection{\texorpdfstring{m\+\_\+map}{m\_map}}
 {\footnotesize\ttfamily \hyperlink{class_thread_safe_event_map_a069c80cec7636a015d8a69574157d8d2}{event\+Map} Thread\+Safe\+Event\+Map\+::m\+\_\+map\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map to store events. Key is event\+ID. 
 
 \mbox{\Hypertarget{class_thread_safe_event_map_ada4e8c2f2195df86503e73674ff30935}\label{class_thread_safe_event_map_ada4e8c2f2195df86503e73674ff30935}} 
 \index{Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}!m\+\_\+mut@{m\+\_\+mut}}
@@ -184,6 +216,10 @@ Mutex used for thread safety.
 \index{m\+\_\+readout\+I\+Ds@{m\+\_\+readout\+I\+Ds}!Thread\+Safe\+Event\+Map@{Thread\+Safe\+Event\+Map}}
 \subsubsection{\texorpdfstring{m\+\_\+readout\+I\+Ds}{m\_readoutIDs}}
 {\footnotesize\ttfamily const std\+::list$<$\hyperlink{class_readout_identifier}{Readout\+Identifier}$>$ Thread\+Safe\+Event\+Map\+::m\+\_\+readout\+I\+Ds\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of Readout I\+Ds used to check when events are complete. 
 
 
 
