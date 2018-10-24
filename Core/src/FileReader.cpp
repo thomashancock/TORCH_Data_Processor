@@ -4,6 +4,7 @@
 #include <atomic>
 #include <sstream>
 #include <utility>
+#include <algorithm>
 
 // LOCAL
 #include "BinaryDecoding.hpp"
