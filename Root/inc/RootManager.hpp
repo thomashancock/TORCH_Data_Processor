@@ -33,7 +33,7 @@ public:
 		Closes output file on deconstruction.
 		Implicitly deletes move and copy constructors.
 	*/
-	~RootManager();
+	virtual ~RootManager();
 
 	//! Pure virtual method for adding information to the tree
 	virtual void add(
