@@ -34,12 +34,6 @@ public:
 		const ReadoutIdentifier& rhs //!< LHS ReadoutIdentifier to be compared to
 	);
 
-	//! Operator overload for >
-	friend bool operator> (
-		const ReadoutIdentifier& lhs, //!< RHS ReadoutIdentifier to be compared to
-		const ReadoutIdentifier& rhs //!< LHS ReadoutIdentifier to be compared to
-	);
-
 	//! Equality operator overload
 	friend bool operator==(
 		const ReadoutIdentifier& lhs, //!< RHS ReadoutIdentifier to be compared to

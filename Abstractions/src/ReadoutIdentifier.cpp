@@ -19,18 +19,8 @@ bool operator< (
 	const ReadoutIdentifier& lhs,
 	const ReadoutIdentifier& rhs
 ) {
-	return (lhs.m_boardID < rhs.m_boardID) ? true :
-	       (lhs.m_tdcID < rhs.m_tdcID) ? true : false;
-}
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-bool operator> (
-	const ReadoutIdentifier& lhs,
-	const ReadoutIdentifier& rhs
-) {
-	return (lhs.m_boardID > rhs.m_boardID) ? true :
-	       (lhs.m_tdcID > rhs.m_tdcID) ? true : false;
+	return (!(lhs.m_boardID < rhs.m_boardID)) ? false :
+	       ((lhs.m_tdcID >= rhs.m_tdcID) ? false : true);
 }
 // -----------------------------------------------------------------------------
 //
@@ -39,8 +29,7 @@ bool operator== (
 	const ReadoutIdentifier& lhs,
 	const ReadoutIdentifier& rhs
 ) {
-	return (lhs.m_boardID == rhs.m_boardID)&&
-	       (lhs.m_tdcID == rhs.m_tdcID);
+	return (lhs.m_boardID == rhs.m_boardID)&&(lhs.m_tdcID == rhs.m_tdcID);
 }
 // -----------------------------------------------------------------------------
 //

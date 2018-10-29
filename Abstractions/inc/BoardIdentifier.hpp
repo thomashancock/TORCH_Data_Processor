@@ -30,12 +30,6 @@ public:
 		const BoardIdentifier& rhs //!< LHS BoardIdentifier to be compared to
 	);
 
-	//! Operator overload for >
-	friend bool operator> (
-		const BoardIdentifier& lhs, //!< RHS BoardIdentifier to be compared to
-		const BoardIdentifier& rhs //!< LHS BoardIdentifier to be compared to
-	);
-
 	//! Equality operator overload
 	friend bool operator==(
 		const BoardIdentifier& lhs, //!< RHS BoardIdentifier to be compared to
