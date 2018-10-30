@@ -24,21 +24,21 @@
        Only applies to "Serial" mode.
   -->
   <disableEdgeMatching channelID="31"/>
-  <disableEdgeMatching channelID= "63" />
-  <disableEdgeMatching channelID= "159" />
-  <disableEdgeMatching channelID= "191" />
-  <disableEdgeMatching channelID= "287" />
-  <disableEdgeMatching channelID= "319" />
-  <disableEdgeMatching channelID= "415" />
-  <disableEdgeMatching channelID= "447" />
-  <disableEdgeMatching channelID= "543" />
-  <disableEdgeMatching channelID= "575" />
-  <disableEdgeMatching channelID= "671" />
-  <disableEdgeMatching channelID= "703" />
-  <disableEdgeMatching channelID= "799" />
-  <disableEdgeMatching channelID= "831" />
-  <disableEdgeMatching channelID= "927" />
-  <disableEdgeMatching channelID= "959" /> 
+  <disableEdgeMatching channelID="63"/>
+  <disableEdgeMatching channelID="159"/>
+  <disableEdgeMatching channelID="191"/>
+  <disableEdgeMatching channelID="287"/>
+  <disableEdgeMatching channelID="319"/>
+  <disableEdgeMatching channelID="415"/>
+  <disableEdgeMatching channelID="447"/>
+  <disableEdgeMatching channelID="543"/>
+  <disableEdgeMatching channelID="575"/>
+  <disableEdgeMatching channelID="671"/>
+  <disableEdgeMatching channelID="703"/>
+  <disableEdgeMatching channelID="799"/>
+  <disableEdgeMatching channelID="831"/>
+  <disableEdgeMatching channelID="927"/>
+  <disableEdgeMatching channelID="959"/> 
 
   <!-- Edge Modifiers:
        NoChange - Leaves edges unchanged
