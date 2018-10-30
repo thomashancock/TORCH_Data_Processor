@@ -23,6 +23,7 @@ void setChannelMapping(
 // extern facilitates declaration in seperate source file
 extern ChannelMapping noMapping; //!< Raw Electronics Channel ID
 extern ChannelMapping std8x64Mapping; //!< 0 - 511 Channel Mapping for 8x64 MCP
+extern ChannelMapping std8x64Mappingfor2MCPs; //!< 0 - 1023 Channel Mapping for two 8x64 MCPs
 extern ChannelMapping slotInversion8x64Mapping; //!< 0 - 511 Channel Mapping for 8x64 MCP
 extern ChannelMapping std4x64Mapping; //!< 0 - 255 4x64 Channel Mapping
 

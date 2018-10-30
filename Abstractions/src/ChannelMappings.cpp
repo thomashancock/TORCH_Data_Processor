@@ -5,6 +5,8 @@ void chlmap::setChannelMapping(
 ) {
 	if ("NoMapping" == key) {
 		Packet::setChannelMapping(chlmap::noMapping);
+	} else if ("Std8x64Mappingfor2MCPs" == key) {
+		Packet::setChannelMapping(chlmap::std8x64Mappingfor2MCPs);
 	} else if ("Std8x64Mapping" == key) {
 		Packet::setChannelMapping(chlmap::std8x64Mapping);
 	} else if ("Inv8x64Mapping" == key) {
@@ -40,6 +42,23 @@ chlmap::ChannelMapping chlmap::std8x64Mapping = [] (
 	} else {
 		localID += 79 - static_cast<int>((channelID - 1) / 2); // Integer division
 	}
+	return localID;
+};
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+chlmap::ChannelMapping chlmap::std8x64Mappingfor2MCPs = [] (
+	const BoardIdentifier& identifier,
+	const uint tdcID,
+	const uint channelID
+) {
+	uint localID = (tdcID%4)*16 + 128 * static_cast<int>(tdcID / 4.0);
+	if (0 == channelID%2) {
+		localID += 15 - static_cast<int>(channelID / 2); // Integer division
+	} else {
+		localID += 79 - static_cast<int>((channelID - 1) / 2); // Integer division
+	}
+	localID += 256*identifier.getChainID();
 	return localID;
 };
 // -----------------------------------------------------------------------------
