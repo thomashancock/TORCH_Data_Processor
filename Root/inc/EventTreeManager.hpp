@@ -38,7 +38,7 @@ private:
 	Bool_t b_isComplete = false; //!< Branch Variable: Is event complete?
 	Bool_t b_wasDumped = false; //!< Branch Variable: Was the event dumped?
 
-	UInt_t b_nReadouts = 0;                   //!< Branch Variable: The number of TDCs
+	UInt_t b_nReadouts = 0;               //!< Branch Variable: The number of Readouts (= nTDC chips used)
 	UInt_t* b_tdcID = nullptr;            //!< Branch Variable [nReadouts]: TCD ID
 	UInt_t* b_eventID = nullptr;          //!< Branch Variable [nReadouts]: Event ID for each TDC
 	UInt_t* b_bunchID = nullptr;          //!< Branch Variable [nReadouts]: Bunch ID for each TDC
@@ -56,7 +56,7 @@ private:
 	UInt_t* b_trailingTime = nullptr;     //!< Branch Variable [nHits]: Trailing time for each hit
 	UInt_t* b_leadingTimeFine = nullptr;  //!< Branch Variable [nHits]: Fine leading time for each hit
 	UInt_t* b_trailingTimeFine = nullptr; //!< Branch Variable [nHits]: Fine trailing time for each hit
-	Int_t* b_width = nullptr;            //!< Branch Variable [nHits]: Width of signal
+	Int_t* b_width = nullptr;             //!< Branch Variable [nHits]: Width of signal
 };
 
 #endif /* EVENTTREEMANAGER_H */
