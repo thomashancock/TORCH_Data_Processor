@@ -1,8 +1,5 @@
 #include "BoardIdentifier.hpp"
 
-// STD
-#include <utility>
-
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Public:
@@ -22,7 +19,9 @@ bool operator< (
 	const BoardIdentifier& lhs,
 	const BoardIdentifier& rhs
 ) {
-	return std::make_pair(lhs.m_chainID, lhs.m_deviceID) < std::make_pair(rhs.m_chainID, rhs.m_deviceID);
+	return (lhs.m_chainID < rhs.m_chainID) ? true :
+	       (rhs.m_chainID < lhs.m_chainID) ? false :
+	       (lhs.m_deviceID < rhs.m_deviceID) ? true : false;
 }
 // -----------------------------------------------------------------------------
 //

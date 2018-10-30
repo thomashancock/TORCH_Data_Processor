@@ -1,8 +1,5 @@
 #include "ReadoutIdentifier.hpp"
 
-// STD
-#include <utility>
-
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // Public:
@@ -22,7 +19,9 @@ bool operator< (
 	const ReadoutIdentifier& lhs,
 	const ReadoutIdentifier& rhs
 ) {
-	return std::make_pair(lhs.m_boardID, lhs.m_tdcID) < std::make_pair(rhs.m_boardID, rhs.m_tdcID);
+	return (lhs.m_boardID < rhs.m_boardID) ? true :
+				 (rhs.m_boardID < lhs.m_boardID) ? false :
+				 (lhs.m_tdcID < rhs.m_tdcID) ? true : false;
 }
 // -----------------------------------------------------------------------------
 //
