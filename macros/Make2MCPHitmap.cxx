@@ -117,10 +117,10 @@ void Make2MCPHitmap(
 }
 
 //! Overload to have default output filename
-void MakeHitmap(
+void Make2MCPHitmap(
 	const std::string inputFile,
 	const bool logZ = false,
 	const bool ignoreTimeReference = false
 ) {
-	MakeHitmap(inputFile,"Hitmap.pdf",logZ,ignoreTimeReference);
+	Make2MCPHitmap(inputFile,"Hitmap.pdf",logZ,ignoreTimeReference);
 }
