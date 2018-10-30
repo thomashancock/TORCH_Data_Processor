@@ -31,7 +31,7 @@ FileReader::FileReader(
 	ASSERT(m_inputStreams.empty());
 	ASSERT(readoutList.size() > 0);
 
-	// TODO: Check all readoutBoardIDs are unique
+	// Create list of unique BoardIDs
 	std::list<BoardIdentifier> boardList;
 	for (const auto& entry : readoutList) {
 		const auto boardID = entry.getBoardID();
