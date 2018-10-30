@@ -40,6 +40,24 @@ void Event::addPacket(
 
 	// Attempt to add packet to event
 	auto found = m_packetMap.find(packet->getReadoutID());
+
+	// MORE TESTING
+	// const auto tmp1 = ReadoutIdentifier(BoardIdentifier(1, 0), 1);
+	// const auto tmp2 = ReadoutIdentifier(BoardIdentifier(1, 0), 1);
+	// STD_LOG_VAR((tmp1 == tmp2));
+	// STD_LOG_VAR( (!(tmp1 < tmp2) && !(tmp2 < tmp1)) );
+
+	// exit(0);
+
+	// TESTING
+	// STD_LOG("Packet: " << packet->getReadoutID());
+	// if (found != m_packetMap.end()) STD_LOG("Map:    " << found->first);
+	// STD_LOG("---");
+	//
+	// static int count = 0;
+	// count++;
+	// if (count > 100) exit(0);
+
 	if (found == m_packetMap.end()) {
 		STD_ERR("Event found with unrequested Readout ID: " << packet->getReadoutID());
 	} else if (found->second != nullptr) {

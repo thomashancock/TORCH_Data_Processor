@@ -171,7 +171,7 @@ void Processor::runSerial(
 	STD_LOG("Mode: Serial");
 
 	std::unique_ptr<EventTreeManager> manager =
-		std::make_unique<EventTreeManager>(m_config,outputFile.c_str(),m_config->getTDCList().size());
+		std::make_unique<EventTreeManager>(m_config,outputFile.c_str(),m_config->getReadoutList().size());
 
 	// Process files
 	while (!m_fileReader->haveFilesExpired()) {

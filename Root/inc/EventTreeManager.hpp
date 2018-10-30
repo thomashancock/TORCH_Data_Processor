@@ -13,7 +13,7 @@ public:
 	EventTreeManager(
 		std::shared_ptr<const Config> config, //!< Ptr to program configuration
 		const std::string outfileName, //!< The desired output file name
-		const unsigned int nTDCs //!< Number of TDCs present from config
+		const unsigned int nReadouts //!< Number of TDCs present from config
 	);
 
 	//! Adds an event to the tree, then destroys the event
@@ -29,7 +29,7 @@ private:
 	void setUpBranches();
 
 private:
-	const unsigned int m_nTDCs; //!< The maximum number of TDCs
+	const unsigned int m_nReadouts; //!< The maximum number of TDCs
 	constexpr static unsigned int s_hitsMax = 600; //!< Array size for hit branches
 
 	const std::set<unsigned int> m_edgeMatchingExclusions; //!< Set to store edge matching exclusions
@@ -38,16 +38,16 @@ private:
 	Bool_t b_isComplete = false; //!< Branch Variable: Is event complete?
 	Bool_t b_wasDumped = false; //!< Branch Variable: Was the event dumped?
 
-	UInt_t b_nTDCs = 0;                   //!< Branch Variable: The number of TDCs
-	UInt_t* b_tdcID = nullptr;            //!< Branch Variable [nTDCs]: TCD ID
-	UInt_t* b_eventID = nullptr;          //!< Branch Variable [nTDCs]: Event ID for each TDC
-	UInt_t* b_bunchID = nullptr;          //!< Branch Variable [nTDCs]: Bunch ID for each TDC
-	UInt_t* b_rocTime = nullptr;          //!< Branch Variable [nTDCs]: ROC value for each TDC
-	UInt_t* b_nHeaders = nullptr;         //!< Branch Variable [nTDCs]: Number for headers for each TDC
-	UInt_t* b_nLeadingEdges = nullptr;    //!< Branch Variable [nTDCs]: Number for leading edges for each TDC
-	UInt_t* b_nTrailingEdges = nullptr;   //!< Branch Variable [nTDCs]: Number for trailing edges for each TDC
-	UInt_t* b_nTrailers = nullptr;        //!< Branch Variable [nTDCs]: Number for trailers for each TDC
-	UInt_t* b_wordCount = nullptr;        //!< Branch Variable [nTDCs]: Word count for each TDC
+	UInt_t b_nReadouts = 0;                   //!< Branch Variable: The number of TDCs
+	UInt_t* b_tdcID = nullptr;            //!< Branch Variable [nReadouts]: TCD ID
+	UInt_t* b_eventID = nullptr;          //!< Branch Variable [nReadouts]: Event ID for each TDC
+	UInt_t* b_bunchID = nullptr;          //!< Branch Variable [nReadouts]: Bunch ID for each TDC
+	UInt_t* b_rocTime = nullptr;          //!< Branch Variable [nReadouts]: ROC value for each TDC
+	UInt_t* b_nHeaders = nullptr;         //!< Branch Variable [nReadouts]: Number for headers for each TDC
+	UInt_t* b_nLeadingEdges = nullptr;    //!< Branch Variable [nReadouts]: Number for leading edges for each TDC
+	UInt_t* b_nTrailingEdges = nullptr;   //!< Branch Variable [nReadouts]: Number for trailing edges for each TDC
+	UInt_t* b_nTrailers = nullptr;        //!< Branch Variable [nReadouts]: Number for trailers for each TDC
+	UInt_t* b_wordCount = nullptr;        //!< Branch Variable [nReadouts]: Word count for each TDC
 
 	UInt_t b_nEdges = 0;                  //!< Branch Variable: Total number of  edges
 	UInt_t b_nHits = 0;                   //!< Branch Variable: Total number of hits
