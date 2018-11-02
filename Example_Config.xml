@@ -36,7 +36,7 @@
        FlipEven - Flips L/T edges on even channels
        FlipOdd  - Flips L/T edges on odd channels
   -->
-  <edgeModifier modifier="FlipEven"/>
+  <edgeModifier modifier="FlipOdd"/>
 
   <!-- Description of electronics arrangement -->
   <arrangement>
