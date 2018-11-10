@@ -80,6 +80,14 @@ private:
 		std::unique_ptr<std::ifstream>& inputData //!< The stream to read from
 	);
 
+	//! Checks if all values stored in a map are identical
+	/*!
+		For a map with BoardIdentifier keys, will return true if all values are
+		equal, otherwise will return false.
+
+		Created as a template function to allow use over all the std::maps stored
+		in the FileReader.
+	 */
 	template<class T>
 	bool areElementsIdentical(
 		std::map< BoardIdentifier, T > map
@@ -232,14 +240,16 @@ template<class T>
 bool FileReader::areElementsIdentical(
 	std::map< BoardIdentifier, T > map
 ) {
+	// Get the first value
 	const T firstVal = map.begin()->second;
-	const auto areSameNumFiles = std::all_of(
+
+	// Use std::all_of to check if all elements in the map are equal to the first
+	return std::all_of(
 		std::next(map.begin()), map.end(),
 		[firstVal] (typename decltype(map)::const_reference t) {
 			return t.second == firstVal;
 		}
 	);
-	return areSameNumFiles;
 }
 
 

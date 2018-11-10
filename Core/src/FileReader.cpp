@@ -156,6 +156,8 @@ void FileReader::runProcessingLoop() {
 	ASSERT(m_counterMax > 0);
 	ASSERT(syncType != null);
 
+	// Useful lambda function for staging files to a specific board
+	//   and removing already processed files fro the input files list
 	static auto attemptStaging = [this] (
 		const BoardIdentifier& boardID
 	) {
@@ -169,7 +171,9 @@ void FileReader::runProcessingLoop() {
 		}
 	};
 
-	// If files are equal in time, need to stage all files at once
+	// TimeSync Mode
+	// If files are equal in time (i.e. are all created synchronously, but with
+	//   different amounts of data in each), need to stage all files at once
 	if (equalTime == syncType) {
 		// Check if all files have expired
 		if (std::all_of(m_inputStreams.cbegin(), m_inputStreams.cend(),
@@ -189,7 +193,11 @@ void FileReader::runProcessingLoop() {
 	for (auto& entry : m_inputStreams) {
 		const auto& boardID = entry.first;
 
-		// If rate counter is greater than realtive rate for the boardID, skip this processing pass
+		// SizeSync Mode
+		// If files are created when the previous one is full, files will have
+		//   asynchronous creation times => Need to scale the rate each is read
+		// If rate counter is greater than realtive rate for the boardID, skip
+		//    this processing pass
 		// This helps ensure syncronisation between the different readouts when
 		//   files are of equal size (but not equal in time).
 		if ((m_rateCounter > m_relativeRates[boardID])&&(equalSize == syncType)) {
@@ -199,6 +207,10 @@ void FileReader::runProcessingLoop() {
 		// Run processing pass of file
 		auto& streamPtr = entry.second;
 		if (nullptr == streamPtr) {
+			// SizeSync Mode
+			// If files are not not time synced, each can be loaded as soon as the
+			//   previous one is processed as the read rate will account for the
+			//   different file sizes.
 			if (equalSize == syncType) {
 				attemptStaging(boardID);
 			}
@@ -209,6 +221,7 @@ void FileReader::runProcessingLoop() {
 				streamPtr.reset();
 			} else {
 				processDataPacket(boardID, streamPtr);
+				ASSERT(nullptr != streamPtr);
 				if (streamPtr->tellg() == m_fileLengths[boardID]) {
 					streamPtr.reset();
 				}
@@ -216,7 +229,8 @@ void FileReader::runProcessingLoop() {
 		}
 	}
 
-	// Update rate counter
+	// SizeSync Mode
+	// Update rate counter used to scale reading rates
 	m_rateCounter = (m_rateCounter > m_counterMax) ? 0 : m_rateCounter + 1;
 }
 // -----------------------------------------------------------------------------
