@@ -69,6 +69,10 @@ FileReader::FileReader(
 void FileReader::stageFiles(
 	const std::vector<std::string>& files
 ) {
+	static bool staged = false;
+
+	ASSERT(false == staged);
+
 	// Add files to file reader storage
 	for (const auto& file : files) {
 		addFile(file);
@@ -100,6 +104,8 @@ void FileReader::stageFiles(
 	for (const auto& entry : m_inputFiles) {
 		stageNextFile(entry.first);
 	}
+
+	staged = true;
 }
 // -----------------------------------------------------------------------------
 //
@@ -277,6 +283,7 @@ void FileReader::processDataPacket(
 						workspace[i]->setRocValue(bindec::getROCValue(word));
 
 						// Add bundle to buffer
+						// TODO: Fix desyncronisation bug in buffer selection
 						ASSERT(nextBundleBufferIndex < m_wordBundleBuffers.size());
 						m_wordBundleBuffers[0]->push(std::move(workspace[i]));
 						// m_wordBundleBuffers[nextBundleBufferIndex++]->push(std::move(workspace[i]));

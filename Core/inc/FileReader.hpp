@@ -20,6 +20,24 @@
 #include "BoardIdentifier.hpp"
 
 //! Read files and outputs word bundles
+/*!
+	Reads in files passed by stageFiles(). Files are sorted according to the chain ID, device ID and file number to ensure they are read in the correct order.
+
+	Once files are sorted, for each board ID (combination of chain ID and device ID, see BoardIdentifier class), the number of files is counted. If the files counts are all identical, the FileReader will continue in TimeSync mode. If not, it will continue in SizeSync Mode.
+
+	<B>TimeSync Mode</B>
+
+	TimeSync Mode assumes new files are begun as soon as one of the previous is full. This means each will start at the same point in time, but that each file could be a different size in bytes.
+
+	In TimeSync mode, files are groups together based on file number and read in together, so as to ensure synchronisation is kept across the different boards.
+
+	<B>SizeSync Mode</B>
+
+	SizeSync Mode assums a new file is created for a given board as soon as the previous one is full. This leads to synchonisitiy between the different boards, and hence each board can have a different number of files.
+
+	In SizeSync mode, the rate at which each file is read is scaled based on the relative number of files counted for each of the boards. This was board with less files are read more slowly so as to ensure syncronisation is kept.
+ */
+
 class FileReader {
 	using bundleBuffer = ThreadSafeQueue< std::unique_ptr<WordBundle> >;
 	using bundleWorkspace = std::array< std::unique_ptr<WordBundle>, 4>;
@@ -94,23 +112,27 @@ private:
 	);
 
 private:
-	enum SyncType { equalSize, equalTime, null };
+	enum SyncType {
+		equalSize, //! Represents SizeSync Mode
+		equalTime, //! Represents TimeSync Mode
+		null //! Equivallent of 0, used to ensure a mode has been selected
+	}; //!< Enum to store which kind of syncronisation is to be used
 
 private:
 	std::map< BoardIdentifier, std::list<InputFile> > m_inputFiles; //!< Input file storage
 	std::map< BoardIdentifier, std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
 
-	SyncType syncType = null;
+	SyncType syncType = null; //!< The type of syncronisation determined from the input files
 
-	unsigned int m_rateCounter = 0;
-	unsigned int m_counterMax = 0;
-	std::map< BoardIdentifier, unsigned int > m_relativeRates;
+	unsigned int m_rateCounter = 0; //!< Used to scale the read speed based on m_relativeRates
+	unsigned int m_counterMax = 0; //!< Stores the maximum value m_rateCounter should reach
+	std::map< BoardIdentifier, unsigned int > m_relativeRates; //!< The relative read speed of each input stream (i.e. Board ID)
 
 	std::map< BoardIdentifier, unsigned int > m_fileLengths; //!< Map to store file lengths
 	std::map< BoardIdentifier, bundleWorkspace > m_bundleWorkspaces; //!< Map of pointers used to create WordBundles
 
 	std::array< std::shared_ptr<bundleBuffer>, 4> m_wordBundleBuffers; //!< Pointers to shared WordBundle buffers
-	unsigned int nextBundleBufferIndex = 0;
+	unsigned int nextBundleBufferIndex = 0; //!< Used to cycle through buffers (currently disabled due to bug)
 
 	const std::set<unsigned int> fillerWords = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 }; //! Set containing filler words (move to config?)
 };
