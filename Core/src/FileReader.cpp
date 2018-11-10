@@ -177,7 +177,7 @@ void FileReader::runProcessingLoop() {
 				return (nullptr == entry.second);
 			})) {
 			// If all files have expired, stage next set of files
-			std::cout << "TimeSync Mode: Staging next set of files" << std::endl;
+			STD_LOG("TimeSync Mode: Staging next set of files");
 			for (auto& entry : m_inputStreams) {
 				const auto& boardID = entry.first;
 				attemptStaging(boardID);
