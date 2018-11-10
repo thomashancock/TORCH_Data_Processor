@@ -81,6 +81,14 @@ void FileReader::stageFiles(
 		m_relativeRates[entry.first] = entry.second.size();
 	}
 
+	std::cout << "Found following number of files per board:" << std::endl;
+	for (const auto& entry : m_relativeRates) {
+		std::cout << "\t" << entry.first << ": " << entry.second << std::endl;
+	}
+
+	syncType = (areElementsIdentical(m_relativeRates)) ? equalTime : equalSize;
+	STD_LOG("Using Sync Type: " << ((syncType == equalTime) ? "Time" : "Size" ));
+
 	//TODO: Scale relative rate to smallest possible integer for each boardID
 
 	// Set m_counterMax to max value in rates
@@ -146,106 +154,143 @@ void FileReader::addFile(
 // -----------------------------------------------------------------------------
 void FileReader::runProcessingLoop() {
 	ASSERT(m_counterMax > 0);
+	ASSERT(syncType != null);
+
+	static auto attemptStaging = [this] (
+		const BoardIdentifier& boardID
+	) {
+		// Check if there are more files to process
+		if (!m_inputFiles[boardID].empty()) {
+			// Remove previous first file from list if is not the first file
+			m_inputFiles[boardID].pop_front();
+
+			// Stage a new file
+			this->stageNextFile(boardID);
+		}
+	};
+
+	// If files are equal in time, need to stage all files at once
+	if (equalTime == syncType) {
+		// Check if all files have expired
+		if (std::all_of(m_inputStreams.cbegin(), m_inputStreams.cend(),
+			[] (typename decltype(m_inputStreams)::const_reference entry) {
+				return (nullptr == entry.second);
+			})) {
+			// If all files have expired, stage next set of files
+			std::cout << "TimeSync Mode: Staging next set of files" << std::endl;
+			for (auto& entry : m_inputStreams) {
+				const auto& boardID = entry.first;
+				attemptStaging(boardID);
+			}
+		}
+	}
 
 	// Loop through input streams
 	for (auto& entry : m_inputStreams) {
-		auto& boardID = entry.first;
+		const auto& boardID = entry.first;
 
 		// If rate counter is greater than realtive rate for the boardID, skip this processing pass
-		// This helps ensure syncronisation between the different readouts
-		if (m_rateCounter > m_relativeRates[boardID]) {
+		// This helps ensure syncronisation between the different readouts when
+		//   files are of equal size (but not equal in time).
+		if ((m_rateCounter > m_relativeRates[boardID])&&(equalSize == syncType)) {
 			continue;
 		}
 
 		// Run processing pass of file
 		auto& streamPtr = entry.second;
 		if (nullptr == streamPtr) {
-			// Check if there are more files to process
-			if (!m_inputFiles[boardID].empty()) {
-				// Remove previous first file from list if is not the first file
-				m_inputFiles[boardID].pop_front();
-
-				// Stage a new file
-				stageNextFile(boardID);
+			if (equalSize == syncType) {
+				attemptStaging(boardID);
 			}
 		} else {
 			// Check if stream has expired
+			ASSERT(nullptr != streamPtr);
 			if (!streamPtr->good()) {
 				streamPtr.reset();
-				continue;
-			}
-
-			// Read Header Information
-			const auto nDataBytes = readHeaderLine(streamPtr);
-
-			// Check number of bytes is as expected
-			if (!isNDataBytesValid(boardID, streamPtr, nDataBytes)) {
-				continue;
-			}
-
-			// Get workspace to create bundles
-			auto& workspace = m_bundleWorkspaces[boardID];
-
-			// Calculate number of blocks using bit shift to protect against floating point precision errors
-			// 1 Block = 4 Words = 16 Bytes
-			const unsigned int nDataBlocks = nDataBytes >> 4;
-			for (unsigned int iBlock = 0; iBlock < nDataBlocks; iBlock++) {
-				const auto block = readDataBlock(streamPtr);
-				// Block => Slot Mapping
-				// 0 => A, 1 => B, 2 => C, 3 => D
-
-				ASSERT(workspace.size() == block.size());
-
-				for (unsigned int i = 0; i < workspace.size(); i++) {
-					// Reference assignment to ease readbility
-					const auto& word = block[i];
-
-					// Check word is not a filler word
-					if (fillerWords.find(word) == fillerWords.end()) {
-						// See if existing bundle has been created
-						if (workspace[i] != nullptr) {
-							// If bundle exists, check for ROC value
-							if (15 == bindec::getDataType(word)) {
-								// If ROC found, add to bundle
-								workspace[i]->setRocValue(bindec::getROCValue(word));
-
-								// Add bundle to buffer
-								ASSERT(nextBundleBufferIndex < m_wordBundleBuffers.size());
-								m_wordBundleBuffers[nextBundleBufferIndex++]->push(std::move(workspace[i]));
-
-								// Cycle through buffers to spread data evenly between them
-								if (nextBundleBufferIndex > 3) {
-									nextBundleBufferIndex = 0;
-								}
-
-								// Ensure move was succesful
-								ASSERT(workspace[i] == nullptr);
-							} else {
-								// If ROC is not found, add word to bundle
-								ASSERT(workspace[i] != nullptr);
-								workspace[i]->addWord(word);
-							}
-						} else {
-							// If no bundle exists, add a new bundle
-							if (15 != bindec::getDataType(word)) {
-								// Only make a new bundle for a non-roc words
-								workspace[i] = std::make_unique<WordBundle>(boardID);
-								// Ensure bundle was created
-								ASSERT(workspace[i] != nullptr);
-								// Add word to bundle
-								workspace[i]->addWord(word);
-							}
-						}
-					}
+			} else {
+				processDataPacket(boardID, streamPtr);
+				if (streamPtr->tellg() == m_fileLengths[boardID]) {
+					streamPtr.reset();
 				}
-			}
-
-			if (streamPtr->tellg() == m_fileLengths[boardID]) {
-				streamPtr.reset();
 			}
 		}
 	}
 
 	// Update rate counter
 	m_rateCounter = (m_rateCounter > m_counterMax) ? 0 : m_rateCounter + 1;
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void FileReader::processDataPacket(
+	const BoardIdentifier& boardID,
+	std::unique_ptr< std::ifstream >& streamPtr
+) {
+	ASSERT(nullptr != streamPtr);
+
+	// Read Header Information
+	const auto nDataBytes = readHeaderLine(streamPtr);
+
+	// Check number of bytes is as expected
+	if (!isNDataBytesValid(boardID, streamPtr, nDataBytes)) {
+		return;
+	}
+
+	// Get workspace to create bundles
+	auto& workspace = m_bundleWorkspaces[boardID];
+
+	// Calculate number of blocks using bit shift to protect against floating point precision errors
+	// 1 Block = 4 Words = 16 Bytes
+	const unsigned int nDataBlocks = nDataBytes >> 4;
+	for (unsigned int iBlock = 0; iBlock < nDataBlocks; iBlock++) {
+		const auto block = readDataBlock(streamPtr);
+		// Block => Slot Mapping
+		// 0 => A, 1 => B, 2 => C, 3 => D
+
+		ASSERT(workspace.size() == block.size());
+
+		for (unsigned int i = 0; i < workspace.size(); i++) {
+			// Reference assignment to ease readbility
+			const auto& word = block[i];
+
+			// Check word is not a filler word
+			if (fillerWords.find(word) == fillerWords.end()) {
+				// See if existing bundle has been created
+				if (workspace[i] != nullptr) {
+					// If bundle exists, check for ROC value
+					if (15 == bindec::getDataType(word)) {
+						// If ROC found, add to bundle
+						workspace[i]->setRocValue(bindec::getROCValue(word));
+
+						// Add bundle to buffer
+						ASSERT(nextBundleBufferIndex < m_wordBundleBuffers.size());
+						m_wordBundleBuffers[0]->push(std::move(workspace[i]));
+						// m_wordBundleBuffers[nextBundleBufferIndex++]->push(std::move(workspace[i]));
+
+						// Cycle through buffers to spread data evenly between them
+						if (nextBundleBufferIndex > 3) {
+							nextBundleBufferIndex = 0;
+						}
+
+						// Ensure move was succesful
+						ASSERT(workspace[i] == nullptr);
+					} else {
+						// If ROC is not found, add word to bundle
+						ASSERT(workspace[i] != nullptr);
+						workspace[i]->addWord(word);
+					}
+				} else {
+					// If no bundle exists, add a new bundle
+					if (15 != bindec::getDataType(word)) {
+						// Only make a new bundle for a non-roc words
+						workspace[i] = std::make_unique<WordBundle>(boardID);
+						// Ensure bundle was created
+						ASSERT(workspace[i] != nullptr);
+						// Add word to bundle
+						workspace[i]->addWord(word);
+					}
+				}
+			}
+		}
+	}
 }

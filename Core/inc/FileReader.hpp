@@ -10,7 +10,7 @@
 #include <array>
 #include <list>
 #include <map>
-#include <unordered_map>
+#include <algorithm>
 
 // LOCAL
 #include "WordBundle.hpp"
@@ -58,6 +58,11 @@ private:
 	//! Reads a single data block from each file
 	void runProcessingLoop();
 
+	void processDataPacket(
+		const BoardIdentifier& boardID,
+		std::unique_ptr< std::ifstream >& streamPtr
+	);
+
 	//! Reads a header line from the passed stream
 	inline unsigned int readHeaderLine(
 		std::unique_ptr<std::ifstream>& inputData //!< The stream to read from
@@ -75,9 +80,19 @@ private:
 		std::unique_ptr<std::ifstream>& inputData //!< The stream to read from
 	);
 
+	template<class T>
+	bool areElementsIdentical(
+		std::map< BoardIdentifier, T > map
+	);
+
+private:
+	enum SyncType { equalSize, equalTime, null };
+
 private:
 	std::map< BoardIdentifier, std::list<InputFile> > m_inputFiles; //!< Input file storage
 	std::map< BoardIdentifier, std::unique_ptr< std::ifstream > > m_inputStreams; //!< Vector of input streams
+
+	SyncType syncType = null;
 
 	unsigned int m_rateCounter = 0;
 	unsigned int m_counterMax = 0;
@@ -210,5 +225,22 @@ std::array<unsigned int,4> FileReader::readDataBlock(
 	// block will be moved due to RVO
 	return block;
 }
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+template<class T>
+bool FileReader::areElementsIdentical(
+	std::map< BoardIdentifier, T > map
+) {
+	const T firstVal = map.begin()->second;
+	const auto areSameNumFiles = std::all_of(
+		std::next(map.begin()), map.end(),
+		[firstVal] (typename decltype(map)::const_reference t) {
+			return t.second == firstVal;
+		}
+	);
+	return areSameNumFiles;
+}
+
 
 #endif /* FILEREADER_H */
