@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['lowlevel',['LowLevel',['../_modes_enum_8hpp.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea8cf5e1a2a32430916501be0579e5303b',1,'ModesEnum.hpp']]]
+  ['equalsize',['equalSize',['../class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531a6b72ad97055eb6a5c19ea9d412601ca8',1,'FileReader']]],
+  ['equaltime',['equalTime',['../class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531ace0da9d32c3bd689d964979d99a7edc1',1,'FileReader']]]
 ];

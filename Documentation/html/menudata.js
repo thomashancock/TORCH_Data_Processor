@@ -59,6 +59,8 @@ var menudata={children:[
 {text:"n",url:"functions_vars.html#index_n"},
 {text:"s",url:"functions_vars.html#index_s"}]},
 {text:"Typedefs",url:"functions_type.html"},
+{text:"Enumerations",url:"functions_enum.html"},
+{text:"Enumerator",url:"functions_eval.html"},
 {text:"Related Functions",url:"functions_rela.html"}]}]},
 {text:"Files",url:"files.html",children:[
 {text:"File List",url:"files.html"},

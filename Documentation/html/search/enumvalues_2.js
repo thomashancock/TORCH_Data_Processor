@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quickcheck',['QuickCheck',['../_modes_enum_8hpp.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea04437725a174e0c4200181265e2cc848',1,'ModesEnum.hpp']]]
+  ['null',['null',['../class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531a3d35358ce57d04ec9c0e07af48692c88',1,'FileReader']]]
 ];

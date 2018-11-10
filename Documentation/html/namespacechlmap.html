@@ -89,6 +89,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a11d7121de30a32ead9032c59221b7442"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacechlmap.html#a5bb86fec567a6f1a0646881a9284bb01">ChannelMapping</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacechlmap.html#a11d7121de30a32ead9032c59221b7442">std8x64Mapping</a></td></tr>
 <tr class="memdesc:a11d7121de30a32ead9032c59221b7442"><td class="mdescLeft">&#160;</td><td class="mdescRight">0 - 511 Channel Mapping for 8x64 MCP  <a href="#a11d7121de30a32ead9032c59221b7442">More...</a><br /></td></tr>
 <tr class="separator:a11d7121de30a32ead9032c59221b7442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2a84ef16a6ad086ad62d389f29fd63a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacechlmap.html#a5bb86fec567a6f1a0646881a9284bb01">ChannelMapping</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacechlmap.html#ae2a84ef16a6ad086ad62d389f29fd63a">std8x64Mappingfor2MCPs</a></td></tr>
+<tr class="memdesc:ae2a84ef16a6ad086ad62d389f29fd63a"><td class="mdescLeft">&#160;</td><td class="mdescRight">0 - 1023 Channel Mapping for two 8x64 MCPs  <a href="#ae2a84ef16a6ad086ad62d389f29fd63a">More...</a><br /></td></tr>
+<tr class="separator:ae2a84ef16a6ad086ad62d389f29fd63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addbd4a4856137809b06e1bffd39e2897"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacechlmap.html#a5bb86fec567a6f1a0646881a9284bb01">ChannelMapping</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacechlmap.html#addbd4a4856137809b06e1bffd39e2897">slotInversion8x64Mapping</a></td></tr>
 <tr class="memdesc:addbd4a4856137809b06e1bffd39e2897"><td class="mdescLeft">&#160;</td><td class="mdescRight">0 - 511 Channel Mapping for 8x64 MCP  <a href="#addbd4a4856137809b06e1bffd39e2897">More...</a><br /></td></tr>
 <tr class="separator:addbd4a4856137809b06e1bffd39e2897"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,7 +186,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= [] (</div><div class="line">    <span class="keyword">const</span> <a class="code" href="class_board_identifier.html">BoardIdentifier</a>&amp; identifier,</div><div class="line">    <span class="keyword">const</span> <a class="code" href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a> tdcID,</div><div class="line">    <span class="keyword">const</span> <a class="code" href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a> channelID</div><div class="line">) {</div><div class="line">    </div><div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> localTDCID = (0 == tdcID%2) ? tdcID + 1 : tdcID - 1;</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="namespacechlmap.html#a11d7121de30a32ead9032c59221b7442">std8x64Mapping</a>(identifier, localTDCID, channelID);</div><div class="line">}</div><div class="ttc" id="class_board_identifier_html"><div class="ttname"><a href="class_board_identifier.html">BoardIdentifier</a></div><div class="ttdoc">Class used to uniquely idenfity combinations of board informtion. </div><div class="ttdef"><b>Definition:</b> BoardIdentifier.hpp:14</div></div>
-<div class="ttc" id="namespacechlmap_html_a11d7121de30a32ead9032c59221b7442"><div class="ttname"><a href="namespacechlmap.html#a11d7121de30a32ead9032c59221b7442">chlmap::std8x64Mapping</a></div><div class="ttdeci">ChannelMapping std8x64Mapping</div><div class="ttdoc">0 - 511 Channel Mapping for 8x64 MCP </div><div class="ttdef"><b>Definition:</b> ChannelMappings.cpp:32</div></div>
+<div class="ttc" id="namespacechlmap_html_a11d7121de30a32ead9032c59221b7442"><div class="ttname"><a href="namespacechlmap.html#a11d7121de30a32ead9032c59221b7442">chlmap::std8x64Mapping</a></div><div class="ttdeci">ChannelMapping std8x64Mapping</div><div class="ttdoc">0 - 511 Channel Mapping for 8x64 MCP </div><div class="ttdef"><b>Definition:</b> ChannelMappings.cpp:34</div></div>
 <div class="ttc" id="_packet_8cpp_html_a69aa29b598b851b0640aa225a9e5d61d"><div class="ttname"><a href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> Packet.cpp:8</div></div>
 </div><!-- fragment -->
 <p>0 - 511 Channel Mapping for 8x64 MCP </p>
@@ -224,6 +227,25 @@ Variables</h2></td></tr>
 <div class="ttc" id="_packet_8cpp_html_a69aa29b598b851b0640aa225a9e5d61d"><div class="ttname"><a href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> Packet.cpp:8</div></div>
 </div><!-- fragment -->
 <p>0 - 511 Channel Mapping for 8x64 MCP </p>
+
+</div>
+</div>
+<a id="ae2a84ef16a6ad086ad62d389f29fd63a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2a84ef16a6ad086ad62d389f29fd63a">&#9670;&nbsp;</a></span>std8x64Mappingfor2MCPs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacechlmap.html#a5bb86fec567a6f1a0646881a9284bb01">chlmap::ChannelMapping</a> chlmap::std8x64Mappingfor2MCPs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= [] (</div><div class="line">    <span class="keyword">const</span> <a class="code" href="class_board_identifier.html">BoardIdentifier</a>&amp; identifier,</div><div class="line">    <span class="keyword">const</span> <a class="code" href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a> tdcID,</div><div class="line">    <span class="keyword">const</span> <a class="code" href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a> channelID</div><div class="line">) {</div><div class="line">    <a class="code" href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a> localID = (tdcID%4)*16 + 128 * static_cast&lt;int&gt;(tdcID / 4.0);</div><div class="line">    <span class="keywordflow">if</span> (0 == channelID%2) {</div><div class="line">        localID += 15 - <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(channelID / 2); </div><div class="line">    } <span class="keywordflow">else</span> {</div><div class="line">        localID += 79 - <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>((channelID - 1) / 2); </div><div class="line">    }</div><div class="line">    localID += 256*identifier.<a class="code" href="class_board_identifier.html#ad909f0c1eb9f80ec177ea8526c94d011">getChainID</a>();</div><div class="line">    <span class="keywordflow">return</span> localID;</div><div class="line">}</div><div class="ttc" id="class_board_identifier_html"><div class="ttname"><a href="class_board_identifier.html">BoardIdentifier</a></div><div class="ttdoc">Class used to uniquely idenfity combinations of board informtion. </div><div class="ttdef"><b>Definition:</b> BoardIdentifier.hpp:14</div></div>
+<div class="ttc" id="class_board_identifier_html_ad909f0c1eb9f80ec177ea8526c94d011"><div class="ttname"><a href="class_board_identifier.html#ad909f0c1eb9f80ec177ea8526c94d011">BoardIdentifier::getChainID</a></div><div class="ttdeci">auto getChainID() const</div><div class="ttdoc">Getter for Chain ID. </div><div class="ttdef"><b>Definition:</b> BoardIdentifier.hpp:22</div></div>
+<div class="ttc" id="_packet_8cpp_html_a69aa29b598b851b0640aa225a9e5d61d"><div class="ttname"><a href="_packet_8cpp.html#a69aa29b598b851b0640aa225a9e5d61d">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> Packet.cpp:8</div></div>
+</div><!-- fragment -->
+<p>0 - 1023 Channel Mapping for two 8x64 MCPs </p>
 
 </div>
 </div>

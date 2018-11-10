@@ -8,5 +8,6 @@ var searchData=
   ['addheader',['addHeader',['../class_packet.html#a7f710ea08bf8d264beb1361f19cc3afb',1,'Packet']]],
   ['addpacket',['addPacket',['../class_event.html#a08c4689086126f702d3b14be99461c98',1,'Event::addPacket()'],['../class_thread_safe_event_map.html#aafd485696f0a50da8afa864f04f0aa07',1,'ThreadSafeEventMap::addPacket()']]],
   ['addtrailer',['addTrailer',['../class_packet.html#a13eccb2f6b6d527549839579920e5105',1,'Packet']]],
-  ['addword',['addWord',['../class_word_bundle.html#a167d2b6b4f504e4347191a8e5bb47e5e',1,'WordBundle']]]
+  ['addword',['addWord',['../class_word_bundle.html#a167d2b6b4f504e4347191a8e5bb47e5e',1,'WordBundle']]],
+  ['areelementsidentical',['areElementsIdentical',['../class_file_reader.html#a7a4c0a8dd415c1e8914b169fde2591c0',1,'FileReader']]]
 ];

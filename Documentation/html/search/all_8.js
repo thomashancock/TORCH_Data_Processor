@@ -11,5 +11,5 @@ var searchData=
   ['isconsistent',['isConsistent',['../class_packet.html#a8d9e544f6f56389fa13bb01b2d37ca58',1,'Packet']]],
   ['isgood',['isGood',['../class_packet.html#a19762fa917b80da872ecff9cbb389509',1,'Packet']]],
   ['isndatabytesvalid',['isNDataBytesValid',['../class_file_reader.html#ae0a796cb06ebe3e486795dea8da0f6bc',1,'FileReader']]],
-  ['istimereference',['isTimeReference',['../_make_channel_histo_8cxx.html#aea01419cfa6d3bc850d93c3569853f18',1,'isTimeReference(const uint channelID):&#160;MakeChannelHisto.cxx'],['../_make_hitmap_8cxx.html#aea01419cfa6d3bc850d93c3569853f18',1,'isTimeReference(const uint channelID):&#160;MakeHitmap.cxx']]]
+  ['istimereference',['isTimeReference',['../_make2_m_c_p_hitmap_8cxx.html#aea01419cfa6d3bc850d93c3569853f18',1,'isTimeReference(const uint channelID):&#160;Make2MCPHitmap.cxx'],['../_make_channel_histo_8cxx.html#aea01419cfa6d3bc850d93c3569853f18',1,'isTimeReference(const uint channelID):&#160;MakeChannelHisto.cxx'],['../_make_hitmap_8cxx.html#aea01419cfa6d3bc850d93c3569853f18',1,'isTimeReference(const uint channelID):&#160;MakeHitmap.cxx']]]
 ];

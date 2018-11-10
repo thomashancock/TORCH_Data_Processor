@@ -23,6 +23,11 @@ void \hyperlink{class_file_reader_a478ed77f1b8f76e15cb2faa8964a26e6}{run\+Proces
 \subsection*{Private Types}
 \begin{DoxyCompactItemize}
 \item 
+enum \hyperlink{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531}{Sync\+Type} \{ \hyperlink{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531a6b72ad97055eb6a5c19ea9d412601ca8}{equal\+Size}, 
+\hyperlink{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531ace0da9d32c3bd689d964979d99a7edc1}{equal\+Time}, 
+\hyperlink{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531a3d35358ce57d04ec9c0e07af48692c88}{null}
+ \}
+\item 
 using \hyperlink{class_file_reader_ac755c1e271610c2c12a7fc5b55cc048b}{bundle\+Buffer} = \hyperlink{class_thread_safe_queue}{Thread\+Safe\+Queue}$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_word_bundle}{Word\+Bundle} $>$ $>$
 \item 
 using \hyperlink{class_file_reader_a7fb625dc45cee3256d37cc19c65cad86}{bundle\+Workspace} = std\+::array$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{class_word_bundle}{Word\+Bundle} $>$, 4 $>$
@@ -36,12 +41,16 @@ void \hyperlink{class_file_reader_ad4d5d927c5d9ceb26bba7ec1f6c60737}{stage\+Next
 \begin{DoxyCompactList}\small\item\em Stages a new file. \end{DoxyCompactList}\item 
 void \hyperlink{class_file_reader_a98606ec7d315f1ed6f90c531df0d09f9}{run\+Processing\+Loop} ()
 \begin{DoxyCompactList}\small\item\em Reads a single data block from each file. \end{DoxyCompactList}\item 
+void \hyperlink{class_file_reader_afefd5cfc826ebefa7d5ab06d6d967149}{process\+Data\+Packet} (const \hyperlink{class_board_identifier}{Board\+Identifier} \&board\+ID, std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&stream\+Ptr)
+\item 
 unsigned int \hyperlink{class_file_reader_a94181d78b29ebacf2a4b3b3cd03a6750}{read\+Header\+Line} (std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&input\+Data)
 \begin{DoxyCompactList}\small\item\em Reads a header line from the passed stream. \end{DoxyCompactList}\item 
 bool \hyperlink{class_file_reader_ae0a796cb06ebe3e486795dea8da0f6bc}{is\+N\+Data\+Bytes\+Valid} (const \hyperlink{class_board_identifier}{Board\+Identifier} \&board\+ID, std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&input\+Data, const unsigned int n\+Data\+Bytes)
 \begin{DoxyCompactList}\small\item\em Checks if a number of bytes is valid, and takes action if not. \end{DoxyCompactList}\item 
 std\+::array$<$ unsigned int, 4 $>$ \hyperlink{class_file_reader_ac578b683eba751027766a2c30f03a28b}{read\+Data\+Block} (std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&input\+Data)
-\begin{DoxyCompactList}\small\item\em Reads a data block line from the passed stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Reads a data block line from the passed stream. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\bool \hyperlink{class_file_reader_a7a4c0a8dd415c1e8914b169fde2591c0}{are\+Elements\+Identical} (std\+::map$<$ \hyperlink{class_board_identifier}{Board\+Identifier}, T $>$ map)
+\begin{DoxyCompactList}\small\item\em Checks if all values stored in a map are identical. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -49,12 +58,14 @@ std\+::map$<$ \hyperlink{class_board_identifier}{Board\+Identifier}, std\+::list
 \begin{DoxyCompactList}\small\item\em Input file storage. \end{DoxyCompactList}\item 
 std\+::map$<$ \hyperlink{class_board_identifier}{Board\+Identifier}, std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ $>$ \hyperlink{class_file_reader_ad24e41220e68e1857fdef7df35c1d2da}{m\+\_\+input\+Streams}
 \begin{DoxyCompactList}\small\item\em Vector of input streams. \end{DoxyCompactList}\item 
+\hyperlink{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531}{Sync\+Type} \hyperlink{class_file_reader_aace1373e21949925dbfe568e4c8d7f56}{sync\+Type} = \hyperlink{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531a3d35358ce57d04ec9c0e07af48692c88}{null}
+\begin{DoxyCompactList}\small\item\em The type of syncronisation determined from the input files. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_file_reader_a2e6b51dae972af878f7751f2b6a54d75}{m\+\_\+rate\+Counter} = 0
-\item 
+\begin{DoxyCompactList}\small\item\em Used to scale the read speed based on m\+\_\+relative\+Rates. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_file_reader_a7e3ce1501c6bd018d818aab3bfa18cdb}{m\+\_\+counter\+Max} = 0
-\item 
+\begin{DoxyCompactList}\small\item\em Stores the maximum value m\+\_\+rate\+Counter should reach. \end{DoxyCompactList}\item 
 std\+::map$<$ \hyperlink{class_board_identifier}{Board\+Identifier}, unsigned int $>$ \hyperlink{class_file_reader_ab00c6ff706d8cee9ee064f9cc3258d08}{m\+\_\+relative\+Rates}
-\item 
+\begin{DoxyCompactList}\small\item\em The relative read speed of each input stream (i.\+e. Board ID) \end{DoxyCompactList}\item 
 std\+::map$<$ \hyperlink{class_board_identifier}{Board\+Identifier}, unsigned int $>$ \hyperlink{class_file_reader_a983147c8929ee236bfde512c98e7e90d}{m\+\_\+file\+Lengths}
 \begin{DoxyCompactList}\small\item\em Map to store file lengths. \end{DoxyCompactList}\item 
 std\+::map$<$ \hyperlink{class_board_identifier}{Board\+Identifier}, \hyperlink{class_file_reader_a7fb625dc45cee3256d37cc19c65cad86}{bundle\+Workspace} $>$ \hyperlink{class_file_reader_ac9ec812e6d9fbd7014cf0b4fc69557f9}{m\+\_\+bundle\+Workspaces}
@@ -62,13 +73,29 @@ std\+::map$<$ \hyperlink{class_board_identifier}{Board\+Identifier}, \hyperlink{
 std\+::array$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_file_reader_ac755c1e271610c2c12a7fc5b55cc048b}{bundle\+Buffer} $>$, 4 $>$ \hyperlink{class_file_reader_a038d1362d7e0458b3450ab8584eab688}{m\+\_\+word\+Bundle\+Buffers}
 \begin{DoxyCompactList}\small\item\em Pointers to shared \hyperlink{class_word_bundle}{Word\+Bundle} buffers. \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_file_reader_a44215632cb0ae7ee51991eb3213d03bf}{next\+Bundle\+Buffer\+Index} = 0
-\item 
+\begin{DoxyCompactList}\small\item\em Used to cycle through buffers (currently disabled due to bug) \end{DoxyCompactList}\item 
 const std\+::set$<$ unsigned int $>$ \hyperlink{class_file_reader_a7a0bb5e7cb117f6a415f005665893509}{filler\+Words} = \{ 0x\+A0\+A0\+A0\+A0, 0x\+B0\+B0\+B0\+B0, 0x\+C0\+C0\+C0\+C0, 0x\+D0\+D0\+D0\+D0 \}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Read files and outputs word bundles. 
+
+Reads in files passed by \hyperlink{class_file_reader_a5d487d37857d537ace41c31d6594ef3a}{stage\+Files()}. Files are sorted according to the chain ID, device ID and file number to ensure they are read in the correct order.
+
+Once files are sorted, for each board ID (combination of chain ID and device ID, see \hyperlink{class_board_identifier}{Board\+Identifier} class), the number of files is counted. If the files counts are all identical, the \hyperlink{class_file_reader}{File\+Reader} will continue in Time\+Sync mode. If not, it will continue in Size\+Sync Mode.
+
+{\bfseries Time\+Sync Mode}
+
+Time\+Sync Mode assumes new files are begun as soon as one of the previous is full. This means each will start at the same point in time, but that each file could be a different size in bytes.
+
+In Time\+Sync mode, files are groups together based on file number and read in together, so as to ensure synchronisation is kept across the different boards.
+
+{\bfseries Size\+Sync Mode}
+
+Size\+Sync Mode assums a new file is created for a given board as soon as the previous one is full. This leads to synchonisitiy between the different boards, and hence each board can have a different number of files.
+
+In Size\+Sync mode, the rate at which each file is read is scaled based on the relative number of files counted for each of the boards. This was board with less files are read more slowly so as to ensure syncronisation is kept. 
 
 \subsection{Member Typedef Documentation}
 \mbox{\Hypertarget{class_file_reader_ac755c1e271610c2c12a7fc5b55cc048b}\label{class_file_reader_ac755c1e271610c2c12a7fc5b55cc048b}} 
@@ -83,6 +110,29 @@ Read files and outputs word bundles.
 \subsubsection{\texorpdfstring{bundle\+Workspace}{bundleWorkspace}}
 {\footnotesize\ttfamily using \hyperlink{class_file_reader_a7fb625dc45cee3256d37cc19c65cad86}{File\+Reader\+::bundle\+Workspace} =  std\+::array$<$ std\+::unique\+\_\+ptr$<$\hyperlink{class_word_bundle}{Word\+Bundle}$>$, 4$>$\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531}\label{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531}} 
+\index{File\+Reader@{File\+Reader}!Sync\+Type@{Sync\+Type}}
+\index{Sync\+Type@{Sync\+Type}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{Sync\+Type}{SyncType}}
+{\footnotesize\ttfamily enum \hyperlink{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531}{File\+Reader\+::\+Sync\+Type}\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{equal\+Size@{equal\+Size}!File\+Reader@{File\+Reader}}\index{File\+Reader@{File\+Reader}!equal\+Size@{equal\+Size}}}\mbox{\Hypertarget{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531a6b72ad97055eb6a5c19ea9d412601ca8}\label{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531a6b72ad97055eb6a5c19ea9d412601ca8}} 
+equal\+Size&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{equal\+Time@{equal\+Time}!File\+Reader@{File\+Reader}}\index{File\+Reader@{File\+Reader}!equal\+Time@{equal\+Time}}}\mbox{\Hypertarget{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531ace0da9d32c3bd689d964979d99a7edc1}\label{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531ace0da9d32c3bd689d964979d99a7edc1}} 
+equal\+Time&Represents Size\+Sync Mode. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{null@{null}!File\+Reader@{File\+Reader}}\index{File\+Reader@{File\+Reader}!null@{null}}}\mbox{\Hypertarget{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531a3d35358ce57d04ec9c0e07af48692c88}\label{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531a3d35358ce57d04ec9c0e07af48692c88}} 
+null&Represents Time\+Sync Mode. Equivallent of 0, used to ensure a mode has been selected \\
+\hline
+
+\end{DoxyEnumFields}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -121,7 +171,20 @@ Adds a file to be read out.
 {\em file\+Path} & Path fo the file to add \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_file_reader_a58b80f2c9c2ec8381527bdfca1008007}\label{class_file_reader_a58b80f2c9c2ec8381527bdfca1008007}} 
+\mbox{\Hypertarget{class_file_reader_a7a4c0a8dd415c1e8914b169fde2591c0}\label{class_file_reader_a7a4c0a8dd415c1e8914b169fde2591c0}} 
+\index{File\+Reader@{File\+Reader}!are\+Elements\+Identical@{are\+Elements\+Identical}}
+\index{are\+Elements\+Identical@{are\+Elements\+Identical}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{are\+Elements\+Identical()}{areElementsIdentical()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool File\+Reader\+::are\+Elements\+Identical (\begin{DoxyParamCaption}\item[{std\+::map$<$ \hyperlink{class_board_identifier}{Board\+Identifier}, T $>$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks if all values stored in a map are identical. 
+
+For a map with \hyperlink{class_board_identifier}{Board\+Identifier} keys, will return true if all values are equal, otherwise will return false.
+
+Created as a template function to allow use over all the std\+::maps stored in the \hyperlink{class_file_reader}{File\+Reader}. \mbox{\Hypertarget{class_file_reader_a58b80f2c9c2ec8381527bdfca1008007}\label{class_file_reader_a58b80f2c9c2ec8381527bdfca1008007}} 
 \index{File\+Reader@{File\+Reader}!have\+Files\+Expired@{have\+Files\+Expired}}
 \index{have\+Files\+Expired@{have\+Files\+Expired}!File\+Reader@{File\+Reader}}
 \subsubsection{\texorpdfstring{have\+Files\+Expired()}{haveFilesExpired()}}
@@ -146,6 +209,12 @@ Checks if a number of bytes is valid, and takes action if not.
 {\em input\+Data} & Stream n\+Data\+Bytes was read from \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_file_reader_afefd5cfc826ebefa7d5ab06d6d967149}\label{class_file_reader_afefd5cfc826ebefa7d5ab06d6d967149}} 
+\index{File\+Reader@{File\+Reader}!process\+Data\+Packet@{process\+Data\+Packet}}
+\index{process\+Data\+Packet@{process\+Data\+Packet}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{process\+Data\+Packet()}{processDataPacket()}}
+{\footnotesize\ttfamily void File\+Reader\+::process\+Data\+Packet (\begin{DoxyParamCaption}\item[{const \hyperlink{class_board_identifier}{Board\+Identifier} \&}]{board\+ID,  }\item[{std\+::unique\+\_\+ptr$<$ std\+::ifstream $>$ \&}]{stream\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{class_file_reader_ac578b683eba751027766a2c30f03a28b}\label{class_file_reader_ac578b683eba751027766a2c30f03a28b}} 
 \index{File\+Reader@{File\+Reader}!read\+Data\+Block@{read\+Data\+Block}}
 \index{read\+Data\+Block@{read\+Data\+Block}!File\+Reader@{File\+Reader}}
@@ -246,6 +315,10 @@ Map of pointers used to create Word\+Bundles.
 \subsubsection{\texorpdfstring{m\+\_\+counter\+Max}{m\_counterMax}}
 {\footnotesize\ttfamily unsigned int File\+Reader\+::m\+\_\+counter\+Max = 0\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Stores the maximum value m\+\_\+rate\+Counter should reach. 
+
 \mbox{\Hypertarget{class_file_reader_a983147c8929ee236bfde512c98e7e90d}\label{class_file_reader_a983147c8929ee236bfde512c98e7e90d}} 
 \index{File\+Reader@{File\+Reader}!m\+\_\+file\+Lengths@{m\+\_\+file\+Lengths}}
 \index{m\+\_\+file\+Lengths@{m\+\_\+file\+Lengths}!File\+Reader@{File\+Reader}}
@@ -282,11 +355,19 @@ Vector of input streams.
 \subsubsection{\texorpdfstring{m\+\_\+rate\+Counter}{m\_rateCounter}}
 {\footnotesize\ttfamily unsigned int File\+Reader\+::m\+\_\+rate\+Counter = 0\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Used to scale the read speed based on m\+\_\+relative\+Rates. 
+
 \mbox{\Hypertarget{class_file_reader_ab00c6ff706d8cee9ee064f9cc3258d08}\label{class_file_reader_ab00c6ff706d8cee9ee064f9cc3258d08}} 
 \index{File\+Reader@{File\+Reader}!m\+\_\+relative\+Rates@{m\+\_\+relative\+Rates}}
 \index{m\+\_\+relative\+Rates@{m\+\_\+relative\+Rates}!File\+Reader@{File\+Reader}}
 \subsubsection{\texorpdfstring{m\+\_\+relative\+Rates}{m\_relativeRates}}
 {\footnotesize\ttfamily std\+::map$<$ \hyperlink{class_board_identifier}{Board\+Identifier}, unsigned int $>$ File\+Reader\+::m\+\_\+relative\+Rates\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The relative read speed of each input stream (i.\+e. Board ID) 
 
 \mbox{\Hypertarget{class_file_reader_a038d1362d7e0458b3450ab8584eab688}\label{class_file_reader_a038d1362d7e0458b3450ab8584eab688}} 
 \index{File\+Reader@{File\+Reader}!m\+\_\+word\+Bundle\+Buffers@{m\+\_\+word\+Bundle\+Buffers}}
@@ -303,6 +384,20 @@ Pointers to shared \hyperlink{class_word_bundle}{Word\+Bundle} buffers.
 \index{next\+Bundle\+Buffer\+Index@{next\+Bundle\+Buffer\+Index}!File\+Reader@{File\+Reader}}
 \subsubsection{\texorpdfstring{next\+Bundle\+Buffer\+Index}{nextBundleBufferIndex}}
 {\footnotesize\ttfamily unsigned int File\+Reader\+::next\+Bundle\+Buffer\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Used to cycle through buffers (currently disabled due to bug) 
+
+\mbox{\Hypertarget{class_file_reader_aace1373e21949925dbfe568e4c8d7f56}\label{class_file_reader_aace1373e21949925dbfe568e4c8d7f56}} 
+\index{File\+Reader@{File\+Reader}!sync\+Type@{sync\+Type}}
+\index{sync\+Type@{sync\+Type}!File\+Reader@{File\+Reader}}
+\subsubsection{\texorpdfstring{sync\+Type}{syncType}}
+{\footnotesize\ttfamily \hyperlink{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531}{Sync\+Type} File\+Reader\+::sync\+Type = \hyperlink{class_file_reader_aa591258dbf3366cfd674e84a1f2f6531a3d35358ce57d04ec9c0e07af48692c88}{null}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The type of syncronisation determined from the input files. 
 
 
 

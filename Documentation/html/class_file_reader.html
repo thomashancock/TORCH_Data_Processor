@@ -92,6 +92,11 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
+<tr class="memitem:aa591258dbf3366cfd674e84a1f2f6531"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531">SyncType</a> { <a class="el" href="class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531a6b72ad97055eb6a5c19ea9d412601ca8">equalSize</a>, 
+<a class="el" href="class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531ace0da9d32c3bd689d964979d99a7edc1">equalTime</a>, 
+<a class="el" href="class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531a3d35358ce57d04ec9c0e07af48692c88">null</a>
+ }</td></tr>
+<tr class="separator:aa591258dbf3366cfd674e84a1f2f6531"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac755c1e271610c2c12a7fc5b55cc048b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ac755c1e271610c2c12a7fc5b55cc048b">bundleBuffer</a> = <a class="el" href="class_thread_safe_queue.html">ThreadSafeQueue</a>&lt; std::unique_ptr&lt; <a class="el" href="class_word_bundle.html">WordBundle</a> &gt; &gt;</td></tr>
 <tr class="separator:ac755c1e271610c2c12a7fc5b55cc048b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fb625dc45cee3256d37cc19c65cad86"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a7fb625dc45cee3256d37cc19c65cad86">bundleWorkspace</a> = std::array&lt; std::unique_ptr&lt; <a class="el" href="class_word_bundle.html">WordBundle</a> &gt;, 4 &gt;</td></tr>
@@ -108,6 +113,8 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a98606ec7d315f1ed6f90c531df0d09f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a98606ec7d315f1ed6f90c531df0d09f9">runProcessingLoop</a> ()</td></tr>
 <tr class="memdesc:a98606ec7d315f1ed6f90c531df0d09f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a single data block from each file.  <a href="#a98606ec7d315f1ed6f90c531df0d09f9">More...</a><br /></td></tr>
 <tr class="separator:a98606ec7d315f1ed6f90c531df0d09f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afefd5cfc826ebefa7d5ab06d6d967149"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#afefd5cfc826ebefa7d5ab06d6d967149">processDataPacket</a> (const <a class="el" href="class_board_identifier.html">BoardIdentifier</a> &amp;boardID, std::unique_ptr&lt; std::ifstream &gt; &amp;streamPtr)</td></tr>
+<tr class="separator:afefd5cfc826ebefa7d5ab06d6d967149"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94181d78b29ebacf2a4b3b3cd03a6750"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a94181d78b29ebacf2a4b3b3cd03a6750">readHeaderLine</a> (std::unique_ptr&lt; std::ifstream &gt; &amp;inputData)</td></tr>
 <tr class="memdesc:a94181d78b29ebacf2a4b3b3cd03a6750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a header line from the passed stream.  <a href="#a94181d78b29ebacf2a4b3b3cd03a6750">More...</a><br /></td></tr>
 <tr class="separator:a94181d78b29ebacf2a4b3b3cd03a6750"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,6 +124,10 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ac578b683eba751027766a2c30f03a28b"><td class="memItemLeft" align="right" valign="top">std::array&lt; unsigned int, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ac578b683eba751027766a2c30f03a28b">readDataBlock</a> (std::unique_ptr&lt; std::ifstream &gt; &amp;inputData)</td></tr>
 <tr class="memdesc:ac578b683eba751027766a2c30f03a28b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a data block line from the passed stream.  <a href="#ac578b683eba751027766a2c30f03a28b">More...</a><br /></td></tr>
 <tr class="separator:ac578b683eba751027766a2c30f03a28b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a4c0a8dd415c1e8914b169fde2591c0"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a7a4c0a8dd415c1e8914b169fde2591c0"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a7a4c0a8dd415c1e8914b169fde2591c0">areElementsIdentical</a> (std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, T &gt; map)</td></tr>
+<tr class="memdesc:a7a4c0a8dd415c1e8914b169fde2591c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if all values stored in a map are identical.  <a href="#a7a4c0a8dd415c1e8914b169fde2591c0">More...</a><br /></td></tr>
+<tr class="separator:a7a4c0a8dd415c1e8914b169fde2591c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -126,11 +137,17 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ad24e41220e68e1857fdef7df35c1d2da"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, std::unique_ptr&lt; std::ifstream &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ad24e41220e68e1857fdef7df35c1d2da">m_inputStreams</a></td></tr>
 <tr class="memdesc:ad24e41220e68e1857fdef7df35c1d2da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of input streams.  <a href="#ad24e41220e68e1857fdef7df35c1d2da">More...</a><br /></td></tr>
 <tr class="separator:ad24e41220e68e1857fdef7df35c1d2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aace1373e21949925dbfe568e4c8d7f56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531">SyncType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#aace1373e21949925dbfe568e4c8d7f56">syncType</a> = <a class="el" href="class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531a3d35358ce57d04ec9c0e07af48692c88">null</a></td></tr>
+<tr class="memdesc:aace1373e21949925dbfe568e4c8d7f56"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of syncronisation determined from the input files.  <a href="#aace1373e21949925dbfe568e4c8d7f56">More...</a><br /></td></tr>
+<tr class="separator:aace1373e21949925dbfe568e4c8d7f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e6b51dae972af878f7751f2b6a54d75"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a2e6b51dae972af878f7751f2b6a54d75">m_rateCounter</a> = 0</td></tr>
+<tr class="memdesc:a2e6b51dae972af878f7751f2b6a54d75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to scale the read speed based on m_relativeRates.  <a href="#a2e6b51dae972af878f7751f2b6a54d75">More...</a><br /></td></tr>
 <tr class="separator:a2e6b51dae972af878f7751f2b6a54d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e3ce1501c6bd018d818aab3bfa18cdb"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a7e3ce1501c6bd018d818aab3bfa18cdb">m_counterMax</a> = 0</td></tr>
+<tr class="memdesc:a7e3ce1501c6bd018d818aab3bfa18cdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the maximum value m_rateCounter should reach.  <a href="#a7e3ce1501c6bd018d818aab3bfa18cdb">More...</a><br /></td></tr>
 <tr class="separator:a7e3ce1501c6bd018d818aab3bfa18cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab00c6ff706d8cee9ee064f9cc3258d08"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#ab00c6ff706d8cee9ee064f9cc3258d08">m_relativeRates</a></td></tr>
+<tr class="memdesc:ab00c6ff706d8cee9ee064f9cc3258d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">The relative read speed of each input stream (i.e. Board ID)  <a href="#ab00c6ff706d8cee9ee064f9cc3258d08">More...</a><br /></td></tr>
 <tr class="separator:ab00c6ff706d8cee9ee064f9cc3258d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a983147c8929ee236bfde512c98e7e90d"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a983147c8929ee236bfde512c98e7e90d">m_fileLengths</a></td></tr>
 <tr class="memdesc:a983147c8929ee236bfde512c98e7e90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map to store file lengths.  <a href="#a983147c8929ee236bfde512c98e7e90d">More...</a><br /></td></tr>
@@ -142,12 +159,21 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:a038d1362d7e0458b3450ab8584eab688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointers to shared <a class="el" href="class_word_bundle.html" title="Stores a collection of data words along with their associated ROC value. ">WordBundle</a> buffers.  <a href="#a038d1362d7e0458b3450ab8584eab688">More...</a><br /></td></tr>
 <tr class="separator:a038d1362d7e0458b3450ab8584eab688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44215632cb0ae7ee51991eb3213d03bf"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a44215632cb0ae7ee51991eb3213d03bf">nextBundleBufferIndex</a> = 0</td></tr>
+<tr class="memdesc:a44215632cb0ae7ee51991eb3213d03bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to cycle through buffers (currently disabled due to bug)  <a href="#a44215632cb0ae7ee51991eb3213d03bf">More...</a><br /></td></tr>
 <tr class="separator:a44215632cb0ae7ee51991eb3213d03bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a0bb5e7cb117f6a415f005665893509"><td class="memItemLeft" align="right" valign="top">const std::set&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_file_reader.html#a7a0bb5e7cb117f6a415f005665893509">fillerWords</a> = { 0xA0A0A0A0, 0xB0B0B0B0, 0xC0C0C0C0, 0xD0D0D0D0 }</td></tr>
 <tr class="separator:a7a0bb5e7cb117f6a415f005665893509"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Read files and outputs word bundles. </p>
+<p>Reads in files passed by <a class="el" href="class_file_reader.html#a5d487d37857d537ace41c31d6594ef3a" title="Stages files to be read out together. ">stageFiles()</a>. Files are sorted according to the chain ID, device ID and file number to ensure they are read in the correct order.</p>
+<p>Once files are sorted, for each board ID (combination of chain ID and device ID, see <a class="el" href="class_board_identifier.html" title="Class used to uniquely idenfity combinations of board informtion. ">BoardIdentifier</a> class), the number of files is counted. If the files counts are all identical, the <a class="el" href="class_file_reader.html" title="Read files and outputs word bundles. ">FileReader</a> will continue in TimeSync mode. If not, it will continue in SizeSync Mode.</p>
+<p><b>TimeSync Mode</b></p>
+<p>TimeSync Mode assumes new files are begun as soon as one of the previous is full. This means each will start at the same point in time, but that each file could be a different size in bytes.</p>
+<p>In TimeSync mode, files are groups together based on file number and read in together, so as to ensure synchronisation is kept across the different boards.</p>
+<p><b>SizeSync Mode</b></p>
+<p>SizeSync Mode assums a new file is created for a given board as soon as the previous one is full. This leads to synchonisitiy between the different boards, and hence each board can have a different number of files.</p>
+<p>In SizeSync mode, the rate at which each file is read is scaled based on the relative number of files counted for each of the boards. This was board with less files are read more slowly so as to ensure syncronisation is kept. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="ac755c1e271610c2c12a7fc5b55cc048b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac755c1e271610c2c12a7fc5b55cc048b">&#9670;&nbsp;</a></span>bundleBuffer</h2>
@@ -190,6 +216,37 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="aa591258dbf3366cfd674e84a1f2f6531"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa591258dbf3366cfd674e84a1f2f6531">&#9670;&nbsp;</a></span>SyncType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531">FileReader::SyncType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa591258dbf3366cfd674e84a1f2f6531a6b72ad97055eb6a5c19ea9d412601ca8"></a>equalSize&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa591258dbf3366cfd674e84a1f2f6531ace0da9d32c3bd689d964979d99a7edc1"></a>equalTime&#160;</td><td class="fielddoc"><p>Represents SizeSync Mode. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa591258dbf3366cfd674e84a1f2f6531a3d35358ce57d04ec9c0e07af48692c88"></a>null&#160;</td><td class="fielddoc"><p>Represents TimeSync Mode. </p>
+<p>Equivallent of 0, used to ensure a mode has been selected </p>
+</td></tr>
+</table>
 
 </div>
 </div>
@@ -263,6 +320,38 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a7a4c0a8dd415c1e8914b169fde2591c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a4c0a8dd415c1e8914b169fde2591c0">&#9670;&nbsp;</a></span>areElementsIdentical()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FileReader::areElementsIdentical </td>
+          <td>(</td>
+          <td class="paramtype">std::map&lt; <a class="el" href="class_board_identifier.html">BoardIdentifier</a>, T &gt;&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if all values stored in a map are identical. </p>
+<p>For a map with <a class="el" href="class_board_identifier.html" title="Class used to uniquely idenfity combinations of board informtion. ">BoardIdentifier</a> keys, will return true if all values are equal, otherwise will return false.</p>
+<p>Created as a template function to allow use over all the std::maps stored in the <a class="el" href="class_file_reader.html" title="Read files and outputs word bundles. ">FileReader</a>. </p>
 
 </div>
 </div>
@@ -340,6 +429,42 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="afefd5cfc826ebefa7d5ab06d6d967149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afefd5cfc826ebefa7d5ab06d6d967149">&#9670;&nbsp;</a></span>processDataPacket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileReader::processDataPacket </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_board_identifier.html">BoardIdentifier</a> &amp;&#160;</td>
+          <td class="paramname"><em>boardID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unique_ptr&lt; std::ifstream &gt; &amp;&#160;</td>
+          <td class="paramname"><em>streamPtr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -579,6 +704,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Stores the maximum value m_rateCounter should reach. </p>
+
 </div>
 </div>
 <a id="a983147c8929ee236bfde512c98e7e90d"></a>
@@ -673,6 +800,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Used to scale the read speed based on m_relativeRates. </p>
+
 </div>
 </div>
 <a id="ab00c6ff706d8cee9ee064f9cc3258d08"></a>
@@ -694,6 +823,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>The relative read speed of each input stream (i.e. Board ID) </p>
 
 </div>
 </div>
@@ -740,6 +871,32 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Used to cycle through buffers (currently disabled due to bug) </p>
+
+</div>
+</div>
+<a id="aace1373e21949925dbfe568e4c8d7f56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aace1373e21949925dbfe568e4c8d7f56">&#9670;&nbsp;</a></span>syncType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531">SyncType</a> FileReader::syncType = <a class="el" href="class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531a3d35358ce57d04ec9c0e07af48692c88">null</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The type of syncronisation determined from the input files. </p>
 
 </div>
 </div>

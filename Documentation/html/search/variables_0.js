@@ -1,7 +1,9 @@
 var searchData=
 [
   ['b_5fbunchid',['b_bunchID',['../class_event_tree_manager.html#a4953fdf79783fdd5c0b867af1dbd8f3d',1,'EventTreeManager::b_bunchID()'],['../class_packet_tree_manager.html#a3f7da74c8d3e4f3323c7ffdb8b845c45',1,'PacketTreeManager::b_bunchID()']]],
+  ['b_5fchainid',['b_chainID',['../class_event_tree_manager.html#acad948110ea80051649765fdbed3fc91',1,'EventTreeManager::b_chainID()'],['../class_packet_tree_manager.html#adc5ce7f7482c38f9d5241dd213d777ec',1,'PacketTreeManager::b_chainID()']]],
   ['b_5fchannelid',['b_channelID',['../class_event_tree_manager.html#a663158889f41e6c32537aa698292e4ec',1,'EventTreeManager']]],
+  ['b_5fdeviceid',['b_deviceID',['../class_event_tree_manager.html#ab715e26f142e12ccd0e4ed6751959f0f',1,'EventTreeManager::b_deviceID()'],['../class_packet_tree_manager.html#a3b24072d6fecb5f36a2f23a9e442f74b',1,'PacketTreeManager::b_deviceID()']]],
   ['b_5feventid',['b_eventID',['../class_event_tree_manager.html#a3dea1a727165f6864be347642fc0728f',1,'EventTreeManager::b_eventID()'],['../class_packet_tree_manager.html#a854d865fd2916a85e22560fee8a5c592',1,'PacketTreeManager::b_eventID()']]],
   ['b_5fiscomplete',['b_isComplete',['../class_event_tree_manager.html#a6e9b9bd6363f95fce295b19cb544ea83',1,'EventTreeManager']]],
   ['b_5fleadingchannelid',['b_leadingChannelID',['../class_packet_tree_manager.html#a14090e7e05b84788ac03b36843edb926',1,'PacketTreeManager']]],
@@ -13,7 +15,7 @@ var searchData=
   ['b_5fnheaders',['b_nHeaders',['../class_event_tree_manager.html#ac85cc79e72eaec4f7554a10e12e4d75a',1,'EventTreeManager']]],
   ['b_5fnhits',['b_nHits',['../class_event_tree_manager.html#a7b7301d89e353ca96b42bcfb360c325e',1,'EventTreeManager']]],
   ['b_5fnleadingedges',['b_nLeadingEdges',['../class_event_tree_manager.html#ac32836178a53f00fe5417e533a0390f1',1,'EventTreeManager::b_nLeadingEdges()'],['../class_packet_tree_manager.html#a146354471ea64dae67959dd833c100c2',1,'PacketTreeManager::b_nLeadingEdges()']]],
-  ['b_5fntdcs',['b_nTDCs',['../class_event_tree_manager.html#a8414d85d8ae7c9ea4ae3873c57121749',1,'EventTreeManager']]],
+  ['b_5fnreadouts',['b_nReadouts',['../class_event_tree_manager.html#a423068e1ef8766b602d5383bfe38494b',1,'EventTreeManager']]],
   ['b_5fntrailers',['b_nTrailers',['../class_event_tree_manager.html#ae3d13f63577de75ec8a673ddb8686629',1,'EventTreeManager']]],
   ['b_5fntrailingedges',['b_nTrailingEdges',['../class_event_tree_manager.html#aabb6a03aaab8095cb3e5e04d8389194a',1,'EventTreeManager::b_nTrailingEdges()'],['../class_packet_tree_manager.html#a64f60068f8f3d5d2531a61d11b877b85',1,'PacketTreeManager::b_nTrailingEdges()']]],
   ['b_5froctime',['b_rocTime',['../class_event_tree_manager.html#acc8b0c67ad8e331ea9fc3f94a57d072b',1,'EventTreeManager::b_rocTime()'],['../class_packet_tree_manager.html#a710e3e4d48e842b512720774ab05e83a',1,'PacketTreeManager::b_rocTime()']]],

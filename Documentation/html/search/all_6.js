@@ -5,7 +5,7 @@ var searchData=
   ['getchainid',['getChainID',['../class_board_identifier.html#ad909f0c1eb9f80ec177ea8526c94d011',1,'BoardIdentifier']]],
   ['getchannelid',['getChannelID',['../class_edge.html#a5420f88056570dc33c697c99a211634c',1,'Edge::getChannelID()'],['../class_packet.html#a8a767973ff4b30b417716bbb071ccf33',1,'Packet::getChannelID()'],['../namespacebindec.html#af1997af0743251d010780a8f728fcd7e',1,'bindec::getChannelID()']]],
   ['getchannelmappingkey',['getChannelMappingKey',['../class_config.html#a29f6393b81473d6590f5cd6f6e927693',1,'Config']]],
-  ['getcoordinate',['getCoordinate',['../_make_hitmap_8cxx.html#a833fe74c1d6a7922d5371ab0d3787aae',1,'MakeHitmap.cxx']]],
+  ['getcoordinate',['getCoordinate',['../_make2_m_c_p_hitmap_8cxx.html#a833fe74c1d6a7922d5371ab0d3787aae',1,'getCoordinate(const uint channelID):&#160;Make2MCPHitmap.cxx'],['../_make_hitmap_8cxx.html#a833fe74c1d6a7922d5371ab0d3787aae',1,'getCoordinate(const uint channelID):&#160;MakeHitmap.cxx']]],
   ['getdatatype',['getDataType',['../namespacebindec.html#a7a98adfd04c65f870f74a423bfd744fe',1,'bindec']]],
   ['getdeviceid',['getDeviceID',['../class_board_identifier.html#a8f3d818c08107a42fe9305607be38a3b',1,'BoardIdentifier']]],
   ['getedge',['getEdge',['../class_packet.html#a457fdd6c0e5cdb161a77550203504e6d',1,'Packet']]],

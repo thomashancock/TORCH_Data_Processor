@@ -14,9 +14,11 @@ var searchData=
   ['stagenextfile',['stageNextFile',['../class_file_reader.html#ad4d5d927c5d9ceb26bba7ec1f6c60737',1,'FileReader']]],
   ['std4x64mapping',['std4x64Mapping',['../namespacechlmap.html#a8acaf58562324b3f691a218f08c7afe4',1,'chlmap']]],
   ['std8x64mapping',['std8x64Mapping',['../namespacechlmap.html#a11d7121de30a32ead9032c59221b7442',1,'chlmap']]],
+  ['std8x64mappingfor2mcps',['std8x64Mappingfor2MCPs',['../namespacechlmap.html#ae2a84ef16a6ad086ad62d389f29fd63a',1,'chlmap']]],
   ['std_5ferr',['STD_ERR',['../_debug_8hpp.html#a2e40cf1121da97f65cd8cd7a0f4b875c',1,'Debug.hpp']]],
   ['std_5flog',['STD_LOG',['../_debug_8hpp.html#aa91b2b6aa2442d8685e651ffa9500ee2',1,'Debug.hpp']]],
   ['std_5flog_5fvar',['STD_LOG_VAR',['../_debug_8hpp.html#a2c4628fa536258a74e9047ed17420ac2',1,'Debug.hpp']]],
   ['std_5flog_5fvar_5fhex',['STD_LOG_VAR_HEX',['../_debug_8hpp.html#a33be4044dbfd4b89b4bef8602b50004a',1,'Debug.hpp']]],
-  ['stoui',['stoui',['../class_config.html#ad305a1492600c9864697562038f2b109',1,'Config']]]
+  ['stoui',['stoui',['../class_config.html#ad305a1492600c9864697562038f2b109',1,'Config']]],
+  ['synctype',['syncType',['../class_file_reader.html#aace1373e21949925dbfe568e4c8d7f56',1,'FileReader::syncType()'],['../class_file_reader.html#aa591258dbf3366cfd674e84a1f2f6531',1,'FileReader::SyncType()']]]
 ];

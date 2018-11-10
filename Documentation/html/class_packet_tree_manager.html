@@ -96,7 +96,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a90ff78b3122c0b3fad62bc927778dda9 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a90ff78b3122c0b3fad62bc927778dda9">RootManager</a> (std::shared_ptr&lt; const <a class="el" href="class_config.html">Config</a> &gt; config, const std::string outFileName, const std::string treeName)</td></tr>
 <tr class="memdesc:a90ff78b3122c0b3fad62bc927778dda9 inherit pub_methods_class_root_manager"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_root_manager.html#a90ff78b3122c0b3fad62bc927778dda9">More...</a><br /></td></tr>
 <tr class="separator:a90ff78b3122c0b3fad62bc927778dda9 inherit pub_methods_class_root_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61">~RootManager</a> ()</td></tr>
+<tr class="memitem:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61">~RootManager</a> ()</td></tr>
 <tr class="memdesc:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explicit deconstructor.  <a href="class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61">More...</a><br /></td></tr>
 <tr class="separator:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbe916dd56e5ec51f89c7643c4847842 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#adbe916dd56e5ec51f89c7643c4847842">writeTree</a> ()</td></tr>
@@ -111,6 +111,12 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:adc5ce7f7482c38f9d5241dd213d777ec"><td class="memItemLeft" align="right" valign="top">UInt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet_tree_manager.html#adc5ce7f7482c38f9d5241dd213d777ec">b_chainID</a> = 0</td></tr>
+<tr class="memdesc:adc5ce7f7482c38f9d5241dd213d777ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable: TDC ID.  <a href="#adc5ce7f7482c38f9d5241dd213d777ec">More...</a><br /></td></tr>
+<tr class="separator:adc5ce7f7482c38f9d5241dd213d777ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b24072d6fecb5f36a2f23a9e442f74b"><td class="memItemLeft" align="right" valign="top">UInt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet_tree_manager.html#a3b24072d6fecb5f36a2f23a9e442f74b">b_deviceID</a> = 0</td></tr>
+<tr class="memdesc:a3b24072d6fecb5f36a2f23a9e442f74b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable: TDC ID.  <a href="#a3b24072d6fecb5f36a2f23a9e442f74b">More...</a><br /></td></tr>
+<tr class="separator:a3b24072d6fecb5f36a2f23a9e442f74b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a07d44397bd25e8fc1e9db65f472d1a"><td class="memItemLeft" align="right" valign="top">UInt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet_tree_manager.html#a5a07d44397bd25e8fc1e9db65f472d1a">b_tdcID</a> = 0</td></tr>
 <tr class="memdesc:a5a07d44397bd25e8fc1e9db65f472d1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable: TDC ID.  <a href="#a5a07d44397bd25e8fc1e9db65f472d1a">More...</a><br /></td></tr>
 <tr class="separator:a5a07d44397bd25e8fc1e9db65f472d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -292,6 +298,54 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Branch Variable: Bunch ID. </p>
+
+</div>
+</div>
+<a id="adc5ce7f7482c38f9d5241dd213d777ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc5ce7f7482c38f9d5241dd213d777ec">&#9670;&nbsp;</a></span>b_chainID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UInt_t PacketTreeManager::b_chainID = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Branch Variable: TDC ID. </p>
+
+</div>
+</div>
+<a id="a3b24072d6fecb5f36a2f23a9e442f74b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b24072d6fecb5f36a2f23a9e442f74b">&#9670;&nbsp;</a></span>b_deviceID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UInt_t PacketTreeManager::b_deviceID = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Branch Variable: TDC ID. </p>
 
 </div>
 </div>

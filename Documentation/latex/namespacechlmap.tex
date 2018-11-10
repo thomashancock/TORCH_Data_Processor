@@ -19,6 +19,8 @@ void \hyperlink{namespacechlmap_a945bd413e64427712373da77277dd443}{set\+Channel\
 \begin{DoxyCompactList}\small\item\em Raw Electronics Channel ID. \end{DoxyCompactList}\item 
 \hyperlink{namespacechlmap_a5bb86fec567a6f1a0646881a9284bb01}{Channel\+Mapping} \hyperlink{namespacechlmap_a11d7121de30a32ead9032c59221b7442}{std8x64\+Mapping}
 \begin{DoxyCompactList}\small\item\em 0 -\/ 511 Channel Mapping for 8x64 M\+CP \end{DoxyCompactList}\item 
+\hyperlink{namespacechlmap_a5bb86fec567a6f1a0646881a9284bb01}{Channel\+Mapping} \hyperlink{namespacechlmap_ae2a84ef16a6ad086ad62d389f29fd63a}{std8x64\+Mappingfor2\+M\+C\+Ps}
+\begin{DoxyCompactList}\small\item\em 0 -\/ 1023 Channel Mapping for two 8x64 M\+C\+Ps \end{DoxyCompactList}\item 
 \hyperlink{namespacechlmap_a5bb86fec567a6f1a0646881a9284bb01}{Channel\+Mapping} \hyperlink{namespacechlmap_addbd4a4856137809b06e1bffd39e2897}{slot\+Inversion8x64\+Mapping}
 \begin{DoxyCompactList}\small\item\em 0 -\/ 511 Channel Mapping for 8x64 M\+CP \end{DoxyCompactList}\item 
 \hyperlink{namespacechlmap_a5bb86fec567a6f1a0646881a9284bb01}{Channel\+Mapping} \hyperlink{namespacechlmap_a8acaf58562324b3f691a218f08c7afe4}{std4x64\+Mapping}
@@ -169,4 +171,31 @@ Raw Electronics Channel ID.
 
 
 0 -\/ 511 Channel Mapping for 8x64 M\+CP 
+
+\mbox{\Hypertarget{namespacechlmap_ae2a84ef16a6ad086ad62d389f29fd63a}\label{namespacechlmap_ae2a84ef16a6ad086ad62d389f29fd63a}} 
+\index{chlmap@{chlmap}!std8x64\+Mappingfor2\+M\+C\+Ps@{std8x64\+Mappingfor2\+M\+C\+Ps}}
+\index{std8x64\+Mappingfor2\+M\+C\+Ps@{std8x64\+Mappingfor2\+M\+C\+Ps}!chlmap@{chlmap}}
+\subsubsection{\texorpdfstring{std8x64\+Mappingfor2\+M\+C\+Ps}{std8x64Mappingfor2MCPs}}
+{\footnotesize\ttfamily \hyperlink{namespacechlmap_a5bb86fec567a6f1a0646881a9284bb01}{chlmap\+::\+Channel\+Mapping} chlmap\+::std8x64\+Mappingfor2\+M\+C\+Ps}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= [] (
+    \textcolor{keyword}{const} \hyperlink{class_board_identifier}{BoardIdentifier}& identifier,
+    \textcolor{keyword}{const} \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} tdcID,
+    \textcolor{keyword}{const} \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} channelID
+) \{
+    \hyperlink{_packet_8cpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} localID = (tdcID%4)*16 + 128 * static\_cast<int>(tdcID / 4.0);
+    \textcolor{keywordflow}{if} (0 == channelID%2) \{
+        localID += 15 - \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(channelID / 2); 
+    \} \textcolor{keywordflow}{else} \{
+        localID += 79 - \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}((channelID - 1) / 2); 
+    \}
+    localID += 256*identifier.\hyperlink{class_board_identifier_ad909f0c1eb9f80ec177ea8526c94d011}{getChainID}();
+    \textcolor{keywordflow}{return} localID;
+\}
+\end{DoxyCode}
+
+
+0 -\/ 1023 Channel Mapping for two 8x64 M\+C\+Ps 
 

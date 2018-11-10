@@ -86,9 +86,9 @@ Inheritance diagram for EventTreeManager:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac56641a71c28863d76fcc598ac8e32df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#ac56641a71c28863d76fcc598ac8e32df">EventTreeManager</a> (std::shared_ptr&lt; const <a class="el" href="class_config.html">Config</a> &gt; config, const std::string outfileName, const unsigned int nTDCs)</td></tr>
-<tr class="memdesc:ac56641a71c28863d76fcc598ac8e32df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ac56641a71c28863d76fcc598ac8e32df">More...</a><br /></td></tr>
-<tr class="separator:ac56641a71c28863d76fcc598ac8e32df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a923f2a2c38074ddc0d6eb55091400a5f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#a923f2a2c38074ddc0d6eb55091400a5f">EventTreeManager</a> (std::shared_ptr&lt; const <a class="el" href="class_config.html">Config</a> &gt; config, const std::string outfileName, const unsigned int nReadouts)</td></tr>
+<tr class="memdesc:a923f2a2c38074ddc0d6eb55091400a5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a923f2a2c38074ddc0d6eb55091400a5f">More...</a><br /></td></tr>
+<tr class="separator:a923f2a2c38074ddc0d6eb55091400a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acabb2f6c8dd0e08375b4cf8bf2c148fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#acabb2f6c8dd0e08375b4cf8bf2c148fd">add</a> (std::unique_ptr&lt; <a class="el" href="class_event.html">Event</a> &gt; event) final</td></tr>
 <tr class="memdesc:acabb2f6c8dd0e08375b4cf8bf2c148fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an event to the tree, then destroys the event.  <a href="#acabb2f6c8dd0e08375b4cf8bf2c148fd">More...</a><br /></td></tr>
 <tr class="separator:acabb2f6c8dd0e08375b4cf8bf2c148fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -96,7 +96,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a90ff78b3122c0b3fad62bc927778dda9 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a90ff78b3122c0b3fad62bc927778dda9">RootManager</a> (std::shared_ptr&lt; const <a class="el" href="class_config.html">Config</a> &gt; config, const std::string outFileName, const std::string treeName)</td></tr>
 <tr class="memdesc:a90ff78b3122c0b3fad62bc927778dda9 inherit pub_methods_class_root_manager"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_root_manager.html#a90ff78b3122c0b3fad62bc927778dda9">More...</a><br /></td></tr>
 <tr class="separator:a90ff78b3122c0b3fad62bc927778dda9 inherit pub_methods_class_root_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61">~RootManager</a> ()</td></tr>
+<tr class="memitem:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61">~RootManager</a> ()</td></tr>
 <tr class="memdesc:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explicit deconstructor.  <a href="class_root_manager.html#a68a189a7705b9da1da82a95ef9840d61">More...</a><br /></td></tr>
 <tr class="separator:a68a189a7705b9da1da82a95ef9840d61 inherit pub_methods_class_root_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbe916dd56e5ec51f89c7643c4847842 inherit pub_methods_class_root_manager"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_root_manager.html#adbe916dd56e5ec51f89c7643c4847842">writeTree</a> ()</td></tr>
@@ -111,9 +111,9 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a87c672aa1531b362b15eddf11cab00c8"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#a87c672aa1531b362b15eddf11cab00c8">m_nTDCs</a></td></tr>
-<tr class="memdesc:a87c672aa1531b362b15eddf11cab00c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of TDCs.  <a href="#a87c672aa1531b362b15eddf11cab00c8">More...</a><br /></td></tr>
-<tr class="separator:a87c672aa1531b362b15eddf11cab00c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0fce7275ef1c587302ff67e53ad5a77"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#ac0fce7275ef1c587302ff67e53ad5a77">m_nReadouts</a></td></tr>
+<tr class="memdesc:ac0fce7275ef1c587302ff67e53ad5a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of TDCs.  <a href="#ac0fce7275ef1c587302ff67e53ad5a77">More...</a><br /></td></tr>
+<tr class="separator:ac0fce7275ef1c587302ff67e53ad5a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea70f1feef081fb124517ba8efc4087b"><td class="memItemLeft" align="right" valign="top">const std::set&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#aea70f1feef081fb124517ba8efc4087b">m_edgeMatchingExclusions</a></td></tr>
 <tr class="memdesc:aea70f1feef081fb124517ba8efc4087b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to store edge matching exclusions.  <a href="#aea70f1feef081fb124517ba8efc4087b">More...</a><br /></td></tr>
 <tr class="separator:aea70f1feef081fb124517ba8efc4087b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,35 +123,41 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ab99e54a6c2d4c59bb073038649b3ae4f"><td class="memItemLeft" align="right" valign="top">Bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#ab99e54a6c2d4c59bb073038649b3ae4f">b_wasDumped</a> = false</td></tr>
 <tr class="memdesc:ab99e54a6c2d4c59bb073038649b3ae4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable: Was the event dumped?  <a href="#ab99e54a6c2d4c59bb073038649b3ae4f">More...</a><br /></td></tr>
 <tr class="separator:ab99e54a6c2d4c59bb073038649b3ae4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8414d85d8ae7c9ea4ae3873c57121749"><td class="memItemLeft" align="right" valign="top">UInt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#a8414d85d8ae7c9ea4ae3873c57121749">b_nTDCs</a> = 0</td></tr>
-<tr class="memdesc:a8414d85d8ae7c9ea4ae3873c57121749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable: The number of TDCs.  <a href="#a8414d85d8ae7c9ea4ae3873c57121749">More...</a><br /></td></tr>
-<tr class="separator:a8414d85d8ae7c9ea4ae3873c57121749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a423068e1ef8766b602d5383bfe38494b"><td class="memItemLeft" align="right" valign="top">UInt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#a423068e1ef8766b602d5383bfe38494b">b_nReadouts</a> = 0</td></tr>
+<tr class="memdesc:a423068e1ef8766b602d5383bfe38494b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable: The number of Readouts (= nTDC chips used)  <a href="#a423068e1ef8766b602d5383bfe38494b">More...</a><br /></td></tr>
+<tr class="separator:a423068e1ef8766b602d5383bfe38494b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acad948110ea80051649765fdbed3fc91"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#acad948110ea80051649765fdbed3fc91">b_chainID</a> = nullptr</td></tr>
+<tr class="memdesc:acad948110ea80051649765fdbed3fc91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: Chain ID.  <a href="#acad948110ea80051649765fdbed3fc91">More...</a><br /></td></tr>
+<tr class="separator:acad948110ea80051649765fdbed3fc91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab715e26f142e12ccd0e4ed6751959f0f"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#ab715e26f142e12ccd0e4ed6751959f0f">b_deviceID</a> = nullptr</td></tr>
+<tr class="memdesc:ab715e26f142e12ccd0e4ed6751959f0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: Device ID.  <a href="#ab715e26f142e12ccd0e4ed6751959f0f">More...</a><br /></td></tr>
+<tr class="separator:ab715e26f142e12ccd0e4ed6751959f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e8cb571dd8ffe1295e9e31ce45c5d82"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#a0e8cb571dd8ffe1295e9e31ce45c5d82">b_tdcID</a> = nullptr</td></tr>
-<tr class="memdesc:a0e8cb571dd8ffe1295e9e31ce45c5d82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nTDCs]: TCD ID.  <a href="#a0e8cb571dd8ffe1295e9e31ce45c5d82">More...</a><br /></td></tr>
+<tr class="memdesc:a0e8cb571dd8ffe1295e9e31ce45c5d82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: TCD ID.  <a href="#a0e8cb571dd8ffe1295e9e31ce45c5d82">More...</a><br /></td></tr>
 <tr class="separator:a0e8cb571dd8ffe1295e9e31ce45c5d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dea1a727165f6864be347642fc0728f"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#a3dea1a727165f6864be347642fc0728f">b_eventID</a> = nullptr</td></tr>
-<tr class="memdesc:a3dea1a727165f6864be347642fc0728f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nTDCs]: <a class="el" href="class_event.html" title="Container class for Packets. ">Event</a> ID for each TDC.  <a href="#a3dea1a727165f6864be347642fc0728f">More...</a><br /></td></tr>
+<tr class="memdesc:a3dea1a727165f6864be347642fc0728f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: <a class="el" href="class_event.html" title="Container class for Packets. ">Event</a> ID for each TDC.  <a href="#a3dea1a727165f6864be347642fc0728f">More...</a><br /></td></tr>
 <tr class="separator:a3dea1a727165f6864be347642fc0728f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4953fdf79783fdd5c0b867af1dbd8f3d"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#a4953fdf79783fdd5c0b867af1dbd8f3d">b_bunchID</a> = nullptr</td></tr>
-<tr class="memdesc:a4953fdf79783fdd5c0b867af1dbd8f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nTDCs]: Bunch ID for each TDC.  <a href="#a4953fdf79783fdd5c0b867af1dbd8f3d">More...</a><br /></td></tr>
+<tr class="memdesc:a4953fdf79783fdd5c0b867af1dbd8f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: Bunch ID for each TDC.  <a href="#a4953fdf79783fdd5c0b867af1dbd8f3d">More...</a><br /></td></tr>
 <tr class="separator:a4953fdf79783fdd5c0b867af1dbd8f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc8b0c67ad8e331ea9fc3f94a57d072b"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#acc8b0c67ad8e331ea9fc3f94a57d072b">b_rocTime</a> = nullptr</td></tr>
-<tr class="memdesc:acc8b0c67ad8e331ea9fc3f94a57d072b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nTDCs]: ROC value for each TDC.  <a href="#acc8b0c67ad8e331ea9fc3f94a57d072b">More...</a><br /></td></tr>
+<tr class="memdesc:acc8b0c67ad8e331ea9fc3f94a57d072b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: ROC value for each TDC.  <a href="#acc8b0c67ad8e331ea9fc3f94a57d072b">More...</a><br /></td></tr>
 <tr class="separator:acc8b0c67ad8e331ea9fc3f94a57d072b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac85cc79e72eaec4f7554a10e12e4d75a"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#ac85cc79e72eaec4f7554a10e12e4d75a">b_nHeaders</a> = nullptr</td></tr>
-<tr class="memdesc:ac85cc79e72eaec4f7554a10e12e4d75a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nTDCs]: Number for headers for each TDC.  <a href="#ac85cc79e72eaec4f7554a10e12e4d75a">More...</a><br /></td></tr>
+<tr class="memdesc:ac85cc79e72eaec4f7554a10e12e4d75a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: Number for headers for each TDC.  <a href="#ac85cc79e72eaec4f7554a10e12e4d75a">More...</a><br /></td></tr>
 <tr class="separator:ac85cc79e72eaec4f7554a10e12e4d75a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac32836178a53f00fe5417e533a0390f1"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#ac32836178a53f00fe5417e533a0390f1">b_nLeadingEdges</a> = nullptr</td></tr>
-<tr class="memdesc:ac32836178a53f00fe5417e533a0390f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nTDCs]: Number for leading edges for each TDC.  <a href="#ac32836178a53f00fe5417e533a0390f1">More...</a><br /></td></tr>
+<tr class="memdesc:ac32836178a53f00fe5417e533a0390f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: Number for leading edges for each TDC.  <a href="#ac32836178a53f00fe5417e533a0390f1">More...</a><br /></td></tr>
 <tr class="separator:ac32836178a53f00fe5417e533a0390f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabb6a03aaab8095cb3e5e04d8389194a"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#aabb6a03aaab8095cb3e5e04d8389194a">b_nTrailingEdges</a> = nullptr</td></tr>
-<tr class="memdesc:aabb6a03aaab8095cb3e5e04d8389194a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nTDCs]: Number for trailing edges for each TDC.  <a href="#aabb6a03aaab8095cb3e5e04d8389194a">More...</a><br /></td></tr>
+<tr class="memdesc:aabb6a03aaab8095cb3e5e04d8389194a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: Number for trailing edges for each TDC.  <a href="#aabb6a03aaab8095cb3e5e04d8389194a">More...</a><br /></td></tr>
 <tr class="separator:aabb6a03aaab8095cb3e5e04d8389194a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3d13f63577de75ec8a673ddb8686629"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#ae3d13f63577de75ec8a673ddb8686629">b_nTrailers</a> = nullptr</td></tr>
-<tr class="memdesc:ae3d13f63577de75ec8a673ddb8686629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nTDCs]: Number for trailers for each TDC.  <a href="#ae3d13f63577de75ec8a673ddb8686629">More...</a><br /></td></tr>
+<tr class="memdesc:ae3d13f63577de75ec8a673ddb8686629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: Number for trailers for each TDC.  <a href="#ae3d13f63577de75ec8a673ddb8686629">More...</a><br /></td></tr>
 <tr class="separator:ae3d13f63577de75ec8a673ddb8686629"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7151f5beadcec7080e1b95f12e52a40a"><td class="memItemLeft" align="right" valign="top">UInt_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#a7151f5beadcec7080e1b95f12e52a40a">b_wordCount</a> = nullptr</td></tr>
-<tr class="memdesc:a7151f5beadcec7080e1b95f12e52a40a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nTDCs]: Word count for each TDC.  <a href="#a7151f5beadcec7080e1b95f12e52a40a">More...</a><br /></td></tr>
+<tr class="memdesc:a7151f5beadcec7080e1b95f12e52a40a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable [nReadouts]: Word count for each TDC.  <a href="#a7151f5beadcec7080e1b95f12e52a40a">More...</a><br /></td></tr>
 <tr class="separator:a7151f5beadcec7080e1b95f12e52a40a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a050eedbaf401226c641f54b533cf8d01"><td class="memItemLeft" align="right" valign="top">UInt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#a050eedbaf401226c641f54b533cf8d01">b_nEdges</a> = 0</td></tr>
 <tr class="memdesc:a050eedbaf401226c641f54b533cf8d01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Branch Variable: Total number of edges.  <a href="#a050eedbaf401226c641f54b533cf8d01">More...</a><br /></td></tr>
@@ -180,7 +186,7 @@ Private Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:aab35ad52374d52149bde894c8af7a8c5"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#aab35ad52374d52149bde894c8af7a8c5">s_hitsMax</a> = 600</td></tr>
+<tr class="memitem:aab35ad52374d52149bde894c8af7a8c5"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event_tree_manager.html#aab35ad52374d52149bde894c8af7a8c5">s_hitsMax</a> = 1600</td></tr>
 <tr class="memdesc:aab35ad52374d52149bde894c8af7a8c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array size for hit branches.  <a href="#aab35ad52374d52149bde894c8af7a8c5">More...</a><br /></td></tr>
 <tr class="separator:aab35ad52374d52149bde894c8af7a8c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -201,8 +207,8 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class which manages storage of <a class="el" href="class_event.html" title="Container class for Packets. ">Event</a> data in root file output. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac56641a71c28863d76fcc598ac8e32df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac56641a71c28863d76fcc598ac8e32df">&#9670;&nbsp;</a></span>EventTreeManager()</h2>
+<a id="a923f2a2c38074ddc0d6eb55091400a5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a923f2a2c38074ddc0d6eb55091400a5f">&#9670;&nbsp;</a></span>EventTreeManager()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -223,7 +229,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>nTDCs</em>&#160;</td>
+          <td class="paramname"><em>nReadouts</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -238,7 +244,7 @@ Additional Inherited Members</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">config</td><td>Ptr to program configuration </td></tr>
     <tr><td class="paramname">outfileName</td><td>The desired output file name </td></tr>
-    <tr><td class="paramname">nTDCs</td><td>Number of TDCs present from config </td></tr>
+    <tr><td class="paramname">nReadouts</td><td>Number of TDCs present from config </td></tr>
   </table>
   </dd>
 </dl>
@@ -325,7 +331,31 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Branch Variable [nTDCs]: Bunch ID for each TDC. </p>
+<p>Branch Variable [nReadouts]: Bunch ID for each TDC. </p>
+
+</div>
+</div>
+<a id="acad948110ea80051649765fdbed3fc91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acad948110ea80051649765fdbed3fc91">&#9670;&nbsp;</a></span>b_chainID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UInt_t* EventTreeManager::b_chainID = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Branch Variable [nReadouts]: Chain ID. </p>
 
 </div>
 </div>
@@ -353,6 +383,30 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="ab715e26f142e12ccd0e4ed6751959f0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab715e26f142e12ccd0e4ed6751959f0f">&#9670;&nbsp;</a></span>b_deviceID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UInt_t* EventTreeManager::b_deviceID = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Branch Variable [nReadouts]: Device ID. </p>
+
+</div>
+</div>
 <a id="a3dea1a727165f6864be347642fc0728f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3dea1a727165f6864be347642fc0728f">&#9670;&nbsp;</a></span>b_eventID</h2>
 
@@ -373,7 +427,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Branch Variable [nTDCs]: <a class="el" href="class_event.html" title="Container class for Packets. ">Event</a> ID for each TDC. </p>
+<p>Branch Variable [nReadouts]: <a class="el" href="class_event.html" title="Container class for Packets. ">Event</a> ID for each TDC. </p>
 
 </div>
 </div>
@@ -493,7 +547,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Branch Variable [nTDCs]: Number for headers for each TDC. </p>
+<p>Branch Variable [nReadouts]: Number for headers for each TDC. </p>
 
 </div>
 </div>
@@ -541,12 +595,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Branch Variable [nTDCs]: Number for leading edges for each TDC. </p>
+<p>Branch Variable [nReadouts]: Number for leading edges for each TDC. </p>
 
 </div>
 </div>
-<a id="a8414d85d8ae7c9ea4ae3873c57121749"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8414d85d8ae7c9ea4ae3873c57121749">&#9670;&nbsp;</a></span>b_nTDCs</h2>
+<a id="a423068e1ef8766b602d5383bfe38494b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a423068e1ef8766b602d5383bfe38494b">&#9670;&nbsp;</a></span>b_nReadouts</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -555,7 +609,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">UInt_t EventTreeManager::b_nTDCs = 0</td>
+          <td class="memname">UInt_t EventTreeManager::b_nReadouts = 0</td>
         </tr>
       </table>
   </td>
@@ -565,7 +619,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Branch Variable: The number of TDCs. </p>
+<p>Branch Variable: The number of Readouts (= nTDC chips used) </p>
 
 </div>
 </div>
@@ -589,7 +643,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Branch Variable [nTDCs]: Number for trailers for each TDC. </p>
+<p>Branch Variable [nReadouts]: Number for trailers for each TDC. </p>
 
 </div>
 </div>
@@ -613,7 +667,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Branch Variable [nTDCs]: Number for trailing edges for each TDC. </p>
+<p>Branch Variable [nReadouts]: Number for trailing edges for each TDC. </p>
 
 </div>
 </div>
@@ -637,7 +691,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Branch Variable [nTDCs]: ROC value for each TDC. </p>
+<p>Branch Variable [nReadouts]: ROC value for each TDC. </p>
 
 </div>
 </div>
@@ -661,7 +715,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Branch Variable [nTDCs]: TCD ID. </p>
+<p>Branch Variable [nReadouts]: TCD ID. </p>
 
 </div>
 </div>
@@ -781,7 +835,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Branch Variable [nTDCs]: Word count for each TDC. </p>
+<p>Branch Variable [nReadouts]: Word count for each TDC. </p>
 
 </div>
 </div>
@@ -809,8 +863,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a87c672aa1531b362b15eddf11cab00c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87c672aa1531b362b15eddf11cab00c8">&#9670;&nbsp;</a></span>m_nTDCs</h2>
+<a id="ac0fce7275ef1c587302ff67e53ad5a77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0fce7275ef1c587302ff67e53ad5a77">&#9670;&nbsp;</a></span>m_nReadouts</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -819,7 +873,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const unsigned int EventTreeManager::m_nTDCs</td>
+          <td class="memname">const unsigned int EventTreeManager::m_nReadouts</td>
         </tr>
       </table>
   </td>
@@ -843,7 +897,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr unsigned int EventTreeManager::s_hitsMax = 600</td>
+          <td class="memname">constexpr unsigned int EventTreeManager::s_hitsMax = 1600</td>
         </tr>
       </table>
   </td>

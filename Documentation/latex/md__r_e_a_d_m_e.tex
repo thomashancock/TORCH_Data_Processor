@@ -39,7 +39,7 @@ The Multiboard Data \hyperlink{class_processor}{Processor} (M\+DP) requires\+:
 \item A working installation of R\+O\+OT 6
 \end{DoxyItemize}
 
-Note\+: The program has been tested with root 6.\+08.\+04, but theoretically any version of R\+O\+OT 6 should work (if you have issues related to this, contact Thomas Hancock).
+Note\+: The program has been tested with root 6.\+08.\+04, but any version of R\+O\+OT 6 should work (if you have issues related to this, contact Thomas Hancock).
 
 \subsection*{Compiling the \hyperlink{class_processor}{Processor} \label{_Compiling}%
 }
@@ -73,7 +73,7 @@ To run the M\+DP, simply call the program\+:
 \end{DoxyCode}
  followed by the files you wish to process (e.\+g. {\ttfamily data/$\ast$.txt})
 
-Data files must contain the string {\ttfamily Device\+\_\+\+\_\+\+\_\+} in their name. This allows the M\+DP to properly synchronise data across multiple readouts. The string must be enclosed by underscores, but can contain any words on either side.
+Data files must contain the string {\ttfamily \+\_\+\+Chain\+\_\+\+\_\+\+Device\+\_\+\+\_\+\+\_\+} in their name. This allows the M\+DP to properly synchronise data across multiple readouts. The string can be surrounded by words on either side, but any words which follow must be separated from the string by an underscore.
 
 The program is configured via a xml config file. This file is specified with the {\ttfamily -\/con} command line option. If not set, the program will search for {\ttfamily Config.\+xml}. An example configuration file is provided for you to modify ({\ttfamily Example\+\_\+\+Config.\+xml}).
 
@@ -92,7 +92,18 @@ To run the test, do\+:
 
 This runs the M\+DP on the data contained in {\ttfamily ./data/\+Test\+\_\+\+Data} using the config specified by {\ttfamily Example\+\_\+\+Config.\+xml}.
 
-The test data is deliberately not perfect. The resulting output should show several \char`\"{}\+Dumping events due to buffer bloat\char`\"{} warnings, and the Errors Summary should contain a large number of errors (of types \char`\"{}\+Bad Packet Dumped\char`\"{}, \char`\"{}\+Dumped incomplete packet\char`\"{}, \char`\"{}\+Word found out of sequence\char`\"{}).
+The test data is deliberately not perfect. The resulting output should show the following error summary\+: 
+\begin{DoxyCode}
+=== Errors Summary ===
+Error: Invalid Datatype 6
+        ChainID: 0, DeviceID: 0 (x 11)
+Error: Invalid Datatype 7
+        ChainID: 0, DeviceID: 0 (x 11)
+Error: Invalid Datatype 14
+        ChainID: 0, DeviceID: 0 (x 45)
+        ChainID: 1, DeviceID: 0 (x 177)
+\end{DoxyCode}
+
 
 \subsubsection*{Running over long data runs \label{_RunLongRuns}%
 }

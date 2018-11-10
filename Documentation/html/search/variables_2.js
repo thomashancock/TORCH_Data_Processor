@@ -38,7 +38,7 @@ var searchData=
   ['m_5fmap',['m_map',['../class_thread_safe_event_map.html#a15d9d8928ff7dc51fa48a1829575b47e',1,'ThreadSafeEventMap']]],
   ['m_5fmode',['m_mode',['../class_config.html#a65b1f233533ce1e2acd85f6a4a07c4d4',1,'Config']]],
   ['m_5fmut',['m_mut',['../class_error_spy.html#ae7d03be7562c1eb3ed4de48e33d89070',1,'ErrorSpy::m_mut()'],['../class_thread_safe_event_map.html#ada4e8c2f2195df86503e73674ff30935',1,'ThreadSafeEventMap::m_mut()'],['../class_thread_safe_queue.html#aed716c566c7091b8557118f29a1cf6ea',1,'ThreadSafeQueue::m_mut()'],['../class_root_manager.html#a8f8a185d6d25b3e1207416c7cd8c333c',1,'RootManager::m_mut()']]],
-  ['m_5fntdcs',['m_nTDCs',['../class_event_tree_manager.html#a87c672aa1531b362b15eddf11cab00c8',1,'EventTreeManager']]],
+  ['m_5fnreadouts',['m_nReadouts',['../class_event_tree_manager.html#ac0fce7275ef1c587302ff67e53ad5a77',1,'EventTreeManager']]],
   ['m_5foutfile',['m_outFile',['../class_root_manager.html#a2f0257574f0eeac21c3628058a5d6ad9',1,'RootManager']]],
   ['m_5fpacketbuffers',['m_packetBuffers',['../class_processor.html#ab75c789ec03e38e8621f000332daa285',1,'Processor']]],
   ['m_5fpacketmap',['m_packetMap',['../class_event.html#a0ae595a22c44ddc6003ac31ee17f6f86',1,'Event']]],
