@@ -31,6 +31,8 @@ void PacketTreeManager::add(
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Write basic information
+	b_chainID = packet->getReadoutID().getBoardID().getChainID();
+	b_deviceID = packet->getReadoutID().getBoardID().getDeviceID();
 	b_tdcID = packet->getReadoutID().getTDCID();
 	b_eventID = packet->getEventID();
 	b_bunchID = packet->getBunchID();
@@ -75,6 +77,8 @@ void PacketTreeManager::setUpBranches() {
 	std::lock_guard<std::mutex> lk(m_mut);
 
 	// Setup branches
+	m_tree->Branch("chainID", &b_chainID, "chainID/i");
+	m_tree->Branch("deviceID", &b_deviceID, "deviceID/i");
 	m_tree->Branch("tdcID", &b_tdcID, "tdcID/i");
 	m_tree->Branch("eventID", &b_eventID, "eventID/i");
 	m_tree->Branch("bunchID", &b_bunchID, "bunchID/i");

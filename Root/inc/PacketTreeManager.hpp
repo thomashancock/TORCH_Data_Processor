@@ -31,6 +31,8 @@ private:
 	constexpr static unsigned int s_maxEdges = 100; //!< Array size for edge branches
 
 	// Set branch variables
+	UInt_t b_chainID = 0;         //!< Branch Variable: TDC ID
+	UInt_t b_deviceID = 0;         //!< Branch Variable: TDC ID
 	UInt_t b_tdcID = 0;         //!< Branch Variable: TDC ID
 	UInt_t b_eventID = 0;       //!< Branch Variable: Event ID
 	UInt_t b_bunchID = 0;       //!< Branch Variable: Bunch ID

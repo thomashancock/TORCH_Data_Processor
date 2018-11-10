@@ -59,6 +59,10 @@ void EventTreeManager::add(
 
 		// Fill tree branches from packet
 		ASSERT(b_nReadouts < m_nReadouts);
+		ASSERT(nullptr != b_chainID);
+		b_chainID[b_nReadouts] = packet->getReadoutID().getBoardID().getChainID();
+		ASSERT(nullptr != b_deviceID);
+		b_deviceID[b_nReadouts] = packet->getReadoutID().getBoardID().getDeviceID();
 		ASSERT(nullptr != b_tdcID);
 		b_tdcID[b_nReadouts] = packet->getReadoutID().getTDCID();
 		ASSERT(nullptr != b_eventID);
@@ -198,6 +202,8 @@ void EventTreeManager::setUpBranches() {
 	m_tree->Branch("wasDumped", &b_wasDumped, "wasDumped/O");
 
 	m_tree->Branch("nTDCs", &b_nReadouts, "nTDCs/i");
+	setupArrBranch<UInt_t>("chainID", b_chainID, "[nTDCs]/i", m_nReadouts);
+	setupArrBranch<UInt_t>("deviceID", b_deviceID, "[nTDCs]/i", m_nReadouts);
 	setupArrBranch<UInt_t>("tdcID", b_tdcID, "[nTDCs]/i", m_nReadouts);
 	setupArrBranch<UInt_t>("eventID", b_eventID, "[nTDCs]/i", m_nReadouts);
 	setupArrBranch<UInt_t>("tdcTime", b_bunchID, "[nTDCs]/i", m_nReadouts);

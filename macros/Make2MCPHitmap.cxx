@@ -82,7 +82,7 @@ void Make2MCPHitmap(
 	const std::string hitsBranchName = (false == isEventTree) ? "nLeadingEdges" : "nHits";
 	const std::string channelBranchName = (false == isEventTree) ? "leadingChannelID" : "channelID";
 	uint nHits;
-	uint* channelIDs = new uint[500];
+	uint* channelIDs = new uint[1600];
 	inTree->GetBranch(hitsBranchName.c_str())->SetAddress(&nHits);
 	inTree->GetBranch(channelBranchName.c_str())->SetAddress(channelIDs);
 

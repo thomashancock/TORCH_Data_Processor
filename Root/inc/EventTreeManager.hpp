@@ -30,7 +30,7 @@ private:
 
 private:
 	const unsigned int m_nReadouts; //!< The maximum number of TDCs
-	constexpr static unsigned int s_hitsMax = 600; //!< Array size for hit branches
+	constexpr static unsigned int s_hitsMax = 1600; //!< Array size for hit branches
 
 	const std::set<unsigned int> m_edgeMatchingExclusions; //!< Set to store edge matching exclusions
 
@@ -39,6 +39,8 @@ private:
 	Bool_t b_wasDumped = false; //!< Branch Variable: Was the event dumped?
 
 	UInt_t b_nReadouts = 0;               //!< Branch Variable: The number of Readouts (= nTDC chips used)
+	UInt_t* b_chainID = nullptr;          //!< Branch Variable [nReadouts]: Chain ID
+	UInt_t* b_deviceID = nullptr;         //!< Branch Variable [nReadouts]: Device ID
 	UInt_t* b_tdcID = nullptr;            //!< Branch Variable [nReadouts]: TCD ID
 	UInt_t* b_eventID = nullptr;          //!< Branch Variable [nReadouts]: Event ID for each TDC
 	UInt_t* b_bunchID = nullptr;          //!< Branch Variable [nReadouts]: Bunch ID for each TDC
