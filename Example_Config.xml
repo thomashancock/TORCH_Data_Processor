@@ -38,14 +38,14 @@
   <disableEdgeMatching channelID="799"/>
   <disableEdgeMatching channelID="831"/>
   <disableEdgeMatching channelID="927"/>
-  <disableEdgeMatching channelID="959"/> 
+  <disableEdgeMatching channelID="959"/>
 
   <!-- Edge Modifiers:
        NoChange - Leaves edges unchanged
        FlipEven - Flips L/T edges on even channels
        FlipOdd  - Flips L/T edges on odd channels
   -->
-  <edgeModifier modifier="FlipEven"/>
+  <edgeModifier modifier="FlipOdd"/>
 
   <!-- Description of electronics arrangement -->
   <arrangement>
