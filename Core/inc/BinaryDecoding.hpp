@@ -3,7 +3,6 @@
 
 // STD
 #include <iostream>
-#include <bitset>
 
 // LOCAL
 #include "Debug.hpp"

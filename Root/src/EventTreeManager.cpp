@@ -149,7 +149,11 @@ void EventTreeManager::add(
 					ASSERT(nullptr != b_trailingTime);
 					b_trailingTime[b_nHits] = 0;
 					ASSERT(nullptr != b_leadingTimeFine);
+					#ifdef VHR_MODE
+					b_leadingTimeFine[b_nHits] = (edgeTime >> 2)%256;
+					#else
 					b_leadingTimeFine[b_nHits] = edgeTime%256;
+					#endif /* VHR_MODE */
 					ASSERT(nullptr != b_trailingTimeFine);
 					b_trailingTimeFine[b_nHits] = 0;
 					ASSERT(nullptr != b_width);
