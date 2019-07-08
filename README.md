@@ -4,6 +4,7 @@
 1. [Introduction](#Introduction)
 2. [Requirements](#Requirements)
 3. [Compiling the Processor](#Compiling)
+    1. [Very High Resolution mode](#VHRMode)
 4. [Running the Processor](#Running)
     1. [Running a quick test](#RunQuickTest)
     2. [Running over long data runs](#RunLongRuns)
@@ -48,6 +49,10 @@ If developing the processor, the program can be build in debug mode by changing 
 ```
 -DCMAKE_BUILD_TYPE=Debug
 ```
+
+### Very High Resolution mode <a name="VHRMode"></a>
+The processor can be configured at compile time to run on data produced with the TDCs in Very High Resolution mode. To enable this, run CMake with the additional command ```-DVHR_MODE:BOOL=TRUE```.
+
 
 ## Running the Processor <a name="Running"></a>
 To run the MDP, simply call the program:
