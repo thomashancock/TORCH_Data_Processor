@@ -28,8 +28,15 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DLOCAL_DEBUG")
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Add option to compile for legacy data
+OPTION(VHR_MODE "Very High Resolution Mode." OFF)
+
 # Ensure compiler warnings are added and add optimisation flag
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-long-long -pedantic -Werror -O3")
+if(VHR_MODE)
+	message(STATUS "Very High Resolution option set. Building for VHR data.")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DVHR_MODE")
+endif(VHR_MODE)
 
 # Set current directory
 set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})

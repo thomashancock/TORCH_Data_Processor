@@ -3,6 +3,7 @@
 
 // STD
 #include <iostream>
+#include <bitset>
 
 // LOCAL
 #include "Debug.hpp"
@@ -47,7 +48,12 @@ inline uint getChannelID(
 	const uint word
 ) {
 	ASSERT(4 == getDataType(word) || 5 == getDataType(word));
+	#ifdef VHR_MODE
+	// in VHR mode, channels are mapped 0 -> 0, 1 -> 4, ..., 7 -> 28
+	return 4*(word << 8 >> 29);
+	#else
 	return word << 8 >> 27;
+	#endif /* VHR_MODE */
 }
 // -----------------------------------------------------------------------------
 //
@@ -57,7 +63,13 @@ inline uint getTimestamp(
 	const uint word
 ) {
 	ASSERT(4 == getDataType(word) || 5 == getDataType(word));
+	#ifdef VHR_MODE
+	// First part extracts the edge time, second the interpolation factor
+	// The binary or combines the two parts into the final value
+	return (word << 13 >> 11) | (word << 11 >> 30);
+	#else
 	return word << 13 >> 13;
+	#endif /* VHR_MODE */
 }
 // -----------------------------------------------------------------------------
 //
