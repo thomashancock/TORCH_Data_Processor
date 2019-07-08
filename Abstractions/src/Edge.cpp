@@ -13,7 +13,11 @@ Edge::Edge(
 m_tdcID(tdcID),
 m_channelID(channelID),
 m_timestamp(timestamp),
+#ifdef VHR_MODE
+m_fineTimestamp((timestamp >> 2)%256)
+# else
 m_fineTimestamp(timestamp%256)
+#endif /* VHR_MODE */
 { }
 // -----------------------------------------------------------------------------
 //
