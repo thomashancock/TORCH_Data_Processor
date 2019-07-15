@@ -71,41 +71,43 @@ void FileReader::stageFiles(
 ) {
 	static bool staged = false;
 
-	ASSERT(false == staged);
+	if (staged == false) {
+		// Add files to file reader storage
+		for (const auto& file : files) {
+			addFile(file);
+		}
 
-	// Add files to file reader storage
-	for (const auto& file : files) {
-		addFile(file);
+		for (auto& entry : m_inputFiles) {
+			// Sort stored files according to file number for each readout
+			entry.second.sort();
+			// Set relative rate based on number of files
+			m_relativeRates[entry.first] = entry.second.size();
+		}
+
+		std::cout << "Found following number of files per board:" << std::endl;
+		for (const auto& entry : m_relativeRates) {
+			std::cout << "\t" << entry.first << ": " << entry.second << std::endl;
+		}
+
+		syncType = (areElementsIdentical(m_relativeRates)) ? equalTime : equalSize;
+		STD_LOG("Using Sync Type: " << ((syncType == equalTime) ? "Time" : "Size" ));
+
+		//TODO: Scale relative rate to smallest possible integer for each boardID
+
+		// Set m_counterMax to max value in rates
+		for (const auto& entry : m_relativeRates) {
+			m_counterMax = (entry.second > m_counterMax) ? entry.second : m_counterMax;
+		}
+
+		// Stage the first file for each readout board
+		for (const auto& entry : m_inputFiles) {
+			stageNextFile(entry.first);
+		}
+
+		staged = true;
+	} else {
+		STD_ERR("stageFiles() called twice. Unable to stage more files.");
 	}
-
-	for (auto& entry : m_inputFiles) {
-		// Sort stored files according to file number for each readout
-		entry.second.sort();
-		// Set relative rate based on number of files
-		m_relativeRates[entry.first] = entry.second.size();
-	}
-
-	std::cout << "Found following number of files per board:" << std::endl;
-	for (const auto& entry : m_relativeRates) {
-		std::cout << "\t" << entry.first << ": " << entry.second << std::endl;
-	}
-
-	syncType = (areElementsIdentical(m_relativeRates)) ? equalTime : equalSize;
-	STD_LOG("Using Sync Type: " << ((syncType == equalTime) ? "Time" : "Size" ));
-
-	//TODO: Scale relative rate to smallest possible integer for each boardID
-
-	// Set m_counterMax to max value in rates
-	for (const auto& entry : m_relativeRates) {
-		m_counterMax = (entry.second > m_counterMax) ? entry.second : m_counterMax;
-	}
-
-	// Stage the first file for each readout board
-	for (const auto& entry : m_inputFiles) {
-		stageNextFile(entry.first);
-	}
-
-	staged = true;
 }
 // -----------------------------------------------------------------------------
 //
