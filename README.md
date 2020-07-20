@@ -20,7 +20,7 @@ For an overview, see [slides from the Testbeam Meeting on 1st June 18](https://i
 
 The ```Documentation``` directory contains full deoxygen documentation. It can be viewed through ```open Documentation/html/index.html```.
 
-Please report any issues to Thomas Hancock (thomas.hancock@physics.ox.ac.uk).
+Please report any issues to Thomas Hancock.
 
 ## Requirements <a name="Requirements"></a>
 The Multiboard Data Processor (MDP) requires:
